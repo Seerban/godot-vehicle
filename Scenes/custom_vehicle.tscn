@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dw6rlckembj5p"]
+
+[ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/custom_vehicle.gd" id="1_n8cda"]
+[ext_resource type="Texture2D" uid="uid://0tnughc1de37" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_Color.jpg" id="2_b76gr"]
+[ext_resource type="Texture2D" uid="uid://nv0dhl3u6qdm" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_NormalGL.jpg" id="3_4eb74"]
+[ext_resource type="Texture2D" uid="uid://cfa48biinynvx" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_Roughness.jpg" id="4_llmuu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
+size = Vector3(4.3, 1, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muxc4"]
+albedo_color = Color(1, 1, 0.49803922, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ho8xs"]
+size = Vector3(4.3, 1, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_im64q"]
+albedo_texture = ExtResource("2_b76gr")
+roughness_texture = ExtResource("4_llmuu")
+normal_enabled = true
+normal_texture = ExtResource("3_4eb74")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rprfn"]
+material = SubResource("StandardMaterial3D_im64q")
+height = 0.2
+
+[node name="Vehicle" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_n8cda")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ho8xs")
+surface_material_override/0 = SubResource("StandardMaterial3D_muxc4")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ho8xs")
+
+[node name="WheelFR" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, 1)
+
+[node name="WheelMesh" type="MeshInstance3D" parent="WheelFR"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rprfn")
+
+[node name="WheelBR" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, 1)
+
+[node name="WheelMesh" type="MeshInstance3D" parent="WheelBR"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rprfn")
+
+[node name="WheelFL" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, -1)
+
+[node name="WheelMesh" type="MeshInstance3D" parent="WheelFL"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rprfn")
+
+[node name="WheelBL" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, -1)
+
+[node name="WheelMesh" type="MeshInstance3D" parent="WheelBL"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rprfn")

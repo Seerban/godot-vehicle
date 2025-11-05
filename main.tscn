@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://cq0e7kogvy3so"]
+
+[ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://main.gd" id="1_272bh"]
+[ext_resource type="Texture2D" uid="uid://bh71ae3ovt3w0" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Color.jpg" id="2_5vw27"]
+[ext_resource type="Texture2D" uid="uid://h0ysqb4716p2" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_AmbientOcclusion.jpg" id="3_kek77"]
+[ext_resource type="Texture2D" uid="uid://cks78h7x88o5o" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_NormalGL.jpg" id="4_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bbjexfurli7h8" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Roughness.jpg" id="5_efxa6"]
+[ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_dg77c"]
+[ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/custom_vehicle.tscn" id="7_ycdy4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21bcp"]
+size = Vector3(250, 1, 250)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cho24"]
+albedo_texture = ExtResource("2_5vw27")
+roughness_texture = ExtResource("5_efxa6")
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource("4_4c57u")
+ao_enabled = true
+ao_texture = ExtResource("3_kek77")
+uv1_scale = Vector3(35, 35, 35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8rhti"]
+material = SubResource("StandardMaterial3D_cho24")
+size = Vector3(250, 1, 250)
+
+[sub_resource type="BoxMesh" id="BoxMesh_42dj3"]
+material = SubResource("StandardMaterial3D_cho24")
+size = Vector3(250, 0.2, 250)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_21bcp"]
+data = PackedVector3Array(-125, 0.099999994, 125, 125, 0.099999994, 125, -125, -0.099999994, 125, 125, 0.099999994, 125, 125, -0.099999994, 125, -125, -0.099999994, 125, 125, 0.099999994, -125, -125, 0.099999994, -125, 125, -0.099999994, -125, -125, 0.099999994, -125, -125, -0.099999994, -125, 125, -0.099999994, -125, 125, 0.099999994, 125, 125, 0.099999994, -125, 125, -0.099999994, 125, 125, 0.099999994, -125, 125, -0.099999994, -125, 125, -0.099999994, 125, -125, 0.099999994, -125, -125, 0.099999994, 125, -125, -0.099999994, -125, -125, 0.099999994, 125, -125, -0.099999994, 125, -125, -0.099999994, -125, 125, 0.099999994, 125, -125, 0.099999994, 125, 125, 0.099999994, -125, -125, 0.099999994, 125, -125, 0.099999994, -125, 125, 0.099999994, -125, -125, -0.099999994, 125, 125, -0.099999994, 125, -125, -0.099999994, -125, 125, -0.099999994, 125, 125, -0.099999994, -125, -125, -0.099999994, -125)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vi8l"]
+sky_top_color = Color(0.584603, 0.6530472, 0.74452746, 1)
+ground_horizon_color = Color(0.63034326, 0.638344, 0.6543474, 1)
+sun_angle_max = 360.0
+
+[sub_resource type="Sky" id="Sky_8rhti"]
+sky_material = SubResource("ProceduralSkyMaterial_3vi8l")
+
+[sub_resource type="Environment" id="Environment_ohhpf"]
+background_mode = 2
+sky = SubResource("Sky_8rhti")
+ambient_light_source = 2
+ambient_light_color = Color(0.27387273, 0.27387273, 0.27387273, 1)
+ssr_max_steps = 65
+fog_mode = 1
+fog_density = 0.3978
+fog_aerial_perspective = 0.527
+fog_depth_curve = 0.25881562
+fog_depth_begin = 0.0
+fog_depth_end = 53.0
+adjustment_enabled = true
+
+[node name="Base" type="Node3D"]
+script = ExtResource("1_272bh")
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Platforms"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D"]
+shape = SubResource("BoxShape3D_21bcp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D"]
+mesh = SubResource("BoxMesh_8rhti")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D2"]
+transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
+mesh = SubResource("BoxMesh_42dj3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D2"]
+transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
+shape = SubResource("ConcavePolygonShape3D_21bcp")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D3"]
+transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
+mesh = SubResource("BoxMesh_42dj3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D3"]
+transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
+shape = SubResource("ConcavePolygonShape3D_21bcp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.49999997, -0.75000024, 0.4330126, 0, 0.4999999, 0.8660255, -0.8660254, -0.4330127, 0.25, 0, 10, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ohhpf")
+
+[node name="CameraAxis" parent="." node_paths=PackedStringArray("node_to_follow") instance=ExtResource("6_dg77c")]
+node_to_follow = NodePath("../Vehicle")
+
+[node name="Vehicle" parent="." instance=ExtResource("7_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 3, 0)
+linear_damp_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Instructions" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label4" type="Label" parent="CanvasLayer/Instructions"]
+layout_mode = 2
+text = "Press F to flip over"
+
+[node name="Label" type="Label" parent="CanvasLayer/Instructions"]
+layout_mode = 2
+text = "Press R to switch between:"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Instructions"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.4117647, 1)
+text = "Custom Car Implementation"
+
+[node name="Label3" type="Label" parent="CanvasLayer/Instructions"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
+text = "Godot Vehicle Node"
