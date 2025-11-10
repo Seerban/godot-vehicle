@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq0e7kogvy3so"]
+[gd_scene load_steps=17 format=3 uid="uid://cq0e7kogvy3so"]
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://main.gd" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://bh71ae3ovt3w0" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Color.jpg" id="2_5vw27"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbjexfurli7h8" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Roughness.jpg" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/custom_vehicle.tscn" id="7_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dttdy4fpxll0j" path="res://Scenes/godot_vehicle.tscn" id="8_5vw27"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21bcp"]
 size = Vector3(250, 1, 250)
@@ -100,11 +101,12 @@ shadow_enabled = true
 environment = SubResource("Environment_ohhpf")
 
 [node name="CameraAxis" parent="." node_paths=PackedStringArray("node_to_follow") instance=ExtResource("6_dg77c")]
-node_to_follow = NodePath("../Vehicle")
+node_to_follow = NodePath("")
 
 [node name="Vehicle" parent="." instance=ExtResource("7_ycdy4")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 3, 0)
-linear_damp_mode = 1
+
+[node name="Vehicle2" parent="." instance=ExtResource("8_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

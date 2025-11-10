@@ -1,7 +1,7 @@
 extends VehicleBody3D
 
 @export var power := 100.
-@export var brake_power := 2.
+@export var brake_power := 2.5
 @export var turning_deg := 15.
 
 @onready var wheels = [$WheelBL, $WheelBR, $WheelFL, $WheelFR]
@@ -16,7 +16,7 @@ func accel(powered := false, reverse := false) -> void:
 		engine_force = 0
 
 func braking(powered := false) -> void:
-	if powered: brake = brake_power * int(powered)
+	brake = brake_power * int(powered)
 
 func steer(m := 0.) -> void:
 	steering = deg_to_rad(turning_deg * m)

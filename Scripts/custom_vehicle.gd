@@ -3,8 +3,8 @@ class_name Vehicle
 
 var steering
 
-@export var power := 5.
-@export var brake_power := 0.4
+@export var power := 4.25
+@export var brake_power := 0.15
 @export var turning_deg := 15.
 var turning_force := 2
 @export var friction := 0.005
