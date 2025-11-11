@@ -1,19 +1,13 @@
 extends VehicleBody3D
 
 @export var power := 100.
-@export var brake_power := 2.5
+@export var brake_power := 1.5
 @export var turning_deg := 15.
 
 @onready var wheels = [$WheelBL, $WheelBR, $WheelFL, $WheelFR]
 
-func accel(powered := false, reverse := false) -> void:
-	if powered:
-		if reverse:
-			engine_force = lerp(engine_force, power * -1, 0.1)
-		else:
-			engine_force = lerp(engine_force, power, 0.1)
-	else:
-		engine_force = 0
+func accelerate(powered := false) -> void:
+	engine_force = power * int(powered)
 
 func braking(powered := false) -> void:
 	brake = brake_power * int(powered)
@@ -27,18 +21,8 @@ func rotate_wheels(ang_vel := 0.) -> void:
 
 func _physics_process(delta: float) -> void:
 	var front_vel = -linear_velocity.dot(transform.basis.x)
-	#var side_vel = linear_velocity.dot(transform.basis.z)
 	
-	# Acceleration
-	accel( Input.is_action_pressed("forward") )
-	
-	# Reversing
-	if Input.is_action_pressed("backward"):
-		accel(true, true)
-	
-	# Braking
-	braking( Input.is_action_pressed("backward") and front_vel > 1)
-	
+	accelerate(Input.is_action_pressed("forward"))
+	braking( Input.is_action_pressed("backward") )
 	steer( Input.get_axis("right","left") )
-	
 	rotate_wheels( front_vel / 0.5 * delta )
