@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgswa0shopras"
+uid="uid://ckb4aqs47fosl"
 path.s3tc="res://.godot/imported/grid.png-93ed6e17ea59bb8aca71b79bf1c8b0c7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -22,9 +22,9 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
