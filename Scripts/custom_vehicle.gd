@@ -13,7 +13,6 @@ func _ready() -> void:
 			wheels.append(i)
 
 func _physics_process(delta: float) -> void:
-	
 	if Input.is_action_pressed("forward"):
 		for w in wheels:
 			w.accelerate(power)

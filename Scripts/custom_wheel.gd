@@ -7,6 +7,7 @@ var on_ground := false
 
 @export var powered := false
 @export var steering := false
+@export var grip_multiplier := 1
 
 @export_group("Suspension")
 @export var radius := 0.5
@@ -42,11 +43,11 @@ func _friction() -> void:
 	
 	var relative := global_position - car.global_position
 	var point_velocity := car.linear_velocity + car.angular_velocity.cross(relative)
-	var side_velocity := point_velocity.dot(global_basis.z)
+	var side_velocity := point_velocity.normalized().dot(global_basis.z) * 7.5 * grip_multiplier
 	var force := -global_basis.z * side_velocity * 9.8 * car.mass / 4. * downforce * 1.5
 	
 	car.apply_force(force, global_position - car.global_position)
-
+	
 func accelerate(power := 0.) -> void:
 	if not on_ground or not powered: return
 	car.apply_force(car.global_basis.x * power, global_position - car.global_position)
@@ -78,4 +79,4 @@ func _physics_process(delta: float) -> void:
 	if is_colliding():
 		wheel.global_position = get_collision_point() + global_basis.y * radius
 	else:
-		wheel.global_position = global_position + target_position + global_basis.y * radius
+		wheel.global_position = global_position - global_basis.y * spring_length + global_basis.y * radius
