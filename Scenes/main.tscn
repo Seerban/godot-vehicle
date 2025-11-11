@@ -1,25 +1,24 @@
-[gd_scene load_steps=17 format=3 uid="uid://cq0e7kogvy3so"]
+[gd_scene load_steps=16 format=3 uid="uid://cq0e7kogvy3so"]
 
-[ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://main.gd" id="1_272bh"]
-[ext_resource type="Texture2D" uid="uid://bh71ae3ovt3w0" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Color.jpg" id="2_5vw27"]
-[ext_resource type="Texture2D" uid="uid://h0ysqb4716p2" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_AmbientOcclusion.jpg" id="3_kek77"]
-[ext_resource type="Texture2D" uid="uid://cks78h7x88o5o" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_NormalGL.jpg" id="4_4c57u"]
-[ext_resource type="Texture2D" uid="uid://bbjexfurli7h8" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Roughness.jpg" id="5_efxa6"]
-[ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_dg77c"]
-[ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/custom_vehicle.tscn" id="7_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://dttdy4fpxll0j" path="res://Scenes/godot_vehicle.tscn" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
+[ext_resource type="Texture2D" uid="uid://bh71ae3ovt3w0" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Color.jpg" id="2_344ge"]
+[ext_resource type="Texture2D" uid="uid://h0ysqb4716p2" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_AmbientOcclusion.jpg" id="3_ynf5e"]
+[ext_resource type="Texture2D" uid="uid://cks78h7x88o5o" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_NormalGL.jpg" id="4_hptm8"]
+[ext_resource type="Texture2D" uid="uid://bbjexfurli7h8" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Roughness.jpg" id="5_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/custom_vehicle.tscn" id="7_fdnlq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21bcp"]
 size = Vector3(250, 1, 250)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cho24"]
-albedo_texture = ExtResource("2_5vw27")
-roughness_texture = ExtResource("5_efxa6")
+albedo_texture = ExtResource("2_344ge")
+roughness_texture = ExtResource("5_d1ilt")
 normal_enabled = true
 normal_scale = 5.0
-normal_texture = ExtResource("4_4c57u")
+normal_texture = ExtResource("4_hptm8")
 ao_enabled = true
-ao_texture = ExtResource("3_kek77")
+ao_texture = ExtResource("3_ynf5e")
 uv1_scale = Vector3(35, 35, 35)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8rhti"]
@@ -56,7 +55,7 @@ fog_depth_end = 53.0
 adjustment_enabled = true
 
 [node name="Base" type="Node3D"]
-script = ExtResource("1_272bh")
+script = ExtResource("1_6bp64")
 
 [node name="Platforms" type="Node3D" parent="."]
 
@@ -100,13 +99,10 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ohhpf")
 
-[node name="CameraAxis" parent="." node_paths=PackedStringArray("node_to_follow") instance=ExtResource("6_dg77c")]
-node_to_follow = NodePath("")
+[node name="CameraAxis" parent="." instance=ExtResource("6_6iyac")]
 
-[node name="Vehicle" parent="." instance=ExtResource("7_ycdy4")]
-
-[node name="Vehicle2" parent="." instance=ExtResource("8_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+[node name="Vehicle" parent="." instance=ExtResource("7_fdnlq")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 4, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

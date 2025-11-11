@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	accel( Input.is_action_pressed("forward") )
 	
 	# Reversing
-	if front_vel < 3 and Input.is_action_pressed("backward"):
+	if Input.is_action_pressed("backward"):
 		accel(true, true)
 	
 	# Braking
