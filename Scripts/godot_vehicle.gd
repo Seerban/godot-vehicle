@@ -2,7 +2,7 @@ extends VehicleBody3D
 
 @export var power := 100.
 @export var brake_power := 1.5
-@export var turning_deg := 15.
+@export var turning_deg := 18.
 
 @onready var wheels = [$WheelBL, $WheelBR, $WheelFL, $WheelFR]
 

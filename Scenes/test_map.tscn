@@ -711,6 +711,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 1, -13)
 shape = SubResource("ConcavePolygonShape3D_hmuyn")
 
 [node name="Ramp" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.000006, 0, -74)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, 0, 0, 0, 1, 13, 0, -36)
