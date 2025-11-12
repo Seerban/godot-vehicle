@@ -60,6 +60,7 @@ func _friction() -> void:
 	var force := -global_basis.z * side_velocity * 9.8 * car.mass / 4. * grip_multiplier
 	
 	if force.length() > max_grip: force = force.normalized() * max_grip
+	force += sign(force) * sqrt(abs(spring_diff)) * sign(spring_diff) * max_grip * 3
 	
 	car.apply_force(force, get_contact_point())
 

@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve" id="Curve_kuckw"]
 bake_resolution = 300
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1902174, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6966293), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1902174, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.55056185), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_1vnk4"]
