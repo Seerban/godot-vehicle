@@ -1,36 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq0e7kogvy3so"]
+[gd_scene load_steps=8 format=3 uid="uid://cq0e7kogvy3so"]
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
-[ext_resource type="Texture2D" uid="uid://bh71ae3ovt3w0" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Color.jpg" id="2_344ge"]
-[ext_resource type="Texture2D" uid="uid://h0ysqb4716p2" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_AmbientOcclusion.jpg" id="3_ynf5e"]
-[ext_resource type="Texture2D" uid="uid://cks78h7x88o5o" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_NormalGL.jpg" id="4_hptm8"]
-[ext_resource type="Texture2D" uid="uid://bbjexfurli7h8" path="res://Material/PavingStones112_1K-JPG/PavingStones112_1K-JPG_Roughness.jpg" id="5_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://csum7bqslyvv5" path="res://Scenes/test_map.tscn" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
 [ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/custom_vehicle.tscn" id="7_fdnlq"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_21bcp"]
-size = Vector3(250, 1, 250)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cho24"]
-albedo_texture = ExtResource("2_344ge")
-roughness_texture = ExtResource("5_d1ilt")
-normal_enabled = true
-normal_scale = 5.0
-normal_texture = ExtResource("4_hptm8")
-ao_enabled = true
-ao_texture = ExtResource("3_ynf5e")
-uv1_scale = Vector3(35, 35, 35)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8rhti"]
-material = SubResource("StandardMaterial3D_cho24")
-size = Vector3(250, 1, 250)
-
-[sub_resource type="BoxMesh" id="BoxMesh_42dj3"]
-material = SubResource("StandardMaterial3D_cho24")
-size = Vector3(250, 0.2, 250)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_21bcp"]
-data = PackedVector3Array(-125, 0.099999994, 125, 125, 0.099999994, 125, -125, -0.099999994, 125, 125, 0.099999994, 125, 125, -0.099999994, 125, -125, -0.099999994, 125, 125, 0.099999994, -125, -125, 0.099999994, -125, 125, -0.099999994, -125, -125, 0.099999994, -125, -125, -0.099999994, -125, 125, -0.099999994, -125, 125, 0.099999994, 125, 125, 0.099999994, -125, 125, -0.099999994, 125, 125, 0.099999994, -125, 125, -0.099999994, -125, 125, -0.099999994, 125, -125, 0.099999994, -125, -125, 0.099999994, 125, -125, -0.099999994, -125, -125, 0.099999994, 125, -125, -0.099999994, 125, -125, -0.099999994, -125, 125, 0.099999994, 125, -125, 0.099999994, 125, 125, 0.099999994, -125, -125, 0.099999994, 125, -125, 0.099999994, -125, 125, 0.099999994, -125, -125, -0.099999994, 125, 125, -0.099999994, 125, -125, -0.099999994, -125, 125, -0.099999994, 125, 125, -0.099999994, -125, -125, -0.099999994, -125)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vi8l"]
 sky_top_color = Color(0.584603, 0.6530472, 0.74452746, 1)
@@ -57,40 +30,7 @@ adjustment_enabled = true
 [node name="Base" type="Node3D"]
 script = ExtResource("1_6bp64")
 
-[node name="Platforms" type="Node3D" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Platforms"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D"]
-shape = SubResource("BoxShape3D_21bcp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D"]
-mesh = SubResource("BoxMesh_8rhti")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D2"]
-transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
-mesh = SubResource("BoxMesh_42dj3")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D2"]
-transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
-shape = SubResource("ConcavePolygonShape3D_21bcp")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1.2, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/StaticBody3D3"]
-transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
-mesh = SubResource("BoxMesh_42dj3")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/StaticBody3D3"]
-transform = Transform3D(0.099999964, 0, 0, 0, 1, 0, 0, 0, -0.100000024, -43, -0.5, 15)
-shape = SubResource("ConcavePolygonShape3D_21bcp")
+[node name="TestMap" parent="." instance=ExtResource("2_jjvhh")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.49999997, -0.75000024, 0.4330126, 0, 0.4999999, 0.8660255, -0.8660254, -0.4330127, 0.25, 0, 10, 0)
@@ -102,7 +42,7 @@ environment = SubResource("Environment_ohhpf")
 [node name="CameraAxis" parent="." instance=ExtResource("6_6iyac")]
 
 [node name="Vehicle" parent="." instance=ExtResource("7_fdnlq")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 4, 0)
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 0.9999999, 0, -8.742277e-08, 0, -0.9999999, -92, 4, -11)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -112,18 +52,26 @@ offset_bottom = 40.0
 
 [node name="Label4" type="Label" parent="CanvasLayer/Instructions"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Press F to flip over"
 
 [node name="Label" type="Label" parent="CanvasLayer/Instructions"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Press R to switch between:"
 
 [node name="Label2" type="Label" parent="CanvasLayer/Instructions"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0.4117647, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Custom Car Implementation"
 
 [node name="Label3" type="Label" parent="CanvasLayer/Instructions"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 text = "Godot Vehicle Node"

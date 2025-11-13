@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckb4aqs47fosl"
-path.s3tc="res://.godot/imported/grid.png-93ed6e17ea59bb8aca71b79bf1c8b0c7.s3tc.ctex"
+uid="uid://cdleky2vti4ku"
+path.s3tc="res://.godot/imported/Ground067_1K-JPG_Roughness.jpg-dd867745c180ec7a4af74e05535e7f62.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/grid.png"
-dest_files=["res://.godot/imported/grid.png-93ed6e17ea59bb8aca71b79bf1c8b0c7.s3tc.ctex"]
+source_file="res://Material/Ground067_1K-JPG/Ground067_1K-JPG_Roughness.jpg"
+dest_files=["res://.godot/imported/Ground067_1K-JPG_Roughness.jpg-dd867745c180ec7a4af74e05535e7f62.s3tc.ctex"]
 
 [params]
 
@@ -24,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

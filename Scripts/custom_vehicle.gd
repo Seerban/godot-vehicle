@@ -3,7 +3,7 @@ class_name Vehicle
 
 @export var power := 4.25
 @export var brake_power := 2
-@export var turning_deg := 15.
+@export var turning_deg := 18.
 
 var wheels : Array[Wheel]
 
@@ -22,4 +22,3 @@ func _physics_process(delta: float) -> void:
 	var steering = Input.get_axis("right","left")
 	for w in wheels:
 		w.steer(steering * turning_deg)
-		w.rotate_wheel( linear_velocity.dot(w.global_basis.x) / 0.5 * delta )
