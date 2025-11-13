@@ -19,8 +19,8 @@ var on_ground := false
 @export_group("Suspension")
 @export var tire_radius := 0.5
 @export var spring_length := 0.75
-@export var spring_strength := 25
-@export var damping := 150
+@export var spring_strength := 15
+@export var damping := 250
 
 @onready var wheel := $WheelMesh
 @onready var car : Vehicle = get_parent()
@@ -34,34 +34,47 @@ func _spring() -> void:
 	
 	if !is_colliding():
 		on_ground = false
-		#spring_prev = spring_length
 	else:
 		on_ground = true
+		# distance to ground
 		dist = -(get_collision_point() - global_position).dot(up)
+		# % of how compressed suspension is
 		var compress = (spring_length - dist) / spring_length
 		
-		# local y velocity for damping
-		spring_diff = compress - spring_prev
+		# difference since last frame used for damping
+		# clamped to 10% so it does not launch car at tall curbs
+		spring_diff = clamp(-0.1, compress - spring_prev, 0.1)
 		spring_prev = compress
+		
 		
 		var spring_force : float = compress * spring_strength
 		var damping_force : float = spring_diff * damping
 		var total_force : Vector3 = (spring_force + damping_force) * up * car.mass
-		car.apply_force(total_force, get_contact_point())
 		
+		car.apply_force(total_force, get_contact_point())
+	
+	# place mesh
 	wheel.position = Vector3(0, -dist+radius, 0)
 
 func _friction() -> void:
 	if not on_ground: return
 	
+	# multiply by grip of ground
+	var ground_grip : float = global.material_grip[get_collider().get_node("MeshInstance3D").get_active_material(0)]
+	var func_grip : float = grip_multiplier * ground_grip
+	var func_max_grip : float = max_grip * ground_grip
+	
 	var relative := global_position - car.global_position
+	# equation for lateral force of tires
 	var point_velocity := car.linear_velocity + car.angular_velocity.cross(relative)
 	var side_velocity := point_velocity.dot(global_basis.z)#point_velocity.normalized().dot(global_basis.z)
-	var force := -global_basis.z * side_velocity * 9.8 * car.mass / 4. * grip_multiplier
+	var force := -global_basis.z * side_velocity * 9.8 * car.mass / 4. * func_grip
 	
-	if force.length() > max_grip: force = force.normalized() * max_grip
-	force += sign(force) * sqrt(abs(spring_diff)) * sign(spring_diff) * max_grip * 3
+	# clamp force ( causes understeer at high speeds )
+	if force.length() > func_max_grip: force = force.normalized() * func_max_grip
+	force += sign(force) * sqrt(abs(spring_diff)) * sign(spring_diff) * func_max_grip * 3
 	
+	# apply at ground level
 	car.apply_force(force, get_contact_point())
 
 func _rotate_wheel(angle) -> void:
@@ -74,8 +87,10 @@ func accelerate(power := 0.) -> void:
 func brake(power := 0.) -> void:
 	if not on_ground: return
 	
+	
 	var braking_dot : float = car.linear_velocity.normalized().dot(global_basis.x)
 	var braking_force := global_basis.x * -braking_dot * power
+	
 	car.apply_force(braking_force, get_contact_point())
 
 func steer(angle := 0.) -> void:

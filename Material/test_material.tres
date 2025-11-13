@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://btpe15dydy4a8"]
+
+[ext_resource type="Texture2D" uid="uid://ckb4aqs47fosl" path="res://Textures/grid.png" id="1_mp4jn"]
+
+[resource]
+albedo_color = Color(0.88235295, 0.88235295, 0.88235295, 1)
+albedo_texture = ExtResource("1_mp4jn")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0, 0.5, 0)
+uv1_triplanar = true
+proximity_fade_distance = 3.8

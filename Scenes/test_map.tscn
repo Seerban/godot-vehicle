@@ -1,25 +1,13 @@
-[gd_scene load_steps=73 format=3 uid="uid://csum7bqslyvv5"]
+[gd_scene load_steps=72 format=3 uid="uid://csum7bqslyvv5"]
 
-[ext_resource type="Texture2D" uid="uid://ckb4aqs47fosl" path="res://Textures/grid.png" id="1_phepx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orl8w"]
-albedo_color = Color(0.88235295, 0.88235295, 0.88235295, 1)
-albedo_texture = ExtResource("1_phepx")
-metallic_specular = 0.0
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_offset = Vector3(0, 0.5, 0)
-uv1_triplanar = true
-proximity_fade_distance = 3.8
+[ext_resource type="Material" uid="uid://btpe15dydy4a8" path="res://Material/test_material.tres" id="1_orl8w"]
+[ext_resource type="Material" uid="uid://jqr2qedgdmm1" path="res://Material/test_material2.tres" id="2_orl8w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8xpg0"]
 size = Vector3(10000, 1, 10000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_phepx"]
 size = Vector3(10000, 1, 10000)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phepx"]
-albedo_texture = ExtResource("1_phepx")
-uv1_triplanar = true
 
 [sub_resource type="PrismMesh" id="PrismMesh_phepx"]
 size = Vector3(10, 1, 5)
@@ -230,7 +218,7 @@ data = PackedVector3Array(-1.9603, 0, -19.9037, 0, 1.9509, -20.192099, 0, 0, -20
 [node name="Platform" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_8xpg0")
 skeleton = NodePath("../..")
 
@@ -241,7 +229,7 @@ shape = SubResource("BoxShape3D_phepx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wedges"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_phepx")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wedges"]
@@ -250,7 +238,7 @@ shape = SubResource("ConcavePolygonShape3D_phepx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Wedges"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_phepx")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Wedges"]
@@ -259,7 +247,7 @@ shape = SubResource("ConcavePolygonShape3D_orl8w")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Wedges"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_phepx")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Wedges"]
@@ -268,7 +256,7 @@ shape = SubResource("ConcavePolygonShape3D_8xpg0")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Wedges"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_phepx")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Wedges"]
@@ -277,7 +265,7 @@ shape = SubResource("ConcavePolygonShape3D_gbc2j")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Wedges"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_phepx")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Wedges"]
@@ -286,7 +274,7 @@ shape = SubResource("ConcavePolygonShape3D_leqta")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Wedges"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_phepx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wedges"]
@@ -298,7 +286,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wedges3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_orl8w")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wedges3"]
@@ -307,7 +295,7 @@ shape = SubResource("ConcavePolygonShape3D_5nkue")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Wedges3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_orl8w")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Wedges3"]
@@ -316,7 +304,7 @@ shape = SubResource("ConcavePolygonShape3D_1ecyy")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Wedges3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_orl8w")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Wedges3"]
@@ -325,7 +313,7 @@ shape = SubResource("ConcavePolygonShape3D_6jr0v")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Wedges3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_orl8w")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Wedges3"]
@@ -334,7 +322,7 @@ shape = SubResource("ConcavePolygonShape3D_1slvx")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Wedges3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_orl8w")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Wedges3"]
@@ -343,7 +331,7 @@ shape = SubResource("ConcavePolygonShape3D_0oe1h")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Wedges3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_orl8w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wedges3"]
@@ -355,7 +343,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wedges4"]
@@ -364,7 +352,7 @@ shape = SubResource("ConcavePolygonShape3D_l6km1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wedges4"]
@@ -373,7 +361,7 @@ shape = SubResource("ConcavePolygonShape3D_g6egk")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Wedges4"]
@@ -382,7 +370,7 @@ shape = SubResource("ConcavePolygonShape3D_05x4x")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Wedges4"]
@@ -391,7 +379,7 @@ shape = SubResource("ConcavePolygonShape3D_07j0l")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Wedges4"]
@@ -400,7 +388,7 @@ shape = SubResource("ConcavePolygonShape3D_je26s")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Wedges4"]
@@ -409,7 +397,7 @@ shape = SubResource("ConcavePolygonShape3D_iiqok")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Wedges4"]
@@ -418,7 +406,7 @@ shape = SubResource("ConcavePolygonShape3D_pvenh")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Wedges4"]
@@ -427,7 +415,7 @@ shape = SubResource("ConcavePolygonShape3D_tlqul")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Wedges4"]
@@ -436,7 +424,7 @@ shape = SubResource("ConcavePolygonShape3D_1uged")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wedges4"]
@@ -445,7 +433,7 @@ shape = SubResource("ConcavePolygonShape3D_i0tmh")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Wedges4"]
@@ -454,7 +442,7 @@ shape = SubResource("ConcavePolygonShape3D_lafwu")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="Wedges4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 0.75, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_l6km1")
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="Wedges4"]
@@ -466,7 +454,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 10)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 14.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cyllinders"]
@@ -475,7 +463,7 @@ shape = SubResource("ConcavePolygonShape3D_wc3g0")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 10.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Cyllinders"]
@@ -484,7 +472,7 @@ shape = SubResource("ConcavePolygonShape3D_7e7ot")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Cyllinders"]
@@ -493,7 +481,7 @@ shape = SubResource("ConcavePolygonShape3D_v78cv")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Cyllinders"]
@@ -502,7 +490,7 @@ shape = SubResource("ConcavePolygonShape3D_n7gr7")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Cyllinders"]
@@ -511,7 +499,7 @@ shape = SubResource("ConcavePolygonShape3D_g2iu4")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Cyllinders"]
@@ -520,7 +508,7 @@ shape = SubResource("ConcavePolygonShape3D_o5igy")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -9.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Cyllinders"]
@@ -529,7 +517,7 @@ shape = SubResource("ConcavePolygonShape3D_mypwg")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -13.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Cyllinders"]
@@ -538,7 +526,7 @@ shape = SubResource("ConcavePolygonShape3D_nr0rn")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -17.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Cyllinders"]
@@ -547,7 +535,7 @@ shape = SubResource("ConcavePolygonShape3D_73fg6")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -21.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Cyllinders"]
@@ -556,7 +544,7 @@ shape = SubResource("ConcavePolygonShape3D_vi334")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -25.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Cyllinders"]
@@ -565,7 +553,7 @@ shape = SubResource("ConcavePolygonShape3D_cgyn8")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="Cyllinders"]
@@ -574,7 +562,7 @@ shape = SubResource("ConcavePolygonShape3D_bdpa6")
 
 [node name="MeshInstance3D13" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -33.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D13" type="CollisionShape3D" parent="Cyllinders"]
@@ -583,7 +571,7 @@ shape = SubResource("ConcavePolygonShape3D_6j8u5")
 
 [node name="MeshInstance3D15" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -41.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D14" type="CollisionShape3D" parent="Cyllinders"]
@@ -592,7 +580,7 @@ shape = SubResource("ConcavePolygonShape3D_oix2g")
 
 [node name="MeshInstance3D14" type="MeshInstance3D" parent="Cyllinders"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -37.5, -1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("TubeTrailMesh_phepx")
 
 [node name="CollisionShape3D15" type="CollisionShape3D" parent="Cyllinders"]
@@ -604,7 +592,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wedges2"]
@@ -613,7 +601,7 @@ shape = SubResource("ConcavePolygonShape3D_xa2iw")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wedges2"]
@@ -622,7 +610,7 @@ shape = SubResource("ConcavePolygonShape3D_tvp2l")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Wedges2"]
@@ -631,7 +619,7 @@ shape = SubResource("ConcavePolygonShape3D_315us")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Wedges2"]
@@ -640,7 +628,7 @@ shape = SubResource("ConcavePolygonShape3D_xfoml")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Wedges2"]
@@ -649,7 +637,7 @@ shape = SubResource("ConcavePolygonShape3D_cdg78")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Wedges2"]
@@ -658,7 +646,7 @@ shape = SubResource("ConcavePolygonShape3D_1jcpd")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Wedges2"]
@@ -667,7 +655,7 @@ shape = SubResource("ConcavePolygonShape3D_shwd2")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Wedges2"]
@@ -676,7 +664,7 @@ shape = SubResource("ConcavePolygonShape3D_mtn0p")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="Wedges2"]
@@ -685,7 +673,7 @@ shape = SubResource("ConcavePolygonShape3D_ahe7h")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Wedges2"]
@@ -694,7 +682,7 @@ shape = SubResource("ConcavePolygonShape3D_l4uls")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Wedges2"]
@@ -703,7 +691,7 @@ shape = SubResource("ConcavePolygonShape3D_jxcr4")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="Wedges2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 1, -13)
-material_override = SubResource("StandardMaterial3D_phepx")
+material_override = ExtResource("2_orl8w")
 mesh = SubResource("PrismMesh_6j8u5")
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="Wedges2"]
@@ -715,7 +703,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, 0, 0, 0, 1, 13, 0, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp"]
@@ -724,7 +712,7 @@ shape = SubResource("ConcavePolygonShape3D_jy38r")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.9848078, 0.17364816, 0, -0.17364816, 0.9848078, 0, 0, 0, 1, 4.1096845, 1.1903132, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Ramp"]
@@ -733,7 +721,7 @@ shape = SubResource("ConcavePolygonShape3D_dbxuq")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.9659259, 0.25881904, 0, -0.25881904, 0.9659259, 0, 0, 0, 1, -4.650058, 3.139517, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Ramp"]
@@ -742,7 +730,7 @@ shape = SubResource("ConcavePolygonShape3D_4v5x5")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.9396927, 0.34202015, 0, -0.34202015, 0.9396927, 0, 0, 0, 1, -13.206582, 5.844765, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Ramp"]
@@ -751,7 +739,7 @@ shape = SubResource("ConcavePolygonShape3D_ltvoi")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.9063079, 0.42261827, 0, -0.42261827, 0.9063079, 0, 0, 0, 1, -21.49477, 9.28547, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Ramp"]
@@ -760,7 +748,7 @@ shape = SubResource("ConcavePolygonShape3D_lnww2")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.8660255, 0.5, 0, -0.5, 0.8660255, 0, 0, 0, 1, -29.451542, 13.435446, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Ramp"]
@@ -769,7 +757,7 @@ shape = SubResource("ConcavePolygonShape3D_14fvn")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.8191522, 0.57357645, 0, -0.57357645, 0.8191522, 0, 0, 0, 1, -36.92394, 18.214088, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Ramp"]
@@ -778,7 +766,7 @@ shape = SubResource("ConcavePolygonShape3D_6qlk4")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Ramp"]
 transform = Transform3D(0.7660446, 0.64278764, 0, -0.64278764, 0.7660446, 0, 0, 0, 1, -44.039192, 23.682693, -36)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("BoxMesh_phepx")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="Ramp"]
@@ -789,7 +777,7 @@ shape = SubResource("ConcavePolygonShape3D_fl1vq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BigTorus"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -8, 71)
-material_override = SubResource("StandardMaterial3D_orl8w")
+material_override = ExtResource("1_orl8w")
 mesh = SubResource("TorusMesh_phepx")
 skeleton = NodePath("../..")
 
