@@ -8,3 +8,6 @@ var material_grip = {
 	load("res://Material/Ground067_1K-JPG/Ground.tres"): 0.8,
 	load("res://Material/Snow006_1K-JPG/Snow.tres"): 0.6,
 }
+
+func get_material_grip(mat_res : Material):
+	return material_grip.get(mat_res, 1)

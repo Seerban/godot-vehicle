@@ -1,9 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkp2marfurbfm"]
+[gd_scene load_steps=7 format=3 uid="uid://bkp2marfurbfm"]
 
-[ext_resource type="Texture2D" uid="uid://0tnughc1de37" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_Color.jpg" id="1_7w7c2"]
 [ext_resource type="Script" uid="uid://su41w6xl5qmi" path="res://Scripts/custom_wheel.gd" id="1_kuckw"]
-[ext_resource type="Texture2D" uid="uid://nv0dhl3u6qdm" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_NormalGL.jpg" id="2_kuckw"]
-[ext_resource type="Texture2D" uid="uid://cfa48biinynvx" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_Roughness.jpg" id="3_1vnk4"]
 
 [sub_resource type="Curve" id="Curve_kuckw"]
 bake_resolution = 300
@@ -14,11 +11,11 @@ point_count = 3
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.15730345), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42obu"]
+albedo_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_im64q"]
-albedo_texture = ExtResource("1_7w7c2")
-roughness_texture = ExtResource("3_1vnk4")
 normal_enabled = true
-normal_texture = ExtResource("2_kuckw")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0w4lx"]
 material = SubResource("StandardMaterial3D_im64q")
@@ -34,4 +31,5 @@ steering_curve = SubResource("Curve_1vnk4")
 
 [node name="WheelMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_42obu")
 mesh = SubResource("CylinderMesh_0w4lx")

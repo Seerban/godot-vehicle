@@ -1,9 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dttdy4fpxll0j"]
+[gd_scene load_steps=8 format=3 uid="uid://dttdy4fpxll0j"]
 
 [ext_resource type="Script" uid="uid://cv5608lqogyid" path="res://Scripts/godot_vehicle.gd" id="1_lvvc6"]
-[ext_resource type="Texture2D" uid="uid://0tnughc1de37" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_Color.jpg" id="2_0dd4m"]
-[ext_resource type="Texture2D" uid="uid://nv0dhl3u6qdm" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_NormalGL.jpg" id="3_tcrpt"]
-[ext_resource type="Texture2D" uid="uid://cfa48biinynvx" path="res://Material/Rubber001_1K-JPG/Rubber001_1K-JPG_Roughness.jpg" id="4_b78f7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdlnn"]
 albedo_color = Color(0.49803922, 1, 1, 1)
@@ -15,11 +12,11 @@ size = Vector3(4.3, 1, 1.8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5ejs"]
 size = Vector3(4.3, 1, 1.8)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpo0q"]
+albedo_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvvc6"]
-albedo_texture = ExtResource("2_0dd4m")
-roughness_texture = ExtResource("4_b78f7")
 normal_enabled = true
-normal_texture = ExtResource("3_tcrpt")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_g5ejs"]
 material = SubResource("StandardMaterial3D_lvvc6")
@@ -47,6 +44,7 @@ damping_relaxation = 1.0
 
 [node name="WheelMesh" type="MeshInstance3D" parent="WheelBL"]
 transform = Transform3D(7.54979e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, -7.54979e-08, -3.300118e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vpo0q")
 mesh = SubResource("CylinderMesh_g5ejs")
 
 [node name="WheelFR" type="VehicleWheel3D" parent="."]
@@ -63,6 +61,7 @@ damping_relaxation = 1.0
 
 [node name="WheelMesh" type="MeshInstance3D" parent="WheelFR"]
 transform = Transform3D(7.54979e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, -7.54979e-08, -3.300118e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vpo0q")
 mesh = SubResource("CylinderMesh_g5ejs")
 skeleton = NodePath("../../WheelBL")
 
@@ -80,6 +79,7 @@ damping_relaxation = 1.0
 
 [node name="WheelMesh" type="MeshInstance3D" parent="WheelFL"]
 transform = Transform3D(7.54979e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, -7.54979e-08, -3.300118e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vpo0q")
 mesh = SubResource("CylinderMesh_g5ejs")
 skeleton = NodePath("../../WheelBL")
 
@@ -96,5 +96,6 @@ damping_relaxation = 1.0
 
 [node name="WheelMesh" type="MeshInstance3D" parent="WheelBR"]
 transform = Transform3D(7.54979e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, -7.54979e-08, -3.300118e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vpo0q")
 mesh = SubResource("CylinderMesh_g5ejs")
 skeleton = NodePath("../../WheelBL")

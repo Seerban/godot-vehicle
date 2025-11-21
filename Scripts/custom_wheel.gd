@@ -19,8 +19,8 @@ var on_ground := false
 @export_group("Suspension")
 @export var tire_radius := 0.5
 @export var spring_length := 0.75
-@export var spring_strength := 15
-@export var damping := 250
+@export var spring_strength := 35
+@export var damping := 125
 
 @onready var wheel := $WheelMesh
 @onready var car : Vehicle = get_parent()
@@ -60,7 +60,7 @@ func _friction() -> void:
 	if not on_ground: return
 	
 	# multiply by grip of ground
-	var ground_grip : float = global.material_grip[get_collider().get_node("MeshInstance3D").get_active_material(0)]
+	var ground_grip : float = global.get_material_grip(get_collider().get_node("MeshInstance3D").get_active_material(0))
 	var func_grip : float = grip_multiplier * ground_grip
 	var func_max_grip : float = max_grip * ground_grip
 	
