@@ -1,9 +1,13 @@
 extends RigidBody3D
 class_name Vehicle
 
+# how much lean left/right
+var width := 0.
+
 @export var power := 4.25
 @export var brake_power := 2
 @export var turning_deg := 18.
+@export var anti_roll := 10
 
 var wheels : Array[Wheel]
 
@@ -11,8 +15,14 @@ func _ready() -> void:
 	for i in get_children():
 		if i is Wheel:
 			wheels.append(i)
+	$Wheel1.mirror_wheel = $Wheel3
+	$Wheel2.mirror_wheel = $Wheel4
+	$Wheel3.mirror_wheel = $Wheel1
+	$Wheel4.mirror_wheel = $Wheel2
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
+	# Inputs
 	if Input.is_action_pressed("forward"):
 		for w in wheels:
 			w.accelerate(power)

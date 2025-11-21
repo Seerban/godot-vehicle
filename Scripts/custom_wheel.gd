@@ -7,12 +7,14 @@ var forward_projection := Vector3.ZERO
 
 # simulated wheel radius (Not visual mesh)
 var radius := 0.
-# spring position in previous phys process
-var spring_prev := 0.
-# -1 to 1 value on how much % the suspension has moved past frame (Usually near 0, used for damping)
+# spring position in previous phys process, used to find car roll
+@export var spring_prev := 0.
+# -0.1 to 0.1 value represents suspension movement previous frame, used for damping.
 var spring_diff := 0.
 # if raycast reaches ground
 var on_ground := false
+# LEFT, MIDDLE, RIGHT (-1, 0, 1), calculated at runtime
+var side := 0
 
 # if applies acceleration 
 @export var powered := false
@@ -31,6 +33,7 @@ var on_ground := false
 @export var damping := 120
 
 @onready var wheel := $WheelMesh
+@export var mirror_wheel : Wheel
 @onready var car : Vehicle = get_parent()
 
 # point on ground (Or at maximum suspension + radius extension)
@@ -41,10 +44,8 @@ func _spring() -> void:
 	var up = global_basis.y
 	var dist := spring_length
 	
-	if !is_colliding():
-		on_ground = false
-	else:
-		on_ground = true
+	on_ground = is_colliding()
+	if on_ground:
 		# distance to ground
 		dist = -(get_collision_point() - global_position).dot(up)
 		# % of how compressed suspension is
@@ -55,10 +56,13 @@ func _spring() -> void:
 		spring_diff = clamp(-0.1, compress - spring_prev, 0.1)
 		spring_prev = compress
 		
-		
 		var spring_force : float = compress * spring_strength
 		var damping_force : float = spring_diff * damping
-		var total_force : Vector3 = (spring_force + damping_force) * up * car.mass
+		
+		var roll = spring_prev - mirror_wheel.spring_prev
+		var roll_force : float = roll * car.anti_roll
+		
+		var total_force : Vector3 = (spring_force + damping_force + roll_force) * up
 		
 		car.apply_force(total_force, get_contact_point())
 	
@@ -77,7 +81,7 @@ func _friction() -> void:
 	# equation for lateral force of tires
 	var point_velocity := car.linear_velocity + car.angular_velocity.cross(relative)
 	var side_velocity := point_velocity.dot(global_basis.z)#point_velocity.normalized().dot(global_basis.z)
-	var force := -global_basis.z * side_velocity * 9.8 * car.mass / 4. * func_grip
+	var force := -global_basis.z * side_velocity * 9.8 / 4. * func_grip
 	
 	# clamp force ( causes understeer at high speeds )
 	if force.length() > func_max_grip: force = force.normalized() * func_max_grip
@@ -118,6 +122,9 @@ func _ready() -> void:
 	wheel.mesh.top_radius = tire_radius
 	wheel.mesh.bottom_radius = tire_radius
 	radius = tire_radius * 0.94
+	if position.z < 0:		side = -1
+	elif position.z == 0:	side = 0
+	else: 					side = 1
 
 func _physics_process(delta: float) -> void:
 	forward = car.global_basis.x
