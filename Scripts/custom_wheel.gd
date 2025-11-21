@@ -86,9 +86,11 @@ func accelerate(power := 0.) -> void:
 
 func brake(power := 0.) -> void:
 	if not on_ground: return
-	
-	
-	var braking_dot : float = car.linear_velocity.normalized().dot(global_basis.x)
+	var braking_dot : float = 0
+	if car.linear_velocity.length() > 1:
+		braking_dot = car.linear_velocity.normalized().dot(global_basis.x)
+	else:
+		braking_dot = car.linear_velocity.dot(global_basis.x)
 	var braking_force := global_basis.x * -braking_dot * power
 	
 	car.apply_force(braking_force, get_contact_point())
