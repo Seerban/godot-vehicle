@@ -20,7 +20,7 @@ var on_ground := false
 @export var tire_radius := 0.5
 @export var spring_length := 0.75
 @export var spring_strength := 35
-@export var damping := 125
+@export var damping := 150
 
 @onready var wheel := $WheelMesh
 @onready var car : Vehicle = get_parent()
@@ -82,7 +82,13 @@ func _rotate_wheel(angle) -> void:
 
 func accelerate(power := 0.) -> void:
 	if not on_ground or not powered: return
-	car.apply_force(car.global_basis.x * power, get_contact_point())
+
+	var forward := car.global_basis.x
+	var normal := get_collision_normal()
+	# forward perpendicular to ground normal
+	var forward_on_plane := (forward - normal * forward.dot(normal)).normalized()
+	
+	car.apply_force(forward_on_plane * power, get_contact_point())
 
 func brake(power := 0.) -> void:
 	if not on_ground: return
