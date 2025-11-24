@@ -1,6 +1,7 @@
 extends Node3D
 
 var i := 0
+@onready var canvas = $CanvasLayer 
 
 func switch_car() -> void:
 	var car = load(["res://Scenes/custom_vehicle.tscn", \

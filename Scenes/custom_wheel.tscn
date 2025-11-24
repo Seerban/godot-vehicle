@@ -1,15 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkp2marfurbfm"]
+[gd_scene load_steps=5 format=3 uid="uid://bkp2marfurbfm"]
 
 [ext_resource type="Script" uid="uid://su41w6xl5qmi" path="res://Scripts/custom_wheel.gd" id="1_kuckw"]
-
-[sub_resource type="Curve" id="Curve_kuckw"]
-bake_resolution = 300
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1902174, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.55056185), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_1vnk4"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.15730345), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42obu"]
 albedo_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
@@ -26,8 +17,6 @@ target_position = Vector3(0, -12, 0)
 debug_shape_custom_color = Color(1, 0, 1, 1)
 debug_shape_thickness = 5
 script = ExtResource("1_kuckw")
-acceleration_curve = SubResource("Curve_kuckw")
-steering_curve = SubResource("Curve_1vnk4")
 
 [node name="WheelMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)

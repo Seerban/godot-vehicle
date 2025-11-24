@@ -5,9 +5,9 @@ class_name Vehicle
 var width := 0.
 
 @export var power := 4.25
-@export var brake_power := 2
+@export var brake_power := 3
 @export var turning_deg := 18.
-@export var anti_roll := 10
+@export var anti_roll := 20
 
 var wheels : Array[Wheel]
 
@@ -15,20 +15,18 @@ func _ready() -> void:
 	for i in get_children():
 		if i is Wheel:
 			wheels.append(i)
-	$Wheel1.mirror_wheel = $Wheel3
-	$Wheel2.mirror_wheel = $Wheel4
-	$Wheel3.mirror_wheel = $Wheel1
-	$Wheel4.mirror_wheel = $Wheel2
+	$WheelFR.mirror_wheel = $WheelFL
+	$WheelFL.mirror_wheel = $WheelFR
+	$WheelRR.mirror_wheel = $WheelRL
+	$WheelRL.mirror_wheel = $WheelRR
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	# Inputs
-	if Input.is_action_pressed("forward"):
-		for w in wheels:
-			w.accelerate(power)
-	if Input.is_action_pressed("backward"):
-		for w in wheels:
-			w.brake(brake_power)
+	for w in wheels:
+		w.brake_power = brake_power * int(Input.is_action_pressed("backward"))
+	for w in wheels:
+		w.accel_power = power * int(Input.is_action_pressed("forward"))
 	var steering = Input.get_axis("right","left")
 	for w in wheels:
 		w.steer(steering * turning_deg)
