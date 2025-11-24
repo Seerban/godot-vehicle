@@ -1,6 +1,6 @@
 extends GridContainer
 
-@onready var car : Vehicle
+@onready var car
 @onready var fr := $FR
 @onready var fl := $FL
 @onready var rr := $RR
@@ -10,6 +10,7 @@ func _physics_process(delta: float) -> void:
 	if not car:
 		car = get_tree().get_first_node_in_group("car")
 		return
+	if car is not VehicleV2: return
 	fr.value = car.get_node("WheelFR").get_grip_usage()
 	fr.get_child(0).text = str(int((car.get_node("WheelFR").get_max_grip() - car.get_node("WheelFR").remaining_grip)*10))
 	fl.value = car.get_node("WheelFL").get_grip_usage()

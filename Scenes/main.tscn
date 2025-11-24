@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dcyyvp5e8iaqm" path="res://UI/grip.tscn" id="5_21xkr"]
 [ext_resource type="PackedScene" uid="uid://vmjwheuujnye" path="res://UI/instructions.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
-[ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/custom_vehicle.tscn" id="7_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/vehicle/custom_vehicle.tscn" id="7_fdnlq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vi8l"]
 sky_top_color = Color(0.584603, 0.6530472, 0.74452746, 1)
@@ -44,7 +44,7 @@ environment = SubResource("Environment_ohhpf")
 
 [node name="CameraAxis" parent="." instance=ExtResource("6_6iyac")]
 
-[node name="Vehicle" parent="." groups=["car"] instance=ExtResource("7_fdnlq")]
+[node name="Vehicle" parent="." instance=ExtResource("7_fdnlq")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 0.9999999, 0, -8.742277e-08, 0, -0.9999999, -92, 4, -11)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

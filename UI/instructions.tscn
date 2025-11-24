@@ -10,25 +10,26 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "Press F to flip over"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-text = "Press R to switch between:"
-
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0.4117647, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "Custom Car Implementation"
+text = "1. Custom Car Implementation"
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "Godot Vehicle Node"
+text = "2. Godot Vehicle Node"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.44313726, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "3. Custom Car V2"
 
 [node name="Instructions" type="Control" parent="."]
 layout_mode = 2

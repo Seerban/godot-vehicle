@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dw6rlckembj5p"]
 
-[ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/custom_vehicle.gd" id="1_n8cda"]
-[ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/custom_wheel.tscn" id="2_ho8xs"]
+[ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/custom_vehicle.gd" id="1_n8cda"]
+[ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/vehicle/custom_wheel.tscn" id="2_ho8xs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
 size = Vector3(4.3, 1, 1.8)

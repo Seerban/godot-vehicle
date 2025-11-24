@@ -1,13 +1,10 @@
 extends RigidBody3D
 class_name Vehicle
 
-# how much lean left/right
-var width := 0.
-
 @export var power := 4.25
-@export var brake_power := 3
+@export var brake_power := 2
 @export var turning_deg := 18.
-@export var anti_roll := 20
+@export var anti_roll := 10
 
 var wheels : Array[Wheel]
 
@@ -17,16 +14,18 @@ func _ready() -> void:
 			wheels.append(i)
 	$WheelFR.mirror_wheel = $WheelFL
 	$WheelFL.mirror_wheel = $WheelFR
-	$WheelRR.mirror_wheel = $WheelRL
 	$WheelRL.mirror_wheel = $WheelRR
+	$WheelRR.mirror_wheel = $WheelRL
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	# Inputs
-	for w in wheels:
-		w.brake_power = brake_power * int(Input.is_action_pressed("backward"))
-	for w in wheels:
-		w.accel_power = power * int(Input.is_action_pressed("forward"))
+	if Input.is_action_pressed("forward"):
+		for w in wheels:
+			w.accelerate(power)
+	if Input.is_action_pressed("backward"):
+		for w in wheels:
+			w.brake(brake_power)
 	var steering = Input.get_axis("right","left")
 	for w in wheels:
 		w.steer(steering * turning_deg)

@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh2e18yl3bk57"]
+
+[ext_resource type="Script" uid="uid://dfxlldgttrs5l" path="res://Scripts/vehicle/custom_vehicle2.gd" id="1_7kxu3"]
+[ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/vehicle/custom_wheel.tscn" id="2_7kxu3"]
+[ext_resource type="Script" uid="uid://c5qyigyfjmufx" path="res://Scripts/vehicle/custom_wheel2.gd" id="3_m8gp5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
+size = Vector3(4.3, 1, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muxc4"]
+albedo_color = Color(1, 0.5411765, 0.27450982, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ho8xs"]
+size = Vector3(4.3, 1, 1.8)
+
+[node name="Vehicle" type="RigidBody3D" groups=["car"]]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_7kxu3")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ho8xs")
+surface_material_override/0 = SubResource("StandardMaterial3D_muxc4")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ho8xs")
+
+[node name="WheelFR" parent="." instance=ExtResource("2_7kxu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, 1)
+script = ExtResource("3_m8gp5")
+steering = true
+brake_power = 0.0
+accel_power = 0.0
+remaining_grip = 0.0
+max_grip_multiplier = 3
+spring_grip_influence = 2.5
+
+[node name="WheelRR" parent="." instance=ExtResource("2_7kxu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, 1)
+script = ExtResource("3_m8gp5")
+powered = true
+brake_power = 0.0
+accel_power = 0.0
+remaining_grip = 0.0
+max_grip_multiplier = 3
+spring_grip_influence = 2.5
+
+[node name="WheelFL" parent="." instance=ExtResource("2_7kxu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, -1)
+script = ExtResource("3_m8gp5")
+steering = true
+brake_power = 0.0
+accel_power = 0.0
+remaining_grip = 0.0
+max_grip_multiplier = 3
+spring_grip_influence = 2.5
+
+[node name="WheelRL" parent="." instance=ExtResource("2_7kxu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, -1)
+script = ExtResource("3_m8gp5")
+powered = true
+brake_power = 0.0
+accel_power = 0.0
+remaining_grip = 0.0
+max_grip_multiplier = 3
+spring_grip_influence = 2.5
