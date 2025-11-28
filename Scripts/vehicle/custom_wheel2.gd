@@ -8,6 +8,7 @@ var radius := 0. # practical size, not visual
 var forward := Vector3.ZERO # forward
 var normal := Vector3.ZERO # up
 var forward_projection := Vector3.ZERO # forward direction projected on floor
+var side_projection := Vector3.ZERO
 
 @export var powered := false # applies acceleration
 @export var steering := false # steers
@@ -15,22 +16,26 @@ var forward_projection := Vector3.ZERO # forward direction projected on floor
 @export var brake_power := 0.
 @export var accel_power := 0.
 
-@export_group("Tires")
-@export var remaining_grip := 0.
-@export var grip_multiplier := 3
-@export var max_grip_multiplier := 3
-@export var spring_grip_influence := 2.5
-
-@export_group("Suspension")
-@export var spring_prev := 0.
-@export var tire_radius := 0.5
-@export var spring_length := 0.75
-@export var spring_strength := 20
-@export var damping := 120
-
 @onready var wheel := $WheelMesh
 @export var mirror_wheel : WheelV2
 @onready var car : VehicleV2 = get_parent()
+
+@export_group("Tires")
+@export var grip_multiplier := 3
+@export var max_grip_multiplier := 3
+
+@export var spring_grip_influence := 3 # increases grip and max grip based on compression
+@export var remaining_grip := 0. # dynamic grip maximum
+@export var acceleration_grip_multiplier := 0.3 # multiply acceleration effect on grip 
+@export var braking_grip_multiplier := 0.6 # multiply braking effect on grip
+
+@export_group("Suspension")
+@export var spring_prev := 0. # dynamic spring compression
+
+@export var tire_radius := 0.5 # visual only, 'radius' is effective
+@export var spring_length := 0.75 
+@export var spring_strength := 20
+@export var damping := 120
 
 # point on ground (Or at maximum suspension + radius extension)
 func get_contact_point() -> Vector3:
@@ -41,13 +46,13 @@ func get_ground_grip() -> float:
 	return global.get_material_grip(get_collider().get_node("MeshInstance3D").get_active_material(0))
 
 func get_spring_grip_influence() -> float:
-	return spring_prev / spring_length * spring_grip_influence + 1
+	return 1 + spring_prev / spring_length * spring_grip_influence
 
 func get_grip() -> float:
 	return grip_multiplier * get_ground_grip() * get_spring_grip_influence()
 
 func get_max_grip() -> float:
-	return max_grip_multiplier * get_ground_grip() * get_spring_grip_influence()
+	return max_grip_multiplier * get_ground_grip() * (get_spring_grip_influence() ** 0.5)
 
 func get_spring_compression() -> float:
 	return spring_prev
@@ -90,7 +95,7 @@ func _friction() -> void:
 	var relative := global_position - car.global_position
 	var point_velocity := car.linear_velocity + car.angular_velocity.cross(relative)
 	var side_velocity := point_velocity.dot(global_basis.z)
-	var force := -global_basis.z * side_velocity * get_grip()
+	var force := side_projection * side_velocity * get_grip()
 	
 	# clamp force ( causes understeer at high speeds )
 	if force.length() > remaining_grip:
@@ -106,12 +111,12 @@ func _rotate_wheel(angle) -> void:
 func accelerate(power := 0.) -> void:
 	if not on_ground or not powered: return
 	
-	var force = forward_projection * power
+	var force = forward_projection * power * get_grip()
 	
 	if force.length() > remaining_grip:
 		force = force.normalized() * remaining_grip
 	
-	remaining_grip -= force.length() / 3
+	remaining_grip -= force.length() * acceleration_grip_multiplier
 	
 	car.apply_force(force, get_contact_point())
 
@@ -125,12 +130,12 @@ func brake(power := 0.) -> void:
 	else:
 		braking_dot = car.linear_velocity.dot(forward_projection)
 		
-	var braking_force := forward_projection * -braking_dot * power
+	var braking_force := forward_projection * -braking_dot * power * get_grip()
 	
 	if braking_force.length() > remaining_grip:
 		braking_force = braking_force.normalized() * remaining_grip
 	
-	remaining_grip -= braking_force.length() / 3
+	remaining_grip -= braking_force.length() * braking_grip_multiplier
 	
 	car.apply_force(braking_force, get_contact_point())
 
@@ -150,11 +155,12 @@ func _ready() -> void:
 	else: 					side = 1
 
 func _physics_process(delta: float) -> void:
-	remaining_grip = get_max_grip()
 	forward = car.global_basis.x
 	normal = get_collision_normal()
 	forward_projection = (forward - normal * forward.dot(normal)).normalized()
+	side_projection = (-car.global_basis.z - normal * -car.global_basis.z.dot(normal)).normalized()
 	
+	remaining_grip = get_max_grip()
 	_spring()
 	brake(brake_power)
 	accelerate(accel_power)

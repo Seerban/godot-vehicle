@@ -8,13 +8,16 @@ var cars = [
 ]
 
 func spawn_car(id : int) -> void:
+	
 	var old_car = $Vehicle
 	old_car.name = "del"
 	var car =  load(cars[id]).instantiate()
 	add_child(car)
 	
 	car.global_position = old_car.global_position
-	car.global_rotation = old_car.global_rotation
+	car.global_rotation_degrees = old_car.global_rotation_degrees
+	if car is VehicleBody3D: car.global_rotation_degrees.y += 180 # godot vehicle is flipped :v
+	if old_car is VehicleBody3D: car.global_rotation_degrees.y += 180
 	car.linear_velocity = old_car.linear_velocity
 	
 	old_car.queue_free()
@@ -37,4 +40,4 @@ func _input(event: InputEvent) -> void:
 		flip_car()
 
 func _ready() -> void:
-	spawn_car(0)
+	spawn_car(2)

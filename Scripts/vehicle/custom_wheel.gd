@@ -21,6 +21,10 @@ var side := 0
 # if turns 
 @export var steering := false
 
+@onready var wheel := $WheelMesh
+@export var mirror_wheel : Wheel
+@onready var car : Vehicle = get_parent()
+
 @export_group("Tires")
 @export var grip_multiplier := 3
 @export var max_grip := 3
@@ -32,9 +36,7 @@ var side := 0
 @export var spring_strength := 20
 @export var damping := 120
 
-@onready var wheel := $WheelMesh
-@export var mirror_wheel : Wheel
-@onready var car : Vehicle = get_parent()
+
 
 # point on ground (Or at maximum suspension + radius extension)
 func get_contact_point() -> Vector3:
