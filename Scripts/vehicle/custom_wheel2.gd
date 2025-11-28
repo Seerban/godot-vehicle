@@ -52,7 +52,7 @@ func get_grip() -> float:
 	return grip_multiplier * get_ground_grip() * get_spring_grip_influence()
 
 func get_max_grip() -> float:
-	return max_grip_multiplier * get_ground_grip() * (get_spring_grip_influence() ** 0.5)
+	return max_grip_multiplier * get_ground_grip() * (get_spring_grip_influence() ** 0.8)
 
 func get_spring_compression() -> float:
 	return spring_prev
