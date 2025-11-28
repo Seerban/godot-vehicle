@@ -26,17 +26,11 @@ text = "2. Godot Vehicle Node (Built-in)"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.44313726, 0, 1)
+theme_override_colors/font_color = Color(1, 0.09803922, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "3. Custom Car V2 (+Grip complexity)"
-
-[node name="Label5" type="Label" parent="."]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.05882353, 0.02745098, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-text = "4. Custom Car V3 (+Aero components)"
+text = "3. Custom Car Implementation V2
+(More customizable and less arcadey grip)"
 
 [node name="Instructions" type="Control" parent="."]
 layout_mode = 2

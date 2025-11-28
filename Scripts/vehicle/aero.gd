@@ -2,8 +2,13 @@ extends Node3D
 class_name Aero
 
 @export var aero_multiplier := 0.1
+@export var enabled := true
 
 @onready var car := get_parent()
+
+func set_enabled(b : bool) -> void:
+	enabled =  b
+	set_physics_process(b)
 
 func _physics_process(delta: float) -> void:
 	var rel: Vector3 = global_transform.origin - car.global_transform.origin
