@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c71lsx5wpr5mv"]
 
-[ext_resource type="Script" uid="uid://7ta4rxobwhlm" path="res://Scripts/car_variables.gd" id="1_5osty"]
+[ext_resource type="Script" uid="uid://7ta4rxobwhlm" path="res://UI/car_variables.gd" id="1_5osty"]
 
 [node name="CarVariables" type="VBoxContainer"]
 anchors_preset = 2

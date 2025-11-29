@@ -2,9 +2,9 @@ extends RigidBody3D
 class_name VehicleV1
 
 @export var power := 4.
-@export var brake_power := 2
+@export var brake_power := 2.
 @export var turning_deg := 18.
-@export var anti_roll := 10
+@export var anti_roll := 10.
 
 @onready var wheels := [$WheelFR, $WheelFL, $WheelRR, $WheelRL]
 

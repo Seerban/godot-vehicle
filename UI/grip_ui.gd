@@ -22,11 +22,11 @@ func _physics_process(delta: float) -> void:
 		rl.value = car.get_node("WheelRL").get_grip_usage()
 		rl.get_child(0).text = str(int((car.get_node("WheelRL").get_max_grip_multiplier() - car.get_node("WheelRL").remaining_grip)*10))
 	else:
-		fr.value = car.get_node("WheelFR").get_grip_usage()
-		fr.get_child(0).text = str(int( car.get_node("WheelFR").get_grip_usage())*10)
-		fl.value = car.get_node("WheelFL").get_grip_usage()
-		fl.get_child(0).text = str(int( car.get_node("WheelFL").get_grip_usage())*10)
-		rr.value = car.get_node("WheelRR").get_grip_usage()
-		rr.get_child(0).text = str(int( car.get_node("WheelRR").get_grip_usage())*10)
-		rl.value = car.get_node("WheelRL").get_grip_usage()
-		rl.get_child(0).text = str(int( car.get_node("WheelRL").get_grip_usage())*10)
+		fr.value = 1.
+		fr.get_child(0).text = str(int( car.get_node("WheelFR").used_grip*10))
+		fl.value = 1.
+		fl.get_child(0).text = str(int( car.get_node("WheelFL").used_grip*10))
+		rr.value = 1.
+		rr.get_child(0).text = str(int( car.get_node("WheelRR").used_grip*10))
+		rl.value = 1.
+		rl.get_child(0).text = str(int( car.get_node("WheelRL").used_grip*10))

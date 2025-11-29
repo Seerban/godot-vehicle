@@ -22,28 +22,25 @@ var side_projection := Vector3.ZERO
 @export var spring_prev := 0.
 var on_ground := false
 var radius := 0. # practical size, not visual
-var used_grip := 0.
+@export var used_grip := 0.
 
 @export_group("Tires")
-@export var grip_multiplier := 3
-@export var max_grip_multiplier := 3
-@export var max_grip := 3
-@export var spring_grip_influence := 1
+@export var grip_multiplier := 3.
+@export var max_grip_multiplier := 3.
+@export var max_grip := 3.
+@export var spring_grip_influence := 1.
 @export var acceleration_grip_multiplier := 0.3 # multiply acceleration effect on grip 
 @export var braking_grip_multiplier := 0.6 # multiply braking effect on grip
 
 @export_group("Suspension")
 @export var tire_radius := 0.5
 @export var spring_length := 0.75
-@export var spring_strength := 20
-@export var damping := 120
+@export var spring_strength := 20.
+@export var damping := 120.
 
 # point on ground (Or at maximum suspension + radius extension)
 func get_contact_point() -> Vector3:
 	return global_position - car.global_position - global_basis.y * radius
-
-func get_grip_usage() -> float:
-	return used_grip
 
 func get_ground_grip_multiplier() -> float:
 	if not is_colliding(): return 1
