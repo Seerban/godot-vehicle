@@ -9,4 +9,10 @@ func check_validity() -> bool:
 func _on_power_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$Power/Value.text = str(x)
-	car.power = x
+	car.setPower(x)
+
+
+func _on_brake_slider_value_changed(x: float) -> void:
+	if !check_validity(): return
+	$Brake/Value.text = str(x)
+	car.setBrake(x)
