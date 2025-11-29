@@ -16,3 +16,8 @@ func _on_brake_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$Brake/Value.text = str(x)
 	car.setBrake(x)
+
+func _on_turn_slider_value_changed(x: float) -> void:
+	if !check_validity(): return
+	$Roll/Value.text = str(x)
+	car.anti_roll = x

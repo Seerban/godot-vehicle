@@ -74,5 +74,62 @@ size_flags_horizontal = 3
 text = "1.0"
 horizontal_alignment = 1
 
+[node name="Turn" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Turn"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "Turn Angle"
+horizontal_alignment = 1
+
+[node name="TurnSlider" type="HSlider" parent="Turn"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 5.0
+max_value = 45.0
+value = 18.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="Turn"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "18"
+horizontal_alignment = 1
+
+[node name="Roll" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Roll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "Anti-Roll Power"
+horizontal_alignment = 1
+
+[node name="TurnSlider" type="HSlider" parent="Roll"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="Roll"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+horizontal_alignment = 1
+
 [connection signal="value_changed" from="Power/PowerSlider" to="." method="_on_power_slider_value_changed"]
 [connection signal="value_changed" from="Brake/BrakeSlider" to="." method="_on_brake_slider_value_changed"]
+[connection signal="value_changed" from="Turn/TurnSlider" to="." method="_on_turn_slider_value_changed"]
+[connection signal="value_changed" from="Roll/TurnSlider" to="." method="_on_turn_slider_value_changed"]
