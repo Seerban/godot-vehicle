@@ -23,6 +23,10 @@ global="*res://Scripts/global.gd"
 
 import/blender/enabled=false
 
+[global_group]
+
+car=""
+
 [input]
 
 forward={

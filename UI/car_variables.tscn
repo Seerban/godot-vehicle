@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://c71lsx5wpr5mv"]
+
+[ext_resource type="Script" uid="uid://7ta4rxobwhlm" path="res://Scripts/car_variables.gd" id="1_5osty"]
+
+[node name="CarVariables" type="VBoxContainer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 252.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_5osty")
+
+[node name="Power" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Power"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "Power"
+horizontal_alignment = 1
+
+[node name="PowerSlider" type="HSlider" parent="Power"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+allow_greater = true
+allow_lesser = true
+
+[node name="Value" type="Label" parent="Power"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+horizontal_alignment = 1
+
+[connection signal="value_changed" from="Power/PowerSlider" to="." method="_on_power_slider_value_changed"]

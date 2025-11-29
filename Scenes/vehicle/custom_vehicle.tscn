@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dw6rlckembj5p"]
 
-[ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/custom_vehicle.gd" id="1_n8cda"]
-[ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/custom_wheel.tscn" id="2_ho8xs"]
+[ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/custom_vehicle.gd" id="1_n8cda"]
+[ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/vehicle/custom_wheel.tscn" id="2_ho8xs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
 size = Vector3(4.3, 1, 1.8)
@@ -12,7 +12,7 @@ albedo_color = Color(1, 1, 0.49803922, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ho8xs"]
 size = Vector3(4.3, 1, 1.8)
 
-[node name="Vehicle" type="RigidBody3D"]
+[node name="Vehicle" type="RigidBody3D" groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_n8cda")
 
@@ -23,18 +23,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_muxc4")
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ho8xs")
 
-[node name="Wheel1" parent="." instance=ExtResource("2_ho8xs")]
+[node name="WheelFR" parent="." instance=ExtResource("2_ho8xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, 1)
 steering = true
 
-[node name="Wheel2" parent="." instance=ExtResource("2_ho8xs")]
+[node name="WheelRR" parent="." instance=ExtResource("2_ho8xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, 1)
 powered = true
 
-[node name="Wheel3" parent="." instance=ExtResource("2_ho8xs")]
+[node name="WheelFL" parent="." instance=ExtResource("2_ho8xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, -1)
 steering = true
 
-[node name="Wheel4" parent="." instance=ExtResource("2_ho8xs")]
+[node name="WheelRL" parent="." instance=ExtResource("2_ho8xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, -1)
 powered = true

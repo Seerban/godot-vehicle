@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq0e7kogvy3so"]
+[gd_scene load_steps=11 format=3 uid="uid://cq0e7kogvy3so"]
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://csum7bqslyvv5" path="res://Scenes/test_map.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://dcyyvp5e8iaqm" path="res://UI/grip.tscn" id="5_21xkr"]
+[ext_resource type="PackedScene" uid="uid://vmjwheuujnye" path="res://UI/instructions.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
-[ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/custom_vehicle.tscn" id="7_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://b0al3fag0e77q" path="res://Scenes/vehicle/custom_vehicleV2.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://c71lsx5wpr5mv" path="res://UI/car_variables.tscn" id="6_344ge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vi8l"]
 sky_top_color = Color(0.584603, 0.6530472, 0.74452746, 1)
@@ -31,7 +34,7 @@ adjustment_enabled = true
 script = ExtResource("1_6bp64")
 
 [node name="TestMap" parent="." instance=ExtResource("2_jjvhh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017112732, -0.054203033, 0.049272537)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -173.76538, -0.054203033, 0.049272537)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.49999997, -0.75000024, 0.4330126, 0, 0.4999999, 0.8660255, -0.8660254, -0.4330127, 0.25, 0, 10, 0)
@@ -42,37 +45,12 @@ environment = SubResource("Environment_ohhpf")
 
 [node name="CameraAxis" parent="." instance=ExtResource("6_6iyac")]
 
-[node name="Vehicle" parent="." instance=ExtResource("7_fdnlq")]
-transform = Transform3D(-1, 0, 8.742277e-08, 0, 0.9999999, 0, -8.742277e-08, 0, -0.9999999, -92, 4, -11)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Instructions" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ColorRect" parent="CanvasLayer" instance=ExtResource("5_21xkr")]
 
-[node name="Label4" type="Label" parent="CanvasLayer/Instructions"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-text = "Press F to flip over"
+[node name="Instructions" parent="CanvasLayer" instance=ExtResource("6_6bp64")]
 
-[node name="Label" type="Label" parent="CanvasLayer/Instructions"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-text = "Press R to switch between:"
+[node name="CarVariables" parent="CanvasLayer" instance=ExtResource("6_344ge")]
 
-[node name="Label2" type="Label" parent="CanvasLayer/Instructions"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 0.4117647, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-text = "Custom Car Implementation"
-
-[node name="Label3" type="Label" parent="CanvasLayer/Instructions"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-text = "Godot Vehicle Node"
+[node name="Vehicle" parent="." instance=ExtResource("6_21xkr")]

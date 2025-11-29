@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dttdy4fpxll0j"]
 
-[ext_resource type="Script" uid="uid://cv5608lqogyid" path="res://Scripts/godot_vehicle.gd" id="1_lvvc6"]
+[ext_resource type="Script" uid="uid://cv5608lqogyid" path="res://Scripts/vehicle/godot_vehicle.gd" id="1_lvvc6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdlnn"]
 albedo_color = Color(0.49803922, 1, 1, 1)
@@ -23,6 +23,7 @@ material = SubResource("StandardMaterial3D_lvvc6")
 height = 0.2
 
 [node name="Vehicle" type="VehicleBody3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_lvvc6")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
