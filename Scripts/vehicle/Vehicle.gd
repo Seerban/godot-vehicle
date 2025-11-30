@@ -3,9 +3,8 @@ class_name Vehicle
 
 @export var power := 3.0
 @export var brake_power := 5.0
-@export var brake_bias := 0.0
+@export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
 @export var turning_deg := 18.0
-@export var anti_roll := 10.0
 
 @onready var wheels := [$WheelFR, $WheelFL, $WheelRR, $WheelRL]
 

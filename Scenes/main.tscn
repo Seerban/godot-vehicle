@@ -47,9 +47,18 @@ environment = SubResource("Environment_ohhpf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" parent="CanvasLayer" instance=ExtResource("5_21xkr")]
+[node name="Grip" parent="CanvasLayer" instance=ExtResource("5_21xkr")]
 
 [node name="Instructions" parent="CanvasLayer" instance=ExtResource("6_6bp64")]
+
+[node name="VarsBG" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -236.0
+offset_right = 267.0
+grow_vertical = 0
+color = Color(0.29411766, 0.29411766, 0.29411766, 0.4627451)
 
 [node name="CarVariables" parent="CanvasLayer" instance=ExtResource("6_344ge")]
 

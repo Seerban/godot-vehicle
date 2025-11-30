@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c71lsx5wpr5mv"]
+[gd_scene load_steps=2 format=3 uid="uid://c71lsx5wpr5mv"]
 
 [ext_resource type="Script" uid="uid://7ta4rxobwhlm" path="res://UI/car_variables.gd" id="1_5osty"]
-
-[sub_resource type="Theme" id="Theme_5osty"]
 
 [node name="CarVariables" type="VBoxContainer"]
 anchors_preset = 2
@@ -13,17 +11,19 @@ offset_right = 252.0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_5osty")
+theme_override_constants/separation = 1
 script = ExtResource("1_5osty")
 
 [node name="Power" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="Label" type="Label" parent="Power"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
 text = "Power"
 horizontal_alignment = 1
 
@@ -42,17 +42,20 @@ ticks_on_borders = true
 [node name="Value" type="Label" parent="Power"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "3.0"
 horizontal_alignment = 1
 
 [node name="Brake" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="Label" type="Label" parent="Brake"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
 text = "Brake Force"
 horizontal_alignment = 1
 
@@ -71,17 +74,20 @@ ticks_on_borders = true
 [node name="Value" type="Label" parent="Brake"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "5.0"
 horizontal_alignment = 1
 
 [node name="Turn" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="Label" type="Label" parent="Turn"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
 text = "Turn Angle"
 horizontal_alignment = 1
 
@@ -99,17 +105,20 @@ ticks_on_borders = true
 [node name="Value" type="Label" parent="Turn"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "18"
 horizontal_alignment = 1
 
 [node name="Roll" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="Label" type="Label" parent="Roll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
 text = "Anti-Roll Power"
 horizontal_alignment = 1
 
@@ -126,6 +135,277 @@ ticks_on_borders = true
 [node name="Value" type="Label" parent="Roll"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="Grip?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="Grip?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Grip"
+horizontal_alignment = 1
+
+[node name="GripSlider" type="HSlider" parent="Grip?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="Grip?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="SpringInfluence?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="SpringInfluence?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Spring Grip Infl."
+horizontal_alignment = 1
+
+[node name="SISlider" type="HSlider" parent="SpringInfluence?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="SpringInfluence?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="AccelForgive?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="AccelForgive?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Accel Grip Forgive"
+horizontal_alignment = 1
+
+[node name="AFSlider" type="HSlider" parent="AccelForgive?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="AccelForgive?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="BrakeForgive?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="BrakeForgive?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Brake Grip Forgive"
+horizontal_alignment = 1
+
+[node name="BFSlider" type="HSlider" parent="BrakeForgive?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="BrakeForgive?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="SpringHeight?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="SpringHeight?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Height"
+horizontal_alignment = 1
+
+[node name="SHSlider" type="HSlider" parent="SpringHeight?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="SpringHeight?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="SpringStrength?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="SpringStrength?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Spring Strength"
+horizontal_alignment = 1
+
+[node name="SpringSlider" type="HSlider" parent="SpringStrength?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="SpringStrength?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="Damping?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="Damping?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Damping"
+horizontal_alignment = 1
+
+[node name="DampSlider" type="HSlider" parent="Damping?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="Damping?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="Aero?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="Aero?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Aero Scale"
+horizontal_alignment = 1
+
+[node name="DampSlider" type="HSlider" parent="Aero?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="Aero?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10"
+horizontal_alignment = 1
+
+[node name="AeroBias?" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="AeroBias?"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Aero Bias"
+horizontal_alignment = 1
+
+[node name="DampSlider" type="HSlider" parent="AeroBias?"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="AeroBias?"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "10"
 horizontal_alignment = 1
 
