@@ -1,22 +1,11 @@
 extends RigidBody3D
-class_name VehicleV1
+class_name Vehicle
 
-
-## Used explicit functions for easier override
-var power := 4.0
-var power_constant := 4.0
-@export var power_multiplier := 1.
-func setPower(x):
-		power = power_constant * x
-		power_multiplier = x
-var brake_power := 2.0
-var brake_power_constant := 2.
-@export var brake_power_multiplier := 1.
-func setBrake(x):
-		brake_power = brake_power_constant * x
-		brake_power_multiplier = x
-@export var turning_deg := 18.
-@export var anti_roll := 10.
+@export var power := 3.0
+@export var brake_power := 5.0
+@export var brake_bias := 0.0
+@export var turning_deg := 18.0
+@export var anti_roll := 10.0
 
 @onready var wheels := [$WheelFR, $WheelFL, $WheelRR, $WheelRL]
 
@@ -32,14 +21,22 @@ func set_acceleration(x := 0.) -> void:
 
 func set_braking(x := 0.) -> void:
 	for w in wheels:
-		w.brake_power = x
+		if w.position.x > 0:
+			w.brake_power = x + x * brake_bias
+		else:
+			w.brake_power = x - x * brake_bias
 
 func set_steering(x := 0.) -> void:
 	for w in wheels:
 		w.steer(x * turning_deg)
 
+func rear_grip_boost(x := 1.2) -> void:
+	$WheelRR.grip *= x
+	$WheelRL.grip *= x
+
 func _ready() -> void:
 	set_mirror_wheels()
+	rear_grip_boost()
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:

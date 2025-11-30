@@ -2,9 +2,8 @@ extends Node3D
 
 @onready var canvas = $CanvasLayer 
 var cars = [
-	"res://Scenes/vehicle/custom_vehicle.tscn",
+	"res://Scenes/vehicle/vehicle.tscn",
 	"res://Scenes/vehicle/godot_vehicle.tscn",
-	"res://Scenes/vehicle/custom_vehicleV2.tscn"
 ]
 
 func spawn_car(id : int) -> void:
@@ -34,8 +33,6 @@ func _input(event: InputEvent) -> void:
 		spawn_car(0)
 	if event is InputEventKey and event.pressed and event.keycode == KEY_2:
 		spawn_car(1)
-	if event is InputEventKey and event.pressed and event.keycode == KEY_3:
-		spawn_car(2)
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F:
 		flip_car()
 

@@ -12,21 +12,11 @@ func _physics_process(delta: float) -> void:
 		car = get_tree().get_first_node_in_group("car")
 		return
 	if car is VehicleBody3D: return # only works for custom implementation
-	if car is VehicleV2:
-		fr.value = car.get_node("WheelFR").get_grip_usage()
-		fr.get_child(0).text = str(int((car.get_node("WheelFR").get_max_grip_multiplier() - car.get_node("WheelFR").remaining_grip)*10))
-		fl.value = car.get_node("WheelFL").get_grip_usage()
-		fl.get_child(0).text = str(int((car.get_node("WheelFL").get_max_grip_multiplier() - car.get_node("WheelFL").remaining_grip)*10))
-		rr.value = car.get_node("WheelRR").get_grip_usage()
-		rr.get_child(0).text = str(int((car.get_node("WheelRR").get_max_grip_multiplier() - car.get_node("WheelRR").remaining_grip)*10))
-		rl.value = car.get_node("WheelRL").get_grip_usage()
-		rl.get_child(0).text = str(int((car.get_node("WheelRL").get_max_grip_multiplier() - car.get_node("WheelRL").remaining_grip)*10))
-	else:
-		fr.value = 1.
-		fr.get_child(0).text = str(int( car.get_node("WheelFR").used_grip*10))
-		fl.value = 1.
-		fl.get_child(0).text = str(int( car.get_node("WheelFL").used_grip*10))
-		rr.value = 1.
-		rr.get_child(0).text = str(int( car.get_node("WheelRR").used_grip*10))
-		rl.value = 1.
-		rl.get_child(0).text = str(int( car.get_node("WheelRL").used_grip*10))
+	$FL.value = car.get_node("WheelFL").get_used_grip() / car.get_node("WheelFL").get_grip() * 100
+	$FL/Label.text = str( int(car.get_node("WheelFL").get_used_grip() * 10) )
+	$FR.value = car.get_node("WheelFR").get_used_grip() / car.get_node("WheelFR").get_grip() * 100
+	$FR/Label.text = str( int(car.get_node("WheelFR").get_used_grip() * 10) )
+	$RR.value = car.get_node("WheelRR").get_used_grip() / car.get_node("WheelRR").get_grip() * 100
+	$RR/Label.text = str( int(car.get_node("WheelRR").get_used_grip() * 10) )
+	$RL.value = car.get_node("WheelRL").get_used_grip() / car.get_node("WheelRL").get_grip() * 100
+	$RL/Label.text = str( int(car.get_node("WheelRL").get_used_grip() * 10) )

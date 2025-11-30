@@ -17,23 +17,22 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0.4117647, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "1 Custom Car Implementation V1 (Simplified)"
+text = "1 Custom Car Implementation"
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "2 Godot Vehicle Node (Built-in)
-- Live customization not implemented"
+text = "2 Godot Vehicle Node (Built-in)"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label5" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.41568628, 0.34901962, 1)
+theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "3 Custom Car Implementation V2
-(More customizable and less arcadey grip than V1)"
+theme_override_font_sizes/font_size = 12
+text = "-customization not implemented"
 
 [node name="Instructions" type="Control" parent="."]
 layout_mode = 2
