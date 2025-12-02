@@ -36,6 +36,10 @@ var on_ground := false
 @export var grip_left := 0.0
 @export var spring_prev := 0.0 # previous frame spring compression
 
+func set_length(x : float) -> void:
+	target_position = Vector3(0, -x, 0)
+	spring_length = x
+
 func get_contact_point() -> Vector3: # point at spring end point
 	return global_position - car.global_position - global_basis.y * radius
 

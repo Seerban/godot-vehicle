@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcyyvp5e8iaqm"]
 
-[ext_resource type="Script" uid="uid://bfpu7bdvft3tc" path="res://UI/grip_ui.gd" id="1_pxihl"]
+[ext_resource type="Script" uid="uid://bfpu7bdvft3tc" path="res://Scripts/ui/grip_ui.gd" id="1_pxihl"]
 
 [node name="BG" type="ColorRect"]
 custom_minimum_size = Vector2(75, 150)

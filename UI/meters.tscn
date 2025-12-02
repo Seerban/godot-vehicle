@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://di1jkaghvvbws"]
+
+[ext_resource type="Script" uid="uid://bl7e7twkvrgtn" path="res://UI/meters.gd" id="1_4fp7e"]
+
+[node name="Meters" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_4fp7e")
+
+[node name="Speedometer" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -59.655
+offset_right = 50.0
+offset_bottom = -9.654999
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Speed" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -89.435
+offset_right = 50.0
+offset_bottom = -39.434998
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(-403, 175.93)
+theme_override_font_sizes/font_size = 24
+text = "Speed"
+horizontal_alignment = 1
+vertical_alignment = 1

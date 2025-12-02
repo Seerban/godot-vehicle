@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq0e7kogvy3so"]
+[gd_scene load_steps=12 format=3 uid="uid://cq0e7kogvy3so"]
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://csum7bqslyvv5" path="res://Scenes/test_map.tscn" id="2_jjvhh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
 [ext_resource type="PackedScene" uid="uid://c71lsx5wpr5mv" path="res://UI/car_variables.tscn" id="6_344ge"]
 [ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/vehicle/vehicle.tscn" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://di1jkaghvvbws" path="res://UI/meters.tscn" id="7_344ge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vi8l"]
 sky_top_color = Color(0.584603, 0.6530472, 0.74452746, 1)
@@ -55,11 +56,15 @@ environment = SubResource("Environment_ohhpf")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -236.0
-offset_right = 267.0
+offset_top = -313.0
+offset_right = 274.0
 grow_vertical = 0
+pivot_offset = Vector2(290, 101)
 color = Color(0.29411766, 0.29411766, 0.29411766, 0.4627451)
 
 [node name="CarVariables" parent="CanvasLayer" instance=ExtResource("6_344ge")]
+
+[node name="Meters" parent="CanvasLayer" instance=ExtResource("7_344ge")]
+pivot_offset = Vector2(-736, -378)
 
 [node name="Vehicle" parent="." instance=ExtResource("7_6bp64")]

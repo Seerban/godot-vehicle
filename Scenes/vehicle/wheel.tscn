@@ -13,7 +13,7 @@ material = SubResource("StandardMaterial3D_im64q")
 height = 0.2
 
 [node name="CustomWheel" type="RayCast3D"]
-target_position = Vector3(0, -12, 0)
+target_position = Vector3(0, -20, 0)
 debug_shape_custom_color = Color(1, 0, 1, 1)
 debug_shape_thickness = 5
 script = ExtResource("1_kuckw")

@@ -1,18 +1,57 @@
 [gd_scene load_steps=2 format=3 uid="uid://c71lsx5wpr5mv"]
 
-[ext_resource type="Script" uid="uid://7ta4rxobwhlm" path="res://UI/car_variables.gd" id="1_5osty"]
+[ext_resource type="Script" uid="uid://7ta4rxobwhlm" path="res://Scripts/ui/car_variables.gd" id="1_5osty"]
 
 [node name="CarVariables" type="VBoxContainer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 252.0
+offset_top = -314.0
+offset_right = 275.0
 grow_vertical = 0
+pivot_offset = Vector2(538, -92)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 1
 script = ExtResource("1_5osty")
+
+[node name="Tires2" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "---- ---- Presets ---- ----"
+horizontal_alignment = 1
+
+[node name="Presets1" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Arcade" type="Button" parent="Presets1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Arcade"
+
+[node name="Real" type="Button" parent="Presets1"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Realistic(ish)"
+
+[node name="Presets2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Presets2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+
+[node name="Button2" type="Button" parent="Presets2"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
 
 [node name="Power" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(275, 0)
@@ -78,6 +117,37 @@ theme_override_font_sizes/font_size = 12
 text = "5.0"
 horizontal_alignment = 1
 
+[node name="BrakeBias" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="BrakeBias"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Brake Bias"
+horizontal_alignment = 1
+
+[node name="BrakeBiasSlider" type="HSlider" parent="BrakeBias"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="BrakeBias"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "0.0"
+horizontal_alignment = 1
+
 [node name="Turn" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
@@ -109,34 +179,10 @@ theme_override_font_sizes/font_size = 12
 text = "18.0"
 horizontal_alignment = 1
 
-[node name="Roll" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(275, 0)
+[node name="Tires" type="Label" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="Label" type="Label" parent="Roll"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 12
-text = "Anti-Roll Power"
-horizontal_alignment = 1
-
-[node name="TurnSlider" type="HSlider" parent="Roll"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 50.0
-value = 10.0
-allow_greater = true
-allow_lesser = true
-ticks_on_borders = true
-
-[node name="Value" type="Label" parent="Roll"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "10.0"
+theme_override_font_sizes/font_size = 14
+text = "---- ---- Tires ---- ----"
 horizontal_alignment = 1
 
 [node name="Grip" type="HBoxContainer" parent="."]
@@ -169,37 +215,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "3.0"
-horizontal_alignment = 1
-
-[node name="SpringInfluence" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="Label" type="Label" parent="SpringInfluence"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 12
-text = "Spring Grip Infl."
-horizontal_alignment = 1
-
-[node name="SISlider" type="HSlider" parent="SpringInfluence"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 5.0
-step = 0.25
-value = 1.0
-allow_greater = true
-allow_lesser = true
-ticks_on_borders = true
-
-[node name="Value" type="Label" parent="SpringInfluence"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "1.0"
 horizontal_alignment = 1
 
 [node name="AccelForgive" type="HBoxContainer" parent="."]
@@ -262,6 +277,43 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "0.5"
+horizontal_alignment = 1
+
+[node name="Suspension" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "---- ---- Suspension ---- ----"
+horizontal_alignment = 1
+
+[node name="SpringInfluence" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="SpringInfluence"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Spring Grip Infl."
+horizontal_alignment = 1
+
+[node name="SISlider" type="HSlider" parent="SpringInfluence"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 5.0
+step = 0.25
+value = 1.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="SpringInfluence"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "1.0"
 horizontal_alignment = 1
 
 [node name="SpringHeight" type="HBoxContainer" parent="."]
@@ -345,7 +397,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 max_value = 300.0
 step = 10.0
-value = 10.0
+value = 120.0
 allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
@@ -355,6 +407,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "120.0"
+horizontal_alignment = 1
+
+[node name="Roll" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="Roll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Anti-Roll"
+horizontal_alignment = 1
+
+[node name="RollSlider" type="HSlider" parent="Roll"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 50.0
+value = 10.0
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="Roll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "10.0"
+horizontal_alignment = 1
+
+[node name="Aero" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "---- ---- Aero ---- ----"
 horizontal_alignment = 1
 
 [node name="FrontAero" type="HBoxContainer" parent="."]
@@ -419,16 +507,19 @@ theme_override_font_sizes/font_size = 12
 text = "1.0"
 horizontal_alignment = 1
 
+[connection signal="pressed" from="Presets1/Arcade" to="." method="_on_arcade_pressed"]
+[connection signal="pressed" from="Presets1/Real" to="." method="_on_real_pressed"]
 [connection signal="value_changed" from="Power/PowerSlider" to="." method="_on_power_slider_value_changed"]
 [connection signal="value_changed" from="Brake/BrakeSlider" to="." method="_on_brake_slider_value_changed"]
+[connection signal="value_changed" from="BrakeBias/BrakeBiasSlider" to="." method="_on_brake_bias_slider_value_changed"]
 [connection signal="value_changed" from="Turn/TurnSlider" to="." method="_on_turn_slider_value_changed"]
-[connection signal="value_changed" from="Roll/TurnSlider" to="." method="_on_turn_slider_value_changed"]
 [connection signal="value_changed" from="Grip/GripSlider" to="." method="_on_grip_slider_value_changed"]
-[connection signal="value_changed" from="SpringInfluence/SISlider" to="." method="_on_si_slider_value_changed"]
 [connection signal="value_changed" from="AccelForgive/AFSlider" to="." method="_on_af_slider_value_changed"]
 [connection signal="value_changed" from="BrakeForgive/BFSlider" to="." method="_on_bf_slider_value_changed"]
+[connection signal="value_changed" from="SpringInfluence/SISlider" to="." method="_on_si_slider_value_changed"]
 [connection signal="value_changed" from="SpringHeight/SHSlider" to="." method="_on_sh_slider_value_changed"]
 [connection signal="value_changed" from="SpringStrength/SpringSlider" to="." method="_on_spring_slider_value_changed"]
 [connection signal="value_changed" from="Damping/DampSlider" to="." method="_on_damp_slider_value_changed"]
+[connection signal="value_changed" from="Roll/RollSlider" to="." method="_on_roll_slider_value_changed"]
 [connection signal="value_changed" from="FrontAero/AeroSlider" to="." method="_on_aero_slider_value_changed"]
 [connection signal="value_changed" from="BackAero/BAeroSlider" to="." method="_on_b_aero_slider_value_changed"]
