@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dw6rlckembj5p"]
 
 [ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
-[ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/vehicle/wheel.tscn" id="2_ho8xs"]
-[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/vehicle/Aero.gd" id="3_vuhs1"]
+[ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Nodes/vehicle/wheel.tscn" id="2_ho8xs"]
+[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/vehicle/aero.gd" id="3_vuhs1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
 size = Vector3(4.3, 1, 1.8)

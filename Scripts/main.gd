@@ -2,8 +2,8 @@ extends Node3D
 
 @onready var canvas = $CanvasLayer 
 var cars = [
-	"res://Scenes/vehicle/vehicle.tscn",
-	"res://Scenes/vehicle/godot_vehicle.tscn",
+	"res://Nodes/vehicle/vehicle.tscn",
+	"res://Nodes/vehicle/godot_vehicle.tscn",
 ]
 
 func spawn_car(id : int) -> void:

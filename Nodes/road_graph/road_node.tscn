@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ppguuh8qleek"]
+
+[ext_resource type="Script" uid="uid://dq1cboijx8w4w" path="res://Scripts/road_graph/road_node.gd" id="1_kexlc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kexlc"]
+
+[node name="RoadNode" type="Node3D"]
+script = ExtResource("1_kexlc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_kexlc")

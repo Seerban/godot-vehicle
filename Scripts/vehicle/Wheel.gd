@@ -45,7 +45,10 @@ func get_contact_point() -> Vector3: # point at spring end point
 
 func get_ground_grip_multiplier() -> float: # get multiplier of ground material
 	if not is_colliding(): return 1
-	return global.get_material_grip(get_collider().get_node("MeshInstance3D").get_active_material(0))
+	var mat = get_collider().get_node("MeshInstance3D").get_active_material(0)
+	if mat == null:
+		return 1
+	return global.get_material_grip(mat)
 
 func get_spring_grip_influence() -> float: # spring compression boost on grip
 	return 1 + spring_prev / spring_length * spring_grip_influence
