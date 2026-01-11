@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://coki6cblh3pr"]
+
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/black.tres" id="1_tjddn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gqavc"]
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gqavc"]
+height = 1.0
+
+[node name="RoadCap" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_tjddn")
+mesh = SubResource("CylinderMesh_gqavc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_gqavc")

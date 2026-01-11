@@ -16,6 +16,17 @@ func add_road(from, to) -> void:
 	road.global_position = (from + to) / 2
 	road.scale = Vector3(width, height, length)
 	road.look_at(to)
+	
+	add_road_cap(from, width, road.rotation)
+	add_road_cap(to, width, road.rotation)
+
+func add_road_cap(pos, size, angle) -> void:
+	var cap = load("res://Nodes/road_graph/road_cap.tscn").instantiate() as StaticBody3D
+	add_child(cap)
+	cap.global_position = pos
+	cap.rotation = angle
+	cap.scale = Vector3(size, height, size)
+	cap.rotation = angle
 
 func init_from_children() -> void:
 	for i in get_children():

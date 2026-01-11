@@ -78,6 +78,7 @@ offset_bottom = 0.0
 [node name="Vehicle" parent="." instance=ExtResource("7_6bp64")]
 
 [node name="Roads" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 script = ExtResource("9_ynf5e")
 points = Array[Vector3]([Vector3(20, 0, 0), Vector3(0, 0, 20)])
 roads = Dictionary[int, int]({
@@ -90,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.5, 20)
 
 [node name="RoadNode3" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0.5, -2)
-connections = [NodePath("../RoadNode1")]
+connections = [NodePath("../RoadNode1"), NodePath("../RoadNode6")]
 
 [node name="RoadNode6" parent="Roads" instance=ExtResource("11_ii7ua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0.5, -34)
