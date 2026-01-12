@@ -93,8 +93,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.5, 20)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0.5, -2)
 connections = [NodePath("../RoadNode1"), NodePath("../RoadNode6")]
 
-[node name="RoadNode6" parent="Roads" instance=ExtResource("11_ii7ua")]
+[node name="RoadNode6" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0.5, -34)
+connections = [NodePath("../RoadNode11")]
+
+[node name="RoadNode11" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0.5, -34)
+connections = [NodePath("../RoadNode8")]
+
+[node name="RoadNode8" parent="Roads" instance=ExtResource("11_ii7ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82, 4.5, -34)
+
+[node name="RoadNode9" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98, 12.5, -34)
+connections = [NodePath("../RoadNode8")]
+
+[node name="RoadNode10" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118, 12.5, -34)
+connections = [NodePath("../RoadNode9")]
 
 [node name="RoadNode4" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 4, 17)
@@ -104,7 +120,11 @@ connections = [NodePath("../RoadNode7"), NodePath("../RoadNode5"), NodePath("../
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 12, 51)
 
 [node name="RoadNode5" parent="Roads" instance=ExtResource("11_ii7ua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113, 15, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113, 12.5, 17)
+
+[node name="RoadNode12" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113, 12.5, 7)
+connections = [NodePath("../RoadNode10"), NodePath("../RoadNode5")]
 
 [node name="RoadNode2" parent="Roads" node_paths=PackedStringArray("connections") instance=ExtResource("11_ii7ua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 0)

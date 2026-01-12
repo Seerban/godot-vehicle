@@ -1,11 +1,12 @@
 @tool
 extends Node3D
 
+@export var id := 99999
 @export var connections : Array[Node3D]
 
 func _ready() -> void:
 	for node in connections:
-		if node == null: continue
+		if node == null or node == self: continue
 		var road = load("res://Nodes/road_graph/road_segment.tscn").instantiate() as StaticBody3D
 		add_child(road)
 		
