@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/vehicle/vehicle.tscn" id="7_6bp64"]
 [ext_resource type="PackedScene" uid="uid://di1jkaghvvbws" path="res://UI/meters.tscn" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://br1r2ama8da6q" path="res://UI/drive_terrain.tscn" id="8_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://dho54kt8g7vq1" path="res://Scenes/road_graph/radar.tscn" id="9_hptm8"]
+[ext_resource type="Script" uid="uid://bmh3ovkrq6j84" path="res://Scripts/road_graph/roads.gd" id="11_6iyac"]
+[ext_resource type="PackedScene" uid="uid://ppguuh8qleek" path="res://Scenes/road_graph/road_node.tscn" id="11_d1ilt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vi8l"]
 sky_top_color = Color(0.584603, 0.6530472, 0.74452746, 1)
@@ -69,5 +72,27 @@ color = Color(0.29411766, 0.29411766, 0.29411766, 0.4627451)
 pivot_offset = Vector2(-736, -378)
 
 [node name="DriveTerrain" parent="CanvasLayer" unique_id=1155862949 instance=ExtResource("8_ynf5e")]
+offset_top = -30.0
+offset_bottom = -30.0
+
+[node name="Radar" parent="CanvasLayer" unique_id=2016502328 instance=ExtResource("9_hptm8")]
 
 [node name="Vehicle" parent="." unique_id=854941751 instance=ExtResource("7_6bp64")]
+
+[node name="Roads" type="Node3D" parent="." unique_id=771337902]
+script = ExtResource("11_6iyac")
+
+[node name="RoadNode" parent="Roads" unique_id=1928402242 node_paths=PackedStringArray("connections") instance=ExtResource("11_d1ilt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97, 0.5, 89)
+id = 0
+connections = [NodePath("../RoadNode2")]
+
+[node name="RoadNode2" parent="Roads" unique_id=1209118477 node_paths=PackedStringArray("connections") instance=ExtResource("11_d1ilt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 0.5, 89)
+id = 1
+connections = [NodePath("../RoadNode")]
+
+[node name="RoadNode3" parent="Roads" unique_id=610409 node_paths=PackedStringArray("connections") instance=ExtResource("11_d1ilt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0.5, 122)
+id = 1
+connections = [NodePath("../RoadNode2")]

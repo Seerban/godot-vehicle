@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg8x8amdeorhp"]
+
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/black.tres" id="1_yk3km"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg3xl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yk3km"]
+
+[node name="RoadSegment" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_yk3km")
+mesh = SubResource("BoxMesh_dg3xl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yk3km")
