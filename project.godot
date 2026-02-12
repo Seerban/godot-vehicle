@@ -23,6 +23,11 @@ config/icon="res://Textures/icon.svg"
 
 global="*res://Scripts/global.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [filesystem]
 
 import/blender/enabled=false

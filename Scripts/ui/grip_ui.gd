@@ -4,6 +4,7 @@ extends ColorRect
 var bars : Array[ProgressBar]
 
 func update_ui() -> void:
+	for bar in bars: bar.queue_free()
 	bars.clear()
 	
 	for i in range( len(car.wheels) ):

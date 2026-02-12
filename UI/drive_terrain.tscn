@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://br1r2ama8da6q"]
+
+[ext_resource type="Script" uid="uid://csmcd1q44yfgi" path="res://Scripts/ui/drive_terrain_ui.gd" id="1_3iffk"]
+[ext_resource type="Texture2D" uid="uid://dj4b256lwd084" path="res://Textures/rwd.png" id="1_u44xy"]
+[ext_resource type="Texture2D" uid="uid://xq4ry18v5d61" path="res://Textures/fwd.png" id="2_eynso"]
+[ext_resource type="Texture2D" uid="uid://cm85gnnfk33uy" path="res://Textures/6x6.png" id="3_ffkbd"]
+[ext_resource type="Texture2D" uid="uid://bf6d4oly2l5i5" path="res://Textures/awd.png" id="3_g8cx1"]
+[ext_resource type="Texture2D" uid="uid://1v46idyahhtj" path="res://Textures/8x8.png" id="4_pp7pm"]
+[ext_resource type="Texture2D" uid="uid://ce1clmyscrbnu" path="res://Textures/4steer.png" id="4_ska1d"]
+
+[node name="DriveTerrain" type="Control" unique_id=1155862949]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_3iffk")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1814106045]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox" unique_id=498860249]
+layout_mode = 2
+
+[node name="RWD" type="TextureButton" parent="VBox/HBox" unique_id=2069872870]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("1_u44xy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="FWD" type="TextureButton" parent="VBox/HBox" unique_id=275169437]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("2_eynso")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hbox2" type="HBoxContainer" parent="VBox" unique_id=1469888130]
+layout_mode = 2
+
+[node name="awd" type="TextureButton" parent="VBox/Hbox2" unique_id=1528339103]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_g8cx1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="4steer" type="TextureButton" parent="VBox/Hbox2" unique_id=1981391918]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_ska1d")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hbox3" type="HBoxContainer" parent="VBox" unique_id=1051094838]
+layout_mode = 2
+
+[node name="6x6" type="TextureButton" parent="VBox/Hbox3" unique_id=867424867]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_ffkbd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="8x8" type="TextureButton" parent="VBox/Hbox3" unique_id=642674070]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_pp7pm")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="VBox/HBox/RWD" to="." method="_on_rwd_pressed"]
+[connection signal="pressed" from="VBox/HBox/FWD" to="." method="_on_fwd_pressed"]
+[connection signal="pressed" from="VBox/Hbox2/awd" to="." method="_on_awd_pressed"]
+[connection signal="pressed" from="VBox/Hbox2/4steer" to="." method="_on_steer_pressed"]
+[connection signal="pressed" from="VBox/Hbox3/6x6" to="." method="_on_x_6_pressed"]
+[connection signal="pressed" from="VBox/Hbox3/8x8" to="." method="_on_x_8_pressed"]
