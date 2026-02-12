@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://di1jkaghvvbws"]
+[gd_scene format=3 uid="uid://di1jkaghvvbws"]
 
-[ext_resource type="Script" uid="uid://bl7e7twkvrgtn" path="res://UI/meters.gd" id="1_4fp7e"]
+[ext_resource type="Script" uid="uid://bl7e7twkvrgtn" path="res://Scripts/ui/meters.gd" id="1_4fp7e"]
 
 [node name="Meters" type="Control"]
 layout_mode = 3

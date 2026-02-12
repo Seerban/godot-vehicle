@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkp2marfurbfm"]
+[gd_scene format=3 uid="uid://bkp2marfurbfm"]
 
 [ext_resource type="Script" uid="uid://su41w6xl5qmi" path="res://Scripts/vehicle/Wheel.gd" id="1_kuckw"]
 
@@ -12,13 +12,13 @@ normal_enabled = true
 material = SubResource("StandardMaterial3D_im64q")
 height = 0.2
 
-[node name="CustomWheel" type="RayCast3D"]
+[node name="CustomWheel" type="RayCast3D" unique_id=2059454740]
 target_position = Vector3(0, -20, 0)
 debug_shape_custom_color = Color(1, 0, 1, 1)
 debug_shape_thickness = 5
 script = ExtResource("1_kuckw")
 
-[node name="WheelMesh" type="MeshInstance3D" parent="."]
+[node name="WheelMesh" type="MeshInstance3D" parent="." unique_id=1606397456]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_42obu")
 mesh = SubResource("CylinderMesh_0w4lx")

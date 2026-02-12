@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq0e7kogvy3so"]
+[gd_scene format=3 uid="uid://cq0e7kogvy3so"]
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://csum7bqslyvv5" path="res://Scenes/test_map.tscn" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://dcyyvp5e8iaqm" path="res://UI/grip.tscn" id="5_21xkr"]
+[ext_resource type="PackedScene" uid="uid://dcyyvp5e8iaqm" path="res://UI/grip_ui.tscn" id="5_21xkr"]
 [ext_resource type="PackedScene" uid="uid://vmjwheuujnye" path="res://UI/instructions.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
 [ext_resource type="PackedScene" uid="uid://c71lsx5wpr5mv" path="res://UI/car_variables.tscn" id="6_344ge"]

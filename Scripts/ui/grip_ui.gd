@@ -1,16 +1,29 @@
-extends GridContainer
+extends ColorRect
 
 @onready var car
-@onready var fr := $FR
-@onready var fl := $FL
-@onready var rr := $RR
-@onready var rl := $RL
+var bars : Array[ProgressBar]
+
+func update_ui() -> void:
+	bars.clear()
+	
+	for i in range( len(car.wheels) ):
+		var wheel = car.wheels[i]
+		var bar : ProgressBar = load("res://UI/grip_bar.tscn").instantiate()
+		bar.position.x = wheel.position.z * 32 - 16
+		bar.position.y = wheel.position.x * -32 - 16
+		add_child(bar)
+		bars.append(bar)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if not car:
-		car = get_tree().get_first_node_in_group("car")
 		return
+	
+	for i in range( len(bars) ):
+		bars[i].value = car.wheels[i].get_used_grip() / car.wheels[i].get_grip() * 100
+		bars[i].get_node("Label").text = str( int( car.wheels[i].get_used_grip() * 10) )
+	
+	return
 	if car is VehicleBody3D: return # only works for custom implementation
 	$FL.value = car.get_node("WheelFL").get_used_grip() / car.get_node("WheelFL").get_grip() * 100
 	$FL/Label.text = str( int(car.get_node("WheelFL").get_used_grip() * 10) )

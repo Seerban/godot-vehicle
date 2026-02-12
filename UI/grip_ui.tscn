@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dcyyvp5e8iaqm"]
+
+[ext_resource type="Script" uid="uid://bfpu7bdvft3tc" path="res://Scripts/ui/grip_ui.gd" id="1_iccli"]
+
+[node name="BG" type="ColorRect" unique_id=1255977361 groups=["grip_ui"]]
+custom_minimum_size = Vector2(75, 150)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_top = 15.0
+offset_right = -12.0
+offset_bottom = 115.0
+grow_horizontal = 0
+color = Color(1, 1, 1, 0.18431373)
+script = ExtResource("1_iccli")

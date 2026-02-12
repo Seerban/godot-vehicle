@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw6rlckembj5p"]
+[gd_scene format=3 uid="uid://dw6rlckembj5p"]
 
 [ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
 [ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/vehicle/wheel.tscn" id="2_ho8xs"]
-[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/vehicle/Aero.gd" id="3_vuhs1"]
+[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/vehicle/aero.gd" id="3_vuhs1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
 size = Vector3(4.3, 1, 1.8)
@@ -18,47 +18,47 @@ size = Vector3(4.3, 1, 1.8)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuhs1"]
 albedo_color = Color(0.7294118, 0.67058825, 0.1764706, 1)
 
-[node name="Vehicle" type="RigidBody3D" groups=["car"]]
+[node name="Vehicle" type="RigidBody3D" unique_id=973883457 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_n8cda")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=871590129]
 mesh = SubResource("BoxMesh_ho8xs")
 surface_material_override/0 = SubResource("StandardMaterial3D_muxc4")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=232987619]
 shape = SubResource("BoxShape3D_ho8xs")
 
-[node name="WheelFR" parent="." instance=ExtResource("2_ho8xs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, 1)
+[node name="WheelFR" parent="." unique_id=1680391011 instance=ExtResource("2_ho8xs")]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 1.5, -0.3199999, 0.9999998)
 steering = true
 
-[node name="WheelRR" parent="." instance=ExtResource("2_ho8xs")]
+[node name="WheelRR" parent="." unique_id=1251778490 instance=ExtResource("2_ho8xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, 1)
 powered = true
 
-[node name="WheelFL" parent="." instance=ExtResource("2_ho8xs")]
+[node name="WheelFL" parent="." unique_id=1539269528 instance=ExtResource("2_ho8xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.32, -1)
 steering = true
 
-[node name="WheelRL" parent="." instance=ExtResource("2_ho8xs")]
+[node name="WheelRL" parent="." unique_id=236893522 instance=ExtResource("2_ho8xs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.32, -1)
 powered = true
 
-[node name="AeroBack" type="Node3D" parent="."]
+[node name="AeroBack" type="Node3D" parent="." unique_id=1734562107]
 transform = Transform3D(0.25, 0, 0, 0, 0.1, 0, 0, 0, 2, -2.1526327, 0.5488598, 0)
 script = ExtResource("3_vuhs1")
 aero_multiplier = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AeroBack"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AeroBack" unique_id=1963199864]
 mesh = SubResource("BoxMesh_fwcw4")
 surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")
 
-[node name="AeroFront" type="Node3D" parent="."]
+[node name="AeroFront" type="Node3D" parent="." unique_id=298486812]
 transform = Transform3D(0.25, 0, 0, 0, 0.09999999, 0, 0, 0, 1.9999998, 2.1760306, -0.45849878, 0)
 script = ExtResource("3_vuhs1")
 aero_multiplier = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AeroFront"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AeroFront" unique_id=1480053370]
 mesh = SubResource("BoxMesh_fwcw4")
 surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")

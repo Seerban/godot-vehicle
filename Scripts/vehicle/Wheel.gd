@@ -11,6 +11,7 @@ var on_ground := false
 # inputs for applying brake/acceleration
 @export var powered := false
 @export var steering := false
+@export var steering_multiplier := 1.0
 
 @onready var wheel := $WheelMesh
 @onready var car : Vehicle = get_parent()
@@ -132,7 +133,7 @@ func steer(angle := 0.0) -> void:
 	if not steering: return
 	
 	var steer_angle = deg_to_rad(angle)
-	rotation.y = steer_angle
+	rotation.y = steer_angle * steering_multiplier
 
 func fetch_vars() -> void: # get dynamic observation data
 	forward = car.global_basis.x
