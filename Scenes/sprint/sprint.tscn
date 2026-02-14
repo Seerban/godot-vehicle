@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dcobpw6pdevg2"]
+
+[ext_resource type="Script" uid="uid://cmbc6hdrh7tnw" path="res://Scripts/sprint/sprint.gd" id="1_r2s8v"]
+[ext_resource type="Material" uid="uid://c215l7jpypfh1" path="res://Material/checkpoint.tres" id="2_hp0e6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_r2s8v"]
+height = 8.0
+radius = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r2s8v"]
+top_radius = 3.0
+bottom_radius = 3.0
+height = 8.0
+
+[node name="Sprint" type="Node3D" unique_id=646351029]
+script = ExtResource("1_r2s8v")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=730021987]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=931614053]
+shape = SubResource("CylinderShape3D_r2s8v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1969873059]
+material_override = ExtResource("2_hp0e6")
+mesh = SubResource("CylinderMesh_r2s8v")
+skeleton = NodePath("../CollisionShape3D")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

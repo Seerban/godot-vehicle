@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cc2x63d7jjjhr"]
+
+[ext_resource type="Material" uid="uid://c215l7jpypfh1" path="res://Material/checkpoint.tres" id="1_dl2cu"]
+[ext_resource type="Script" uid="uid://br7itqjg0odiv" path="res://Scripts/sprint/checkpoint.gd" id="1_hktgi"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f8x3u"]
+top_radius = 8.0
+bottom_radius = 8.0
+height = 1000.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dl2cu"]
+height = 10.0
+radius = 8.0
+
+[node name="Checkpoint" type="Area3D" unique_id=867999748]
+script = ExtResource("1_hktgi")
+
+[node name="Beam" type="MeshInstance3D" parent="." unique_id=354324616]
+material_override = ExtResource("1_dl2cu")
+mesh = SubResource("CylinderMesh_f8x3u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1489029408]
+shape = SubResource("CylinderShape3D_dl2cu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
 extends Node3D
 class_name RoadGraph
 
-@export var width := 8
+@export var width := 10
 @export var height := 0.5
 @export var points : Array[Vector3] 
 @export var roads : Dictionary[int, int]
@@ -89,7 +89,7 @@ func init_from_children() -> void:
 	var id = 0
 	for i in get_children():
 		i.id = id
-		
+	for i in get_children():
 		for j in i.connections:
 			if i == j: continue
 			if j.id < i.id: continue # Avoid doubly adding road if node is already processed
