@@ -20,6 +20,7 @@ func start_race() -> void:
 	cp_idx = -1
 	
 	global_ui.hide_sprint_prompt()
+	global_ui.start_timer()
 	$Area3D.visible = false
 	
 	car = get_tree().get_first_node_in_group("car")
@@ -45,6 +46,7 @@ func next_checkpoint() -> void:
 
 func finish_race() -> void:
 	race_started = false
+	global_ui.stop_timer()
 	$Area3D.visible = true
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

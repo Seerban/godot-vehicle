@@ -99,10 +99,23 @@ text = "PRESS 'E' TO START SPRINT RACE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Timer" type="Label" parent="CanvasLayer" unique_id=89245775]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.5
+offset_right = 38.5
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 28
+text = "adedf"
+
 [node name="Vehicle" parent="." unique_id=854941751 instance=ExtResource("7_6bp64")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -113, 0, 89)
 
 [node name="Roads" type="Node3D" parent="." unique_id=771337902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235, 0, -42)
 script = ExtResource("11_6iyac")
 
 [node name="RoadNode" parent="Roads" unique_id=1928402242 instance=ExtResource("11_d1ilt")]
@@ -139,7 +152,7 @@ id = 0
 connections = [NodePath("../RoadNode7")]
 
 [node name="Sprint" parent="." unique_id=646351029 node_paths=PackedStringArray("checkpoints") instance=ExtResource("14_jkdf5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97, 1, 89)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 1, 47)
 checkpoints = [NodePath("Node3D"), NodePath("Node3D2"), NodePath("Node3D3"), NodePath("Node3D4")]
 
 [node name="Node3D" type="Node3D" parent="Sprint" unique_id=544943914]
