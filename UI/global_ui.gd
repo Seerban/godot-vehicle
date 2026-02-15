@@ -10,9 +10,9 @@ func show_sprint_prompt(sprint : Node3D) -> void:
 
 func hide_sprint_prompt() -> void:
 	$SprintLabel.visible = false
-	chosen_sprint = null
 
 func _process(delta: float) -> void:
-	if not chosen_sprint: return
+	if not chosen_sprint or $SprintLabel.visible == false: return
+	
 	if Input.is_key_pressed(KEY_E):
 		chosen_sprint.start_race()

@@ -19,11 +19,16 @@ func start_race() -> void:
 	race_started = true
 	cp_idx = -1
 	
+	global_ui.hide_sprint_prompt()
 	$Area3D.visible = false
 	
 	car = get_tree().get_first_node_in_group("car")
 	car.global_position = global_position
+	car.linear_velocity = Vector3.ZERO
 	next_checkpoint()
+	# Face toward first checkpoint
+	car.look_at(cp_instance.global_position)
+	car.rotation.y += PI/2
 
 func next_checkpoint() -> void:
 	cp_idx += 1
