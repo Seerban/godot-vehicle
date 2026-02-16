@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bmh3ovkrq6j84" path="res://Scripts/road_graph/roads.gd" id="11_6iyac"]
 [ext_resource type="PackedScene" uid="uid://ppguuh8qleek" path="res://Scenes/road_graph/road_node.tscn" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dcobpw6pdevg2" path="res://Scenes/sprint/sprint.tscn" id="14_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://dievthhc180gu" path="res://Scenes/vehicle/ghost_body.tscn" id="15_wsu2k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3vi8l"]
 sky_top_color = Color(0.584603, 0.6530472, 0.74452746, 1)
@@ -113,6 +114,7 @@ theme_override_font_sizes/font_size = 28
 text = "adedf"
 
 [node name="Vehicle" parent="." unique_id=854941751 instance=ExtResource("7_6bp64")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 117, 0, 43)
 
 [node name="Roads" type="Node3D" parent="." unique_id=771337902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 235, 0, -42)
@@ -166,3 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 5, 33)
 
 [node name="Node3D4" type="Node3D" parent="Sprint" unique_id=1039188201]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136, 5, 82)
+
+[node name="GhostBody" parent="." unique_id=1090475804 instance=ExtResource("15_wsu2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mass = 0.001

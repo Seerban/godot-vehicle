@@ -6,6 +6,9 @@ var radius : float = 0.5
 var global_ui : GlobalUI
 var race_started := false
 
+var best_ghost : GhostPlayer = null
+var ghost : GhostPlayer
+
 @export var start_pos : Node3D
 @export var checkpoints : Array[Node3D]
 var cp_instance : Node3D # temporary checkpoint beam reference
@@ -26,10 +29,20 @@ func start_race() -> void:
 	car = get_tree().get_first_node_in_group("car")
 	car.global_position = global_position
 	car.linear_velocity = Vector3.ZERO
+	
 	next_checkpoint()
+	
 	# Face toward first checkpoint
 	car.look_at(cp_instance.global_position)
 	car.rotation.y += PI/2
+	
+	
+	# startup ghost recording, replay if exists
+	ghost = GhostPlayer.new()
+	add_child(ghost)
+	ghost.start_recording()
+	
+	if best_ghost != null: best_ghost.start_replay()
 
 func next_checkpoint() -> void:
 	cp_idx += 1
@@ -45,9 +58,15 @@ func next_checkpoint() -> void:
 	cp_instance.global_position = checkpoints[cp_idx].global_position
 
 func finish_race() -> void:
+	print("finished racecc")
 	race_started = false
+	ghost.recording = false
 	global_ui.stop_timer()
 	$Area3D.visible = true
+	
+	# save ghost if best
+	if best_ghost == null or ghost.total_time < best_ghost.total_time: best_ghost = ghost
+	ghost = null
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != get_tree().get_first_node_in_group("car"): return
