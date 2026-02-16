@@ -72,6 +72,7 @@ func add_road(from, to) -> void:
 	var length = from.distance_to( to )
 	road.global_position = (from + to) / 2
 	road.scale = Vector3(width, height, length)
+	road.get_node("Line").scale.x /= width # Keep line decal the same size
 	road.look_at(to)
 	
 	#add_road_cap(from, width, road.rotation)
@@ -84,6 +85,8 @@ func add_road_cap(node : Node3D) -> void:
 	cap.global_position = node.global_position
 	cap.look_at( node.connections[0].global_position )
 	cap.scale = Vector3(width, height, width)
+	cap.get_node("Line").scale.x /= width
+	cap.get_node("Line").scale.z /= width
 
 func init_from_children() -> void:
 	var id = 0
