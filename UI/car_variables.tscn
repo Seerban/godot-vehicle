@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c71lsx5wpr5mv"]
+[gd_scene format=3 uid="uid://c71lsx5wpr5mv"]
 
 [ext_resource type="Script" uid="uid://7ta4rxobwhlm" path="res://Scripts/ui/car_variables.gd" id="1_5osty"]
 
-[node name="CarVariables" type="VBoxContainer"]
+[node name="CarVariables" type="VBoxContainer" unique_id=2134371723]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -15,50 +15,52 @@ size_flags_vertical = 3
 theme_override_constants/separation = 1
 script = ExtResource("1_5osty")
 
-[node name="Tires2" type="Label" parent="."]
+[node name="Tires2" type="Label" parent="." unique_id=422151742]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "---- ---- Presets ---- ----"
 horizontal_alignment = 1
 
-[node name="Presets1" type="HBoxContainer" parent="."]
+[node name="Presets1" type="HBoxContainer" parent="." unique_id=1562078683]
 layout_mode = 2
 
-[node name="Arcade" type="Button" parent="Presets1"]
+[node name="Arcade" type="Button" parent="Presets1" unique_id=1739357462]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Arcade"
 
-[node name="Real" type="Button" parent="Presets1"]
+[node name="Real" type="Button" parent="Presets1" unique_id=1585440711]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Realistic(ish)"
 
-[node name="Presets2" type="HBoxContainer" parent="."]
+[node name="Presets2" type="HBoxContainer" parent="." unique_id=1778120605]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Presets2"]
+[node name="Offroad" type="Button" parent="Presets2" unique_id=399732223]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
+text = "Offroad"
 
-[node name="Button2" type="Button" parent="Presets2"]
+[node name="Drift" type="Button" parent="Presets2" unique_id=1409594350]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
+text = "Drift"
 
-[node name="Power" type="HBoxContainer" parent="."]
+[node name="Power" type="HBoxContainer" parent="." unique_id=1828291168]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Power"]
+[node name="Label" type="Label" parent="Power" unique_id=1645081811]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -66,31 +68,31 @@ theme_override_font_sizes/font_size = 12
 text = "Power"
 horizontal_alignment = 1
 
-[node name="PowerSlider" type="HSlider" parent="Power"]
+[node name="PowerSlider" type="HSlider" parent="Power" unique_id=2074868587]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.5
-max_value = 10.0
+max_value = 15.0
 step = 0.1
 value = 3.0
 allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="Power"]
+[node name="Value" type="Label" parent="Power" unique_id=147188577]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "3.0"
 horizontal_alignment = 1
 
-[node name="Brake" type="HBoxContainer" parent="."]
+[node name="Brake" type="HBoxContainer" parent="." unique_id=666012652]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Brake"]
+[node name="Label" type="Label" parent="Brake" unique_id=147111078]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -98,31 +100,31 @@ theme_override_font_sizes/font_size = 12
 text = "Brake Force"
 horizontal_alignment = 1
 
-[node name="BrakeSlider" type="HSlider" parent="Brake"]
+[node name="BrakeSlider" type="HSlider" parent="Brake" unique_id=1175280431]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
-max_value = 15.0
+max_value = 30.0
 step = 0.1
 value = 5.0
 allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="Brake"]
+[node name="Value" type="Label" parent="Brake" unique_id=1109113220]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "5.0"
 horizontal_alignment = 1
 
-[node name="BrakeBias" type="HBoxContainer" parent="."]
+[node name="BrakeBias" type="HBoxContainer" parent="." unique_id=267855074]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="BrakeBias"]
+[node name="Label" type="Label" parent="BrakeBias" unique_id=301695015]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -130,7 +132,7 @@ theme_override_font_sizes/font_size = 12
 text = "Brake Bias"
 horizontal_alignment = 1
 
-[node name="BrakeBiasSlider" type="HSlider" parent="BrakeBias"]
+[node name="BrakeBiasSlider" type="HSlider" parent="BrakeBias" unique_id=1126271094]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -141,19 +143,19 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="BrakeBias"]
+[node name="Value" type="Label" parent="BrakeBias" unique_id=219308060]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "0.0"
 horizontal_alignment = 1
 
-[node name="Turn" type="HBoxContainer" parent="."]
+[node name="Turn" type="HBoxContainer" parent="." unique_id=2048731766]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Turn"]
+[node name="Label" type="Label" parent="Turn" unique_id=1196399751]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -161,7 +163,7 @@ theme_override_font_sizes/font_size = 12
 text = "Turn Angle"
 horizontal_alignment = 1
 
-[node name="TurnSlider" type="HSlider" parent="Turn"]
+[node name="TurnSlider" type="HSlider" parent="Turn" unique_id=657209723]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -172,25 +174,25 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="Turn"]
+[node name="Value" type="Label" parent="Turn" unique_id=547707405]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "18.0"
 horizontal_alignment = 1
 
-[node name="Tires" type="Label" parent="."]
+[node name="Tires" type="Label" parent="." unique_id=1678038893]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "---- ---- Tires ---- ----"
 horizontal_alignment = 1
 
-[node name="Grip" type="HBoxContainer" parent="."]
+[node name="Grip" type="HBoxContainer" parent="." unique_id=1539554769]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Grip"]
+[node name="Label" type="Label" parent="Grip" unique_id=661945099]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -198,7 +200,7 @@ theme_override_font_sizes/font_size = 12
 text = "Grip"
 horizontal_alignment = 1
 
-[node name="GripSlider" type="HSlider" parent="Grip"]
+[node name="GripSlider" type="HSlider" parent="Grip" unique_id=208438220]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -210,19 +212,19 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="Grip"]
+[node name="Value" type="Label" parent="Grip" unique_id=1254788783]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "3.0"
 horizontal_alignment = 1
 
-[node name="AccelForgive" type="HBoxContainer" parent="."]
+[node name="AccelForgive" type="HBoxContainer" parent="." unique_id=1791952525]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="AccelForgive"]
+[node name="Label" type="Label" parent="AccelForgive" unique_id=1440921561]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -230,7 +232,7 @@ theme_override_font_sizes/font_size = 12
 text = "Accel Grip Forgive"
 horizontal_alignment = 1
 
-[node name="AFSlider" type="HSlider" parent="AccelForgive"]
+[node name="AFSlider" type="HSlider" parent="AccelForgive" unique_id=2096092818]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -241,19 +243,19 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="AccelForgive"]
+[node name="Value" type="Label" parent="AccelForgive" unique_id=1640738941]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "0.75"
 horizontal_alignment = 1
 
-[node name="BrakeForgive" type="HBoxContainer" parent="."]
+[node name="BrakeForgive" type="HBoxContainer" parent="." unique_id=1998292308]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="BrakeForgive"]
+[node name="Label" type="Label" parent="BrakeForgive" unique_id=853727867]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -261,7 +263,7 @@ theme_override_font_sizes/font_size = 12
 text = "Brake Grip Forgive"
 horizontal_alignment = 1
 
-[node name="BFSlider" type="HSlider" parent="BrakeForgive"]
+[node name="BFSlider" type="HSlider" parent="BrakeForgive" unique_id=1602657356]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -272,25 +274,25 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="BrakeForgive"]
+[node name="Value" type="Label" parent="BrakeForgive" unique_id=1533761398]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "0.5"
 horizontal_alignment = 1
 
-[node name="Suspension" type="Label" parent="."]
+[node name="Suspension" type="Label" parent="." unique_id=1689020243]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "---- ---- Suspension ---- ----"
 horizontal_alignment = 1
 
-[node name="SpringInfluence" type="HBoxContainer" parent="."]
+[node name="SpringInfluence" type="HBoxContainer" parent="." unique_id=860571615]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="SpringInfluence"]
+[node name="Label" type="Label" parent="SpringInfluence" unique_id=1429741719]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -298,30 +300,30 @@ theme_override_font_sizes/font_size = 12
 text = "Spring Grip Infl."
 horizontal_alignment = 1
 
-[node name="SISlider" type="HSlider" parent="SpringInfluence"]
+[node name="SISlider" type="HSlider" parent="SpringInfluence" unique_id=1140699620]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 5.0
+max_value = 4.0
 step = 0.25
 value = 1.0
 allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="SpringInfluence"]
+[node name="Value" type="Label" parent="SpringInfluence" unique_id=924900776]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "1.0"
 horizontal_alignment = 1
 
-[node name="SpringHeight" type="HBoxContainer" parent="."]
+[node name="SpringHeight" type="HBoxContainer" parent="." unique_id=618921150]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="SpringHeight"]
+[node name="Label" type="Label" parent="SpringHeight" unique_id=1397779198]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -329,7 +331,7 @@ theme_override_font_sizes/font_size = 12
 text = "Height"
 horizontal_alignment = 1
 
-[node name="SHSlider" type="HSlider" parent="SpringHeight"]
+[node name="SHSlider" type="HSlider" parent="SpringHeight" unique_id=1701707417]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -341,19 +343,19 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="SpringHeight"]
+[node name="Value" type="Label" parent="SpringHeight" unique_id=1205754686]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "0.75"
 horizontal_alignment = 1
 
-[node name="SpringStrength" type="HBoxContainer" parent="."]
+[node name="SpringStrength" type="HBoxContainer" parent="." unique_id=574145565]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="SpringStrength"]
+[node name="Label" type="Label" parent="SpringStrength" unique_id=926698448]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -361,7 +363,7 @@ theme_override_font_sizes/font_size = 12
 text = "Spring Strength"
 horizontal_alignment = 1
 
-[node name="SpringSlider" type="HSlider" parent="SpringStrength"]
+[node name="SpringSlider" type="HSlider" parent="SpringStrength" unique_id=485866524]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -371,19 +373,19 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="SpringStrength"]
+[node name="Value" type="Label" parent="SpringStrength" unique_id=1428432973]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "20.0"
 horizontal_alignment = 1
 
-[node name="Damping" type="HBoxContainer" parent="."]
+[node name="Damping" type="HBoxContainer" parent="." unique_id=1108812482]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Damping"]
+[node name="Label" type="Label" parent="Damping" unique_id=2128781972]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -391,7 +393,7 @@ theme_override_font_sizes/font_size = 12
 text = "Damping"
 horizontal_alignment = 1
 
-[node name="DampSlider" type="HSlider" parent="Damping"]
+[node name="DampSlider" type="HSlider" parent="Damping" unique_id=1722332047]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -402,19 +404,19 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="Damping"]
+[node name="Value" type="Label" parent="Damping" unique_id=594319267]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "120.0"
 horizontal_alignment = 1
 
-[node name="Roll" type="HBoxContainer" parent="."]
+[node name="Roll" type="HBoxContainer" parent="." unique_id=1630566901]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Roll"]
+[node name="Label" type="Label" parent="Roll" unique_id=2071624990]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -422,7 +424,7 @@ theme_override_font_sizes/font_size = 12
 text = "Anti-Roll"
 horizontal_alignment = 1
 
-[node name="RollSlider" type="HSlider" parent="Roll"]
+[node name="RollSlider" type="HSlider" parent="Roll" unique_id=1963269150]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -432,25 +434,25 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="Roll"]
+[node name="Value" type="Label" parent="Roll" unique_id=373702829]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "10.0"
 horizontal_alignment = 1
 
-[node name="Aero" type="Label" parent="."]
+[node name="Aero" type="Label" parent="." unique_id=1317615490]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "---- ---- Aero ---- ----"
 horizontal_alignment = 1
 
-[node name="FrontAero" type="HBoxContainer" parent="."]
+[node name="FrontAero" type="HBoxContainer" parent="." unique_id=1459876972]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="FrontAero"]
+[node name="Label" type="Label" parent="FrontAero" unique_id=456348966]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -458,7 +460,7 @@ theme_override_font_sizes/font_size = 12
 text = "Front Aero"
 horizontal_alignment = 1
 
-[node name="AeroSlider" type="HSlider" parent="FrontAero"]
+[node name="AeroSlider" type="HSlider" parent="FrontAero" unique_id=326170803]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -469,19 +471,19 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="FrontAero"]
+[node name="Value" type="Label" parent="FrontAero" unique_id=1879305908]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "1.0"
 horizontal_alignment = 1
 
-[node name="BackAero" type="HBoxContainer" parent="."]
+[node name="BackAero" type="HBoxContainer" parent="." unique_id=1738347056]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="BackAero"]
+[node name="Label" type="Label" parent="BackAero" unique_id=1497502738]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -489,7 +491,7 @@ theme_override_font_sizes/font_size = 12
 text = "Back Aero"
 horizontal_alignment = 1
 
-[node name="BAeroSlider" type="HSlider" parent="BackAero"]
+[node name="BAeroSlider" type="HSlider" parent="BackAero" unique_id=332437794]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -500,7 +502,7 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="BackAero"]
+[node name="Value" type="Label" parent="BackAero" unique_id=706643739]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
@@ -509,6 +511,8 @@ horizontal_alignment = 1
 
 [connection signal="pressed" from="Presets1/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="Presets1/Real" to="." method="_on_real_pressed"]
+[connection signal="pressed" from="Presets2/Offroad" to="." method="_on_offroad_pressed"]
+[connection signal="pressed" from="Presets2/Drift" to="." method="_on_drift_pressed"]
 [connection signal="value_changed" from="Power/PowerSlider" to="." method="_on_power_slider_value_changed"]
 [connection signal="value_changed" from="Brake/BrakeSlider" to="." method="_on_brake_slider_value_changed"]
 [connection signal="value_changed" from="BrakeBias/BrakeBiasSlider" to="." method="_on_brake_bias_slider_value_changed"]

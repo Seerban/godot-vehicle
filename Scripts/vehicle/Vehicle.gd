@@ -76,6 +76,7 @@ func _ready() -> void:
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
-	set_acceleration( power * int(Input.is_action_pressed("forward")) )
+	var reversing := 1 - 2 * int(Input.is_key_pressed(KEY_R))
+	set_acceleration( power * int(Input.is_action_pressed("forward")) * reversing)
 	set_braking( brake_power * int(Input.is_action_pressed("backward")) )
 	set_steering( Input.get_axis("right","left") )

@@ -1,32 +1,33 @@
 [gd_scene format=3 uid="uid://vmjwheuujnye"]
 
-[node name="Instructions" type="VBoxContainer"]
+[node name="Instructions" type="VBoxContainer" unique_id=2061278088]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label4" type="Label" parent="."]
+[node name="Label4" type="Label" parent="." unique_id=634997599]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "Controls:
 C for free cursor
-F to flip over"
+F to flip over
+R for reverse"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=2043682757]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0.4117647, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "1 Custom Car Implementation"
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="." unique_id=1117516798]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "2 Godot Vehicle Node (Built-in)"
 
-[node name="Label5" type="Label" parent="."]
+[node name="Label5" type="Label" parent="." unique_id=263808814]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.45490196, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -34,5 +35,5 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 12
 text = "-customization not implemented"
 
-[node name="Instructions" type="Control" parent="."]
+[node name="Instructions" type="Control" parent="." unique_id=1029430599]
 layout_mode = 2
