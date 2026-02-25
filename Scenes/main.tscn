@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://csum7bqslyvv5" path="res://Scenes/test_map.tscn" id="2_jjvhh"]
-[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://UI/global_ui.gd" id="4_fdnlq"]
+[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scenes/global_ui.gd" id="4_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://dcyyvp5e8iaqm" path="res://UI/grip_ui.tscn" id="5_21xkr"]
 [ext_resource type="PackedScene" uid="uid://vmjwheuujnye" path="res://UI/instructions.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
@@ -64,7 +64,7 @@ script = ExtResource("4_fdnlq")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -313.0
+offset_top = -332.0
 offset_right = 274.0
 grow_vertical = 0
 pivot_offset = Vector2(290, 101)

@@ -79,6 +79,11 @@ func _on_roll_slider_value_changed(x: float) -> void:
 	$Roll/Value.text = str(x)
 	for w in car.wheels: w.anti_roll = x
 
+func _on_stabilizer_slider_value_changed(x: float) -> void:
+	if !check_validity(): return
+	$StabilizerAero/Value.text = str(x)
+	car.get_node("Stabilizer").aero_multiplier = x
+
 ##########################################################################################################
 # PRESETS ################################################################################################
 ##########################################################################################################
@@ -99,6 +104,7 @@ func _on_arcade_pressed() -> void:
 	_on_roll_slider_value_changed(30.0)
 	_on_aero_slider_value_changed(0.0)
 	_on_b_aero_slider_value_changed(0.0)
+	_on_stabilizer_slider_value_changed(0.0)
 
 func _on_real_pressed() -> void:
 	check_validity()
@@ -116,6 +122,7 @@ func _on_real_pressed() -> void:
 	_on_roll_slider_value_changed(25.0)
 	_on_aero_slider_value_changed(0.6)
 	_on_b_aero_slider_value_changed(1.0)
+	_on_stabilizer_slider_value_changed(0.0)
 
 func _on_offroad_pressed() -> void:
 	check_validity()
@@ -130,9 +137,10 @@ func _on_offroad_pressed() -> void:
 	_on_sh_slider_value_changed(0.9)
 	_on_spring_slider_value_changed(25.0)
 	_on_damp_slider_value_changed(40.0)
-	_on_roll_slider_value_changed(8.0)
+	_on_roll_slider_value_changed(1.0)
 	_on_aero_slider_value_changed(0)
 	_on_b_aero_slider_value_changed(0)
+	_on_stabilizer_slider_value_changed(0.0)
 
 func _on_drift_pressed() -> void:
 	check_validity()
@@ -150,3 +158,4 @@ func _on_drift_pressed() -> void:
 	_on_roll_slider_value_changed(30.0)
 	_on_aero_slider_value_changed(0.3)
 	_on_b_aero_slider_value_changed(0.1)
+	_on_stabilizer_slider_value_changed(0.0)

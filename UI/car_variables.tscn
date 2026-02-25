@@ -509,6 +509,36 @@ theme_override_font_sizes/font_size = 12
 text = "1.0"
 horizontal_alignment = 1
 
+[node name="StabilizerAero" type="HBoxContainer" parent="." unique_id=1368520940]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="StabilizerAero" unique_id=1366914005]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Shark Fin Stabilizer"
+horizontal_alignment = 1
+
+[node name="StabilizerSlider" type="HSlider" parent="StabilizerAero" unique_id=1351992511]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 4.0
+step = 0.1
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="StabilizerAero" unique_id=811374298]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "0.0"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Presets1/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="Presets1/Real" to="." method="_on_real_pressed"]
 [connection signal="pressed" from="Presets2/Offroad" to="." method="_on_offroad_pressed"]
@@ -527,3 +557,4 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="Roll/RollSlider" to="." method="_on_roll_slider_value_changed"]
 [connection signal="value_changed" from="FrontAero/AeroSlider" to="." method="_on_aero_slider_value_changed"]
 [connection signal="value_changed" from="BackAero/BAeroSlider" to="." method="_on_b_aero_slider_value_changed"]
+[connection signal="value_changed" from="StabilizerAero/StabilizerSlider" to="." method="_on_stabilizer_slider_value_changed"]
