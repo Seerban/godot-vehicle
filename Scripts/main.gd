@@ -12,6 +12,7 @@ func spawn_car(id : int) -> void:
 	old_car.name = "del"
 	var car =  load(cars[id]).instantiate()
 	add_child(car)
+	move_child(car, 0)
 	
 	car.global_position = old_car.global_position
 	car.global_rotation_degrees = old_car.global_rotation_degrees

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://xberniwgqqhi"]
+
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/black.tres" id="1_rxrc8"]
+[ext_resource type="Texture2D" uid="uid://ru8s1pj02h1d" path="res://Textures/circle.png" id="2_h1ch6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gqavc"]
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gqavc"]
+height = 1.0
+radius = 1.0
+
+[node name="RoadCap" type="StaticBody3D" unique_id=378128103]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1807016642]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("1_rxrc8")
+mesh = SubResource("CylinderMesh_gqavc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1321391583]
+shape = SubResource("CylinderShape3D_gqavc")
+
+[node name="Line" type="Sprite3D" parent="." unique_id=520625656]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 0.05, 0, 0.501, 0)
+axis = 1
+texture = ExtResource("2_h1ch6")

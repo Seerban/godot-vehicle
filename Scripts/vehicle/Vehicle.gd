@@ -1,6 +1,8 @@
 extends RigidBody3D
 class_name Vehicle
 
+@export var enabled := true
+
 var rear_grip_boost := 1.2
 
 @export var power := 3.0
@@ -73,6 +75,7 @@ func set_steering(x := 0.) -> void:
 
 func _ready() -> void:
 	setup_wheels(1.0, -0.3, [1.5, -1.5], [1, 0], [0, 1])
+	set_physics_process(enabled)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:

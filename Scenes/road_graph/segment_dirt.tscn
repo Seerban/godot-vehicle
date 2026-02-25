@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://by23w0ojj01rp"]
+
+[ext_resource type="Material" uid="uid://cwcsnuek286qr" path="res://Material/Ground067_1K-JPG/GroundTriplanar.tres" id="1_sj6is"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dg3xl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yk3km"]
+
+[node name="RoadSegment" type="StaticBody3D" unique_id=756056738]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1611607997]
+transform = Transform3D(1, 0, 0, 0, 0.99, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("1_sj6is")
+mesh = SubResource("BoxMesh_dg3xl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=18646322]
+shape = SubResource("BoxShape3D_yk3km")

@@ -3,11 +3,13 @@ extends Node3D
 
 @export var id := 99999
 @export var connections : Array[Node3D]
+@export var type : global.RoadSurface = global.RoadSurface.ASPHALT
 
+# Add lines for editor preview (tool)
 func _ready() -> void:
 	for node in connections:
 		if node == null or node == self: continue
-		var road = load("res://Scenes/road_graph/road_segment.tscn").instantiate() as StaticBody3D
+		var road = load("res://Scenes/road_graph/segment_road.tscn").instantiate() as StaticBody3D
 		add_child(road)
 		
 		var length = global_position.distance_to( node.global_position )

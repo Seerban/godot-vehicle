@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dg8x8amdeorhp"]
 
-[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/black.tres" id="1_yk3km"]
-[ext_resource type="Texture2D" uid="uid://vq5xf6y8xiqc" path="res://Textures/square.png" id="2_g07dv"]
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/black.tres" id="1_exhi2"]
+[ext_resource type="Texture2D" uid="uid://vq5xf6y8xiqc" path="res://Textures/square.png" id="2_twf24"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dg3xl"]
 
@@ -10,7 +10,7 @@
 [node name="RoadSegment" type="StaticBody3D" unique_id=756056738]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1611607997]
-material_override = ExtResource("1_yk3km")
+material_override = ExtResource("1_exhi2")
 mesh = SubResource("BoxMesh_dg3xl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=18646322]
@@ -19,4 +19,4 @@ shape = SubResource("BoxShape3D_yk3km")
 [node name="Line" type="Sprite3D" parent="." unique_id=1992605931]
 transform = Transform3D(0.025, 0, 0, 0, 0.5, 0, 0, 0, 0.2, 0, 0.501, 0)
 axis = 1
-texture = ExtResource("2_g07dv")
+texture = ExtResource("2_twf24")

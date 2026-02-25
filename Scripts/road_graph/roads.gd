@@ -1,6 +1,14 @@
 extends Node3D
 class_name RoadGraph
 
+
+var base_dir = "res://Scenes/road_graph/"
+var material_scene = {
+	global.RoadSurface.ASPHALT: "segment_road",
+	global.RoadSurface.DIRT: "segment_dirt",
+	global.RoadSurface.ASPHALT_DOUBLE: "segment_double_road",
+}
+
 @export var width := 10
 @export var height := 0.5
 @export var points : Array[Vector3] 
@@ -66,21 +74,24 @@ func symmetrize_graph() -> void:
 			if i not in j.connections:
 				j.connections.append(i)
 
-func add_road(from, to) -> void:
-	var road = load("res://Scenes/road_graph/road_segment.tscn").instantiate() as StaticBody3D
+func add_road(from : Vector3, to : Vector3, type : global.RoadSurface) -> void:
+	var path = base_dir + material_scene[type] + ".tscn"
+	var road = load(path).instantiate() as StaticBody3D
 	add_child(road)
 	var length = from.distance_to( to )
 	road.global_position = (from + to) / 2
 	road.scale = Vector3(width, height, length)
-	road.get_node("Line").scale.x /= width # Keep line decal the same size
+	if type in [global.RoadSurface.ASPHALT, global.RoadSurface.ASPHALT_DOUBLE]:
+		road.get_node("Line").scale.x /= width # Keep line decal the same size
 	road.look_at(to)
 	
 	#add_road_cap(from, width, road.rotation)
 	#add_road_cap(to, width, road.rotation)
 
 # Only to be used with plane forming nodes
-func add_road_cap(node : Node3D) -> void:
-	var cap = load("res://Scenes/road_graph/road_cap.tscn").instantiate() as StaticBody3D
+func add_road_cap(node : Node3D, type : global.RoadSurface) -> void:
+	var path = base_dir + material_scene[type] + "_cap.tscn"
+	var cap = load(path).instantiate() as StaticBody3D
 	add_child(cap)
 	cap.global_position = node.global_position
 	cap.look_at( node.connections[0].global_position )
@@ -102,11 +113,16 @@ func init_from_children() -> void:
 				[ Vector2(i.global_position.x, i.global_position.z),
 				  Vector2(j.global_position.x, j.global_position.z)] )
 			
+			var type = global.RoadSurface.ASPHALT
+			if i.type == global.RoadSurface.ASPHALT_DOUBLE or j.type == global.RoadSurface.ASPHALT_DOUBLE:
+				type = global.RoadSurface.ASPHALT_DOUBLE
+			if i.type == global.RoadSurface.DIRT or j.type == global.RoadSurface.DIRT:
+				type = global.RoadSurface.DIRT
 			# Spawn road segment
-			add_road(i.global_position, j.global_position)
+			add_road(i.global_position, j.global_position, type)
 		
 		if len(i.connections) >= 2 and forms_plane(i): # 3 points with self included to form plane
-			add_road_cap(i)
+			add_road_cap(i, i.type)
 		
 		i.queue_free()
 		id += 1
