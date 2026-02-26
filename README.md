@@ -1,9 +1,17 @@
 # godot-vehicle
 
-Early WIP implementation of a 3D Raycast Vehicle, customizable alternative to Godot's VehicleBody3D node.
+WIP implementation of a 3D Raycast Vehicle, customizable alternative to Godot's VehicleBody3D node.
 
-**Depending on the vehicle configuration:**
-"Arcade" feel is mostly affected by grip forgiveness parameters (1 = more arcadey).
-Realistic is prone to spinning out and understeering as acceleration and braking are either at 0% or 100% for now.
+*Grip Forgiveness* gives the "Arcade" feel (1 = more arcadey, grip not limited by acceleration or braking).
 
-Plan on adding TCS/ABS and improving suspension feel.
+*Spring Grip Influence* affects how much grip the tires gain under braking or downforce, this effect will can under/oversteer.
+
+Other variables hopefully intuitive.
+
+
+Current vehicle handling presets:
+
+Arcade, Realistic, Offroad, Drift
+
+
+Placeholder materials sourced from [ambientcg.com](https://ambientcg.com/)
