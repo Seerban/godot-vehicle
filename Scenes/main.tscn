@@ -52,6 +52,7 @@ shadow_enabled = true
 environment = SubResource("Environment_ohhpf")
 
 [node name="CameraAxis" parent="." unique_id=289753579 instance=ExtResource("6_6iyac")]
+sens = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1219505311 groups=["ui"]]
 script = ExtResource("4_fdnlq")
