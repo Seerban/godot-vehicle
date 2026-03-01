@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
 [ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/vehicle/wheel.tscn" id="2_ho8xs"]
-[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/vehicle/aero.gd" id="3_vuhs1"]
-[ext_resource type="Script" uid="uid://bgk6134ysdt35" path="res://Scripts/vehicle/stabilizer.gd" id="4_1r10j"]
+[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/aero/aero.gd" id="3_vuhs1"]
+[ext_resource type="Script" uid="uid://bgk6134ysdt35" path="res://Scripts/aero/stabilizer.gd" id="4_1r10j"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
 size = Vector3(4.3, 1, 1.8)
@@ -49,7 +49,7 @@ powered = true
 [node name="AeroBack" type="Node3D" parent="." unique_id=1734562107]
 transform = Transform3D(0.25, 0, 0, 0, 0.1, 0, 0, 0, 2, -2.1526327, 0.5488598, 0)
 script = ExtResource("3_vuhs1")
-aero_multiplier = 1.0
+aero_multiplier = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AeroBack" unique_id=1963199864]
 mesh = SubResource("BoxMesh_fwcw4")
@@ -61,14 +61,14 @@ script = ExtResource("4_1r10j")
 aero_multiplier = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stabilizer" unique_id=1460391965]
-transform = Transform3D(0.19999996, 0, 0, 0, 1, 0, 0, -1.0658141e-14, 1.0000002, -0.43525773, 0, 0)
+transform = Transform3D(0.19999996, 0, 0, 0, 1, 0, 0, -1.4210855e-14, 1.0000002, -0.38926607, 8.839436e-10, -0.0192914)
 mesh = SubResource("BoxMesh_fwcw4")
 surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")
 
 [node name="AeroFront" type="Node3D" parent="." unique_id=298486812]
 transform = Transform3D(0.25, 0, 0, 0, 0.09999999, 0, 0, 0, 1.9999998, 2.1760306, -0.45849878, 0)
 script = ExtResource("3_vuhs1")
-aero_multiplier = 1.0
+aero_multiplier = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AeroFront" unique_id=1480053370]
 mesh = SubResource("BoxMesh_fwcw4")

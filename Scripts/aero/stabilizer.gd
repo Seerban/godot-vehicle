@@ -19,5 +19,6 @@ func _physics_process(delta: float) -> void:
 	var forward_speed := car.linear_velocity.dot(forward)
 	
 	var angle_to_velocity :=forward.signed_angle_to( car.linear_velocity, up)
+	var force = side * forward_speed * angle_to_velocity * aero_multiplier
 	
-	car.apply_force(side * forward_speed * angle_to_velocity * aero_multiplier, rel)
+	car.apply_force(force, rel)

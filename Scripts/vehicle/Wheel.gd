@@ -102,7 +102,7 @@ func _friction() -> void: # sideways slowing force
 	if force.length() > grip_left:
 		force = force.normalized() * grip_left
 	grip_left -= force.length()
-		
+	
 	car.apply_force(force, get_contact_point())
 
 func _rotate_wheel(angle) -> void: # visually spins wheel
@@ -161,6 +161,7 @@ func _physics_process(delta: float) -> void:
 	
 	grip_left = get_grip()
 	_spring()
+	
 	brake(brake_power)
 	accelerate(accel_power)
 	_friction()

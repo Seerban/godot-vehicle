@@ -101,8 +101,8 @@ func add_road_cap(node : Node3D, type : global.RoadSurface) -> void:
 
 func init_from_children() -> void:
 	var id = 0
-	for i in get_children():
-		i.id = id
+	for i in get_children(): i.id = int(i.name)
+	for i in get_children(): i.init_connections()
 	for i in get_children():
 		for j in i.connections:
 			if i == j: continue

@@ -4,6 +4,7 @@ class_name Aero
 @export var aero_multiplier := 0.1
 @export var enabled := true
 
+@onready var aero_curve := load("res://Curves/downforce.tres")
 @onready var car : Vehicle = get_parent()
 
 func set_enabled(b : bool) -> void:
@@ -20,7 +21,8 @@ func _physics_process(delta: float) -> void:
 	var point_velocity := forward * forward_speed + rotational_velocity
 	
 	# applied downforce
-	var force := point_velocity.length() * aero_multiplier
+	var force : float = aero_curve.sample(point_velocity.length())
+	force *= aero_multiplier
 	var downforce := -global_transform.basis.y * force
 	
 	car.apply_force(downforce, rel)

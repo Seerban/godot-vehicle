@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dywq1p6f1dy25"]
 
-[ext_resource type="Script" uid="uid://vs6y5v57yc6k" path="res://Scripts/camera.gd" id="1_kx3uh"]
+[ext_resource type="Script" uid="uid://vs6y5v57yc6k" path="res://Scripts/vehicle/camera.gd" id="1_kx3uh"]
 
 [node name="CameraAxis" type="Node3D" unique_id=216649343]
 script = ExtResource("1_kx3uh")
