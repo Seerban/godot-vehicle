@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b3sdivdy3m6qs"]
+
+[ext_resource type="Shader" uid="uid://cmjsot7paqs0l" path="res://Material/Paint/Pearl.gdshader" id="1_nhkqa"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nhkqa")
+shader_parameter/fresnel_power = 2.0
+shader_parameter/interference_frequency = 8.0
+shader_parameter/albedo_color = Color(1, 0.8, 0.6, 1)
+shader_parameter/shift = Color(0.2, 0.7, 1, 1)
+shader_parameter/roughness = 1.0
+shader_parameter/metallic = 0.0
+shader_parameter/light_direction = Vector3(0, -1, 0)

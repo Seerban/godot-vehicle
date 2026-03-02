@@ -4,6 +4,7 @@ var car : Vehicle
 
 func _ready() -> void:
 	car = get_tree().get_first_node_in_group("car")
+	call_deferred("_on_rwd_pressed")
 
 func _on_rwd_pressed() -> void:
 	car = get_tree().get_first_node_in_group("car")

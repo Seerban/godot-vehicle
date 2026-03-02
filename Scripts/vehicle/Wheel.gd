@@ -75,8 +75,8 @@ func _spring() -> void: # upward force on car
 		var compression = (spring_length - dist) / spring_length
 		
 		# difference since last frame used for damping
-		# clamped to 10% so it does not launch car at tall curbs
-		var spring_diff = clamp(-0.1, compression - spring_prev, 0.1)
+		# clamped to 25% so it does not launch car at tall curbs
+		var spring_diff = clampf(compression - spring_prev, -100, 100)
 		spring_prev = compression
 		
 		var spring_force : float = compression * spring_strength

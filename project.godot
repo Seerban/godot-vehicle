@@ -37,6 +37,7 @@ import/blender/enabled=false
 car=""
 grip_ui=""
 ui=""
+player=""
 
 [input]
 

@@ -5,17 +5,18 @@ extends Node3D
 func spawn_material_army() -> void:
 	var pos = $MaterialTestArea.global_position
 	var colors = [ Color.WHITE, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE]
-	var mats = [ "Gloss", "Matte", "Metal", "Pearl", "Candy", "Toon"]
+	var mats = [ "Gloss", "Matte", "Metal", "Pearl", "Candy", "Toon", "Pearl_Matte", "Pearl_White"]
 	var cars : Array[Vehicle] = []
-	for j in range(5):
-		for i in range(6):
+	for j in range( len(colors) ):
+		for i in range( len(mats) ):
 			var car : Vehicle = load("res://Scenes/vehicle/vehicle.tscn").instantiate()
+			car.remove_from_group("car")
 			car.global_position = pos + Vector3(j * 10, 10, i * 5)
 			add_child(car)
 			car.set_physics_process(false)
 			cars.append(car)
-		for k in range(6):
-			var mesh : MeshInstance3D = cars[k + j*6].find_child("Mesh")
+		for k in range( len(mats) ):
+			var mesh : MeshInstance3D = cars[k + j*len(mats)].find_child("Mesh")
 			mesh.update_material(mats[k])
 			mesh.update_color( colors[j] )
 
