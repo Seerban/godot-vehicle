@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cyomwyse451em"]
+
+[resource]
+roughness = 0.2
+clearcoat_enabled = true
+clearcoat = 0.25
+anisotropy_enabled = true
+anisotropy = 1.0
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.13

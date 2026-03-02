@@ -15,7 +15,7 @@ var rear_grip_boost := 1.2
 
 # Accel curve
 @onready var accel_curve : Curve = load("res://Curves/acceleration.tres")
-var accel_speed := 1.0
+var accel_speed := 2.0
 var accel_point := 0.0
 
 # Steering smoothing
@@ -32,14 +32,18 @@ var brake_speed := 2.0
 # x_offset - distance from middle
 # y_offset - how deep the wheels are
 # axes - spot where an axis of 2 wheels is placed (front or back)
-# steerable - modifier to steering 
+# steerable - modifier to steering
+func default_setup() -> void:
+	setup_wheels(1.0, -0.3, [1.5, -1.5], [1, 0], [0, 1])
+
 func setup_wheels(x_offset : float, y_offset : float,
 		axes : Array[float],
 		steering : Array[float],
 		powered : Array[bool]) -> void:
 	# Remove old wheels
 	for w in wheels:
-		w.queue_free()
+		if w != null:
+			w.queue_free()
 	wheels.clear()
 	
 	# add 2 wheels per axis
@@ -94,10 +98,6 @@ func set_steering(x := 0.) -> void:
 	for w in wheels:
 		w.steer(x * turning_deg)
 
-func _ready() -> void:
-	setup_wheels(1.0, -0.3, [1.5, -1.5], [1, 0], [0, 1])
-	set_physics_process(enabled)
-
 func steer_handler(delta : float) -> float:
 	var steer = Input.get_axis("right","left")
 	steer_point = clampf( move_toward(steer_point, steer, delta * steer_speed), -1.0, 1.0)
@@ -113,7 +113,11 @@ func brake_handler(delta : float) -> float:
 func accel_handler(delta : float) -> float:
 	var accel = int(Input.is_action_pressed("forward"))
 	accel_point = move_toward(accel_point, accel, delta * accel_speed)
-	return accel * accel_curve.sample( linear_velocity.length() / top_speed )
+	return accel_point * accel_curve.sample( linear_velocity.length() / top_speed )
+
+func _ready() -> void:
+	default_setup()
+	set_physics_process(enabled)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:

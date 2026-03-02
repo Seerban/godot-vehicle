@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dg8x8amdeorhp"]
 
-[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/black.tres" id="1_exhi2"]
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/Misc/black.tres" id="1_exhi2"]
 [ext_resource type="Texture2D" uid="uid://vq5xf6y8xiqc" path="res://Textures/square.png" id="2_twf24"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dg3xl"]

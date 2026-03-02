@@ -2,14 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
 [ext_resource type="PackedScene" uid="uid://bkp2marfurbfm" path="res://Scenes/vehicle/wheel.tscn" id="2_ho8xs"]
+[ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/vehicle_mesh.gd" id="2_yrpag"]
 [ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/aero/aero.gd" id="3_vuhs1"]
 [ext_resource type="Script" uid="uid://bgk6134ysdt35" path="res://Scripts/aero/stabilizer.gd" id="4_1r10j"]
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/Misc/black.tres" id="5_r7o47"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ho8xs"]
 size = Vector3(4.3, 1, 1.8)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muxc4"]
-albedo_color = Color(1, 1, 0.49803922, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ho8xs"]
 size = Vector3(4.3, 1, 1.8)
@@ -25,7 +24,7 @@ script = ExtResource("1_n8cda")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=871590129]
 mesh = SubResource("BoxMesh_ho8xs")
-surface_material_override/0 = SubResource("StandardMaterial3D_muxc4")
+script = ExtResource("2_yrpag")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=232987619]
 shape = SubResource("BoxShape3D_ho8xs")
@@ -53,7 +52,7 @@ aero_multiplier = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AeroBack" unique_id=1963199864]
 mesh = SubResource("BoxMesh_fwcw4")
-surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")
+surface_material_override/0 = ExtResource("5_r7o47")
 
 [node name="Stabilizer" type="Node3D" parent="." unique_id=1668786226]
 transform = Transform3D(1.3784935, 0, 0, 0, -4.371136e-09, 0.10482421, 0, -0.09999994, -4.582011e-09, -1.3526328, 0.54885936, 0)
@@ -62,6 +61,7 @@ aero_multiplier = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stabilizer" unique_id=1460391965]
 transform = Transform3D(0.19999996, 0, 0, 0, 1, 0, 0, -1.4210855e-14, 1.0000002, -0.38926607, 8.839436e-10, -0.0192914)
+material_override = ExtResource("5_r7o47")
 mesh = SubResource("BoxMesh_fwcw4")
 surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")
 
@@ -71,5 +71,6 @@ script = ExtResource("3_vuhs1")
 aero_multiplier = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AeroFront" unique_id=1480053370]
+material_override = ExtResource("5_r7o47")
 mesh = SubResource("BoxMesh_fwcw4")
 surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")

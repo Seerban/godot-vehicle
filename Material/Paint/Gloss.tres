@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bntumvhv27k1f"]
+
+[resource]
+specular_mode = 1
+metallic = 0.1
+roughness = 0.4
+rim_enabled = true
+rim = 0.2
+clearcoat_enabled = true
+clearcoat_roughness = 0.0

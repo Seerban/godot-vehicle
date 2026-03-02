@@ -24,9 +24,9 @@ var cam_offset_scaling := 0.02
 var cam_fov_scaling := 0.02
 
 func _ready():
+	node_to_follow = get_tree().get_first_node_in_group("car")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target = rotation_degrees
-	# cam.h_offset = cam_default_height_offset
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

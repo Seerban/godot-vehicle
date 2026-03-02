@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://by23w0ojj01rp"]
 
-[ext_resource type="Material" uid="uid://cwcsnuek286qr" path="res://Material/Ground067_1K-JPG/GroundTriplanar.tres" id="1_sj6is"]
+[ext_resource type="Material" uid="uid://cwcsnuek286qr" path="res://Material/World/GroundTriplanar.tres" id="1_sj6is"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dg3xl"]
 

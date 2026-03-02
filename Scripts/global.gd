@@ -7,12 +7,10 @@ enum RoadSurface {
 }
 
 var material_grip = {
-	load("res://Material/test_material.tres"): 1,
-	load("res://Material/test_material2.tres"): 1,
-	load("res://Material/Grass008_1K-JPG/Grass.tres"): 0.7,
-	load("res://Material/Asphalt025C_1K-JPG/Asphalt.tres"): 1.2,
-	load("res://Material/Ground067_1K-JPG/Ground.tres"): 0.8,
-	load("res://Material/Snow006_1K-JPG/Snow.tres"): 0.6,
+	load("res://Material/World/Grass.tres"): 0.7,
+	load("res://Material/World/Asphalt.tres"): 1.2,
+	load("res://Material/World/Ground.tres"): 0.8,
+	load("res://Material/World/Snow.tres"): 0.6,
 }
 
 func get_material_grip(mat_res : Material):

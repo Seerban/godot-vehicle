@@ -1,11 +1,11 @@
-[gd_scene load_steps=83 format=3 uid="uid://csum7bqslyvv5"]
+[gd_scene format=3 uid="uid://csum7bqslyvv5"]
 
-[ext_resource type="Material" uid="uid://btpe15dydy4a8" path="res://Material/test_material.tres" id="1_orl8w"]
-[ext_resource type="Material" uid="uid://jqr2qedgdmm1" path="res://Material/test_material2.tres" id="2_orl8w"]
-[ext_resource type="Material" uid="uid://bt6ud6nwdpmca" path="res://Material/Asphalt025C_1K-JPG/Asphalt.tres" id="3_8xpg0"]
-[ext_resource type="Material" uid="uid://cgk2vnw81goki" path="res://Material/Ground067_1K-JPG/Ground.tres" id="4_gbc2j"]
-[ext_resource type="Material" uid="uid://dn4wot5n1ts0s" path="res://Material/Grass008_1K-JPG/Grass.tres" id="5_leqta"]
-[ext_resource type="Material" uid="uid://c7ghlaojupr0r" path="res://Material/Snow006_1K-JPG/Snow.tres" id="6_kr5nf"]
+[ext_resource type="Material" uid="uid://btpe15dydy4a8" path="res://Material/Misc/test_material.tres" id="1_orl8w"]
+[ext_resource type="Material" uid="uid://jqr2qedgdmm1" path="res://Material/Misc/test_material2.tres" id="2_orl8w"]
+[ext_resource type="Material" uid="uid://bt6ud6nwdpmca" path="res://Material/World/Asphalt.tres" id="3_8xpg0"]
+[ext_resource type="Material" uid="uid://cgk2vnw81goki" path="res://Material/Misc/Ground.tres" id="4_gbc2j"]
+[ext_resource type="Material" uid="uid://dn4wot5n1ts0s" path="res://Material/World/Grass.tres" id="5_leqta"]
+[ext_resource type="Material" uid="uid://c7ghlaojupr0r" path="res://Material/World/Snow.tres" id="6_kr5nf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8xpg0"]
 size = Vector3(10000, 1, 10000)

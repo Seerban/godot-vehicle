@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cc2x63d7jjjhr"]
 
-[ext_resource type="Material" uid="uid://c215l7jpypfh1" path="res://Material/checkpoint.tres" id="1_dl2cu"]
+[ext_resource type="Material" uid="uid://c215l7jpypfh1" path="res://Material/Misc/checkpoint.tres" id="1_dl2cu"]
 [ext_resource type="Script" uid="uid://br7itqjg0odiv" path="res://Scripts/sprint/checkpoint.gd" id="1_hktgi"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_f8x3u"]

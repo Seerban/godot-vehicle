@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coki6cblh3pr"]
 
-[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/black.tres" id="1_tjddn"]
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/Misc/black.tres" id="1_tjddn"]
 [ext_resource type="Texture2D" uid="uid://ru8s1pj02h1d" path="res://Textures/circle.png" id="2_2blev"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gqavc"]

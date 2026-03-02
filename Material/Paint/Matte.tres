@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://enxdcdlq23a2"]
+
+[resource]
+specular_mode = 1
+metallic = 0.25
+roughness = 0.8
+anisotropy_enabled = true
+anisotropy = -1.0
