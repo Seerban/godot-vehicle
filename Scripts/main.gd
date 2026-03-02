@@ -4,8 +4,8 @@ extends Node3D
 
 func spawn_material_army() -> void:
 	var pos = $MaterialTestArea.global_position
-	var colors = [ Color.WHITE, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE]
-	var mats = [ "Gloss", "Matte", "Metal", "Pearl", "Candy", "Toon", "Pearl_Matte", "Pearl_White"]
+	var colors = [ Color.GRAY, Color.WHITE, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE, Color.PINK, Color.ORANGE, Color.CYAN]
+	var mats = [ "Gloss", "Matte", "Metal", "Pearl", "Candy", "Toon", "Pearl_Matte"]
 	var cars : Array[Vehicle] = []
 	for j in range( len(colors) ):
 		for i in range( len(mats) ):

@@ -25,7 +25,7 @@ var on_ground := false
 @export var braking_grip_forgiveness := 0.5 # multiply braking effect on grip
 
 @export_group("Suspension")
-@export var spring_length := 0.75
+@export var spring_length := 0.5
 @export var spring_strength := 20.0
 @export var damping := 120.0
 @export var anti_roll := 15.0
@@ -40,6 +40,15 @@ var on_ground := false
 func set_length(x : float) -> void:
 	target_position = Vector3(0, -x, 0)
 	spring_length = x
+
+func set_wheel_dimensions(r : float, width : float) -> void:
+	tire_radius = r
+	radius = r
+	var mesh = $WheelMesh.mesh as CylinderMesh
+	mesh.top_radius = r
+	mesh.bottom_radius = r
+	mesh.height = width
+	
 
 func get_contact_point() -> Vector3: # point at spring end point
 	return global_position - car.global_position - global_basis.y * radius
@@ -75,8 +84,7 @@ func _spring() -> void: # upward force on car
 		var compression = (spring_length - dist) / spring_length
 		
 		# difference since last frame used for damping
-		# clamped to 25% so it does not launch car at tall curbs
-		var spring_diff = clampf(compression - spring_prev, -100, 100)
+		var spring_diff = clampf(compression - spring_prev, -1, 1)
 		spring_prev = compression
 		
 		var spring_force : float = compression * spring_strength

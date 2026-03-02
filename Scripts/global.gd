@@ -10,6 +10,7 @@ var material_grip = {
 	load("res://Material/World/Grass.tres"): 0.7,
 	load("res://Material/World/Asphalt.tres"): 1.2,
 	load("res://Material/World/Ground.tres"): 0.8,
+	load("res://Material/World/GroundTriplanar.tres"): 0.8,
 	load("res://Material/World/Snow.tres"): 0.6,
 }
 

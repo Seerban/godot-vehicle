@@ -34,7 +34,7 @@ var brake_speed := 2.0
 # axes - spot where an axis of 2 wheels is placed (front or back)
 # steerable - modifier to steering
 func default_setup() -> void:
-	setup_wheels(1.0, -0.3, [1.5, -1.5], [1, 0], [0, 1])
+	setup_wheels(1.0, -0.32, [1.55, -1.53], [1, 0], [0, 1])
 
 func setup_wheels(x_offset : float, y_offset : float,
 		axes : Array[float],

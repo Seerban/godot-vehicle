@@ -27,7 +27,7 @@ func _record_process(delta : float) -> void:
 func start_replay() -> void:
 	clock = 0.0
 	replaying = true
-	ghost_car = load("res://Scenes/vehicle/ghost_body.tscn").instantiate()
+	ghost_car = load("res://Scenes/sprint/ghost_body.tscn").instantiate()
 	add_child(ghost_car)
 
 func _replay_process(delta : float) -> void:
