@@ -4,7 +4,7 @@ class_name Stabilizer
 @export var aero_multiplier := 0.1
 @export var enabled := true
 
-@onready var car : Vehicle = get_parent()
+@onready var car : Vehicle = get_parent().get_parent()
 
 func set_enabled(b : bool) -> void:
 	enabled =  b

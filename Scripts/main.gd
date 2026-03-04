@@ -10,13 +10,14 @@ func spawn_material_army() -> void:
 	for j in range( len(colors) ):
 		for i in range( len(mats) ):
 			var car : Vehicle = load("res://Scenes/vehicle/vehicle.tscn").instantiate()
-			car.remove_from_group("car")
-			car.global_position = pos + Vector3(j * 10, 10, i * 5)
 			add_child(car)
-			car.set_physics_process(false)
+			car.lights.use_off_preset()
+			
+			car.global_position = pos + Vector3(j * 10, 10, i * 5)
+			car.set_physics_process(false) # Disables controls
 			cars.append(car)
 		for k in range( len(mats) ):
-			var mesh : MeshInstance3D = cars[k + j*len(mats)].find_child("Mesh")
+			var mesh : MeshInstance3D = cars[k + j*len(mats)].find_child("CarMesh")
 			mesh.update_material(mats[k])
 			mesh.update_color( colors[j] )
 

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bs83rrtwd6270"]
 
 [ext_resource type="Material" uid="uid://cwcsnuek286qr" path="res://Material/World/GroundTriplanar.tres" id="1_oaoh7"]
-[ext_resource type="Texture2D" uid="uid://ru8s1pj02h1d" path="res://Textures/circle.png" id="2_my2ap"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gqavc"]
 height = 1.0
@@ -17,8 +16,3 @@ mesh = SubResource("CylinderMesh_gqavc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1321391583]
 shape = SubResource("CylinderShape3D_gqavc")
-
-[node name="Line" type="Sprite3D" parent="." unique_id=520625656]
-transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 0.05, 0, 0.501, 0)
-axis = 1
-texture = ExtResource("2_my2ap")

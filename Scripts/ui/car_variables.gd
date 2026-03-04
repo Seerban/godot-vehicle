@@ -62,12 +62,12 @@ func _on_damp_slider_value_changed(x: float) -> void:
 func _on_aero_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$FrontAero/Value.text = str(x)
-	car.get_node("AeroFront").aero_multiplier = x
+	car.get_node("Aero/AeroFront").aero_multiplier = x
 
 func _on_b_aero_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$BackAero/Value.text = str(x)
-	car.get_node("AeroBack").aero_multiplier = x
+	car.get_node("Aero/AeroBack").aero_multiplier = x
 
 func _on_brake_bias_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
@@ -82,7 +82,7 @@ func _on_roll_slider_value_changed(x: float) -> void:
 func _on_stabilizer_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$StabilizerAero/Value.text = str(x)
-	car.get_node("Stabilizer").aero_multiplier = x
+	car.get_node("Aero/Stabilizer").aero_multiplier = x
 
 ##########################################################################################################
 # PRESETS ################################################################################################

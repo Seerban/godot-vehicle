@@ -46,6 +46,7 @@ func _draw():
 	if car != null:
 		draw_circle(middle_offset, 4, Color.BLUE)
 
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if car == null or global_ui == null:
 		car = get_tree().get_first_node_in_group("car")

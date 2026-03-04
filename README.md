@@ -10,3 +10,4 @@ Current vehicle handling presets:
 Arcade, Realistic, Offroad, Drift
 
 Placeholder materials sourced from [ambientcg.com](https://ambientcg.com/)
+Shader Materials from [GodotShaders](https://godotshaders.com/)

@@ -3,6 +3,6 @@
 [resource]
 specular_mode = 1
 metallic = 0.25
-roughness = 0.8
+roughness = 0.75
 anisotropy_enabled = true
 anisotropy = -1.0

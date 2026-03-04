@@ -10,8 +10,10 @@ var rear_grip_boost := 1.2
 @export var brake_power_multiplier := 5.0
 @export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
 @export var turning_deg := 18.0
+@export var CoM_Y := 0
 
-@onready var wheels : Array[Wheel] = [$WheelFR, $WheelFL, $WheelRR, $WheelRL]
+@onready var wheels : Array[Wheel]
+@onready var lights : LightsManager = $Lights
 
 # Accel curve
 @onready var accel_curve : Curve = load("res://Curves/acceleration.tres")
@@ -79,10 +81,14 @@ func setup_wheels(x_offset : float, y_offset : float,
 	grip_ui.car = self
 	grip_ui.update_ui()
 
+func setCoM() -> void:
+	center_of_mass = Vector3(0, CoM_Y, 0)
 # 0 to 1 acceleration
 func set_acceleration(x := 0.) -> void:
 	for w in wheels:
 		w.accel_power = x * power_multiplier
+	if x < 0: 	lights.set_reverse_intensity(-x)
+	else: 		lights.set_reverse_intensity(0)
 
 # 0 to 1 braking
 func set_braking(x := 0.) -> void:
@@ -92,6 +98,8 @@ func set_braking(x := 0.) -> void:
 		else:
 			w.brake_power = x - x * brake_bias
 		w.brake_power *= brake_power_multiplier
+	if x > 0.25: 	lights.set_back_intensity(1)
+	else: 		lights.set_back_intensity(lights.back_default)
 
 # -1 to 1 steering
 func set_steering(x := 0.) -> void:
@@ -117,6 +125,7 @@ func accel_handler(delta : float) -> float:
 
 func _ready() -> void:
 	default_setup()
+	setCoM()
 	set_physics_process(enabled)
 
 @warning_ignore("unused_parameter")
@@ -125,3 +134,4 @@ func _physics_process(delta : float) -> void:
 	set_acceleration( accel_handler(delta) * reversing)
 	set_braking( brake_handler(delta) )
 	set_steering( steer_handler(delta) )
+	if Input.is_action_just_pressed("lights"): lights.use_next_preset()

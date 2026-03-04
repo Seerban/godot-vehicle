@@ -5,12 +5,13 @@ class_name Aero
 @export var enabled := true
 
 @onready var aero_curve := load("res://Curves/downforce.tres")
-@onready var car : Vehicle = get_parent()
+@onready var car : Vehicle = get_parent().get_parent()
 
 func set_enabled(b : bool) -> void:
 	enabled =  b
 	set_physics_process(b)
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	var rel: Vector3 = global_transform.origin - car.global_transform.origin
 	

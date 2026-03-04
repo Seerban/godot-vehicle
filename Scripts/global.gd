@@ -6,12 +6,13 @@ enum RoadSurface {
 	DIRT,
 }
 
+var mat_path := "res://Material/World/"
+
 var material_grip = {
-	load("res://Material/World/Grass.tres"): 0.7,
-	load("res://Material/World/Asphalt.tres"): 1.2,
-	load("res://Material/World/Ground.tres"): 0.8,
-	load("res://Material/World/GroundTriplanar.tres"): 0.8,
-	load("res://Material/World/Snow.tres"): 0.6,
+	load(mat_path + "Asphalt.tres"): 1.2,
+	load(mat_path + "GroundTriplanar.tres"): 0.8,
+	load(mat_path + "Grass.tres"): 0.7,
+	load(mat_path + "Snow.tres"): 0.6,
 }
 
 func get_material_grip(mat_res : Material):

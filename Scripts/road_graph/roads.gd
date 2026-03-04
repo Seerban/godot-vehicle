@@ -77,8 +77,9 @@ func symmetrize_graph() -> void:
 func add_road(from : Vector3, to : Vector3, type : global.RoadSurface) -> void:
 	var path = base_dir + material_scene[type] + ".tscn"
 	var road = load(path).instantiate() as StaticBody3D
-	add_child(road)
 	var length = from.distance_to( to )
+	add_child(road)
+	
 	road.global_position = (from + to) / 2
 	road.scale = Vector3(width, height, length)
 	if type in [global.RoadSurface.ASPHALT, global.RoadSurface.ASPHALT_DOUBLE]:
@@ -93,11 +94,13 @@ func add_road_cap(node : Node3D, type : global.RoadSurface) -> void:
 	var path = base_dir + material_scene[type] + "_cap.tscn"
 	var cap = load(path).instantiate() as StaticBody3D
 	add_child(cap)
+	
 	cap.global_position = node.global_position
 	cap.look_at( node.connections[0].global_position )
 	cap.scale = Vector3(width, height, width)
-	cap.get_node("Line").scale.x /= width
-	cap.get_node("Line").scale.z /= width
+	if type in [global.RoadSurface.ASPHALT, global.RoadSurface.ASPHALT_DOUBLE]:
+		cap.get_node("Line").scale.x /= width
+		cap.get_node("Line").scale.z /= width
 
 func init_from_children() -> void:
 	var id = 0
