@@ -18,7 +18,7 @@ var auto_camera_height_angle := 15.0
 
 # vars for camera zoom / offset
 var cam_default_height_offset := 0.8
-var cam_default_offset := 4.0
+var cam_default_offset := 4.5
 var cam_default_fov := 75.0
 var cam_offset_scaling := 0.02
 var cam_fov_scaling := 0.02

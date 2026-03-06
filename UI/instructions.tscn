@@ -11,7 +11,8 @@ theme_override_constants/outline_size = 8
 text = "Controls:
 C for free cursor
 F to flip over
-R for reverse"
+R for reverse
+H for light mode"
 
 [node name="Instructions" type="Control" parent="." unique_id=1029430599]
 layout_mode = 2
