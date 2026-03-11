@@ -40,6 +40,7 @@ car=""
 grip_ui=""
 ui=""
 player=""
+radar=""
 
 [input]
 

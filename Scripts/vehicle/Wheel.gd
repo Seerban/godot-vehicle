@@ -55,9 +55,16 @@ func get_contact_point() -> Vector3: # point at spring end point
 
 func get_ground_grip_multiplier() -> float: # get multiplier of ground material
 	if not is_colliding(): return 1
-	var mesh = get_collider().get_node("MeshInstance3D")
+	var obj = get_collider()
+	var mesh
+	if obj is CSGPolygon3D:
+		mesh = obj
+	else: mesh = obj.get_node("MeshInstance3D")
+	
 	var mat
-	if mesh: mat = mesh.get_active_material(0)
+	if mesh:
+		if mesh is CSGPolygon3D: mat = mesh.material 
+		else: mat = mesh.get_active_material(0)
 	
 	if mesh and mat:
 		return global.get_material_grip(mat)

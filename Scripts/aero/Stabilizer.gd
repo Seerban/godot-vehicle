@@ -18,6 +18,8 @@ func _physics_process(delta: float) -> void:
 	var side := car.global_basis.z
 	var forward_speed := car.linear_velocity.dot(forward)
 	
+	if forward_speed < 0: return # band aid fix, freaks out when reversing
+	
 	var angle_to_velocity :=forward.signed_angle_to( car.linear_velocity, up)
 	var force = side * forward_speed * angle_to_velocity * aero_multiplier
 	

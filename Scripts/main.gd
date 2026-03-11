@@ -2,6 +2,11 @@ extends Node3D
 
 @onready var canvas = $CanvasLayer 
 
+func add_temp_map() -> void:
+	var map = load("res://Scenes/map.tscn").instantiate()
+	map.global_position.y = 1
+	add_child(map)
+
 func spawn_material_army() -> void:
 	var pos = $MaterialTestArea.global_position
 	var colors = [ Color.GRAY, Color.WHITE, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE, Color.PINK, Color.ORANGE, Color.CYAN]
@@ -32,3 +37,4 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	spawn_material_army()
+	#add_temp_map()

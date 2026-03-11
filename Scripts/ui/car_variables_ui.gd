@@ -3,7 +3,7 @@ extends VBoxContainer
 var car : Vehicle
 
 func check_validity() -> bool:
-	car = get_tree().get_first_node_in_group("car")
+	car = global.player_car
 	return is_instance_valid(car)
 
 func _on_power_slider_value_changed(x: float) -> void:

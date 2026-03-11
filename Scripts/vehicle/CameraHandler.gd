@@ -1,8 +1,8 @@
 extends Node3D
-class_name CameraAxis
+class_name CameraHandler
 
 @export var node_to_follow : Vehicle
-@onready var cam := $Camera3D
+var cam : Camera3D
 
 # vars for smoothing
 var target : Vector3 # Target angle position
@@ -17,14 +17,19 @@ var auto_move_smoothing := 0.033
 var auto_camera_height_angle := 15.0
 
 # vars for camera zoom / offset
-var cam_default_height_offset := 0.8
-var cam_default_offset := 4.5
+var cam_default_height_offset := 0.6
+var cam_default_offset := 4.6
 var cam_default_fov := 75.0
 var cam_offset_scaling := 0.02
 var cam_fov_scaling := 0.02
 
 func _ready():
-	node_to_follow = get_tree().get_first_node_in_group("car")
+	cam = Camera3D.new()
+	add_child(cam)
+	cam.rotation_degrees.y = 90
+	cam.v_offset = cam_default_height_offset
+	
+	node_to_follow = global.player_car
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target = rotation_degrees
 
@@ -53,6 +58,7 @@ func custom_lerp_angle(from : Vector3, to : Vector3, p: float) -> Vector3:
 func _physics_process(delta: float) -> void:
 	time_since_movement += delta
 	
+	# Move target angle and lerp towards it for smoothing
 	var temp_smoothing := smoothing # If automatic camera follow, lower smoothing
 	if time_since_movement > time_until_follow and node_to_follow.linear_velocity.length() > vel_until_follow:
 		target.y = -rad_to_deg( Vector3.FORWARD.signed_angle_to(node_to_follow.linear_velocity, Vector3.DOWN) ) - 90
@@ -60,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		temp_smoothing = auto_move_smoothing
 	rotation_degrees = custom_lerp_angle(rotation_degrees, target, temp_smoothing)
 	
-	cam.position = Vector3(cam_default_offset + node_to_follow.linear_velocity.length() * cam_offset_scaling, 0, 0)
+	cam.position.x = cam_default_offset + node_to_follow.linear_velocity.length() * cam_offset_scaling
 	cam.fov = cam_default_fov + node_to_follow.linear_velocity.length() * cam_fov_scaling
 	
 	global_position = node_to_follow.global_position

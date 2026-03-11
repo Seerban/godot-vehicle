@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://dho54kt8g7vq1"]
 
 [ext_resource type="Texture2D" uid="uid://ru8s1pj02h1d" path="res://Textures/circle.png" id="1_namvc"]
-[ext_resource type="Script" uid="uid://cfbxbvc8th77u" path="res://Scripts/ui/radar.gd" id="2_2ybt4"]
+[ext_resource type="Script" uid="uid://cfbxbvc8th77u" path="res://Scripts/ui/Radar.gd" id="2_2ybt4"]
 
 [node name="Radar" type="TextureRect" unique_id=2016502328]
 self_modulate = Color(1, 1, 1, 0.44705883)
 clip_children = 2
-clip_contents = true
 custom_minimum_size = Vector2(256, 256)
 anchors_preset = 3
 anchor_left = 1.0
@@ -21,7 +20,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("1_namvc")
 
-[node name="TextureRect" type="Control" parent="." unique_id=1591962183 groups=["radar"]]
+[node name="Texture" type="Control" parent="." unique_id=1591962183 groups=["radar"]]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

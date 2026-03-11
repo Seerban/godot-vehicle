@@ -22,7 +22,7 @@ func _ready() -> void:
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if not car:
-		car = get_tree().get_first_node_in_group("car")
+		car = global.player_car
 	
 	for i in range( len(bars) ):
 		bars[i].value = car.wheels[i].get_used_grip() / car.wheels[i].get_grip() * 100

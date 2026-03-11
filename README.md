@@ -4,7 +4,7 @@ WIP custom implementation of a 3D Raycast Vehicle, customizable alternative to G
 
 Proper documentation and ease of use for custom nodes node are not a priority at the moment. <br>
 
-# Current Classes:
+# Relevant Classes:
 <ol>
 <li><b>Vehicle</b>:  Handles the controls and general properties and layout of vehicle.</li>
 <li><b>Wheel</b> Handles the suspension and grip.</li>
@@ -12,7 +12,7 @@ Proper documentation and ease of use for custom nodes node are not a priority at
 <li><b>Aero/Stabilizer:</b>  Apply forces based on speed (And aero curve).</li>
 <li><b>SprintRace</b>: Turns Node3D children into checkpoints for a race and handles timer & <b>GhostPlayer</b> for replays.</li>
 <li><b>GhostPlayer</b>:  Can record or replay actions of vehicle object.</li>
-<li><b>RoadGraph</b>: Uses <b>RoadNode</b> nodes to automatically create roads out of selected presets, also updates <b>Radar</b>.</li>
+<li><b>RoadCurve</b>: Small wrapper for Path3D and CSGPolygon, updates <b>Radar</b>.</li>
 <li><b>Radar</b>: Draws roads, checkpoints & vehicles. (Currently unoptimized and unfinished)</li>
 </ol>
 

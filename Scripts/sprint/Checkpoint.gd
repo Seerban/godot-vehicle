@@ -1,7 +1,8 @@
 extends Area3D
+class_name Checkpoint
 
 @onready var sprint_node = get_parent()
 
 func _on_body_entered(body: Node3D) -> void:
-	if body == sprint_node.car:
+	if body == global.player_car:
 		sprint_node.next_checkpoint()

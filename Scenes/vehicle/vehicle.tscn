@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://dw6rlckembj5p"]
 
 [ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
-[ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/vehicle_mesh.gd" id="2_yrpag"]
-[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/aero/aero.gd" id="3_vuhs1"]
-[ext_resource type="Script" uid="uid://bgk6134ysdt35" path="res://Scripts/aero/stabilizer.gd" id="4_1r10j"]
+[ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/MeshColorable.gd" id="2_yrpag"]
+[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/aero/Aero.gd" id="3_vuhs1"]
+[ext_resource type="Script" uid="uid://bgk6134ysdt35" path="res://Scripts/aero/Stabilizer.gd" id="4_1r10j"]
 [ext_resource type="Script" uid="uid://b0w4gqiavrivh" path="res://Scripts/vehicle/LightsManager.gd" id="4_7tm40"]
 [ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/Misc/black.tres" id="5_r7o47"]
 

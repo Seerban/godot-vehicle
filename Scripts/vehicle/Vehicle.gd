@@ -30,6 +30,7 @@ var steer_return_speed := 2.0 # additional turn speed added when going opposite 
 @onready var brake_curve : Curve = load("res://Curves/brake.tres")
 var brake_point := 0.0
 var brake_speed := 2.0
+var brake_return_speed := 2.0 # additional turn speed on return
 
 # x_offset - distance from middle
 # y_offset - how deep the wheels are
@@ -98,8 +99,8 @@ func set_braking(x := 0.) -> void:
 		else:
 			w.brake_power = x - x * brake_bias
 		w.brake_power *= brake_power_multiplier
-	if x > 0.25: 	lights.set_back_intensity(1)
-	else: 		lights.set_back_intensity(lights.back_default)
+	if x > 0.25: lights.set_back_intensity(1)
+	else: lights.set_back_intensity(lights.back_default)
 
 # -1 to 1 steering
 func set_steering(x := 0.) -> void:
@@ -116,6 +117,8 @@ func steer_handler(delta : float) -> float:
 func brake_handler(delta : float) -> float:
 	var brake = int( Input.is_action_pressed("backward") )
 	brake_point = clampf( move_toward(brake_point, brake, delta * brake_speed), 0.0, 1.0)
+	if brake == 0:
+		brake_point = clampf( move_toward(brake_point, brake, delta * brake_return_speed), 0.0, 1.0)
 	return brake_curve.sample(brake_point)
 
 func accel_handler(delta : float) -> float:

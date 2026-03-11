@@ -12,7 +12,7 @@ var clock := 0.0
 var transforms : Array[Transform3D]
 
 func start_recording() -> void:
-	car = get_tree().get_first_node_in_group("car")
+	car = global.player_car
 	recording = true
 	transforms = []
 

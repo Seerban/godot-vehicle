@@ -1,4 +1,5 @@
 extends MeshInstance3D
+class_name MeshColorable
 
 var mat_name : String
 

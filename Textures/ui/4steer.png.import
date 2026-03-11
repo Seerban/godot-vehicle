@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xq4ry18v5d61"
-path="res://.godot/imported/fwd.png-3c68ecf76bf706978fd4b590becca916.ctex"
+uid="uid://ce1clmyscrbnu"
+path="res://.godot/imported/4steer.png-8b8cc190fc48dcb0d5543713b4431bb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/fwd.png"
-dest_files=["res://.godot/imported/fwd.png-3c68ecf76bf706978fd4b590becca916.ctex"]
+source_file="res://Textures/ui/4steer.png"
+dest_files=["res://.godot/imported/4steer.png-8b8cc190fc48dcb0d5543713b4431bb1.ctex"]
 
 [params]
 

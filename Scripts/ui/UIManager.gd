@@ -1,5 +1,5 @@
 extends CanvasLayer
-class_name GlobalUI
+class_name UIManager
 
 var timer := 0.0
 var timing := false
@@ -12,6 +12,7 @@ func show_sprint_prompt(sprint : Node3D) -> void:
 	chosen_sprint = sprint
 
 func hide_sprint_prompt() -> void:
+	print("hiding sprint prompt")
 	$SprintLabel.visible = false
 
 func start_timer() -> void:
