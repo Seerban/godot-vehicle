@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://br1r2ama8da6q"]
 
 [ext_resource type="Script" uid="uid://csmcd1q44yfgi" path="res://Scripts/ui/drive_terrain_ui.gd" id="1_3iffk"]
-[ext_resource type="Texture2D" uid="uid://dj4b256lwd084" path="res://Textures/rwd.png" id="1_u44xy"]
+[ext_resource type="Texture2D" uid="uid://dj4b256lwd084" path="res://Textures/ui/rwd.png" id="1_u44xy"]
 [ext_resource type="Texture2D" uid="uid://xq4ry18v5d61" path="res://Textures/ui/fwd.png" id="2_eynso"]
 [ext_resource type="Texture2D" uid="uid://cm85gnnfk33uy" path="res://Textures/ui/6x6.png" id="3_ffkbd"]
 [ext_resource type="Texture2D" uid="uid://bf6d4oly2l5i5" path="res://Textures/ui/awd.png" id="3_g8cx1"]

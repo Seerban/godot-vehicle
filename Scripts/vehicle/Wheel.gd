@@ -54,6 +54,8 @@ func get_contact_point() -> Vector3: # point at spring end point
 	return global_position - car.global_position - global_basis.y * radius
 
 func get_ground_grip_multiplier() -> float: # get multiplier of ground material
+	return 1 # temporarily disabled
+	'
 	if not is_colliding(): return 1
 	var obj = get_collider()
 	var mesh
@@ -69,7 +71,7 @@ func get_ground_grip_multiplier() -> float: # get multiplier of ground material
 	if mesh and mat:
 		return global.get_material_grip(mat)
 	
-	else: return 1
+	else: return 1'
 
 func get_spring_grip_influence() -> float: # spring compression boost on grip
 	return 1 + spring_prev / spring_length * spring_grip_influence

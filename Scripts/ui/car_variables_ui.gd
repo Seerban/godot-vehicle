@@ -2,6 +2,9 @@ extends VBoxContainer
 
 var car : Vehicle
 
+func _ready() -> void:
+	call_deferred("_on_arcade_pressed")
+
 func check_validity() -> bool:
 	car = global.player_car
 	return is_instance_valid(car)
@@ -97,7 +100,7 @@ func _on_arcade_pressed() -> void:
 	_on_grip_slider_value_changed(3.0)
 	_on_af_slider_value_changed(1.0)
 	_on_bf_slider_value_changed(1.0)
-	_on_si_slider_value_changed(2.0)
+	_on_si_slider_value_changed(1.0)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(25.0)
 	_on_damp_slider_value_changed(120.0)

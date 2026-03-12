@@ -17,7 +17,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="3d-vehicle"
 run/main_scene="uid://cq0e7kogvy3so"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Textures/icon.svg"
 
 [autoload]
 
@@ -29,6 +28,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
 [filesystem]
 
@@ -74,6 +77,13 @@ lights={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="AI"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 textures/default_filters/use_nearest_mipmap_filter=true

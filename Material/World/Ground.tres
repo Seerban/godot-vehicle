@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cwcsnuek286qr"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cgk2vnw81goki"]
 
 [ext_resource type="Texture2D" uid="uid://3754a4tci73o" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_Color.jpg" id="1_xrcoo"]
 [ext_resource type="Texture2D" uid="uid://bomt4nxyoy2k4" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_AmbientOcclusion.jpg" id="2_cnm4n"]
@@ -10,7 +10,6 @@
 albedo_texture = ExtResource("1_xrcoo")
 roughness_texture = ExtResource("5_67gyl")
 roughness_texture_channel = 4
-normal_enabled = true
 normal_texture = ExtResource("4_bdbak")
 ao_enabled = true
 ao_texture = ExtResource("2_cnm4n")

@@ -1,9 +1,112 @@
 [gd_scene format=3 uid="uid://dn0qui4knucok"]
 
 [ext_resource type="Texture2D" uid="uid://vx6us3cw5aqv" path="res://Textures/temp_map.png" id="1_s486e"]
+[ext_resource type="Texture2D" uid="uid://db5b2kneaoojg" path="res://Material/Assets/Grass008_1K-JPG/Grass008_1K-JPG_Color.jpg" id="3_myvm1"]
+[ext_resource type="Texture2D" uid="uid://b1kr2uyg7wrhd" path="res://Material/Assets/Rock030_1K-JPG/Rock030_1K-JPG_Color.jpg" id="3_np2xp"]
+[ext_resource type="Texture2D" uid="uid://bcvb68loscepv" path="res://Material/Assets/Rock030_1K-JPG/Rock030_1K-JPG_NormalDX.jpg" id="4_w7jjh"]
+[ext_resource type="Material" uid="uid://b7plw4wfav54b" path="res://Material/Misc/water.tres" id="5_q0mm3"]
+[ext_resource type="Texture2D" uid="uid://o0qtypdk38od" path="res://Material/Assets/Grass008_1K-JPG/Grass008_1K-JPG_NormalDX.jpg" id="6_6q3n4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_np2xp"]
+size = Vector3(1500, 50, 1500)
+
+[sub_resource type="Gradient" id="Gradient_4c2oa"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_olcgw"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dlo4w"]
+noise = SubResource("FastNoiseLite_olcgw")
+color_ramp = SubResource("Gradient_4c2oa")
+seamless = true
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_q6lx1"]
+_shader_parameters = {
+&"auto_base_texture": 0,
+&"auto_height_reduction": 0.1,
+&"auto_overlay_texture": 1,
+&"auto_slope": 1.0,
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.5,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"flat_terrain_normals": false,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise_texture": SubResource("NoiseTexture2D_dlo4w"),
+&"projection_threshold": 0.8
+}
+auto_shader = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qtum"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ie368"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_5qtum")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_x5dfk"]
+name = "Rock030_1K-JPG_Color"
+albedo_texture = ExtResource("3_np2xp")
+normal_texture = ExtResource("4_w7jjh")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_fls3e"]
+name = "Grass008_1K-JPG_Color"
+id = 1
+albedo_texture = ExtResource("3_myvm1")
+normal_texture = ExtResource("6_6q3n4")
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_k63oc"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_ie368")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_x5dfk"), SubResource("Terrain3DTextureAsset_fls3e")])
 
 [node name="Map" type="Node3D" unique_id=213433501]
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=352242112]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(150, 0, 0, 0, -6.5567083e-06, -150, 0, 150, -6.5567083e-06, 0, 106.1, 0)
+visible = false
+modulate = Color(1, 1, 1, 0.654902)
+texture_filter = 0
 texture = ExtResource("1_s486e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2065732947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+material_override = ExtResource("5_q0mm3")
+mesh = SubResource("BoxMesh_np2xp")
+
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=2119128327]
+data_directory = "res://addons/terrain_data/"
+material = SubResource("Terrain3DMaterial_q6lx1")
+assets = SubResource("Terrain3DAssets_k63oc")
+save_16_bit = true
+top_level = true
+metadata/_edit_lock_ = true

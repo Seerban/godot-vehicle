@@ -41,7 +41,11 @@ func _draw():
 	if car != null:
 		offset = middle_offset - Vector2(car.global_position.x, car.global_position.z) - Vector2(5, 0)
 	
-	for path in paths: draw_path3d_topdown(path)
+	for path in paths: 
+		if is_instance_valid(path) == false:
+			set_process(false)
+			return
+		draw_path3d_topdown(path)
 	draw_checkpoint() # only draws if active race
 	
 	# draw car last

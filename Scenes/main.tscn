@@ -47,7 +47,7 @@ point_count = 10
 script = ExtResource("1_6bp64")
 
 [node name="Vehicle" parent="." unique_id=854941751 groups=["player"] instance=ExtResource("7_6bp64")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 2, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 0, 7, 0)
 
 [node name="TestMap" parent="." unique_id=1745007540 instance=ExtResource("2_jjvhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.486115, 0, 0)

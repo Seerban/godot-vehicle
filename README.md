@@ -35,7 +35,8 @@ Proper documentation and ease of use for custom nodes node are not a priority at
 **Material Properties** <br>
 **Center of Mass** <br>
 
-## Asset Credits
+## Credits
+Terrain made using [Terrain3D](https://tokisan.com/terrain3d/) <br>
 Placeholder materials sourced from [ambientcg.com](https://ambientcg.com/) <br>
 Shader Materials from [GodotShaders](https://godotshaders.com/)
 

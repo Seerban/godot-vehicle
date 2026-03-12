@@ -2,10 +2,12 @@ extends Node3D
 
 @onready var canvas = $CanvasLayer 
 
-func add_temp_map() -> void:
-	var map = load("res://Scenes/map.tscn").instantiate()
-	map.global_position.y = 1
-	add_child(map)
+func replace_real_map() -> void:
+	$TestMap.queue_free()
+	$SprintRace.queue_free()
+	$RoadPath.queue_free()
+	add_child( load("res://Scenes/map.tscn").instantiate() )
+	global.player_car.position.y += 60
 
 func spawn_material_army() -> void:
 	var pos = $MaterialTestArea.global_position
@@ -36,5 +38,6 @@ func _input(event: InputEvent) -> void:
 		flip_car()
 
 func _ready() -> void:
-	spawn_material_army()
-	#add_temp_map()
+	#replace_real_map()
+	#spawn_material_army()
+	pass
