@@ -2,32 +2,6 @@ extends Node3D
 
 @onready var canvas = $CanvasLayer 
 
-func replace_real_map() -> void:
-	$TestMap.queue_free()
-	$SprintRace.queue_free()
-	$RoadPath.queue_free()
-	add_child( load("res://Scenes/map.tscn").instantiate() )
-	global.player_car.position.y += 60
-
-func spawn_material_army() -> void:
-	var pos = $MaterialTestArea.global_position
-	var colors = [ Color.GRAY, Color.WHITE, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE, Color.PINK, Color.ORANGE, Color.CYAN]
-	var mats = [ "Gloss", "Matte", "Metal", "Pearl", "Candy", "Toon", "Pearl_Matte"]
-	var cars : Array[Vehicle] = []
-	for j in range( len(colors) ):
-		for i in range( len(mats) ):
-			var car : Vehicle = load("res://Scenes/vehicle/vehicle.tscn").instantiate()
-			add_child(car)
-			car.lights.use_off_preset()
-			
-			car.global_position = pos + Vector3(j * 10, 10, i * 5)
-			car.set_physics_process(false) # Disables controls
-			cars.append(car)
-		for k in range( len(mats) ):
-			var mesh : MeshInstance3D = cars[k + j*len(mats)].find_child("CarMesh")
-			mesh.update_material(mats[k])
-			mesh.update_color( colors[j] )
-
 func flip_car() -> void:
 	var car := $Vehicle
 	car.linear_velocity += Vector3(0, 5, 0)
@@ -36,8 +10,3 @@ func flip_car() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F:
 		flip_car()
-
-func _ready() -> void:
-	#replace_real_map()
-	#spawn_material_army()
-	pass

@@ -2,7 +2,7 @@ extends Node
 
 # REFERENCES
 @export var player_car : Vehicle
-@export var radar_texture : Control
+@export var radar : Control
 @export var ui_manager : UIManager
 
 # GLOBAL PROPERTIES
@@ -32,5 +32,5 @@ func wait(seconds: float) -> void:
 
 func _ready() -> void:
 	player_car = get_tree().get_first_node_in_group("car")
-	radar_texture = get_tree().get_first_node_in_group("radar").get_node("Texture")
+	radar = get_tree().get_first_node_in_group("radar").get_node("Texture")
 	ui_manager = get_tree().get_first_node_in_group("ui")

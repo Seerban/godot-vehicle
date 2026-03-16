@@ -44,6 +44,7 @@ grip_ui=""
 ui=""
 player=""
 radar=""
+rand=""
 
 [input]
 

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c0bhjvugngqq6"]
+
+[ext_resource type="Texture2D" uid="uid://dc8uvqqraspuk" path="res://Textures/t-empty.png" id="1_ykaeh"]
+[ext_resource type="Texture2D" uid="uid://b14r2ndhp322d" path="res://Textures/road-fin.png" id="2_de4x6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hblrv"]
+albedo_texture = ExtResource("1_ykaeh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1albg"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb4vh"]
+albedo_texture = ExtResource("2_de4x6")
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(1.665, 0, 0)
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ykaeh"]
+size = Vector3(30, 1, 10)
+
+[node name="Intersection" type="StaticBody3D" unique_id=201121798]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=772238331]
+material_override = SubResource("StandardMaterial3D_hblrv")
+mesh = SubResource("BoxMesh_1albg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1381801802]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 4.371139e-07, 0, 10)
+material_override = SubResource("StandardMaterial3D_qb4vh")
+mesh = SubResource("BoxMesh_1albg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=457569054]
+transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, 4.371139e-07, 0, -10)
+material_override = SubResource("StandardMaterial3D_qb4vh")
+mesh = SubResource("BoxMesh_1albg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1385364660]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 10, 0, -4.371139e-07)
+material_override = SubResource("StandardMaterial3D_qb4vh")
+mesh = SubResource("BoxMesh_1albg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1876113990]
+transform = Transform3D(-1, 0, -2.6226832e-07, 0, 1, 0, 2.6226832e-07, 0, -1, -10, 0, 4.371139e-07)
+material_override = SubResource("StandardMaterial3D_qb4vh")
+mesh = SubResource("BoxMesh_1albg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=979020866]
+shape = SubResource("BoxShape3D_ykaeh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=382522276]
+shape = SubResource("BoxShape3D_ykaeh")

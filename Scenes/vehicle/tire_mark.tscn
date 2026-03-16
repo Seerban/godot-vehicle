@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://co2np8chupbah"]
+
+[ext_resource type="Material" uid="uid://b45n07f6qift3" path="res://Material/Misc/mark.tres" id="1_7e57o"]
+
+[sub_resource type="Curve" id="Curve_7e57o"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_15f04"]
+curve = SubResource("Curve_7e57o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r7o47"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_15f04")
+
+[sub_resource type="BoxMesh" id="BoxMesh_7tm40"]
+material = ExtResource("1_7e57o")
+size = Vector3(5, 1, 5)
+
+[node name="TireMark" type="GPUParticles3D" unique_id=661630129]
+amount = 100
+lifetime = 1.5
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_r7o47")
+draw_pass_1 = SubResource("BoxMesh_7tm40")

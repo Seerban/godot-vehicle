@@ -138,5 +138,4 @@ func _ready() -> void:
 		elif i.name.begins_with("Reverse"): reverses.append(i)
 	add_lights()
 	
-	use_low_preset()
-	set_reverse_intensity(0)
+	use_next_preset()

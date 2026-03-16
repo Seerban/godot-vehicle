@@ -51,6 +51,8 @@ func setup_wheels(x_offset : float, y_offset : float,
 	
 	# add 2 wheels per axis
 	for i in range( len(axes) ):
+		
+		
 		var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
 		wheel.position = Vector3( axes[i], y_offset, x_offset )
 		wheel.steering_multiplier = steering[i]

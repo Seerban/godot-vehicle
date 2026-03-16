@@ -2,20 +2,38 @@ extends Control
 class_name Radar
 
 @export var paths : Array[RoadPath]
+@export var water_bodies : Array[Path3D]
 
 @onready var middle_offset = get_parent().size / 2
 
 var node_radius := 3
 var cp_node_radius := 5
-var line_color := Color.RED
-var node_color := Color.RED
+var line_color := Color.BLACK
+var node_color := Color.BLACK
+var water_color := Color.ROYAL_BLUE
 var cp_color := Color.YELLOW
+var car_color := Color.WHITE
 
 var car : Vehicle # static in middle of map, used to compute offset
 
 var offset : Vector2
 
-func draw_path3d_topdown(p: Path3D):
+func draw_polygon_from_path(p : Path3D):
+	var points2d : PackedVector2Array = []
+	var colors : PackedColorArray = []
+	
+	for i in p.curve.point_count:
+		var pos = p.curve.get_point_position(i)
+		points2d.append(Vector2(pos.x, pos.z) + offset)
+		colors.append(water_color)
+	#for pt in points3d:
+	#	var point2d = Vector2(pt.x, pt.z) + offset
+	#	points2d.append(point2d)
+	#	colors.append(water_color)
+	
+	draw_polygon(points2d, colors)
+
+func draw_path3d_topdown(p : Path3D):
 	var points3d: PackedVector3Array = p.curve.get_baked_points()
 	var points2d: PackedVector2Array = []
 	
@@ -39,18 +57,15 @@ func draw_checkpoint():
 func _draw():
 	offset = middle_offset
 	if car != null:
-		offset = middle_offset - Vector2(car.global_position.x, car.global_position.z) - Vector2(5, 0)
+		offset = middle_offset - Vector2(car.global_position.x, car.global_position.z)
 	
-	for path in paths: 
-		if is_instance_valid(path) == false:
-			set_process(false)
-			return
-		draw_path3d_topdown(path)
+	for wb in water_bodies: draw_polygon_from_path(wb)
+	for path in paths: draw_path3d_topdown(path)
 	draw_checkpoint() # only draws if active race
 	
 	# draw car last
 	if car != null:
-		draw_circle(middle_offset, 4, Color.BLUE)
+		draw_circle(middle_offset, 4, car_color)
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:

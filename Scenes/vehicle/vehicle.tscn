@@ -7,6 +7,11 @@
 [ext_resource type="Script" uid="uid://b0w4gqiavrivh" path="res://Scripts/vehicle/LightsManager.gd" id="4_7tm40"]
 [ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/Misc/black.tres" id="5_r7o47"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r7o47"]
+friction = 0.5
+bounce = 0.1
+absorbent = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqrhd"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_78eqq"]
@@ -98,6 +103,7 @@ albedo_color = Color(0.7294118, 0.67058825, 0.1764706, 1)
 
 [node name="Vehicle" type="RigidBody3D" unique_id=973883457 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_r7o47")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 10, 0)
 script = ExtResource("1_n8cda")

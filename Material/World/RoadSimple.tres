@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dh8p38iw5lbfo"]
+
+[ext_resource type="Texture2D" uid="uid://btwp5ylfaxwrl" path="res://Textures/no-line.png" id="1_fud4c"]
+
+[resource]
+albedo_texture = ExtResource("1_fud4c")
+uv1_scale = Vector3(0.2, 8, 1)
+texture_filter = 0

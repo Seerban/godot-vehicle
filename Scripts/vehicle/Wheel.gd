@@ -1,6 +1,8 @@
 extends RayCast3D
 class_name Wheel
 
+const particle_rate_multiplier := 2
+
 var forward := Vector3.ZERO # forward
 var normal := Vector3.ZERO # up
 var forward_projection := Vector3.ZERO # forward direction projected on floor
@@ -23,6 +25,7 @@ var on_ground := false
 @export var spring_grip_influence := 1.0
 @export var acceleration_grip_forgiveness := 0.75 # multiply acceleration effect on grip 
 @export var braking_grip_forgiveness := 0.5 # multiply braking effect on grip
+@onready var tire_mark : GPUParticles3D
 
 @export_group("Suspension")
 @export var spring_length := 0.5
@@ -48,10 +51,10 @@ func set_wheel_dimensions(r : float, width : float) -> void:
 	mesh.top_radius = r
 	mesh.bottom_radius = r
 	mesh.height = width
-	
 
 func get_contact_point() -> Vector3: # point at spring end point
-	return global_position - car.global_position - global_basis.y * radius
+	return get_collision_point() - car.global_position
+	#return global_position - car.global_position - global_basis.y * radius
 
 func get_ground_grip_multiplier() -> float: # get multiplier of ground material
 	return 1 # temporarily disabled
@@ -125,6 +128,11 @@ func _friction() -> void: # sideways slowing force
 func _rotate_wheel(angle) -> void: # visually spins wheel
 	wheel.rotate(Vector3.FORWARD, angle)
 
+func update_particles() -> void:
+	tire_mark.emitting = grip_left <= 0.01
+	tire_mark.global_position = car.global_position + get_contact_point()
+	tire_mark.global_rotation = global_rotation
+
 func accelerate(power := 0.0) -> void:
 	if not on_ground or not powered: return
 	
@@ -172,6 +180,8 @@ func _ready() -> void:
 	wheel.mesh.top_radius = tire_radius
 	wheel.mesh.bottom_radius = tire_radius
 	radius = tire_radius * 0.94
+	tire_mark = load("res://Scenes/vehicle/tire_mark.tscn").instantiate()
+	get_tree().root.add_child(tire_mark)
 
 func _physics_process(delta: float) -> void:
 	fetch_vars()
@@ -183,3 +193,5 @@ func _physics_process(delta: float) -> void:
 	accelerate(accel_power)
 	_friction()
 	_rotate_wheel( car.linear_velocity.dot(global_basis.x) / 0.5 * delta )
+	
+	update_particles()
