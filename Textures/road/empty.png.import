@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btwp5ylfaxwrl"
-path.s3tc="res://.godot/imported/no-line.png-a00d0ec9892b61912fa324f3127f47a1.s3tc.ctex"
+uid="uid://dc8uvqqraspuk"
+path.s3tc="res://.godot/imported/empty.png-228e2ba7e31eff7e14e06011a95f5730.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/no-line.png"
-dest_files=["res://.godot/imported/no-line.png-a00d0ec9892b61912fa324f3127f47a1.s3tc.ctex"]
+source_file="res://Textures/road/empty.png"
+dest_files=["res://.godot/imported/empty.png-228e2ba7e31eff7e14e06011a95f5730.s3tc.ctex"]
 
 [params]
 

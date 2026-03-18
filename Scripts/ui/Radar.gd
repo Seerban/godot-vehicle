@@ -38,7 +38,7 @@ func draw_path3d_topdown(p : Path3D):
 	var points2d: PackedVector2Array = []
 	
 	for pt in points3d:
-		var point2d = Vector2(pt.x, pt.z) + offset
+		var point2d = Vector2(pt.x + p.global_position.x, pt.z + p.global_position.z) + offset
 		points2d.append(point2d)
 	
 	draw_polyline(points2d, line_color, 10)

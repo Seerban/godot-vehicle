@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://c0bhjvugngqq6"]
+[gd_scene format=3 uid="uid://6rfro48aykxg"]
 
-[ext_resource type="Texture2D" uid="uid://dc8uvqqraspuk" path="res://Textures/t-empty.png" id="1_ykaeh"]
-[ext_resource type="Texture2D" uid="uid://b14r2ndhp322d" path="res://Textures/road-fin.png" id="2_de4x6"]
+[ext_resource type="Texture2D" uid="uid://dc8uvqqraspuk" path="res://Textures/road/empty.png" id="1_ykaeh"]
+[ext_resource type="Texture2D" uid="uid://b14r2ndhp322d" path="res://Textures/road/road-fin.png" id="2_de4x6"]
+[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="3_de4x6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hblrv"]
 albedo_texture = ExtResource("1_ykaeh")
@@ -17,6 +18,20 @@ texture_filter = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykaeh"]
 size = Vector3(30, 1, 10)
+
+[sub_resource type="Curve3D" id="Curve3D_r8rg5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_57sv1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, -15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Intersection" type="StaticBody3D" unique_id=201121798]
 
@@ -49,3 +64,17 @@ shape = SubResource("BoxShape3D_ykaeh")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=382522276]
 shape = SubResource("BoxShape3D_ykaeh")
+
+[node name="RoadPath" type="Path3D" parent="." unique_id=759217180]
+visible = false
+curve = SubResource("Curve3D_r8rg5")
+script = ExtResource("3_de4x6")
+type = 2
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="RoadPath2" type="Path3D" parent="." unique_id=66449512]
+visible = false
+curve = SubResource("Curve3D_57sv1")
+script = ExtResource("3_de4x6")
+type = 2
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dakxynrdt52mx"]
+
+[ext_resource type="Material" uid="uid://c3uv2yrg8oxv1" path="res://Material/World/building1.tres" id="2_wjlyr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mo2lu"]
+size = Vector3(30, 60, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y5361"]
+size = Vector3(30, 60, 30)
+
+[node name="Building" type="StaticBody3D" unique_id=1246685143]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1771111682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+material_override = ExtResource("2_wjlyr")
+mesh = SubResource("BoxMesh_mo2lu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=140264547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+shape = SubResource("BoxShape3D_y5361")

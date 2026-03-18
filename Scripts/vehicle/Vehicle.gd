@@ -129,6 +129,7 @@ func accel_handler(delta : float) -> float:
 	return accel_point * accel_curve.sample( linear_velocity.length() / top_speed )
 
 func _ready() -> void:
+	lights.set_back_intensity(0)
 	default_setup()
 	setCoM()
 	set_physics_process(enabled)
@@ -140,3 +141,7 @@ func _physics_process(delta : float) -> void:
 	set_braking( brake_handler(delta) )
 	set_steering( steer_handler(delta) )
 	if Input.is_action_just_pressed("lights"): lights.use_next_preset()
+
+func _on_body_entered(body: Node) -> void:
+	if body is Hittable:
+		body.set_physics_process(true)

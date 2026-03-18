@@ -1,6 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bkriae67p8xhb"]
-
-[ext_resource type="Texture2D" uid="uid://b1kr2uyg7wrhd" path="res://Material/Assets/Rock030_1K-JPG/Rock030_1K-JPG_Color.jpg" id="1_3mifw"]
-
-[resource]
-albedo_texture = ExtResource("1_3mifw")

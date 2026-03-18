@@ -32,20 +32,10 @@ func _on_grip_slider_value_changed(x: float) -> void:
 		if w.position.x < 0:
 			w.grip *= car.rear_grip_boost
 
-func _on_si_slider_value_changed(x: float) -> void:
+func _on_gf_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
-	$SpringInfluence/Value.text = str(x)
-	for w in car.wheels: w.spring_grip_influence = x
-
-func _on_af_slider_value_changed(x: float) -> void:
-	if !check_validity(): return
-	$AccelForgive/Value.text = str(x)
-	for w in car.wheels: w.acceleration_grip_forgiveness = x
-
-func _on_bf_slider_value_changed(x: float) -> void:
-	if !check_validity(): return
-	$BrakeForgive/Value.text = str(x)
-	for w in car.wheels: w.braking_grip_forgiveness = x
+	$GripForgive/Value.text = str(x)
+	for w in car.wheels: w.grip_forgiveness = x
 
 func _on_sh_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
@@ -98,9 +88,7 @@ func _on_arcade_pressed() -> void:
 	_on_brake_bias_slider_value_changed(-0.1)
 	_on_turn_slider_value_changed(18.0)
 	_on_grip_slider_value_changed(3.0)
-	_on_af_slider_value_changed(1.0)
-	_on_bf_slider_value_changed(1.0)
-	_on_si_slider_value_changed(1.0)
+	_on_gf_slider_value_changed(1.0)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(25.0)
 	_on_damp_slider_value_changed(120.0)
@@ -116,9 +104,7 @@ func _on_real_pressed() -> void:
 	_on_brake_bias_slider_value_changed(-0.2)
 	_on_turn_slider_value_changed(18.0)
 	_on_grip_slider_value_changed(3.0)
-	_on_af_slider_value_changed(0.6)
-	_on_bf_slider_value_changed(0.3)
-	_on_si_slider_value_changed(1.5)
+	_on_gf_slider_value_changed(0.6)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(30.0)
 	_on_damp_slider_value_changed(100.0)
@@ -134,9 +120,7 @@ func _on_offroad_pressed() -> void:
 	_on_brake_bias_slider_value_changed(0.0)
 	_on_turn_slider_value_changed(18.0)
 	_on_grip_slider_value_changed(3.0)
-	_on_af_slider_value_changed(0.75)
-	_on_bf_slider_value_changed(0.5)
-	_on_si_slider_value_changed(1.5)
+	_on_gf_slider_value_changed(0.75)
 	_on_sh_slider_value_changed(1.0)
 	_on_spring_slider_value_changed(23.0)
 	_on_damp_slider_value_changed(100.0)
@@ -152,9 +136,7 @@ func _on_drift_pressed() -> void:
 	_on_brake_bias_slider_value_changed(-1)
 	_on_turn_slider_value_changed(30.0)
 	_on_grip_slider_value_changed(2.0)
-	_on_af_slider_value_changed(0.75)
-	_on_bf_slider_value_changed(0.75)
-	_on_si_slider_value_changed(2.25)
+	_on_gf_slider_value_changed(0.75)
 	_on_sh_slider_value_changed(0.4)
 	_on_spring_slider_value_changed(30.0)
 	_on_damp_slider_value_changed(100.0)

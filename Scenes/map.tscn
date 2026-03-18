@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://o0qtypdk38od" path="res://Material/Assets/Grass008_1K-JPG/Grass008_1K-JPG_NormalDX.jpg" id="6_6q3n4"]
 [ext_resource type="Texture2D" uid="uid://bgufy6uktaltl" path="res://Material/Assets/Ground080_1K-JPG/Ground080_1K-JPG_Color.jpg" id="7_6q3n4"]
 [ext_resource type="Texture2D" uid="uid://dgibxfukig3hf" path="res://Material/Assets/Ground080_1K-JPG/Ground080_1K-JPG_NormalDX.jpg" id="8_4c2oa"]
-[ext_resource type="PackedScene" uid="uid://cbubjqnrsxaur" path="res://Scenes/world_objects/empty.tscn" id="9_4c2oa"]
+[ext_resource type="PackedScene" uid="uid://cbubjqnrsxaur" path="res://Scenes/road/empty.tscn" id="9_4c2oa"]
 [ext_resource type="Texture2D" uid="uid://3754a4tci73o" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_Color.jpg" id="9_dlo4w"]
 [ext_resource type="Texture2D" uid="uid://b2pyay57gx01f" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_NormalDX.jpg" id="10_q6lx1"]
 [ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="12_q6lx1"]

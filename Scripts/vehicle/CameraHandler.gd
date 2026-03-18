@@ -67,6 +67,9 @@ func _physics_process(delta: float) -> void:
 	rotation_degrees = custom_lerp_angle(rotation_degrees, target, temp_smoothing)
 	
 	cam.position.x = cam_default_offset + node_to_follow.linear_velocity.length() * cam_offset_scaling
+	cam.position.x = clamp(cam.position.x, 0, (global_position - $RayCast3D.get_collision_point()).length())
 	cam.fov = cam_default_fov + node_to_follow.linear_velocity.length() * cam_fov_scaling
 	
+	
 	global_position = node_to_follow.global_position
+	if global_position.y < 25: global_position.y = 25

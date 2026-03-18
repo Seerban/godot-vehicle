@@ -19,11 +19,10 @@ Proper documentation and ease of use for custom nodes node are not a priority at
 
 # Adjustable Parameters
 **Power & Brake Force**: How much force the wheels can produce. (Limited by max grip) <br>
-**Brake Bias**: Where the brake force is applied (percentage), -1 = rear bias and 1 = front bias (Based on position of wheel relative to 0 0 0). <br>
+**Brake Bias**: Where the brake force is applied, causes drifty handling toward -1 (rear) and understeer toward 1 (front) <br>
 **Turn Angle**: Maximum wheel angle when turning. <br>
 **Grip**: Multiplier to maximum grip. <br>
-**Grip Forgiveness**: Makes specified interaction use a percentage of the force it actually uses. Gives the "Arcade" feel (1 = more arcadey, grip not limited by reduced under acceleration or braking).<br>
-**Spring Grip Influence**: Grants bonus max grip based on downforce. <br>
+**Grip Forgiveness**: Makes acceleration and braking less costly on grip. Gives the "Arcade" feel (1 = more arcadey, grip not limited by reduced under acceleration or braking).<br>
 **Height, Strength, Damping**: Suspension parameters. <br>
 **Anti-roll**: Counter-force to rotation. (Might cause undesired understeer) <br>
 **Aero**: Downforce at position of aero component. (One at rear and one at front for example vehicle) <br>

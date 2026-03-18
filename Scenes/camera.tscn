@@ -4,3 +4,6 @@
 
 [node name="CameraManager" type="Node3D" unique_id=216649343]
 script = ExtResource("1_kx3uh")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1899007296]
+target_position = Vector3(20, 0, 0)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bjts6tf71j1fu"]
+
+[ext_resource type="Script" uid="uid://h60t7ey33vc0" path="res://Scripts/world_objects/hittable.gd" id="1_qvu7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgfio"]
+albedo_color = Color(0.28999957, 0.5269199, 0.07631167, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bgfio"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bgfio"]
+size = Vector3(1, 2, 1)
+
+[node name="Bin" type="RigidBody3D" unique_id=301916848]
+mass = 0.1
+script = ExtResource("1_qvu7d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1064531563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_bgfio")
+mesh = SubResource("BoxMesh_bgfio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=965074000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_bgfio")

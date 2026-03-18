@@ -3,8 +3,8 @@ extends Path3D
 class_name RoadPath
 
 const mat_path = "Material/World/"
-var types = ["Road", "RoadSimple", "Invisible"]
-@export_enum("Road", "RoadSimple", "Invisible") var type : int = 1
+var types = ["Road", "RoadSimple", "Invisible", "RoadEmpty"]
+@export_enum("Road", "RoadSimple", "Invisible", "RoadEmpty") var type : int = 1
 
 func _ready() -> void:
 	if types[type] != "Invisible":
@@ -15,4 +15,3 @@ func _ready() -> void:
 		road.path_node = ^".."
 	
 	global.radar.paths.append(self)
-	

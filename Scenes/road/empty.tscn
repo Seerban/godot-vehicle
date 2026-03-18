@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cbubjqnrsxaur"]
 
-[ext_resource type="Texture2D" uid="uid://dc8uvqqraspuk" path="res://Textures/t-empty.png" id="1_ek87d"]
+[ext_resource type="Texture2D" uid="uid://dc8uvqqraspuk" path="res://Textures/road/empty.png" id="1_ek87d"]
+[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="2_grlyq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grlyq"]
 albedo_texture = ExtResource("1_ek87d")
@@ -11,6 +12,13 @@ size = Vector3(10, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ek87d"]
 size = Vector3(10, 1, 10)
 
+[sub_resource type="Curve3D" id="Curve3D_scf5g"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, -5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="Intersection" type="StaticBody3D" unique_id=1842989046]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=772238331]
@@ -20,3 +28,9 @@ mesh = SubResource("BoxMesh_1albg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1872477993]
 shape = SubResource("BoxShape3D_ek87d")
+
+[node name="RoadPath" type="Path3D" parent="." unique_id=378528713]
+visible = false
+curve = SubResource("Curve3D_scf5g")
+script = ExtResource("2_grlyq")
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"

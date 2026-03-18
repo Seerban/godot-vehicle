@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c3uv2yrg8oxv1"]
+
+[ext_resource type="Texture2D" uid="uid://d1a2ysg4fplyf" path="res://Textures/window.png" id="1_an3we"]
+
+[resource]
+albedo_texture = ExtResource("1_an3we")
+uv1_scale = Vector3(0.27, 0.1, 0.27)
+uv1_triplanar = true
+texture_filter = 0

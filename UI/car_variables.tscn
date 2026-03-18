@@ -219,12 +219,12 @@ theme_override_font_sizes/font_size = 12
 text = "3.0"
 horizontal_alignment = 1
 
-[node name="AccelForgive" type="HBoxContainer" parent="." unique_id=1791952525]
+[node name="GripForgive" type="HBoxContainer" parent="." unique_id=1791952525]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="AccelForgive" unique_id=1440921561]
+[node name="Label" type="Label" parent="GripForgive" unique_id=1440921561]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -232,7 +232,7 @@ theme_override_font_sizes/font_size = 12
 text = "Accel Grip Forgive"
 horizontal_alignment = 1
 
-[node name="AFSlider" type="HSlider" parent="AccelForgive" unique_id=2096092818]
+[node name="GFSlider" type="HSlider" parent="GripForgive" unique_id=2096092818]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -243,79 +243,17 @@ allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="AccelForgive" unique_id=1640738941]
+[node name="Value" type="Label" parent="GripForgive" unique_id=1640738941]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
 text = "0.75"
 horizontal_alignment = 1
 
-[node name="BrakeForgive" type="HBoxContainer" parent="." unique_id=1998292308]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="Label" type="Label" parent="BrakeForgive" unique_id=853727867]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 12
-text = "Brake Grip Forgive"
-horizontal_alignment = 1
-
-[node name="BFSlider" type="HSlider" parent="BrakeForgive" unique_id=1602657356]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.05
-value = 0.5
-allow_greater = true
-allow_lesser = true
-ticks_on_borders = true
-
-[node name="Value" type="Label" parent="BrakeForgive" unique_id=1533761398]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "0.5"
-horizontal_alignment = 1
-
 [node name="Suspension" type="Label" parent="." unique_id=1689020243]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "---- ---- Suspension ---- ----"
-horizontal_alignment = 1
-
-[node name="SpringInfluence" type="HBoxContainer" parent="." unique_id=860571615]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="Label" type="Label" parent="SpringInfluence" unique_id=1429741719]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 12
-text = "Spring Grip Infl."
-horizontal_alignment = 1
-
-[node name="SISlider" type="HSlider" parent="SpringInfluence" unique_id=1140699620]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 4.0
-step = 0.25
-value = 1.0
-allow_greater = true
-allow_lesser = true
-ticks_on_borders = true
-
-[node name="Value" type="Label" parent="SpringInfluence" unique_id=924900776]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "1.0"
 horizontal_alignment = 1
 
 [node name="SpringHeight" type="HBoxContainer" parent="." unique_id=618921150]
@@ -548,9 +486,7 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="BrakeBias/BrakeBiasSlider" to="." method="_on_brake_bias_slider_value_changed"]
 [connection signal="value_changed" from="Turn/TurnSlider" to="." method="_on_turn_slider_value_changed"]
 [connection signal="value_changed" from="Grip/GripSlider" to="." method="_on_grip_slider_value_changed"]
-[connection signal="value_changed" from="AccelForgive/AFSlider" to="." method="_on_af_slider_value_changed"]
-[connection signal="value_changed" from="BrakeForgive/BFSlider" to="." method="_on_bf_slider_value_changed"]
-[connection signal="value_changed" from="SpringInfluence/SISlider" to="." method="_on_si_slider_value_changed"]
+[connection signal="value_changed" from="GripForgive/GFSlider" to="." method="_on_gf_slider_value_changed"]
 [connection signal="value_changed" from="SpringHeight/SHSlider" to="." method="_on_sh_slider_value_changed"]
 [connection signal="value_changed" from="SpringStrength/SpringSlider" to="." method="_on_spring_slider_value_changed"]
 [connection signal="value_changed" from="Damping/DampSlider" to="." method="_on_damp_slider_value_changed"]

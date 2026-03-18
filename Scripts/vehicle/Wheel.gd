@@ -22,10 +22,11 @@ var on_ground := false
 @export var tire_radius := 0.5
 @export var radius := 0.0 # practical size, not visual
 @export var grip := 3.0
-@export var spring_grip_influence := 1.0
-@export var acceleration_grip_forgiveness := 0.75 # multiply acceleration effect on grip 
-@export var braking_grip_forgiveness := 0.5 # multiply braking effect on grip
-@onready var tire_mark : GPUParticles3D
+@export var acceleration_grip_usage_multiplier := 0.3 # makes acceleration less costly
+@export var grip_forgiveness := 0.75 # makes acceleration and braking use less grip
+
+@onready var tire_mark : GPUParticles3D # visual skid particle
+@onready var grip_curve : Curve = load("res://Curves/grip.tres") # spring grip
 
 @export_group("Suspension")
 @export var spring_length := 0.5
@@ -58,26 +59,9 @@ func get_contact_point() -> Vector3: # point at spring end point
 
 func get_ground_grip_multiplier() -> float: # get multiplier of ground material
 	return 1 # temporarily disabled
-	'
-	if not is_colliding(): return 1
-	var obj = get_collider()
-	var mesh
-	if obj is CSGPolygon3D:
-		mesh = obj
-	else: mesh = obj.get_node("MeshInstance3D")
-	
-	var mat
-	if mesh:
-		if mesh is CSGPolygon3D: mat = mesh.material 
-		else: mat = mesh.get_active_material(0)
-	
-	if mesh and mat:
-		return global.get_material_grip(mat)
-	
-	else: return 1'
 
-func get_spring_grip_influence() -> float: # spring compression boost on grip
-	return 1 + spring_prev / spring_length * spring_grip_influence
+func get_spring_grip_influence() -> float: # spring compression effect on grip
+	return grip_curve.sample( (spring_length - spring_prev) / spring_length )
 
 func get_grip() -> float:
 	return grip * get_ground_grip_multiplier() * get_spring_grip_influence()
@@ -136,28 +120,28 @@ func update_particles() -> void:
 func accelerate(power := 0.0) -> void:
 	if not on_ground or not powered: return
 	
-	var force = forward_projection * power
+	var force = forward * power
+	var grip_used = force.length() * acceleration_grip_usage_multiplier
 	
-	if force.length() > grip_left:
-		force = force.normalized() * grip_left
-	grip_left -= force.length() * (1 - acceleration_grip_forgiveness)
+	if grip_used > grip_left:
+		force = force.normalized() * grip_left / acceleration_grip_usage_multiplier
+	
+	grip_used = force.length() * acceleration_grip_usage_multiplier
+	grip_left -= grip_used * (1 - grip_forgiveness)
 	
 	car.apply_force(force, get_contact_point())
 
 func brake(power := 0.0) -> void:
 	if not on_ground: return
 	
-	var braking_dot : float = 0
-	if car.linear_velocity.length() > 1:
-		braking_dot = car.linear_velocity.normalized().dot(forward_projection)
-	else:
-		braking_dot = car.linear_velocity.dot(forward_projection)
-		
-	var braking_force := forward_projection * -braking_dot * power
+	var forward_speed = car.linear_velocity.dot(forward)
+	var capped_force = car.linear_velocity.normalized() * clamp(forward_speed, -power, power)
+	var braking_force = -capped_force * sign(forward_speed)
 	
 	if braking_force.length() > grip_left:
 		braking_force = braking_force.normalized() * grip_left
-	grip_left -= braking_force.length() * (1 - braking_grip_forgiveness)
+	
+	grip_left -= braking_force.length() * (1 - grip_forgiveness)
 	
 	car.apply_force(braking_force, get_contact_point())
 
@@ -168,7 +152,7 @@ func steer(angle := 0.0) -> void:
 	rotation.y = steer_angle * steering_multiplier
 
 func fetch_vars() -> void: # get dynamic observation data
-	forward = car.global_basis.x
+	forward = global_basis.x
 	normal = get_collision_normal()
 	forward_projection = (forward - normal * forward.dot(normal)).normalized()
 	side_projection = (-car.global_basis.z - normal * -car.global_basis.z.dot(normal)).normalized()
@@ -181,7 +165,7 @@ func _ready() -> void:
 	wheel.mesh.bottom_radius = tire_radius
 	radius = tire_radius * 0.94
 	tire_mark = load("res://Scenes/vehicle/tire_mark.tscn").instantiate()
-	get_tree().root.add_child(tire_mark)
+	get_tree().root.add_child.call_deferred(tire_mark)
 
 func _physics_process(delta: float) -> void:
 	fetch_vars()

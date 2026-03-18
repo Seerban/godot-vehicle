@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4edl1e7yd7d6"
-path.s3tc="res://.godot/imported/t-inter.png-6686c0cb1d84ac1505c3ab993dbe05a4.s3tc.ctex"
+uid="uid://bk37bn827hgh5"
+path.s3tc="res://.godot/imported/road.png-6fd201d25117ac76280ac78557b9b12c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/t-inter.png"
-dest_files=["res://.godot/imported/t-inter.png-6686c0cb1d84ac1505c3ab993dbe05a4.s3tc.ctex"]
+source_file="res://Textures/road/road.png"
+dest_files=["res://.godot/imported/road.png-6fd201d25117ac76280ac78557b9b12c.s3tc.ctex"]
 
 [params]
 
