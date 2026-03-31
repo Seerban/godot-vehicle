@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://bjts6tf71j1fu"]
 
 [ext_resource type="Script" uid="uid://h60t7ey33vc0" path="res://Scripts/world_objects/hittable.gd" id="1_qvu7d"]
+[ext_resource type="Texture2D" uid="uid://bvw3ycibibetf" path="res://Textures/recycle.png" id="2_pgg62"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgfio"]
 albedo_color = Color(0.28999957, 0.5269199, 0.07631167, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bgfio"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvu7d"]
+albedo_color = Color(0.16895586, 0.32031536, 0.032432523, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bgfio"]
 size = Vector3(1, 2, 1)
@@ -16,10 +20,28 @@ mass = 0.1
 script = ExtResource("1_qvu7d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1064531563]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 0.7, 0)
+material_override = SubResource("StandardMaterial3D_bgfio")
+mesh = SubResource("BoxMesh_bgfio")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=153018074]
+transform = Transform3D(1.1, 0, 0, 0, 0.05, 0, 0, 0, 1.1, 0, 1.4116167, 0)
+material_override = SubResource("StandardMaterial3D_qvu7d")
+mesh = SubResource("BoxMesh_bgfio")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=344154127]
+transform = Transform3D(1.1, 0, 0, 0, 0.1, 0, 0, 0, 1.1, 0, 1.561, 0)
 material_override = SubResource("StandardMaterial3D_bgfio")
 mesh = SubResource("BoxMesh_bgfio")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=965074000]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_bgfio")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1183164125]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.6, 0, 0.7190068, -0.50110227)
+texture = ExtResource("2_pgg62")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=773794981]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.6, 0, 0.719, 0.501)
+texture = ExtResource("2_pgg62")

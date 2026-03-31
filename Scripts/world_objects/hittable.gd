@@ -16,6 +16,9 @@ func reset() -> void:
 	time_remaining = lifetime
 	set_physics_process(false)
 
+func hit() -> void:
+	set_physics_process(true)
+
 func _physics_process(delta: float) -> void:
 	time_remaining -= delta
 	if time_remaining <= 0: reset()

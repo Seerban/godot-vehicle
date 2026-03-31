@@ -120,7 +120,7 @@ func update_particles() -> void:
 func accelerate(power := 0.0) -> void:
 	if not on_ground or not powered: return
 	
-	var force = forward * power
+	var force = forward_projection * power
 	var grip_used = force.length() * acceleration_grip_usage_multiplier
 	
 	if grip_used > grip_left:

@@ -144,4 +144,4 @@ func _physics_process(delta : float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Hittable:
-		body.set_physics_process(true)
+		body.hit()

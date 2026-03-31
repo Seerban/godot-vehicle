@@ -51,7 +51,7 @@ point_count = 2
 script = ExtResource("1_6bp64")
 
 [node name="Vehicle" parent="." unique_id=854941751 groups=["player"] instance=ExtResource("7_6bp64")]
-transform = Transform3D(-0.7071067, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.7071067, -481, 53, 342)
+transform = Transform3D(-0.7071067, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, -0.7071067, 562, 53, -386)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1602604216]
 transform = Transform3D(0.49999997, -0.75000024, 0.4330126, 0, 0.4999999, 0.8660255, -0.8660254, -0.4330127, 0.25, 0, 10, 0)
@@ -128,12 +128,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, 0, 53)
 
 [node name="Map" parent="." unique_id=213433501 instance=ExtResource("11_d1ilt")]
 
-[node name="BuildingRandom" parent="." unique_id=1246685143 instance=ExtResource("12_6iyac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -517, 50, 464)
-
-[node name="House" parent="." unique_id=352672575 instance=ExtResource("13_fdnlq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -515, 50, 495)
-
 [node name="Intersection" parent="." unique_id=201121798 instance=ExtResource("14_k12tt")]
 transform = Transform3D(0.99999994, -0.00023552414, -0.00018966355, 0.00023616129, 0.9999943, 0.0033723793, 0.0001888696, -0.003372424, 0.9999943, -513, 50, 419)
 
@@ -149,8 +143,31 @@ script = ExtResource("17_h1bgf")
 type = 3
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="Pole" parent="." unique_id=2064531590 instance=ExtResource("18_b3802")]
+[node name="Objects" type="Node3D" parent="." unique_id=1382479939]
+
+[node name="House2" parent="Objects" unique_id=1327971686 instance=ExtResource("13_fdnlq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -348, 50.3, 489)
+
+[node name="House3" parent="Objects" unique_id=784277775 instance=ExtResource("13_fdnlq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -366, 50.3, 489)
+
+[node name="House4" parent="Objects" unique_id=437162903 instance=ExtResource("13_fdnlq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -384, 50.3, 489)
+
+[node name="House5" parent="Objects" unique_id=1292916054 instance=ExtResource("13_fdnlq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -402, 50.3, 489)
+
+[node name="House6" parent="Objects" unique_id=902932744 instance=ExtResource("13_fdnlq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -330, 50.3, 489)
+
+[node name="Building" parent="Objects" unique_id=1246685143 instance=ExtResource("12_6iyac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 482)
+
+[node name="Building2" parent="Objects" unique_id=1205934635 instance=ExtResource("12_6iyac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 281)
+
+[node name="Pole" parent="Objects" unique_id=2064531590 instance=ExtResource("18_b3802")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 345)
 
-[node name="Bin" parent="." unique_id=301916848 instance=ExtResource("19_fevyy")]
+[node name="Bin" parent="Objects" unique_id=301916848 instance=ExtResource("19_fevyy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 329)

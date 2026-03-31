@@ -1,20 +1,11 @@
 [gd_scene format=3 uid="uid://6rfro48aykxg"]
 
-[ext_resource type="Texture2D" uid="uid://dc8uvqqraspuk" path="res://Textures/road/empty.png" id="1_ykaeh"]
-[ext_resource type="Texture2D" uid="uid://b14r2ndhp322d" path="res://Textures/road/road-fin.png" id="2_de4x6"]
+[ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_ykaeh"]
 [ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="3_de4x6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hblrv"]
-albedo_texture = ExtResource("1_ykaeh")
+[ext_resource type="Texture2D" uid="uid://vq5xf6y8xiqc" path="res://Textures/square.png" id="3_r8rg5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1albg"]
 size = Vector3(10, 1, 10)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb4vh"]
-albedo_texture = ExtResource("2_de4x6")
-uv1_scale = Vector3(2, 2, 2)
-uv1_offset = Vector3(1.665, 0, 0)
-texture_filter = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykaeh"]
 size = Vector3(30, 1, 10)
@@ -36,28 +27,28 @@ point_count = 2
 [node name="Intersection" type="StaticBody3D" unique_id=201121798]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=772238331]
-material_override = SubResource("StandardMaterial3D_hblrv")
 mesh = SubResource("BoxMesh_1albg")
+surface_material_override/0 = ExtResource("1_ykaeh")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1381801802]
 transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 4.371139e-07, 0, 10)
-material_override = SubResource("StandardMaterial3D_qb4vh")
 mesh = SubResource("BoxMesh_1albg")
+surface_material_override/0 = ExtResource("1_ykaeh")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=457569054]
 transform = Transform3D(-2.1855693e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855693e-07, 4.371139e-07, 0, -10)
-material_override = SubResource("StandardMaterial3D_qb4vh")
 mesh = SubResource("BoxMesh_1albg")
+surface_material_override/0 = ExtResource("1_ykaeh")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1385364660]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 10, 0, -4.371139e-07)
-material_override = SubResource("StandardMaterial3D_qb4vh")
 mesh = SubResource("BoxMesh_1albg")
+surface_material_override/0 = ExtResource("1_ykaeh")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1876113990]
 transform = Transform3D(-1, 0, -2.6226832e-07, 0, 1, 0, 2.6226832e-07, 0, -1, -10, 0, 4.371139e-07)
-material_override = SubResource("StandardMaterial3D_qb4vh")
 mesh = SubResource("BoxMesh_1albg")
+surface_material_override/0 = ExtResource("1_ykaeh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=979020866]
 shape = SubResource("BoxShape3D_ykaeh")
@@ -78,3 +69,94 @@ curve = SubResource("Curve3D_57sv1")
 script = ExtResource("3_de4x6")
 type = 2
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="CapSprites" type="Node3D" parent="." unique_id=721103729]
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites" unique_id=1402280227]
+transform = Transform3D(0.08, 0, 0, 0, -8.2522725e-08, -1.0423326, 0, 1.8878999, -4.5561805e-08, 5.4254937, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites" unique_id=297332482]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites" unique_id=671666187]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites" unique_id=707254039]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="CapSprites2" type="Node3D" parent="." unique_id=1867119542]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites2" unique_id=1691623977]
+transform = Transform3D(0.08, 0, 0, 0, -8.2522725e-08, -1.0423326, 0, 1.8878999, -4.5561805e-08, 5.4254937, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites2" unique_id=1832691416]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites2" unique_id=1500586436]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites2" unique_id=1785820884]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="CapSprites3" type="Node3D" parent="." unique_id=1604058245]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites3" unique_id=1127749998]
+transform = Transform3D(0.08, 0, 0, 0, -8.2522725e-08, -1.0423326, 0, 1.8878999, -4.5561805e-08, 5.4254937, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites3" unique_id=490601476]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites3" unique_id=1975211726]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites3" unique_id=219762059]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="CapSprites4" type="Node3D" parent="." unique_id=1090387629]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites4" unique_id=357740241]
+transform = Transform3D(0.08, 0, 0, 0, -8.2522725e-08, -1.0423326, 0, 1.8878999, -4.5561805e-08, 5.4254937, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites4" unique_id=1943861112]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites4" unique_id=724419182]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites4" unique_id=1806234674]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_r8rg5")

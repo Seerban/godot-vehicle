@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dn0qui4knucok"]
 
-[ext_resource type="Texture2D" uid="uid://vx6us3cw5aqv" path="res://Textures/temp_map.png" id="1_s486e"]
 [ext_resource type="Texture2D" uid="uid://db5b2kneaoojg" path="res://Material/Assets/Grass008_1K-JPG/Grass008_1K-JPG_Color.jpg" id="3_myvm1"]
 [ext_resource type="Texture2D" uid="uid://b1kr2uyg7wrhd" path="res://Material/Assets/Rock030_1K-JPG/Rock030_1K-JPG_Color.jpg" id="3_np2xp"]
 [ext_resource type="Texture2D" uid="uid://bcvb68loscepv" path="res://Material/Assets/Rock030_1K-JPG/Rock030_1K-JPG_NormalDX.jpg" id="4_w7jjh"]
@@ -284,13 +283,6 @@ _data = {
 point_count = 3
 
 [node name="Map" type="Node3D" unique_id=213433501]
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=352242112]
-transform = Transform3D(150, 0, 0, 0, -6.5567083e-06, -150, 0, 150, -6.5567083e-06, 0, 106.1, 0)
-visible = false
-modulate = Color(1, 1, 1, 0.654902)
-texture_filter = 0
-texture = ExtResource("1_s486e")
 
 [node name="WaterMesh" type="MeshInstance3D" parent="." unique_id=2065732947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)

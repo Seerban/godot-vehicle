@@ -1,9 +1,31 @@
 [gd_scene format=3 uid="uid://cpffb2yrm5d8o"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgfio"]
-albedo_color = Color(0.6117647, 0.40392157, 0.34901962, 1)
+[ext_resource type="Script" uid="uid://bfmj7qvd1l2r4" path="res://Scripts/world_objects/house.gd" id="1_vb18i"]
+[ext_resource type="Material" uid="uid://enxdcdlq23a2" path="res://Material/Paint/Matte.tres" id="2_00jwl"]
+[ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/MeshColorable.gd" id="2_tpksp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bgfio"]
+size = Vector3(12, 4, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vb18i"]
+specular_mode = 1
+albedo_color = Color(0.8509804, 0.3882353, 0.11764706, 1)
+metallic = 0.25
+roughness = 0.75
+anisotropy_enabled = true
+anisotropy = -1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpksp"]
+specular_mode = 1
+albedo_color = Color(0.23137255, 0.7294118, 1, 1)
+metallic = 0.1
+roughness = 0.4
+rim_enabled = true
+rim = 0.2
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_00jwl"]
 size = Vector3(12, 4, 12)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp3bx"]
@@ -16,14 +38,40 @@ size = Vector3(14, 2, 14)
 size = Vector3(12, 4, 12)
 
 [node name="House" type="StaticBody3D" unique_id=1246685143]
+script = ExtResource("1_vb18i")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1064531563]
+[node name="HullMesh" type="MeshInstance3D" parent="." unique_id=306760032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-material_override = SubResource("StandardMaterial3D_bgfio")
 mesh = SubResource("BoxMesh_bgfio")
+surface_material_override/0 = ExtResource("2_00jwl")
+script = ExtResource("2_tpksp")
+metadata/_custom_type_script = "uid://d3ikrobwd5lgl"
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1105008466]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
+[node name="DoorMesh" type="MeshInstance3D" parent="." unique_id=1414178149]
+transform = Transform3D(0.15752663, 0, 0, 0, 0.7, 0, 0, 0, -0.020468531, 0, 1.3382294, 6)
+mesh = SubResource("BoxMesh_bgfio")
+surface_material_override/0 = SubResource("StandardMaterial3D_vb18i")
+script = ExtResource("2_tpksp")
+metadata/_custom_type_script = "uid://d3ikrobwd5lgl"
+
+[node name="WindowMesh" type="MeshInstance3D" parent="." unique_id=1658729714]
+transform = Transform3D(1.023923, 0, 0, 0, 0.44099998, 0, 0, 0, -0.4124409, 0, 2.400057, 3)
+material_override = SubResource("StandardMaterial3D_tpksp")
+mesh = SubResource("BoxMesh_00jwl")
+surface_material_override/0 = SubResource("StandardMaterial3D_vb18i")
+script = ExtResource("2_tpksp")
+metadata/_custom_type_script = "uid://d3ikrobwd5lgl"
+
+[node name="WindowMesh2" type="MeshInstance3D" parent="." unique_id=1580428509]
+transform = Transform3D(1.023923, 0, 0, 0, 0.44099998, 0, 0, 0, -0.4124409, 0, 2.400057, -3)
+material_override = SubResource("StandardMaterial3D_tpksp")
+mesh = SubResource("BoxMesh_00jwl")
+surface_material_override/0 = SubResource("StandardMaterial3D_vb18i")
+script = ExtResource("2_tpksp")
+metadata/_custom_type_script = "uid://d3ikrobwd5lgl"
+
+[node name="RoofMesh" type="MeshInstance3D" parent="." unique_id=1105008466]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 5.474258, 0)
 material_override = SubResource("StandardMaterial3D_xp3bx")
 mesh = SubResource("PrismMesh_bgfio")
 

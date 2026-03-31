@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://dakxynrdt52mx"]
 
-[ext_resource type="Material" uid="uid://c3uv2yrg8oxv1" path="res://Material/World/building1.tres" id="2_wjlyr"]
+[ext_resource type="Material" uid="uid://enxdcdlq23a2" path="res://Material/Paint/Matte.tres" id="1_8ssge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64r2v"]
+specular_mode = 1
+albedo_color = Color(0.11764706, 0.62352943, 0.93333334, 1)
+metallic = 0.1
+roughness = 0.4
+rim_enabled = true
+rim = 0.2
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_mo2lu"]
 size = Vector3(30, 60, 30)
@@ -10,11 +20,169 @@ size = Vector3(30, 60, 30)
 
 [node name="Building" type="StaticBody3D" unique_id=1246685143]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1771111682]
+[node name="HullMesh" type="MeshInstance3D" parent="." unique_id=1771111682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
-material_override = ExtResource("2_wjlyr")
+material_override = SubResource("StandardMaterial3D_64r2v")
 mesh = SubResource("BoxMesh_mo2lu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=140264547]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 shape = SubResource("BoxShape3D_y5361")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=127282278]
+
+[node name="HullMesh2" type="MeshInstance3D" parent="Node3D" unique_id=95885565]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 0, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh3" type="MeshInstance3D" parent="Node3D" unique_id=1611302631]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 4, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh12" type="MeshInstance3D" parent="Node3D" unique_id=1880746349]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 12, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh11" type="MeshInstance3D" parent="Node3D" unique_id=719053283]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 8, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh13" type="MeshInstance3D" parent="Node3D" unique_id=1923173698]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 16, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh14" type="MeshInstance3D" parent="Node3D" unique_id=1017868773]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 20, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh15" type="MeshInstance3D" parent="Node3D" unique_id=1159411006]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 28, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh16" type="MeshInstance3D" parent="Node3D" unique_id=1221412150]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 24, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh17" type="MeshInstance3D" parent="Node3D" unique_id=1677801066]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 32, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh18" type="MeshInstance3D" parent="Node3D" unique_id=2025875217]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 36, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh19" type="MeshInstance3D" parent="Node3D" unique_id=661637009]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 44, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh20" type="MeshInstance3D" parent="Node3D" unique_id=1607804408]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 40, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh21" type="MeshInstance3D" parent="Node3D" unique_id=241233823]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 48, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh22" type="MeshInstance3D" parent="Node3D" unique_id=1828056371]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 52, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh23" type="MeshInstance3D" parent="Node3D" unique_id=215294541]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 60, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh24" type="MeshInstance3D" parent="Node3D" unique_id=219174283]
+transform = Transform3D(1.002, 0, 0, 0, 0.009999997, 0, 0, 0, 1.002, 0, 56, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh4" type="MeshInstance3D" parent="Node3D" unique_id=1893357132]
+transform = Transform3D(-0.020040004, 0, -3.0259564e-09, 0, 1, 0, 3.0259564e-09, 0, -0.020040004, -14.73, 30, 14.73)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh5" type="MeshInstance3D" parent="Node3D" unique_id=1633235503]
+transform = Transform3D(-0.020040004, 0, -3.0259564e-09, 0, 1, 0, 3.0259564e-09, 0, -0.020040004, -14.73, 30, -14.73)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh6" type="MeshInstance3D" parent="Node3D" unique_id=882833722]
+transform = Transform3D(-0.020040004, 0, -3.0259564e-09, 0, 1, 0, 3.0259564e-09, 0, -0.020040004, 14.73, 30, 14.73)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh8" type="MeshInstance3D" parent="Node3D" unique_id=724923749]
+transform = Transform3D(-1.001, 0, -3.0199159e-09, 0, 1, 0, 1.511468e-07, 0, -0.02, 0, 30, 8)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh9" type="MeshInstance3D" parent="Node3D" unique_id=493889826]
+transform = Transform3D(-1.001, 0, -3.0199159e-09, 0, 1, 0, 1.511468e-07, 0, -0.02, 0, 30, -8)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh10" type="MeshInstance3D" parent="Node3D" unique_id=318731536]
+transform = Transform3D(-1.001, 0, -3.0199159e-09, 0, 1, 0, 1.511468e-07, 0, -0.02, 0, 30, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh25" type="MeshInstance3D" parent="Node3D" unique_id=462088593]
+transform = Transform3D(1.9490189e-07, 0, -0.019999998, 0, 0.99999994, 0, 1.001, 0, 3.8941437e-09, 8, 30, -3.496911e-07)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh26" type="MeshInstance3D" parent="Node3D" unique_id=2099163638]
+transform = Transform3D(1.9490189e-07, 0, -0.019999998, 0, 0.99999994, 0, 1.001, 0, 3.8941437e-09, -8, 30, 3.496911e-07)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh27" type="MeshInstance3D" parent="Node3D" unique_id=123838098]
+transform = Transform3D(1.9490189e-07, 0, -0.019999998, 0, 0.99999994, 0, 1.001, 0, 3.8941437e-09, 0, 30, 0)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")
+
+[node name="HullMesh7" type="MeshInstance3D" parent="Node3D" unique_id=373331366]
+transform = Transform3D(-0.020040004, 0, -3.0259564e-09, 0, 1, 0, 3.0259564e-09, 0, -0.020040004, 14.73, 30, -14.73)
+material_override = ExtResource("1_8ssge")
+mesh = SubResource("BoxMesh_mo2lu")
+skeleton = NodePath("../..")

@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://dt6gtj272dk7k"]
 
-[ext_resource type="Texture2D" uid="uid://b4edl1e7yd7d6" path="res://Textures/road/t-inter.png" id="1_plh5p"]
+[ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_poycr"]
 [ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="2_poycr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_poycr"]
-albedo_texture = ExtResource("1_plh5p")
-uv1_scale = Vector3(6, 2, 2)
-texture_filter = 0
+[ext_resource type="Texture2D" uid="uid://vq5xf6y8xiqc" path="res://Textures/square.png" id="3_2wls4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1albg"]
 size = Vector3(10, 1, 10)
@@ -25,8 +21,8 @@ point_count = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=772238331]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_poycr")
 mesh = SubResource("BoxMesh_1albg")
+surface_material_override/0 = ExtResource("1_poycr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2074137421]
 shape = SubResource("BoxShape3D_yhjdf")
@@ -36,3 +32,8 @@ visible = false
 curve = SubResource("Curve3D_2wls4")
 script = ExtResource("2_poycr")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="Sprite3D10" type="Sprite3D" parent="." unique_id=1586636591]
+transform = Transform3D(-8.742278e-08, -0.066, 4.502273e-08, 0, -2.8849516e-09, -1.03, 2, -2.8849516e-09, 1.968006e-15, -4.7, 0.502, -2.0544351e-07)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_2wls4")
