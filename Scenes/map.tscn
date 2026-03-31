@@ -13,7 +13,13 @@
 [ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="12_q6lx1"]
 [ext_resource type="Script" uid="uid://c6n401r8aj2xn" path="res://Scripts/ui/RadarWaterBody.gd" id="13_5qtum"]
 [ext_resource type="Material" uid="uid://btpe15dydy4a8" path="res://Material/Misc/test_material.tres" id="14_ie368"]
+[ext_resource type="PackedScene" uid="uid://cpffb2yrm5d8o" path="res://Scenes/world_objects/house.tscn" id="15_j4oe2"]
+[ext_resource type="PackedScene" uid="uid://6rfro48aykxg" path="res://Scenes/road/crossroad.tscn" id="15_vtkp8"]
 [ext_resource type="Material" uid="uid://jqr2qedgdmm1" path="res://Material/Misc/test_material2.tres" id="15_x5dfk"]
+[ext_resource type="PackedScene" uid="uid://dt6gtj272dk7k" path="res://Scenes/road/tsection.tscn" id="16_rg57b"]
+[ext_resource type="PackedScene" uid="uid://dakxynrdt52mx" path="res://Scenes/world_objects/building.tscn" id="16_riaky"]
+[ext_resource type="PackedScene" uid="uid://dgvry5fcssevm" path="res://Scenes/world_objects/pole.tscn" id="17_vtkp8"]
+[ext_resource type="PackedScene" uid="uid://bjts6tf71j1fu" path="res://Scenes/world_objects/bin.tscn" id="18_rg57b"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_np2xp"]
 size = Vector3(5000, 50, 5000)
@@ -133,10 +139,10 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_x5dfk"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -440.933, 200, 524.286, -44, 0, -25.300001, 44, 0, 25.300001, -376.425, 200, 625.729, 0, 0, 0, 0, 0, 0, -233.705, 299, 661.836, -30.7, 0, -9.3, 30.7, 0, 9.3, -46.14, 200, 704.521, -80.3, 0, 2.6000001, 80.3, 0, -2.6000001, 218.185, 299, 713.911, -70, 0, 24, 70, 0, -24, 482.11, 200, 663.235, -28, 0, 40, 28, 0, -40, 625.524, 200, 553.977, -5, 0, 66, 5, 0, -66, 692.03, 299, 386.138, 0, 0, 0, 0, 0, 0, 697.071, 200, 209.65, 1.8000001, 0, 4.2000003, -1.8000001, 0, -4.2000003, 691.744, 200, -44.221, 32, 0, 86, -32, 0, -86, 625, 200, -201, 55.4, 0, 79.4, -55.4, 0, -79.4, 570.4019, 200, -305.70996),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -447.63303, 200, 523.18604, -44, 0, -25.300001, 44, 0, 25.300001, -376.425, 200, 625.729, 0, 0, 0, 0, 0, 0, -233.705, 299, 661.836, -30.7, 0, -9.3, 30.7, 0, 9.3, -46.14, 200, 704.521, -80.3, 0, 2.6000001, 80.3, 0, -2.6000001, 218.185, 299, 713.911, -70, 0, 24, 70, 0, -24, 482.11, 200, 663.235, -28, 0, 40, 28, 0, -40, 625.524, 200, 553.977, -5, 0, 66, 5, 0, -66, 692.03, 299, 386.138, 0, 0, 0, 0, 0, 0, 697.071, 200, 209.65, 1.8000001, 0, 4.2000003, -1.8000001, 0, -4.2000003, 691.744, 200, -44.221, 32, 0, 86, -32, 0, -86, 625, 200, -201, 55.4, 0, 79.4, -55.4, 0, -79.4, 570.4019, 200, -305.70996, 0, 0, 0, 0, 0, 0, -445.74524, 200, 566.1169),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 12
+point_count = 13
 
 [sub_resource type="Curve3D" id="Curve3D_fls3e"]
 closed = true
@@ -281,6 +287,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_ltf6m"]
+_data = {
+"points": PackedVector3Array(2.5, 0, 27.6, 0, 0, -50, -513, 50, 384, 50, 0, 0, -18.6, 0.3, -1.1, -497.858, 50, 419),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Map" type="Node3D" unique_id=213433501]
 
@@ -717,3 +730,49 @@ material = ExtResource("15_x5dfk")
 [node name="Path3D" type="Path3D" parent="Objects/Tests/Jump2" unique_id=577766457]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 curve = SubResource("Curve3D_vtkp8")
+
+[node name="RoadExperiment" type="Node3D" parent="Objects" unique_id=177797100]
+
+[node name="Intersection" parent="Objects/RoadExperiment" unique_id=201121798 instance=ExtResource("15_vtkp8")]
+transform = Transform3D(0.99999994, -0.00023552414, -0.00018966355, 0.00023616129, 0.9999943, 0.0033723793, 0.0001888696, -0.003372424, 0.9999943, -513, 50, 419)
+
+[node name="Intersection2" parent="Objects/RoadExperiment" unique_id=1523085669 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -513, 50, 399)
+
+[node name="Intersection3" parent="Objects/RoadExperiment" unique_id=183811457 instance=ExtResource("16_rg57b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -513, 50, 389)
+
+[node name="RoadPath" type="Path3D" parent="Objects/RoadExperiment" unique_id=691126657]
+curve = SubResource("Curve3D_ltf6m")
+script = ExtResource("12_q6lx1")
+type = 3
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="Objects2" type="Node3D" parent="Objects" unique_id=1889396906]
+
+[node name="House2" parent="Objects/Objects2" unique_id=1246685143 instance=ExtResource("15_j4oe2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -348, 50.3, 489)
+
+[node name="House3" parent="Objects/Objects2" unique_id=421010853 instance=ExtResource("15_j4oe2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -366, 50.3, 489)
+
+[node name="House4" parent="Objects/Objects2" unique_id=454882000 instance=ExtResource("15_j4oe2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -384, 50.3, 489)
+
+[node name="House5" parent="Objects/Objects2" unique_id=1438608296 instance=ExtResource("15_j4oe2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -402, 50.3, 489)
+
+[node name="House6" parent="Objects/Objects2" unique_id=1389930081 instance=ExtResource("15_j4oe2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -330, 50.3, 489)
+
+[node name="Building" parent="Objects/Objects2" unique_id=554493730 instance=ExtResource("16_riaky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 482)
+
+[node name="Building2" parent="Objects/Objects2" unique_id=148591006 instance=ExtResource("16_riaky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 281)
+
+[node name="Pole" parent="Objects/Objects2" unique_id=301916848 instance=ExtResource("17_vtkp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 345)
+
+[node name="Bin" parent="Objects/Objects2" unique_id=1688324648 instance=ExtResource("18_rg57b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 329)
