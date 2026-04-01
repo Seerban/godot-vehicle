@@ -45,6 +45,7 @@ ui=""
 player=""
 radar=""
 rand=""
+vehicles=""
 
 [input]
 
