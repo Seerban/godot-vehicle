@@ -1,36 +1,23 @@
 extends RigidBody3D
 class_name Vehicle
 
-@export var enabled := true
+@export var controller : VehicleController = PlayerController.new()
 
-var rear_grip_boost := 1.2
-
+# car handling variables
 @export var top_speed := 100.0
+@export var grip_multiplier := 2.5 # have to setup again to take effect
+@export var rear_grip_boost := 1.2
 @export var power_multiplier := 7.0
 @export var brake_power_multiplier := 5.0
 @export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
 @export var turning_deg := 18.0
-@export var CoM_Y := 0
+@export var CoM_Y := 0 # center of mass y offset
 
-@onready var wheels : Array[Wheel]
-@onready var lights : LightsManager = $Lights
+var wheels : Array[Wheel]
+@onready var lights : LightsManager = $Lights # managed in PlayerController
 
-# Accel curve
-@onready var accel_curve : Curve = load("res://Curves/acceleration.tres")
-var accel_speed := 2.0
-var accel_point := 0.0
-
-# Steering smoothing
-@onready var steer_curve : Curve = load("res://Curves/steer.tres")
-var steer_point := 0.0
-var steer_speed := 2.0
-var steer_return_speed := 2.0 # additional turn speed added when going opposite direction
-
-# Braking smoothing
-@onready var brake_curve : Curve = load("res://Curves/brake.tres")
-var brake_point := 0.0
-var brake_speed := 2.0
-var brake_return_speed := 2.0 # additional turn speed on return
+# accel curve
+var accel_curve : Curve = preload("res://Curves/acceleration.tres")
 
 # x_offset - distance from middle
 # y_offset - how deep the wheels are
@@ -51,8 +38,6 @@ func setup_wheels(x_offset : float, y_offset : float,
 	
 	# add 2 wheels per axis
 	for i in range( len(axes) ):
-		
-		
 		var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
 		wheel.position = Vector3( axes[i], y_offset, x_offset )
 		wheel.steering_multiplier = steering[i]
@@ -73,23 +58,29 @@ func setup_wheels(x_offset : float, y_offset : float,
 		
 		wheels.append(wheel)
 		wheels.append(wheel_opp)
-		
-		# boost grip if axis is in rear half
-		if axes[i] < 0:
-			wheel.grip *= rear_grip_boost
-			wheel_opp.grip *= rear_grip_boost
 	
 	# update ui
 	var grip_ui = get_tree().get_first_node_in_group("grip_ui")
 	grip_ui.car = self
 	grip_ui.update_ui()
+	
+	update_grip()
+
+# updates grip value of wheels
+func update_grip() -> void:
+	for w in wheels:
+		w.grip = grip_multiplier
+		if w.position[0] < 0: w.grip *= rear_grip_boost
 
 func setCoM() -> void:
 	center_of_mass = Vector3(0, CoM_Y, 0)
+
 # 0 to 1 acceleration
 func set_acceleration(x := 0.) -> void:
 	for w in wheels:
-		w.accel_power = x * power_multiplier
+		# lower acceleration near top speed using curve
+		var accel_multi := accel_curve.sample( linear_velocity.length() / top_speed )
+		w.accel_power = x * power_multiplier * accel_multi
 	if x < 0: 	lights.set_reverse_intensity(-x)
 	else: 		lights.set_reverse_intensity(0)
 
@@ -109,38 +100,17 @@ func set_steering(x := 0.) -> void:
 	for w in wheels:
 		w.steer(x * turning_deg)
 
-func steer_handler(delta : float) -> float:
-	var steer = Input.get_axis("right","left")
-	steer_point = clampf( move_toward(steer_point, steer, delta * steer_speed), -1.0, 1.0)
-	if sign(steer) != sign(steer_point):
-		steer_point = clampf( move_toward(steer_point, steer, delta * steer_speed), -1.0, 1.0)
-	return steer_curve.sample(steer_point)
-
-func brake_handler(delta : float) -> float:
-	var brake = int( Input.is_action_pressed("backward") )
-	brake_point = clampf( move_toward(brake_point, brake, delta * brake_speed), 0.0, 1.0)
-	if brake == 0:
-		brake_point = clampf( move_toward(brake_point, brake, delta * brake_return_speed), 0.0, 1.0)
-	return brake_curve.sample(brake_point)
-
-func accel_handler(delta : float) -> float:
-	var accel = int(Input.is_action_pressed("forward"))
-	accel_point = move_toward(accel_point, accel, delta * accel_speed)
-	return accel_point * accel_curve.sample( linear_velocity.length() / top_speed )
-
 func _ready() -> void:
+	controller.vehicle = self
 	lights.set_back_intensity(0)
 	default_setup()
 	setCoM()
-	set_physics_process(enabled)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
-	var reversing := 1 - 2 * int(Input.is_key_pressed(KEY_R))
-	set_acceleration( accel_handler(delta) * reversing)
-	set_braking( brake_handler(delta) )
-	set_steering( steer_handler(delta) )
-	if Input.is_action_just_pressed("lights"): lights.use_next_preset()
+	set_acceleration( controller.accel_handler(delta) )
+	set_braking( controller.brake_handler(delta) )
+	set_steering( controller.steer_handler(delta) )
 
 func _on_body_entered(body: Node) -> void:
 	if body is Hittable:

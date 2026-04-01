@@ -27,10 +27,8 @@ func _on_turn_slider_value_changed(x: float) -> void:
 func _on_grip_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$Grip/Value.text = str(x)
-	for w in car.wheels:
-		w.grip = x
-		if w.position.x < 0:
-			w.grip *= car.rear_grip_boost
+	car.grip_multiplier = x
+	car.update_grip()
 
 func _on_gf_slider_value_changed(x: float) -> void:
 	if !check_validity(): return

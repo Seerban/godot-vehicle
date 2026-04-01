@@ -18,7 +18,7 @@ func spawn_cars() -> void:
 		offset.x += 10
 
 func flip_car() -> void:
-	var car := $Vehicle
+	var car := get_tree().get_first_node_in_group("player")
 	car.linear_velocity += Vector3(0, 5, 0)
 	car.angular_velocity += car.global_basis.x * 4.5
 
@@ -27,4 +27,5 @@ func _input(event: InputEvent) -> void:
 		flip_car()
 
 func _ready() -> void:
-	spawn_cars()
+	pass
+	#spawn_cars()
