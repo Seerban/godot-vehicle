@@ -41,10 +41,12 @@ var on_ground := false
 @export var grip_left := 0.0
 @export var spring_prev := 0.0 # previous frame spring compression
 
+# length of suspension
 func set_length(x : float) -> void:
 	target_position = Vector3(0, -x, 0)
 	spring_length = x
 
+# only visual change, doesn't affect anything else
 func set_wheel_dimensions(r : float, width : float) -> void:
 	tire_radius = r
 	radius = r
@@ -53,23 +55,29 @@ func set_wheel_dimensions(r : float, width : float) -> void:
 	mesh.bottom_radius = r
 	mesh.height = width
 
-func get_contact_point() -> Vector3: # point at spring end point
+# gets point on ground (if grounded)
+func get_contact_point() -> Vector3:
 	return get_collision_point() - car.global_position
 	#return global_position - car.global_position - global_basis.y * radius
 
-func get_ground_grip_multiplier() -> float: # get multiplier of ground material
+# gets grip of ground material (currently doesn't work due to ground rework)
+func get_ground_grip_multiplier() -> float:
 	return 1 # temporarily disabled
 
-func get_spring_grip_influence() -> float: # spring compression effect on grip
+# gets grip additive multiplier due to spring compression
+func get_spring_grip_influence() -> float:
 	return grip_curve.sample( (spring_length - spring_prev) / spring_length )
 
+# compute total grip
 func get_grip() -> float:
 	return grip * get_ground_grip_multiplier() * get_spring_grip_influence()
 
+# total grip used this tick
 func get_used_grip() -> float: # only for debug/ui
 	return get_grip() - grip_left
 
-func _spring() -> void: # upward force on car
+# apply spring force
+func _spring() -> void:
 	var up = global_basis.y
 	var dist := spring_length
 	
@@ -96,7 +104,8 @@ func _spring() -> void: # upward force on car
 	# place mesh
 	wheel.position = Vector3(0, -dist+radius, 0)
 
-func _friction() -> void: # sideways slowing force
+# apply friction sideways from tires (can slow down forward speed due to math inaccuracies)
+func _friction() -> void:
 	if not on_ground: return
 	
 	var point_velocity := car.linear_velocity + car.angular_velocity.cross(relative_pos)
@@ -109,14 +118,16 @@ func _friction() -> void: # sideways slowing force
 	
 	car.apply_force(force, get_contact_point())
 
-func _rotate_wheel(angle) -> void: # visually spins wheel
+func _rotate_wheel(angle) -> void:
 	wheel.rotate(Vector3.FORWARD, angle)
 
+# updates tire marks particles
 func update_particles() -> void:
 	tire_mark.emitting = grip_left <= 0.01
 	tire_mark.global_position = car.global_position + get_contact_point()
 	tire_mark.global_rotation = global_rotation
 
+# applies forward force
 func accelerate(power := 0.0) -> void:
 	if not on_ground or not powered: return
 	
@@ -131,6 +142,7 @@ func accelerate(power := 0.0) -> void:
 	
 	car.apply_force(force, get_contact_point())
 
+# applies force negative of velocity along wheel's forward axis
 func brake(power := 0.0) -> void:
 	if not on_ground: return
 	
@@ -164,7 +176,7 @@ func _ready() -> void:
 	wheel.mesh.top_radius = tire_radius
 	wheel.mesh.bottom_radius = tire_radius
 	radius = tire_radius * 0.94
-	tire_mark = load("res://Scenes/vehicle/tire_mark.tscn").instantiate()
+	tire_mark = load("res://Scenes/particles/tire_mark.tscn").instantiate()
 	get_tree().root.add_child.call_deferred(tire_mark)
 
 func _physics_process(delta: float) -> void:

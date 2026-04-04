@@ -96,6 +96,9 @@ size = Vector3(5.1898437, 1.020935, 1.9970703)
 [sub_resource type="BoxMesh" id="BoxMesh_r7o47"]
 size = Vector3(0.1, 0.1, 0.4)
 
+[sub_resource type="BoxMesh" id="BoxMesh_7tm40"]
+size = Vector3(0.1, 0.1, 0.4)
+
 [sub_resource type="BoxMesh" id="BoxMesh_fwcw4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuhs1"]
@@ -139,7 +142,7 @@ mesh = SubResource("BoxMesh_r7o47")
 
 [node name="Back" type="MeshInstance3D" parent="Lights" unique_id=1880307220]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6419075, 0.3428657, 0.7)
-mesh = SubResource("BoxMesh_r7o47")
+mesh = SubResource("BoxMesh_7tm40")
 
 [node name="Back2" type="MeshInstance3D" parent="Lights" unique_id=726997140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6419075, 0.3428657, -0.70000005)

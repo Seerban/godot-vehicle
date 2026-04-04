@@ -8,6 +8,7 @@ class_name Vehicle
 @export var grip_multiplier := 2.4 # have to setup again to take effect
 @export var rear_grip_boost := 1.2
 @export var power_multiplier := 7.0
+var powered_wheels := 0 # divides power between all wheels
 @export var brake_power_multiplier := 5.0
 @export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
 @export var turning_deg := 18.0
@@ -35,6 +36,8 @@ func setup_wheels(x_offset : float, y_offset : float,
 		if w != null:
 			w.queue_free()
 	wheels.clear()
+	
+	for i in powered: powered_wheels += int(i)
 	
 	# add 2 wheels per axis
 	for i in range( len(axes) ):
@@ -65,6 +68,8 @@ func setup_wheels(x_offset : float, y_offset : float,
 	grip_ui.update_ui()
 	
 	update_grip()
+	
+	print("POWERED WHEELS: ", powered_wheels)
 
 # updates grip value of wheels
 func update_grip() -> void:
@@ -80,7 +85,7 @@ func set_acceleration(x := 0.) -> void:
 	for w in wheels:
 		# lower acceleration near top speed using curve
 		var accel_multi := accel_curve.sample( linear_velocity.length() / top_speed )
-		w.accel_power = x * power_multiplier * accel_multi
+		w.accel_power = x * power_multiplier * accel_multi / powered_wheels
 	if x < 0: 	lights.set_reverse_intensity(-x)
 	else: 		lights.set_reverse_intensity(0)
 
@@ -108,6 +113,7 @@ func _ready() -> void:
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
 	controller.custom_process(delta)
+	lights.update_trails()
 	set_acceleration( controller.accel_handler(delta) )
 	set_braking( controller.brake_handler(delta) )
 	set_steering( controller.steer_handler(delta) )

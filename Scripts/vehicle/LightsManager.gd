@@ -22,6 +22,7 @@ var back_light_angle := 45
 
 var fronts = []
 var backs = []
+var trails = []
 var reverses = []
 var front_lights = []
 var back_lights = []
@@ -86,6 +87,7 @@ func add_lights() -> void:
 		light.spot_angle = front_light_angle
 		light.visible = false
 		front_lights.append(light)
+		
 	for i in backs:
 		var light = SpotLight3D.new()
 		add_child(light)
@@ -96,6 +98,7 @@ func add_lights() -> void:
 		light.spot_angle = back_light_angle
 		light.visible = false
 		back_lights.append(light)
+		
 	for i in reverses:
 		var light = SpotLight3D.new()
 		add_child(light)
@@ -107,21 +110,37 @@ func add_lights() -> void:
 		light.visible = false
 		reverse_lights.append(light)
 
+func add_trails() -> void:
+	for i in backs:
+		var rear_trail : GPUParticles3D = load("res://Scenes/particles/rear_trails.tscn").instantiate()
+		add_child(rear_trail)
+		trails.append(rear_trail)
+		
+		rear_trail.position = i.position
+		rear_trail.draw_pass_1.size.y = i.mesh.size.z # same length as mesh
+
+func set_enabled_trails(b : bool) -> void:
+	for i in trails:
+		i.visible = b
+
 func use_off_preset() -> void:
 	set_back_intensity(0)
 	back_default = 0
 	set_front_intensity(0)
 	set_reverse_intensity(0)
+	set_enabled_trails(false)
 
 func use_low_preset() -> void:
 	set_back_intensity(0.5)
 	back_default = 0.5
 	set_front_intensity(0.75)
+	set_enabled_trails(true)
 
 func use_high_preset() -> void:
 	set_back_intensity(0.5)
 	back_default = 0.5
 	set_front_intensity(1.5)
+	set_enabled_trails(true)
 
 func use_next_preset() -> void:
 	current_preset = (current_preset + 1) % len(presets)
@@ -137,5 +156,10 @@ func _ready() -> void:
 		elif i.name.begins_with("Back"): backs.append(i)
 		elif i.name.begins_with("Reverse"): reverses.append(i)
 	add_lights()
+	add_trails()
 	
 	use_next_preset()
+
+func update_trails() -> void:
+	for i in trails:
+		i.update_vars(current_back_intensity)

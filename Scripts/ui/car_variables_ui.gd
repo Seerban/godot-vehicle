@@ -81,11 +81,11 @@ func _on_stabilizer_slider_value_changed(x: float) -> void:
 
 func _on_arcade_pressed() -> void:
 	check_validity()
-	_on_power_slider_value_changed(3.0)
+	_on_power_slider_value_changed(6.0)
 	_on_brake_slider_value_changed(5.0)
 	_on_brake_bias_slider_value_changed(-0.1)
 	_on_turn_slider_value_changed(18.0)
-	_on_grip_slider_value_changed(3.0)
+	_on_grip_slider_value_changed(2.4)
 	_on_gf_slider_value_changed(1.0)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(25.0)
@@ -97,11 +97,11 @@ func _on_arcade_pressed() -> void:
 
 func _on_real_pressed() -> void:
 	check_validity()
-	_on_power_slider_value_changed(3.0)
+	_on_power_slider_value_changed(6.0)
 	_on_brake_slider_value_changed(5.0)
 	_on_brake_bias_slider_value_changed(-0.2)
 	_on_turn_slider_value_changed(18.0)
-	_on_grip_slider_value_changed(3.0)
+	_on_grip_slider_value_changed(2.4)
 	_on_gf_slider_value_changed(0.6)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(30.0)
@@ -113,11 +113,11 @@ func _on_real_pressed() -> void:
 
 func _on_offroad_pressed() -> void:
 	check_validity()
-	_on_power_slider_value_changed(3.0)
+	_on_power_slider_value_changed(6.0)
 	_on_brake_slider_value_changed(5.0)
 	_on_brake_bias_slider_value_changed(0.0)
 	_on_turn_slider_value_changed(18.0)
-	_on_grip_slider_value_changed(3.0)
+	_on_grip_slider_value_changed(2.4)
 	_on_gf_slider_value_changed(0.75)
 	_on_sh_slider_value_changed(1.0)
 	_on_spring_slider_value_changed(23.0)
@@ -129,11 +129,11 @@ func _on_offroad_pressed() -> void:
 
 func _on_drift_pressed() -> void:
 	check_validity()
-	_on_power_slider_value_changed(3.0)
+	_on_power_slider_value_changed(6.0)
 	_on_brake_slider_value_changed(10.0)
 	_on_brake_bias_slider_value_changed(-1)
 	_on_turn_slider_value_changed(30.0)
-	_on_grip_slider_value_changed(2.0)
+	_on_grip_slider_value_changed(1.8)
 	_on_gf_slider_value_changed(0.75)
 	_on_sh_slider_value_changed(0.4)
 	_on_spring_slider_value_changed(30.0)
