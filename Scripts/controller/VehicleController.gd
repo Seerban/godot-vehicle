@@ -11,3 +11,6 @@ func brake_handler(delta : float) -> float:
 
 func steer_handler(delta : float) -> float:
 	return 0
+
+func custom_process(delta : float) -> void:
+	return

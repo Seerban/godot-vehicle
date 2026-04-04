@@ -49,6 +49,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+# lerps angle without rotating 360 degrees when changing quadrant
 func custom_lerp_angle(from : Vector3, to : Vector3, p: float) -> Vector3:
 	var diff_x = wrapf(to.x - from.x, -180.0, 180.0)
 	var diff_y = wrapf(to.y - from.y, -180.0, 180.0)

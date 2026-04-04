@@ -50,6 +50,8 @@ sky_material = SubResource("ShaderMaterial_6iyac")
 [sub_resource type="Environment" id="Environment_ohhpf"]
 background_mode = 2
 sky = SubResource("Sky_fdnlq")
+ambient_light_color = Color(0.20747629, 0.23096249, 0.27880508, 1)
+ambient_light_sky_contribution = 0.5
 fog_enabled = true
 fog_light_color = Color(0.49803922, 0.49803922, 0.79607844, 1)
 fog_density = 0.001

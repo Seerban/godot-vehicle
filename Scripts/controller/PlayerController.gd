@@ -42,5 +42,7 @@ func accel_handler(delta : float) -> float:
 	accel_point = move_toward(accel_point, accel * reversing, delta * accel_speed)
 	return accel_point
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("lights"): vehicle.lights.use_next_preset()
+# Called in vehicle phys_process since not in tree
+func custom_process(delta: float) -> void:
+	if Input.is_action_just_pressed("lights"):
+		vehicle.lights.use_next_preset()

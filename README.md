@@ -1,6 +1,6 @@
 # godot-vehicle
 
-WIP custom implementation of a 3D Raycast Vehicle, customizable alternative to Godot's VehicleBody3D node.
+My own custom implementation of a 3D Raycast Vehicle, alternative to VehicleBody3D node (Not related).
 
 Proper documentation and ease of use for custom nodes node are not a priority at the moment. <br>
 
@@ -22,7 +22,7 @@ Proper documentation and ease of use for custom nodes node are not a priority at
 **Brake Bias**: Where the brake force is applied, causes drifty handling toward -1 (rear) and understeer toward 1 (front) <br>
 **Turn Angle**: Maximum wheel angle when turning. <br>
 **Grip**: Multiplier to maximum grip. <br>
-**Grip Forgiveness**: Makes acceleration and braking less costly on grip. Gives the "Arcade" feel (1 = more arcadey, grip not limited by reduced under acceleration or braking).<br>
+**Grip Forgiveness**: Makes acceleration and braking less costly on grip. Gives the "Arcade" feel (1 = more arcadey, grip not reduced under acceleration or braking).<br>
 **Height, Strength, Damping**: Suspension parameters. <br>
 **Anti-roll**: Counter-force to rotation. (Might cause undesired understeer) <br>
 **Aero**: Downforce at position of aero component. (One at rear and one at front for example vehicle) <br>

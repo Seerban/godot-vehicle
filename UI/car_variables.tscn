@@ -207,7 +207,7 @@ size_flags_horizontal = 3
 min_value = 1.0
 max_value = 8.0
 step = 0.2
-value = 3.0
+value = 2.4
 allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
@@ -216,7 +216,7 @@ ticks_on_borders = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
-text = "3.0"
+text = "2.4"
 horizontal_alignment = 1
 
 [node name="GripForgive" type="HBoxContainer" parent="." unique_id=1791952525]

@@ -5,7 +5,7 @@ class_name Vehicle
 
 # car handling variables
 @export var top_speed := 100.0
-@export var grip_multiplier := 2.5 # have to setup again to take effect
+@export var grip_multiplier := 2.4 # have to setup again to take effect
 @export var rear_grip_boost := 1.2
 @export var power_multiplier := 7.0
 @export var brake_power_multiplier := 5.0
@@ -102,12 +102,12 @@ func set_steering(x := 0.) -> void:
 
 func _ready() -> void:
 	controller.vehicle = self
-	lights.set_back_intensity(0)
 	default_setup()
 	setCoM()
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
+	controller.custom_process(delta)
 	set_acceleration( controller.accel_handler(delta) )
 	set_braking( controller.brake_handler(delta) )
 	set_steering( controller.steer_handler(delta) )
