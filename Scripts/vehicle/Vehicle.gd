@@ -3,82 +3,82 @@ class_name Vehicle
 
 @export var controller : VehicleController = PlayerController.new()
 
-# car handling variables
+## performance variables
+# mass - rigidbody property
+# CoM - rigidbody property
+enum Drivetrain { FWD, RWD, AWD }
+@export var drivetrain : Drivetrain = Drivetrain.FWD
 @export var top_speed := 100.0
-@export var grip_multiplier := 2.4 # have to setup again to take effect
-@export var rear_grip_boost := 1.2
+@export var grip_multiplier := 3.0
 @export var power_multiplier := 7.0
-var powered_wheels := 0 # divides power between all wheels
-@export var brake_power_multiplier := 5.0
+@export var brake_power_multiplier := 6.0
+
+# aero variables
+@export var body_drag := 0.1
+@export var body_downforce := 0.0
+@export var aero_offset := 0.0 # offset along length 
+
+# tune variables
+@export var rear_grip_boost := 1.2
 @export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
 @export var turning_deg := 18.0
-@export var CoM_Y := 0 # center of mass y offset
+# to add: tunable steering and braking sensitivity, axle spacers
 
+# wheel setup
+var axles : Array[VehicleAxle]
 var wheels : Array[Wheel]
+var powered_wheels := 0 # divides power between all wheels
+
 @onready var lights : LightsManager = $Lights # managed in PlayerController
 
 # accel curve
 var accel_curve : Curve = preload("res://Curves/acceleration.tres")
 
-# x_offset - distance from middle
-# y_offset - how deep the wheels are
-# axes - spot where an axis of 2 wheels is placed (front or back)
-# steerable - modifier to steering
-func default_setup() -> void:
-	setup_wheels(1.0, -0.32, [1.55, -1.53], [1, 0], [0, 1])
-
-func setup_wheels(x_offset : float, y_offset : float,
-		axes : Array[float],
-		steering : Array[float],
-		powered : Array[bool]) -> void:
-	# Remove old wheels
+# axle contains powered/steerable data
+func update_wheels() -> void:
+	# ---- Clear wheels and axles ----
 	for w in wheels:
 		if w != null:
 			w.queue_free()
 	wheels.clear()
+	axles.clear()
+	powered_wheels = 0
 	
-	for i in powered: powered_wheels += int(i)
-	
-	# add 2 wheels per axis
-	for i in range( len(axes) ):
-		var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
-		wheel.position = Vector3( axes[i], y_offset, x_offset )
-		wheel.steering_multiplier = steering[i]
-		if steering[i]: wheel.steering = true
-		if powered[i]: wheel.powered = true
+	# ---- add wheels using axle children data ----
+	for axle in get_children():
+		if !(axle is VehicleAxle): continue 
+		axles.append(axle)
 		
-		var wheel_opp : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
-		wheel_opp.position = Vector3( axes[i], y_offset, -x_offset )
-		wheel_opp.steering_multiplier = steering[i]
-		if steering[i]: wheel_opp.steering = true
-		if powered[i]: wheel_opp.powered = true
-		
-		wheel.mirror_wheel = wheel_opp
-		wheel_opp.mirror_wheel = wheel
-		
-		add_child(wheel)
-		add_child(wheel_opp)
-		
-		wheels.append(wheel)
-		wheels.append(wheel_opp)
+		if (drivetrain == Drivetrain.RWD or drivetrain == Drivetrain.AWD) and axle.position.z < 0:
+			axle.powered = true
+		if (drivetrain == Drivetrain.FWD or drivetrain == Drivetrain.AWD) and axle.position.z > 0:
+			axle.powered = true
+		if axle.powered: powered_wheels += 2
 	
-	# update ui
-	var grip_ui = get_tree().get_first_node_in_group("grip_ui")
-	grip_ui.car = self
-	grip_ui.update_ui()
+	for axle in axles:
+		axle.add_wheels()
 	
-	update_grip()
+	for i in axles:
+		print(i.powered)
 	
-	print("POWERED WHEELS: ", powered_wheels)
-
-# updates grip value of wheels
-func update_grip() -> void:
+	# ---- Set wheel's grip ----
 	for w in wheels:
 		w.grip = grip_multiplier
 		if w.position[0] < 0: w.grip *= rear_grip_boost
 
-func setCoM() -> void:
-	center_of_mass = Vector3(0, CoM_Y, 0)
+# body aero object is at 0 0 0
+func _aero() -> void:
+	var forward = global_basis.x
+	var forward_speed := linear_velocity.dot(forward)
+	
+	var force : float = global.aero_curve.sample(forward_speed)
+	
+	var downforce := -global_basis.y * force * body_downforce
+	var drag_force : Vector3 = -forward * force * body_drag
+	
+	var force_point = forward * aero_offset
+	apply_force(downforce, force_point)
+	apply_force(drag_force, Vector3.ZERO)
 
 # 0 to 1 acceleration
 func set_acceleration(x := 0.) -> void:
@@ -107,8 +107,7 @@ func set_steering(x := 0.) -> void:
 
 func _ready() -> void:
 	controller.vehicle = self
-	default_setup()
-	setCoM()
+	update_wheels()
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
@@ -117,6 +116,7 @@ func _physics_process(delta : float) -> void:
 	set_acceleration( controller.accel_handler(delta) )
 	set_braking( controller.brake_handler(delta) )
 	set_steering( controller.steer_handler(delta) )
+	_aero()
 
 func _on_body_entered(body: Node) -> void:
 	if body is Hittable:

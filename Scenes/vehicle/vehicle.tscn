@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
 [ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/MeshColorable.gd" id="2_yrpag"]
-[ext_resource type="Script" uid="uid://dakrhsjvjp0hx" path="res://Scripts/aero/Aero.gd" id="3_vuhs1"]
-[ext_resource type="Script" uid="uid://bgk6134ysdt35" path="res://Scripts/aero/Stabilizer.gd" id="4_1r10j"]
 [ext_resource type="Script" uid="uid://b0w4gqiavrivh" path="res://Scripts/vehicle/LightsManager.gd" id="4_7tm40"]
-[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/Misc/black.tres" id="5_r7o47"]
+[ext_resource type="Script" uid="uid://dbjj6tvfptdq0" path="res://Scripts/vehicle/Axle.gd" id="7_7tm40"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r7o47"]
 friction = 0.5
@@ -99,18 +97,13 @@ size = Vector3(0.1, 0.1, 0.4)
 [sub_resource type="BoxMesh" id="BoxMesh_7tm40"]
 size = Vector3(0.1, 0.1, 0.4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_fwcw4"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuhs1"]
-albedo_color = Color(0.7294118, 0.67058825, 0.1764706, 1)
-
 [node name="Vehicle" type="RigidBody3D" unique_id=973883457 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_r7o47")
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 10, 0)
 contact_monitor = true
 max_contacts_reported = 5
+linear_damp_mode = 1
 script = ExtResource("1_n8cda")
 
 [node name="CarMesh" type="MeshInstance3D" parent="." unique_id=1709991874]
@@ -156,38 +149,17 @@ mesh = SubResource("BoxMesh_r7o47")
 transform = Transform3D(1, 0, 0, 0, 0.40483743, 0, 0, 0, 1, -2.6393423, 0.27516836, -0.70000005)
 mesh = SubResource("BoxMesh_r7o47")
 
-[node name="Aero" type="Node3D" parent="." unique_id=424065392]
+[node name="VehicleAxleRear" type="Node3D" parent="." unique_id=2901479]
+transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -1.6258781, -0.41062126, 0)
+script = ExtResource("7_7tm40")
+steering = false
+steering_multiplier = 0.0
+metadata/_custom_type_script = "uid://dbjj6tvfptdq0"
 
-[node name="AeroBack" type="Node3D" parent="Aero" unique_id=1734562107]
-transform = Transform3D(0.25, 0, 0, 0, 0.099999994, 0, 0, 0, 1.9999999, -2.4776328, 0.5488597, 0)
-script = ExtResource("3_vuhs1")
-aero_multiplier = 0.2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Aero/AeroBack" unique_id=1963199864]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26218992, 0, 0)
-mesh = SubResource("BoxMesh_fwcw4")
-surface_material_override/0 = ExtResource("5_r7o47")
-
-[node name="Stabilizer" type="Node3D" parent="Aero" unique_id=1668786226]
-transform = Transform3D(1.3784935, 0, 0, 0, -4.3711355e-09, 0.1048242, 0, -0.099999934, -4.5820108e-09, -1.6283314, 0.5488593, 0)
-script = ExtResource("4_1r10j")
-aero_multiplier = 0.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Aero/Stabilizer" unique_id=1460391965]
-transform = Transform3D(0.5499999, 0, 0, 0, 1, 0, 0, -1.4210855e-14, 1.0000002, -0.3066888, 8.839436e-10, -0.31929147)
-material_override = ExtResource("5_r7o47")
-mesh = SubResource("BoxMesh_fwcw4")
-surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")
-
-[node name="AeroFront" type="Node3D" parent="Aero" unique_id=298486812]
-transform = Transform3D(0.25, 0, 0, 0, 0.09999998, 0, 0, 0, 1.9999996, 2.2510307, -0.35849875, 0)
-script = ExtResource("3_vuhs1")
-aero_multiplier = 0.2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Aero/AeroFront" unique_id=1480053370]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4523487, 0, 0)
-material_override = ExtResource("5_r7o47")
-mesh = SubResource("BoxMesh_fwcw4")
-surface_material_override/0 = SubResource("StandardMaterial3D_vuhs1")
+[node name="VehicleAxleFront" type="Node3D" parent="." unique_id=345222783]
+transform = Transform3D(1, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999995, 1.5931201, -0.4106212, 0)
+script = ExtResource("7_7tm40")
+powered = false
+metadata/_custom_type_script = "uid://dbjj6tvfptdq0"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

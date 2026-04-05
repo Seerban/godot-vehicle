@@ -2,9 +2,6 @@ extends VBoxContainer
 
 var car : Vehicle
 
-func _ready() -> void:
-	call_deferred("_on_arcade_pressed")
-
 func check_validity() -> bool:
 	car = global.player_car
 	return is_instance_valid(car)
@@ -28,7 +25,7 @@ func _on_grip_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$Grip/Value.text = str(x)
 	car.grip_multiplier = x
-	car.update_grip()
+	car.update_wheels()
 
 func _on_gf_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
@@ -50,16 +47,6 @@ func _on_damp_slider_value_changed(x: float) -> void:
 	$Damping/Value.text = str(x)
 	for w in car.wheels: w.damping = x
 
-func _on_aero_slider_value_changed(x: float) -> void:
-	if !check_validity(): return
-	$FrontAero/Value.text = str(x)
-	car.get_node("Aero/AeroFront").aero_multiplier = x
-
-func _on_b_aero_slider_value_changed(x: float) -> void:
-	if !check_validity(): return
-	$BackAero/Value.text = str(x)
-	car.get_node("Aero/AeroBack").aero_multiplier = x
-
 func _on_brake_bias_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$BrakeBias/Value.text = str(x)
@@ -70,10 +57,21 @@ func _on_roll_slider_value_changed(x: float) -> void:
 	$Roll/Value.text = str(x)
 	for w in car.wheels: w.anti_roll = x
 
-func _on_stabilizer_slider_value_changed(x: float) -> void:
+func _on_downforce_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
-	$StabilizerAero/Value.text = str(x)
-	car.get_node("Aero/Stabilizer").aero_multiplier = x
+	$DownforceAero/Value.text = str(x)
+	car.body_downforce = x
+
+func _on_drag_slider_value_changed(x: float) -> void:
+	if !check_validity(): return
+	$DragAero/Value.text = str(x)
+	car.body_drag = x
+
+func _on_offset_aero_slider_value_changed(x: float) -> void:
+	if !check_validity(): return
+	$OffsetAero/Value.text = str(x)
+	car.aero_offset = x
+
 
 ##########################################################################################################
 # PRESETS ################################################################################################
@@ -85,15 +83,14 @@ func _on_arcade_pressed() -> void:
 	_on_brake_slider_value_changed(5.0)
 	_on_brake_bias_slider_value_changed(-0.1)
 	_on_turn_slider_value_changed(18.0)
-	_on_grip_slider_value_changed(2.4)
+	_on_grip_slider_value_changed(2.8)
 	_on_gf_slider_value_changed(1.0)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(25.0)
 	_on_damp_slider_value_changed(120.0)
 	_on_roll_slider_value_changed(30.0)
-	_on_aero_slider_value_changed(0.0)
-	_on_b_aero_slider_value_changed(0.0)
-	_on_stabilizer_slider_value_changed(0.0)
+	_on_downforce_slider_value_changed(0.0)
+	_on_drag_slider_value_changed(0.1)
 
 func _on_real_pressed() -> void:
 	check_validity()
@@ -107,9 +104,8 @@ func _on_real_pressed() -> void:
 	_on_spring_slider_value_changed(30.0)
 	_on_damp_slider_value_changed(100.0)
 	_on_roll_slider_value_changed(25.0)
-	_on_aero_slider_value_changed(0.6)
-	_on_b_aero_slider_value_changed(1.0)
-	_on_stabilizer_slider_value_changed(0.0)
+	_on_downforce_slider_value_changed(0.1)
+	_on_drag_slider_value_changed(0.1)
 
 func _on_offroad_pressed() -> void:
 	check_validity()
@@ -123,9 +119,8 @@ func _on_offroad_pressed() -> void:
 	_on_spring_slider_value_changed(23.0)
 	_on_damp_slider_value_changed(100.0)
 	_on_roll_slider_value_changed(1.0)
-	_on_aero_slider_value_changed(0.6)
-	_on_b_aero_slider_value_changed(0.6)
-	_on_stabilizer_slider_value_changed(0.0)
+	_on_downforce_slider_value_changed(0.5)
+	_on_drag_slider_value_changed(0.1)
 
 func _on_drift_pressed() -> void:
 	check_validity()
@@ -139,6 +134,5 @@ func _on_drift_pressed() -> void:
 	_on_spring_slider_value_changed(30.0)
 	_on_damp_slider_value_changed(100.0)
 	_on_roll_slider_value_changed(30.0)
-	_on_aero_slider_value_changed(0.3)
-	_on_b_aero_slider_value_changed(0.1)
-	_on_stabilizer_slider_value_changed(0.0)
+	_on_downforce_slider_value_changed(0.1)
+	_on_drag_slider_value_changed(0.1)

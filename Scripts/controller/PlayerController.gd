@@ -7,13 +7,11 @@ var accel_speed := 2.0
 var accel_point := 0.0
 
 # Steering smoothing
-var steer_curve : Curve = preload("res://Curves/steer.tres")
 var steer_point := 0.0
 var steer_speed := 2.0
 var steer_return_speed := 2.0 # additional turn speed added when going opposite direction
 
 # Braking smoothing
-var brake_curve : Curve = preload("res://Curves/brake.tres")
 var brake_point := 0.0
 var brake_speed := 2.0
 var brake_return_speed := 2.0 # additional turn speed on return
@@ -25,7 +23,7 @@ func steer_handler(delta : float) -> float:
 	if sign(steer) != sign(steer_point):
 		steer_point = clampf( move_toward(steer_point, steer, delta * steer_speed), -1.0, 1.0)
 	
-	return steer_curve.sample(steer_point)
+	return global.steer_curve.sample(steer_point)
 
 func brake_handler(delta : float) -> float:
 	var brake = int( Input.is_action_pressed("backward") )
@@ -34,7 +32,7 @@ func brake_handler(delta : float) -> float:
 	if brake == 0:
 		brake_point = clampf( move_toward(brake_point, brake, delta * brake_return_speed), 0.0, 1.0)
 	
-	return brake_curve.sample(brake_point)
+	return global.brake_curve.sample(brake_point)
 
 func accel_handler(delta : float) -> float:
 	var reversing := 1 - 2 * int(Input.is_key_pressed(KEY_R))

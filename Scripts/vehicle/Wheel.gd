@@ -16,7 +16,7 @@ var on_ground := false
 @export var steering_multiplier := 1.0
 
 @onready var wheel := $WheelMesh
-@onready var car : Vehicle = get_parent()
+@onready var car : Vehicle = $"../.." # parent is axle, parent.parent is car
 
 @export_group("Tires")
 @export var tire_radius := 0.5
@@ -26,7 +26,6 @@ var on_ground := false
 @export var grip_forgiveness := 0.75 # makes acceleration and braking use less grip
 
 @onready var tire_mark : GPUParticles3D # visual skid particle
-@onready var grip_curve : Curve = load("res://Curves/grip.tres") # spring grip
 
 @export_group("Suspension")
 @export var spring_length := 0.5
@@ -66,7 +65,7 @@ func get_ground_grip_multiplier() -> float:
 
 # gets grip additive multiplier due to spring compression
 func get_spring_grip_influence() -> float:
-	return grip_curve.sample( (spring_length - spring_prev) / spring_length )
+	return global.spring_grip_curve.sample( (spring_length - spring_prev) / spring_length )
 
 # compute total grip
 func get_grip() -> float:

@@ -5,6 +5,12 @@ extends Node
 @export var radar : Control
 @export var ui_manager : UIManager
 
+# GLOBAL UTILITY CURVES
+var aero_curve := load("res://Curves/aero.tres")
+var spring_grip_curve := load("res://Curves/spring_grip.tres")
+var brake_curve := load("res://Curves/brake.tres")
+var steer_curve := load("res://Curves/steer.tres")
+
 # GLOBAL PROPERTIES
 
 enum RoadSurface {
