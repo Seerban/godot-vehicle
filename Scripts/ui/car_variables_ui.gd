@@ -3,7 +3,8 @@ extends VBoxContainer
 var car : Vehicle
 
 func _ready() -> void:
-	call_deferred("_on_arcade_pressed")
+	pass
+	#call_deferred("_on_arcade_pressed")
 
 func reset_velocity() -> void:
 	await global.wait(0.01)

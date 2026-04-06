@@ -151,7 +151,7 @@ func brake(power := 0.0) -> void:
 	if not on_ground: return
 	
 	var forward_speed = car.linear_velocity.dot(forward)
-	var capped_force = car.linear_velocity.normalized() * clamp(forward_speed, -power, power)
+	var capped_force = car.linear_velocity.normalized() * clamp(forward_speed*power, -power, power)
 	var braking_force = -capped_force * sign(forward_speed)
 	
 	if braking_force.length() > long_grip_left:

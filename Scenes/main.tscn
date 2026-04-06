@@ -86,6 +86,7 @@ script = ExtResource("4_fdnlq")
 [node name="Instructions" parent="CanvasLayer" unique_id=1842366119 instance=ExtResource("6_6bp64")]
 
 [node name="VarsBG" type="ColorRect" parent="CanvasLayer" unique_id=1936252716]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -96,6 +97,7 @@ pivot_offset = Vector2(290, 101)
 color = Color(0.29411766, 0.29411766, 0.29411766, 0.4627451)
 
 [node name="CarVariables" parent="CanvasLayer" unique_id=2039668122 instance=ExtResource("6_344ge")]
+visible = false
 
 [node name="Meters" parent="CanvasLayer" unique_id=1960263484 instance=ExtResource("7_344ge")]
 pivot_offset = Vector2(-736, -378)
