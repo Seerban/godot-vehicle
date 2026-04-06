@@ -118,36 +118,9 @@ mesh = SubResource("ArrayMesh_jo1ws")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_r7o47")
 
-[node name="Collision" type="CollisionShape3D" parent="." unique_id=232987619]
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=232987619]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.029296637, 0.01046715, 0)
 shape = SubResource("BoxShape3D_ho8xs")
-
-[node name="Lights" type="Node3D" parent="." unique_id=658494813]
-script = ExtResource("4_7tm40")
-
-[node name="Front" type="MeshInstance3D" parent="Lights" unique_id=1388410690]
-transform = Transform3D(0.9699018, -0.24349652, 0, 0.24349652, 0.9699018, 0, 0, 0, 1, 2.6580925, 0.1, 0.7)
-mesh = SubResource("BoxMesh_r7o47")
-
-[node name="Front2" type="MeshInstance3D" parent="Lights" unique_id=1721029190]
-transform = Transform3D(0.9699018, -0.24349652, 0, 0.24349652, 0.9699018, 0, 0, 0, 1, 2.6580925, 0.1, -0.70000005)
-mesh = SubResource("BoxMesh_r7o47")
-
-[node name="Back" type="MeshInstance3D" parent="Lights" unique_id=1880307220]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6419075, 0.3428657, 0.7)
-mesh = SubResource("BoxMesh_7tm40")
-
-[node name="Back2" type="MeshInstance3D" parent="Lights" unique_id=726997140]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6419075, 0.3428657, -0.70000005)
-mesh = SubResource("BoxMesh_r7o47")
-
-[node name="Reverse" type="MeshInstance3D" parent="Lights" unique_id=824271237]
-transform = Transform3D(1, 0, 0, 0, 0.40483743, 0, 0, 0, 1, -2.6393423, 0.27516836, 0.7)
-mesh = SubResource("BoxMesh_r7o47")
-
-[node name="Reverse2" type="MeshInstance3D" parent="Lights" unique_id=2132006605]
-transform = Transform3D(1, 0, 0, 0, 0.40483743, 0, 0, 0, 1, -2.6393423, 0.27516836, -0.70000005)
-mesh = SubResource("BoxMesh_r7o47")
 
 [node name="VehicleAxleRear" type="Node3D" parent="." unique_id=2901479]
 transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -1.6258781, -0.41062126, 0)
@@ -161,5 +134,33 @@ transform = Transform3D(1, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999995, 1.5931201, -0
 script = ExtResource("7_7tm40")
 powered = false
 metadata/_custom_type_script = "uid://dbjj6tvfptdq0"
+
+[node name="LightsManager" type="Node3D" parent="." unique_id=1966949977]
+script = ExtResource("4_7tm40")
+metadata/_custom_type_script = "uid://b0w4gqiavrivh"
+
+[node name="Front" type="MeshInstance3D" parent="LightsManager" unique_id=1264143328]
+transform = Transform3D(0.9699018, -0.24349652, 0, 0.24349652, 0.9699018, 0, 0, 0, 1, 2.6580925, 0.1, 0.7)
+mesh = SubResource("BoxMesh_r7o47")
+
+[node name="Front2" type="MeshInstance3D" parent="LightsManager" unique_id=1507908358]
+transform = Transform3D(0.9699018, -0.24349652, 0, 0.24349652, 0.9699018, 0, 0, 0, 1, 2.6580925, 0.1, -0.70000005)
+mesh = SubResource("BoxMesh_r7o47")
+
+[node name="Back" type="MeshInstance3D" parent="LightsManager" unique_id=1169399917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6419075, 0.3428657, 0.7)
+mesh = SubResource("BoxMesh_7tm40")
+
+[node name="Back2" type="MeshInstance3D" parent="LightsManager" unique_id=54601474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6419075, 0.3428657, -0.70000005)
+mesh = SubResource("BoxMesh_r7o47")
+
+[node name="Reverse" type="MeshInstance3D" parent="LightsManager" unique_id=817978317]
+transform = Transform3D(1, 0, 0, 0, 0.40483743, 0, 0, 0, 1, -2.6393423, 0.27516836, 0.7)
+mesh = SubResource("BoxMesh_r7o47")
+
+[node name="Reverse2" type="MeshInstance3D" parent="LightsManager" unique_id=1708274243]
+transform = Transform3D(1, 0, 0, 0, 0.40483743, 0, 0, 0, 1, -2.6393423, 0.27516836, -0.70000005)
+mesh = SubResource("BoxMesh_r7o47")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

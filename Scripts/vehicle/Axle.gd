@@ -2,7 +2,7 @@
 extends Node3D
 class_name VehicleAxle
 
-@onready var car = $".."
+@onready var car : Vehicle = $".."
 
 @export var half_width := 1.0
 @export var powered := true
@@ -34,12 +34,25 @@ func _ready():
 	render_editor_spheres()
 
 func add_wheels() -> void:
+	# Check if supposed to be powered
+	if (car.drivetrain == car.Drivetrain.RWD or car.drivetrain == car.Drivetrain.AWD) and position.z < 0:
+		powered = true
+	if (car.drivetrain == car.Drivetrain.FWD or car.drivetrain == car.Drivetrain.AWD) and position.z > 0:
+		powered = true
+	if powered: car.powered_wheels += 2
+	
 	var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
 	
+	# update to car stats
 	wheel.position = Vector3(0, 0, half_width )
 	wheel.steering_multiplier = steering_multiplier
 	wheel.steering = steering
 	wheel.powered = powered
+	wheel.grip_forgiveness = car.grip_forgiveness
+	wheel.spring_length = car.spring_length
+	wheel.spring_strength = car.spring_strength
+	wheel.damping = car.spring_damping
+	wheel.anti_roll = car.anti_roll
 	
 	var wheel_opp : Wheel = wheel.duplicate()
 	wheel_opp.position = Vector3(0, 0, -half_width)

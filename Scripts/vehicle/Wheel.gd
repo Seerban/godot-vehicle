@@ -22,28 +22,26 @@ var on_ground := false
 @export var tire_radius := 0.5
 @export var radius := 0.0 # practical size, not visual
 @export var grip := 3.0
-@export var acceleration_grip_usage_multiplier := 0.3 # makes acceleration less costly
+var acceleration_grip_usage_multiplier := 0.3 # makes acceleration less costly
 @export var grip_forgiveness := 0.75 # makes acceleration and braking use less grip
 
 @onready var tire_mark : GPUParticles3D # visual skid particle
 
 @export_group("Suspension")
-@export var spring_length := 0.5
-@export var spring_strength := 20.0
+@export var spring_length := 0.5 :
+	set(value):
+		spring_length = value
+		target_position = Vector3(0, -value, 0)
+@export var spring_strength := 25.0
 @export var damping := 120.0
-@export var anti_roll := 15.0
+@export var anti_roll := 20.0
 
 @export_group("dynamic")
-@export var mirror_wheel : Wheel
-@export var brake_power := 0.0
-@export var accel_power := 0.0
-@export var grip_left := 0.0
-@export var spring_prev := 0.0 # previous frame spring compression
-
-# length of suspension
-func set_length(x : float) -> void:
-	target_position = Vector3(0, -x, 0)
-	spring_length = x
+var mirror_wheel : Wheel
+var brake_power := 0.0
+var accel_power := 0.0
+var grip_left := 0.0
+var spring_prev := 0.0 # previous frame spring compression
 
 # only visual change, doesn't affect anything else
 func set_wheel_dimensions(r : float, width : float) -> void:
