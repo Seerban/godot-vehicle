@@ -187,36 +187,68 @@ theme_override_font_sizes/font_size = 14
 text = "---- ---- Tires ---- ----"
 horizontal_alignment = 1
 
-[node name="Grip" type="HBoxContainer" parent="." unique_id=1539554769]
+[node name="LongGrip" type="HBoxContainer" parent="." unique_id=1539554769]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="Grip" unique_id=661945099]
+[node name="Label" type="Label" parent="LongGrip" unique_id=661945099]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 theme_override_font_sizes/font_size = 12
-text = "Grip"
+text = "Longitudinal Grip"
 horizontal_alignment = 1
 
-[node name="GripSlider" type="HSlider" parent="Grip" unique_id=208438220]
+[node name="LongGripSlider" type="HSlider" parent="LongGrip" unique_id=208438220]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 8.0
 step = 0.2
-value = 2.8
+value = 2.0
 allow_greater = true
 allow_lesser = true
 ticks_on_borders = true
 
-[node name="Value" type="Label" parent="Grip" unique_id=1254788783]
+[node name="Value" type="Label" parent="LongGrip" unique_id=1254788783]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 12
-text = "2.8"
+text = "2.0"
+horizontal_alignment = 1
+
+[node name="LatGrip" type="HBoxContainer" parent="." unique_id=161681407]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="LatGrip" unique_id=904924274]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Lateral Grip"
+horizontal_alignment = 1
+
+[node name="LatGripSlider" type="HSlider" parent="LatGrip" unique_id=351533582]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.5
+max_value = 8.0
+step = 0.2
+value = 1.1
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="LatGrip" unique_id=1840005294]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "1.0"
 horizontal_alignment = 1
 
 [node name="GripForgive" type="HBoxContainer" parent="." unique_id=1791952525]
@@ -485,7 +517,8 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="Brake/BrakeSlider" to="." method="_on_brake_slider_value_changed"]
 [connection signal="value_changed" from="BrakeBias/BrakeBiasSlider" to="." method="_on_brake_bias_slider_value_changed"]
 [connection signal="value_changed" from="Turn/TurnSlider" to="." method="_on_turn_slider_value_changed"]
-[connection signal="value_changed" from="Grip/GripSlider" to="." method="_on_grip_slider_value_changed"]
+[connection signal="value_changed" from="LongGrip/LongGripSlider" to="." method="_on_long_grip_slider_value_changed"]
+[connection signal="value_changed" from="LatGrip/LatGripSlider" to="." method="_on_lat_grip_slider_value_changed"]
 [connection signal="value_changed" from="GripForgive/GFSlider" to="." method="_on_gf_slider_value_changed"]
 [connection signal="value_changed" from="SpringHeight/SHSlider" to="." method="_on_sh_slider_value_changed"]
 [connection signal="value_changed" from="SpringStrength/SpringSlider" to="." method="_on_spring_slider_value_changed"]

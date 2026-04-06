@@ -14,9 +14,14 @@ enum Drivetrain { FWD, RWD, AWD }
 @export var top_speed := 100.0
 @export var power_multiplier := 6.0
 @export var brake_power_multiplier := 6.0
-@export var grip_multiplier : float = 2.8 :
+
+@export var longitudinal_grip_multiplier : float = 2.0:
 	set(value):
-		grip_multiplier = value
+		longitudinal_grip_multiplier = value
+		update_wheels()
+@export var lateral_grip_multiplier : float = 2.0 :
+	set(value):
+		lateral_grip_multiplier = value
 		update_wheels()
 @export var grip_forgiveness : float = 0.8 :
 	set(value):
@@ -72,16 +77,11 @@ func update_wheels() -> void:
 	axles.clear()
 	powered_wheels = 0
 	
-	# ---- add wheels using axle children data ----
+	# ---- initialize wheels in axle ----
 	for axle in get_children():
 		if !(axle is VehicleAxle): continue 
 		axles.append(axle)
 		axle.add_wheels()
-	
-	# ---- Set wheel's grip ----
-	for w in wheels:
-		w.grip = grip_multiplier
-		if w.position[0] < 0: w.grip *= rear_grip_boost
 
 # body aero object is at 0 0 0
 func _aero() -> void:
@@ -111,13 +111,14 @@ func set_acceleration(x := 0.) -> void:
 
 # 0 to 1 braking
 func set_braking(x := 0.) -> void:
-	for w in wheels:
-		# account for rear-front bias based on x position
-		if w.position.x > 0:
-			w.brake_power = x + x * brake_bias
-		else:
-			w.brake_power = x - x * brake_bias
-		w.brake_power *= brake_power_multiplier
+	for axle in axles:
+		for w in axle.get_children():
+			# account for rear-front bias based on x position
+			if axle.position.x > 0:
+				w.brake_power = x + x * brake_bias
+			else:
+				w.brake_power = x - x * brake_bias
+			w.brake_power *= brake_power_multiplier
 	
 	# update brake lights
 	if x > 0.25: lights.set_back_intensity(1)

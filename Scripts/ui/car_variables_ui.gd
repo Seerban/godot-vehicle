@@ -32,11 +32,17 @@ func _on_turn_slider_value_changed(x: float) -> void:
 	$Turn/TurnSlider.value = x
 	car.turning_deg = x
 
-func _on_grip_slider_value_changed(x: float) -> void:
+func _on_long_grip_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
-	$Grip/Value.text = str(x)
-	$Grip/GripSlider.value = x
-	car.grip_multiplier = x
+	$LongGrip/Value.text = str(x)
+	$LongGrip/LongGripSlider.value = x
+	car.longitudinal_grip_multiplier = x
+
+func _on_lat_grip_slider_value_changed(x: float) -> void:
+	if !check_validity(): return
+	$LatGrip/Value.text = str(x)
+	$LatGrip/LatGripSlider.value = x
+	car.lateral_grip_multiplier = x
 
 func _on_gf_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
@@ -103,7 +109,8 @@ func _on_arcade_pressed() -> void:
 	_on_brake_slider_value_changed(5.0)
 	_on_brake_bias_slider_value_changed(-0.1)
 	_on_turn_slider_value_changed(18.0)
-	_on_grip_slider_value_changed(2.8)
+	_on_long_grip_slider_value_changed(2.0)
+	_on_lat_grip_slider_value_changed(2.0)
 	_on_gf_slider_value_changed(1.0)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(25.0)
@@ -119,7 +126,8 @@ func _on_real_pressed() -> void:
 	_on_brake_slider_value_changed(5.0)
 	_on_brake_bias_slider_value_changed(-0.2)
 	_on_turn_slider_value_changed(18.0)
-	_on_grip_slider_value_changed(2.4)
+	_on_long_grip_slider_value_changed(2.0)
+	_on_lat_grip_slider_value_changed(2.0)
 	_on_gf_slider_value_changed(0.6)
 	_on_sh_slider_value_changed(0.5)
 	_on_spring_slider_value_changed(30.0)
@@ -135,7 +143,8 @@ func _on_offroad_pressed() -> void:
 	_on_brake_slider_value_changed(5.0)
 	_on_brake_bias_slider_value_changed(0.0)
 	_on_turn_slider_value_changed(18.0)
-	_on_grip_slider_value_changed(2.4)
+	_on_long_grip_slider_value_changed(1.8)
+	_on_lat_grip_slider_value_changed(1.6)
 	_on_gf_slider_value_changed(0.75)
 	_on_sh_slider_value_changed(1.0)
 	_on_spring_slider_value_changed(23.0)
@@ -147,11 +156,12 @@ func _on_offroad_pressed() -> void:
 
 func _on_drift_pressed() -> void:
 	check_validity()
-	_on_power_slider_value_changed(6.0)
-	_on_brake_slider_value_changed(10.0)
+	_on_power_slider_value_changed(10.0)
+	_on_brake_slider_value_changed(12.0)
 	_on_brake_bias_slider_value_changed(-1)
 	_on_turn_slider_value_changed(30.0)
-	_on_grip_slider_value_changed(1.8)
+	_on_long_grip_slider_value_changed(2.0)
+	_on_lat_grip_slider_value_changed(1.0)
 	_on_gf_slider_value_changed(0.75)
 	_on_sh_slider_value_changed(0.4)
 	_on_spring_slider_value_changed(30.0)

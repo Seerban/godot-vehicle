@@ -54,6 +54,14 @@ func add_wheels() -> void:
 	wheel.damping = car.spring_damping
 	wheel.anti_roll = car.anti_roll
 	
+	# set grip
+	wheel.long_grip = car.longitudinal_grip_multiplier
+	wheel.lat_grip = car.lateral_grip_multiplier
+	if wheel.position[0] < 0:
+		wheel.long_grip *= car.rear_grip_boost
+		wheel.lat_grip *= car.rear_grip_boost
+	
+	# add both wheels and connect
 	var wheel_opp : Wheel = wheel.duplicate()
 	wheel_opp.position = Vector3(0, 0, -half_width)
 	

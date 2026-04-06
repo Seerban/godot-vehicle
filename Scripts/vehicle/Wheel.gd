@@ -21,8 +21,8 @@ var on_ground := false
 @export_group("Tires")
 @export var tire_radius := 0.5
 @export var radius := 0.0 # practical size, not visual
-@export var grip := 3.0
-var acceleration_grip_usage_multiplier := 0.3 # makes acceleration less costly
+@export var long_grip := 2.0
+@export var lat_grip := 2.0
 @export var grip_forgiveness := 0.75 # makes acceleration and braking use less grip
 
 @onready var tire_mark : GPUParticles3D # visual skid particle
@@ -40,7 +40,8 @@ var acceleration_grip_usage_multiplier := 0.3 # makes acceleration less costly
 var mirror_wheel : Wheel
 var brake_power := 0.0
 var accel_power := 0.0
-var grip_left := 0.0
+var long_grip_left := 0.0
+var lat_grip_left := 0.0
 var spring_prev := 0.0 # previous frame spring compression
 
 # only visual change, doesn't affect anything else
@@ -66,12 +67,18 @@ func get_spring_grip_influence() -> float:
 	return global.spring_grip_curve.sample( (spring_length - spring_prev) / spring_length )
 
 # compute total grip
-func get_grip() -> float:
-	return grip * get_ground_grip_multiplier() * get_spring_grip_influence()
+func get_long_grip() -> float:
+	return long_grip * get_ground_grip_multiplier() * get_spring_grip_influence()
+
+func get_lat_grip() -> float:
+	return lat_grip * get_ground_grip_multiplier() * get_spring_grip_influence()
 
 # total grip used this tick
-func get_used_grip() -> float: # only for debug/ui
-	return get_grip() - grip_left
+func get_used_long_grip() -> float: # only for debug/ui
+	return get_long_grip() - long_grip_left
+
+func get_used_lat_grip() -> float:
+	return get_lat_grip() - lat_grip_left
 
 # apply spring force
 func _spring() -> void:
@@ -107,11 +114,11 @@ func _friction() -> void:
 	
 	var point_velocity := car.linear_velocity + car.angular_velocity.cross(relative_pos)
 	var side_velocity := point_velocity.dot(global_basis.z)
-	var force := side_projection * side_velocity * get_grip()
+	var force := side_projection * side_velocity * get_lat_grip()
 	
-	if force.length() > grip_left:
-		force = force.normalized() * grip_left
-	grip_left -= force.length()
+	if force.length() > lat_grip_left:
+		force = force.normalized() * lat_grip_left
+	lat_grip_left -= force.length()
 	
 	car.apply_force(force, get_contact_point())
 
@@ -120,7 +127,7 @@ func _rotate_wheel(angle) -> void:
 
 # updates tire marks particles
 func update_particles() -> void:
-	tire_mark.emitting = grip_left <= 0.01
+	tire_mark.emitting = lat_grip_left <= 0.01 or long_grip_left <= 0.01
 	tire_mark.global_position = car.global_position + get_contact_point()
 	tire_mark.global_rotation = global_rotation
 
@@ -129,13 +136,13 @@ func accelerate(power := 0.0) -> void:
 	if not on_ground or not powered: return
 	
 	var force = forward_projection * power
-	var grip_used = force.length() * acceleration_grip_usage_multiplier
+	var long_grip_used = force.length()
 	
-	if grip_used > grip_left:
-		force = force.normalized() * grip_left / acceleration_grip_usage_multiplier
+	if long_grip_used > long_grip_left:
+		force = force.normalized() * long_grip_left
 	
-	grip_used = force.length() * acceleration_grip_usage_multiplier
-	grip_left -= grip_used * (1 - grip_forgiveness)
+	long_grip_used = force.length()
+	long_grip_left -= long_grip_used * (1 - grip_forgiveness)
 	
 	car.apply_force(force, get_contact_point())
 
@@ -147,10 +154,10 @@ func brake(power := 0.0) -> void:
 	var capped_force = car.linear_velocity.normalized() * clamp(forward_speed, -power, power)
 	var braking_force = -capped_force * sign(forward_speed)
 	
-	if braking_force.length() > grip_left:
-		braking_force = braking_force.normalized() * grip_left
+	if braking_force.length() > long_grip_left:
+		braking_force = braking_force.normalized() * long_grip_left
 	
-	grip_left -= braking_force.length() * (1 - grip_forgiveness)
+	long_grip_left -= braking_force.length() * (1 - grip_forgiveness)
 	
 	car.apply_force(braking_force, get_contact_point())
 
@@ -172,14 +179,16 @@ func _ready() -> void:
 	target_position = Vector3(0, -spring_length, 0)
 	wheel.mesh.top_radius = tire_radius
 	wheel.mesh.bottom_radius = tire_radius
-	radius = tire_radius * 0.94
+	radius = tire_radius * 0.94 # give deform illusion
+	
 	tire_mark = load("res://Scenes/particles/tire_mark.tscn").instantiate()
 	get_tree().root.add_child.call_deferred(tire_mark)
 
 func _physics_process(delta: float) -> void:
 	fetch_vars()
 	
-	grip_left = get_grip()
+	lat_grip_left = get_lat_grip()
+	long_grip_left = get_long_grip()
 	_spring()
 	
 	brake(brake_power)

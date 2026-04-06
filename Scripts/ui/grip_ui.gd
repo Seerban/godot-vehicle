@@ -27,5 +27,7 @@ func _physics_process(delta: float) -> void:
 		car = global.player_car
 	
 	for i in range( len(bars) ):
-		bars[i].value = car.wheels[i].get_used_grip() / car.wheels[i].get_grip() * 100
-		bars[i].get_node("Label").text = str( int( car.wheels[i].get_used_grip() * 10) )
+		var used_grip = car.wheels[i].get_used_lat_grip() + car.wheels[i].get_used_long_grip()
+		var max_grip = car.wheels[i].get_lat_grip() + car.wheels[i].get_long_grip()
+		bars[i].value = used_grip / max_grip * 100
+		bars[i].get_node("Label").text = str( int( used_grip * 10) )
