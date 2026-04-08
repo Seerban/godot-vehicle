@@ -2,21 +2,6 @@ extends Node3D
 
 @onready var canvas = $CanvasLayer 
 
-func spawn_cars() -> void:
-	var parent = $Vehicles
-	var paint_path = "res://Material/Paint/"
-	var paints = ["Candy","Gloss","Matte","Metal","Pearl","Toon"]
-	var offset = $CarSpawnPos.global_position
-	for i in range(len(paints)):
-		var car = load("res://Scenes/vehicle/vehicle.tscn").instantiate()
-		car.get_node("CarMesh").update_material( paints[i] )
-		car.get_node("CarMesh").update_color(Color.INDIAN_RED)
-		parent.add_child(car)
-		car.set_physics_process(false)
-		car.global_position = offset
-		car.global_rotation_degrees.y -= 90
-		offset.x += 10
-
 func flip_car() -> void:
 	var car := get_tree().get_first_node_in_group("player")
 	car.linear_velocity += Vector3(0, 5, 0)
@@ -28,4 +13,3 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	pass
-	#spawn_cars()

@@ -1,9 +1,7 @@
 extends VehicleComponent
-class_name VehicleTiresStats
+class_name TiresStats
 
 @export var lateral_grip := 300.0
 @export var longitudinal_grip := 300.0
-
-func update_stats(vehicle : Vehicle) -> void:
-	vehicle.lateral_grip_multiplier = lateral_grip
-	vehicle.longitudinal_grip_multiplier = longitudinal_grip
+@export var wheel_size := 0.5
+@export var wheel_width := 0.3

@@ -4,9 +4,7 @@ class_name VehicleAxle
 
 @onready var car : Vehicle = $".."
 
-@export var half_width := 1.0
-@export var powered := true
-@export var steering := true
+@export var half_width := 1.0 # distance from center of vehicle to wheel start
 @export var steering_multiplier := 1.0
 
 # render for editor
@@ -33,43 +31,27 @@ func render_editor_spheres() -> void:
 func _ready():
 	render_editor_spheres()
 
+func is_rear() -> bool:
+	return position.x < 0
+
 func add_wheels() -> void:
-	# Check if supposed to be powered
-	if (car.drivetrain == car.Drivetrain.RWD or car.drivetrain == car.Drivetrain.AWD) and position.z < 0:
-		powered = true
-	if (car.drivetrain == car.Drivetrain.FWD or car.drivetrain == car.Drivetrain.AWD) and position.z > 0:
-		powered = true
-	if powered: car.powered_wheels += 2
-	
 	var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
+	add_child(wheel)
 	
-	# update to car stats
-	wheel.position = Vector3(0, 0, half_width )
-	wheel.steering_multiplier = steering_multiplier
-	wheel.steering = steering
-	wheel.powered = powered
-	wheel.grip_forgiveness = car.grip_forgiveness
-	wheel.spring_length = car.spring_length
-	wheel.spring_strength = car.spring_strength
-	wheel.damping = car.spring_damping
-	wheel.anti_roll = car.anti_roll
+	wheel.update_dimensions()
+	wheel.target_position = Vector3(0, -car.suspension.length, 0)
+
 	
-	# set grip
-	wheel.long_grip = car.longitudinal_grip_multiplier
-	wheel.lat_grip = car.lateral_grip_multiplier
-	if wheel.position[0] < 0:
-		wheel.long_grip *= car.rear_grip_boost
-		wheel.lat_grip *= car.rear_grip_boost
+	if is_rear(): 	wheel.position = Vector3(0, 0, -half_width - car.tires.wheel_width * car.rear_grip_boost / 2.0 )
+	else:			wheel.position = Vector3(0, 0, -half_width - car.tires.wheel_width / 2.0 )
 	
-	# add both wheels and connect
+	# connect wheels
 	var wheel_opp : Wheel = wheel.duplicate()
-	wheel_opp.position = Vector3(0, 0, -half_width)
+	add_child(wheel_opp)
+	wheel_opp.position = Vector3(0, 0, -wheel.position.z)
 	
 	wheel.mirror_wheel = wheel_opp
 	wheel_opp.mirror_wheel = wheel
-	
-	add_child(wheel)
-	add_child(wheel_opp)
 	
 	car.wheels.append(wheel)
 	car.wheels.append(wheel_opp)

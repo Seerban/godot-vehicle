@@ -187,6 +187,37 @@ theme_override_font_sizes/font_size = 14
 text = "---- ---- Tires ---- ----"
 horizontal_alignment = 1
 
+[node name="PowerBias" type="HBoxContainer" parent="." unique_id=1694872759]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="PowerBias" unique_id=1164708335]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 12
+text = "Power Bias (AWD)"
+horizontal_alignment = 1
+
+[node name="PowerBiasSlider" type="HSlider" parent="PowerBias" unique_id=360165110]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+allow_greater = true
+allow_lesser = true
+ticks_on_borders = true
+
+[node name="Value" type="Label" parent="PowerBias" unique_id=1238913698]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "0.0"
+horizontal_alignment = 1
+
 [node name="LongGrip" type="HBoxContainer" parent="." unique_id=1539554769]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
@@ -517,6 +548,7 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="Brake/BrakeSlider" to="." method="_on_brake_slider_value_changed"]
 [connection signal="value_changed" from="BrakeBias/BrakeBiasSlider" to="." method="_on_brake_bias_slider_value_changed"]
 [connection signal="value_changed" from="Turn/TurnSlider" to="." method="_on_turn_slider_value_changed"]
+[connection signal="value_changed" from="PowerBias/PowerBiasSlider" to="." method="_on_power_bias_slider_value_changed"]
 [connection signal="value_changed" from="LongGrip/LongGripSlider" to="." method="_on_long_grip_slider_value_changed"]
 [connection signal="value_changed" from="LatGrip/LatGripSlider" to="." method="_on_lat_grip_slider_value_changed"]
 [connection signal="value_changed" from="GripForgive/GFSlider" to="." method="_on_gf_slider_value_changed"]

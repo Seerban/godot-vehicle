@@ -102,7 +102,8 @@ visible = false
 [node name="Meters" parent="CanvasLayer" unique_id=1960263484 instance=ExtResource("7_344ge")]
 pivot_offset = Vector2(-736, -378)
 
-[node name="DriveTerrain" parent="CanvasLayer" unique_id=1155862949 instance=ExtResource("8_ynf5e")]
+[node name="Drivetrain" parent="CanvasLayer" unique_id=1155862949 instance=ExtResource("8_ynf5e")]
+visible = false
 offset_top = -30.0
 offset_bottom = -30.0
 

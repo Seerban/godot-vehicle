@@ -1,5 +1,5 @@
 extends Object
 class_name VehicleComponent
 
-func update_stats(vehicle : Vehicle) -> void:
-	pass
+@export var name : String = "undefined"
+@export var weight : float = 0.0

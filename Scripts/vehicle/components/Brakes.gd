@@ -1,5 +1,5 @@
 extends VehicleComponent
-class_name VehicleBrakesStats
+class_name BrakesStats
 
 @export var brake_power := 1000.0
 

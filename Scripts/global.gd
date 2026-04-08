@@ -3,6 +3,7 @@ extends Node
 # REFERENCES
 @export var player_car : Vehicle
 @export var radar : Control
+@export var grip_ui : Control
 @export var ui_manager : UIManager
 
 # GLOBAL UTILITY CURVES
@@ -40,3 +41,4 @@ func _ready() -> void:
 	player_car = get_tree().get_first_node_in_group("car")
 	radar = get_tree().get_first_node_in_group("radar").get_node("Texture")
 	ui_manager = get_tree().get_first_node_in_group("ui")
+	grip_ui = ui_manager.get_node("Grip")

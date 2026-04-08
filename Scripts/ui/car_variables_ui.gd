@@ -33,6 +33,12 @@ func _on_turn_slider_value_changed(x: float) -> void:
 	$Turn/TurnSlider.value = x
 	car.turning_deg = x
 
+func _on_power_bias_slider_value_changed(x: float) -> void:
+	if !check_validity(): return
+	$PowerBias/Value.text = str(x)
+	$PowerBias/PowerBiasSlider.value = x
+	car.power_bias = x
+
 func _on_long_grip_slider_value_changed(x: float) -> void:
 	if !check_validity(): return
 	$LongGrip/Value.text = str(x)
