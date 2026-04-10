@@ -164,4 +164,4 @@ func _ready() -> void:
 
 func update_trails() -> void:
 	for i in trails:
-		i.update_vars(current_back_intensity)
+		i.update_vars()

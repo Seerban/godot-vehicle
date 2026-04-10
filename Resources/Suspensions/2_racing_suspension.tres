@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SuspensionStats" format=3 uid="uid://4pvktt8wdc6b"]
+
+[ext_resource type="Script" uid="uid://45klxp17xyel" path="res://Scripts/vehicle/components/Suspension.gd" id="1_di0j7"]
+
+[resource]
+script = ExtResource("1_di0j7")
+length = 0.45
+damping = 3000.0
+name = "Racing Suspension"
+metadata/_custom_type_script = "uid://45klxp17xyel"

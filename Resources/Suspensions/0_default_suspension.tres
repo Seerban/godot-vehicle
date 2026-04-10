@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SuspensionStats" format=3 uid="uid://ba8rhfytdggjt"]
+
+[ext_resource type="Script" uid="uid://45klxp17xyel" path="res://Scripts/vehicle/components/Suspension.gd" id="1_ihoq4"]
+
+[resource]
+script = ExtResource("1_ihoq4")
+antiroll = 0.0
+name = "Stock Suspension"
+metadata/_custom_type_script = "uid://45klxp17xyel"

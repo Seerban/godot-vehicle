@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EngineStats" format=3 uid="uid://bm0443oigd3sd"]
+
+[ext_resource type="Script" uid="uid://c2sos8kslywl0" path="res://Scripts/vehicle/components/Engine.gd" id="1_vam5x"]
+
+[resource]
+script = ExtResource("1_vam5x")
+power = 250.0
+speed = 140.0
+name = "Max Engine"
+metadata/_custom_type_script = "uid://c2sos8kslywl0"

@@ -18,14 +18,21 @@ var wheels : Array[Wheel]
 @export var accel_curve : Curve = load("res://Curves/acceleration.tres")
 
 ################################
-# Components (alter properties below when calling update_stats)
+# Components
 var engine := EngineStats.new()
 var transmission := TransmissionStats.new()
 var aspiration := AspirationStats.new()
 var chassis := ChassisStats.new()
-var weight_kit := WeightKitStats.new()
+var weight_kit := WeightKitStats.new() : 
+	set(x):
+		weight_kit = x
+		mass = get_weight()
 var aero_kit := AeroKitStats.new()
-var suspension := SuspensionStats.new()
+var suspension := SuspensionStats.new() :
+	set(x):
+		suspension = x
+		print(x.name)
+		update_wheels()
 var tires := TiresStats.new()
 var brakes := BrakesStats.new()
 var drivetrain := DrivetrainStats.new()
@@ -79,7 +86,7 @@ func update_wheels() -> void:
 	for axle in get_children():
 		if !(axle is VehicleAxle): continue 
 		axles.append(axle)
-		axle.add_wheels()
+		axle.update()
 
 
 # body aero object is at 0 0 0
@@ -139,7 +146,8 @@ func set_steering(x := 0.) -> void:
 
 
 func _ready() -> void:
-	mass = 100#get_weight()
+	mass = get_weight()
+	center_of_mass.y = chassis.CoM_Y
 	controller.vehicle = self
 	update_wheels()
 	for i in get_children(): if i is LightsManager: lights = i

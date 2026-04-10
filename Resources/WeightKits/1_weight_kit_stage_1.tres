@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeightKitStats" format=3 uid="uid://70gptof77rgn"]
+
+[ext_resource type="Script" uid="uid://cf5lbkrhx63wf" path="res://Scripts/vehicle/components/WeightKit.gd" id="1_lth3t"]
+
+[resource]
+script = ExtResource("1_lth3t")
+weight_multiplier = 0.95
+name = "Weight Kit Stage 1"
+metadata/_custom_type_script = "uid://cf5lbkrhx63wf"

@@ -34,7 +34,7 @@ func _ready():
 func is_rear() -> bool:
 	return position.x < 0
 
-func add_wheels() -> void:
+func update() -> void:
 	var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
 	add_child(wheel)
 	
