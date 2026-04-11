@@ -46,6 +46,7 @@ player=""
 radar=""
 rand=""
 vehicles=""
+garages=""
 
 [input]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcti02ix7cig3"]
 
-[ext_resource type="Script" uid="uid://bnxl7u74wtydv" path="res://UI/vehicle_component_button.gd" id="1_kckqu"]
+[ext_resource type="Script" uid="uid://bnxl7u74wtydv" path="res://Scripts/ui/vehicle_component_button.gd" id="1_kckqu"]
 
 [node name="Button" type="Button" unique_id=1527372045]
 anchors_preset = 15

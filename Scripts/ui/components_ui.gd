@@ -14,12 +14,17 @@ func set_visibility(b : bool) -> void:
 	equipped.visible = b
 	hint.visible = !b
 
-func set_equipped(s : String) -> void:
-	equipped.text = "Equipped: " + s
+func update() -> void:
+	equipped.text = "Engine Top Speed - " + str(global.player_car.get_top_speed()) + "\n" \
+	 	+ "Power - " + str(global.player_car.get_power()) + '\n' \
+		+ "0-50 - " + '\n' \
+		+ "Weight - " + str(global.player_car.get_weight()) + '\n' \
+		+ "Grip - " + str((global.player_car.tires.longitudinal_grip + global.player_car.tires.longitudinal_grip) / 2)
 
 func add_button(res : VehicleComponent) -> void:
 	var button = button_example.instantiate()
 	button.res = res
+	button.initializer_ref = self
 	panel.add_child(button)
 
 func unload_buttons() -> void:
@@ -51,25 +56,29 @@ func load_buttons(path) -> void:
 func _on_button_pressed() -> void:
 	unload_buttons()
 
-func _on_engine_pressed() -> void: load_buttons("Engines")
+func _on_engine_pressed() -> void:
+	load_buttons("Engines")
 
-func _on_transmission_pressed() -> void: load_buttons("Transmissions")
+func _on_transmission_pressed() -> void:
+	load_buttons("Transmissions")
 
-func _on_weight_kit_pressed() -> void: load_buttons("WeightKits")
+func _on_weight_kit_pressed() -> void:
+	load_buttons("WeightKits")
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_C:
-		set_visibility( !panel.visible )
+func _on_drivetrain_pressed() -> void:
+	load_buttons("Drivetrains")
 
-func _on_drivetrain_pressed() -> void: load_buttons("Drivetrains")
+func _on_aero_pressed() -> void:
+	load_buttons("AeroKits")
 
-func _on_aero_pressed() -> void: load_buttons("AeroKits")
+func _on_tires_pressed() -> void:
+	load_buttons("Tires")
 
-func _on_tires_pressed() -> void: load_buttons("Tires")
+func _on_brakes_pressed() -> void:
+	load_buttons("Brakes")
 
-func _on_brakes_pressed() -> void: load_buttons("Brakes")
+func _on_suspension_pressed() -> void:
+	load_buttons("Suspensions")
 
-func _on_suspension_pressed() -> void: load_buttons("Suspensions")
-
-
-func _on_aspiration_pressed() -> void: load_buttons("Aspirations")
+func _on_aspiration_pressed() -> void:
+	load_buttons("Aspirations")

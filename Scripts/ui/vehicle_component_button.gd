@@ -1,6 +1,7 @@
 extends Button
 
 @export var res : VehicleComponent
+@export var initializer_ref : Control
 
 func _ready() -> void:
 	text = res.name
@@ -16,3 +17,5 @@ func _on_pressed() -> void:
 	if res is TiresStats:			car.tires = res
 	if res is SuspensionStats:		car.suspension = res
 	if res is AspirationStats:		car.aspiration = res
+	
+	initializer_ref.update()

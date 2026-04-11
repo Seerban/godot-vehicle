@@ -7,9 +7,13 @@ var best_ghost : GhostPlayer = null
 var ghost : GhostPlayer
 
 @export var checkpoints : Array[Vector3]
-var cp_instance : Area3D # temporary checkpoint beam reference
+var cp_instance : Area3D # checkpoint beam reference
 var cp_idx : int # index of checkpoint
 var start_cp : Area3D
+
+func get_pb() -> float:
+	if ghost == null: return 0
+	return best_ghost.total_time
 
 func init_checkpoints() -> void:
 	for i in get_children():
@@ -22,7 +26,7 @@ func start_race() -> void:
 	
 	start_cp.visible = false
 	start_cp.monitoring = false
-	global.ui_manager.hide_sprint_prompt()
+	global.ui_manager.set_sprint_prompt(false)
 	global.ui_manager.start_timer()
 	
 	global.player_car.global_position = start_cp.global_position
@@ -55,7 +59,6 @@ func next_checkpoint() -> void:
 	cp_instance.global_position = checkpoints[cp_idx]
 
 func finish_race() -> void:
-	print("finished race")
 	race_started = false
 	ghost.recording = false
 	global.ui_manager.stop_timer()
@@ -64,8 +67,11 @@ func finish_race() -> void:
 	start_cp.monitoring = true
 	
 	# save ghost if best
-	if best_ghost == null or ghost.total_time < best_ghost.total_time: best_ghost = ghost
-	ghost = null
+	print("sprint time: ", ghost.total_time)
+	if best_ghost == null or ghost.total_time < best_ghost.total_time:
+		best_ghost = ghost
+	else:
+		ghost = null
 
 func _ready() -> void:
 	init_checkpoints()
@@ -79,9 +85,10 @@ func _ready() -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != global.player_car: return
 	
-	global.ui_manager.show_sprint_prompt(self)
+	print( "pb time: ", str(get_pb()) )
+	global.ui_manager.set_sprint_prompt(true, self)
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body != global.player_car: return
 	
-	global.ui_manager.hide_sprint_prompt()
+	global.ui_manager.set_sprint_prompt(false)

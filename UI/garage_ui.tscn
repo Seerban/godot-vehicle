@@ -11,25 +11,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_foa2b")
 
-[node name="Hint" type="Label" parent="." unique_id=641428818]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 269.0
-grow_vertical = 0
-text = "Press C to show components panel"
-
 [node name="HBox" type="HBoxContainer" parent="." unique_id=368230969]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -80.0
-offset_right = -280.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -87,10 +75,15 @@ text = "Drivetrain"
 [node name="Equipped" type="Label" parent="." unique_id=404718584]
 visible = false
 layout_mode = 0
-offset_top = 617.0
-offset_right = 40.0
-offset_bottom = 640.0
-text = "Equipped:"
+offset_top = 485.0
+offset_right = 106.0
+offset_bottom = 664.0
+text = "Top Speed:
+Power:
+0-50:
+Weight:
+Grip:
+"
 
 [connection signal="pressed" from="HBox/Back" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBox/Engine" to="." method="_on_engine_pressed"]
