@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TiresStats" format=3 uid="uid://gxy8nrgsegyp"]
+
+[ext_resource type="Script" uid="uid://bxqsfaem35h50" path="res://Scripts/vehicle/components/Tires.gd" id="1_kjgls"]
+
+[resource]
+script = ExtResource("1_kjgls")
+wheel_type = "wheel_treaded"
+lateral_grip = 280.0
+longitudinal_grip = 280.0
+offroad_multiplier = 0.8
+name = "All Terrain Tires"
+metadata/_custom_type_script = "uid://bxqsfaem35h50"

@@ -1,6 +1,9 @@
 extends RayCast3D
 class_name Wheel
 
+const mesh_path = "res://Models/Wheels/"
+var wheel_mesh : Node3D
+
 const particle_rate_multiplier := 2
 
 const lateral_long_penalty := 0.3 # How much lateral grip loss from accel/brake
@@ -17,7 +20,6 @@ var on_ground := false
 
 ################################
 # references
-@onready var wheel := $WheelMesh
 @onready var car : Vehicle = $"../.." # parent is axle, parent.parent is car
 @onready var axle : VehicleAxle = $".."
 
@@ -33,14 +35,20 @@ var lat_grip_left := 0.0
 var spring_prev := 0.0
 var spring_force := 0.0
 
-func update_dimensions() -> void:
-	var mesh = $WheelMesh.mesh as CylinderMesh
+func update_mesh() -> void:
+	if is_instance_valid(wheel_mesh):
+		wheel_mesh.queue_free()
+	
+	wheel_mesh = load(mesh_path + car.tires.wheel_type + ".tscn").instantiate()
+	add_child(wheel_mesh)
+	
 	var multi := 1.0
 	if axle.is_rear():
-		multi = car.rear_grip_boost
-	mesh.top_radius = car.tires.wheel_size
-	mesh.bottom_radius = car.tires.wheel_size
-	mesh.height = car.tires.wheel_width * multi
+		multi = car.tires.rear_grip_boost
+	
+	wheel_mesh.scale.y *= car.tires.wheel_width
+	wheel_mesh.scale.x *= car.tires.wheel_size
+	wheel_mesh.scale.z *= car.tires.wheel_size * multi
 
 # gets point on ground (if grounded) relative to car
 func get_contact_point() -> Vector3:
@@ -48,7 +56,9 @@ func get_contact_point() -> Vector3:
 
 # gets grip of ground material (currently doesn't work due to ground rework
 func get_ground_grip_multiplier() -> float:
-	return 1 # temporarily disabled
+	if is_colliding() and get_collider().is_in_group("offroad"):
+		return car.tires.offroad_multiplier
+	return 1
 
 # bonus grip based on force pushing on ground, if near fully extended then grip rapidly decreases to 0
 func get_spring_grip_influence() -> float:
@@ -58,13 +68,13 @@ func get_spring_grip_influence() -> float:
 func get_long_grip() -> float:
 	var multi = 1.0
 	if axle.is_rear():
-		multi = car.rear_grip_boost
+		multi = car.tires.rear_grip_boost
 	return car.tires.longitudinal_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
 
 func get_lat_grip() -> float:
 	var multi = 1.0
 	if axle.is_rear():
-		multi = car.rear_grip_boost
+		multi = car.tires.rear_grip_boost
 	return car.tires.lateral_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
 
 
@@ -104,7 +114,8 @@ func _spring() -> float:
 		car.apply_force(total_force, get_contact_point())
 	
 	# place mesh
-	wheel.position = Vector3(0, -dist + car.tires.wheel_size, 0)
+	if is_instance_valid(wheel_mesh):
+		wheel_mesh.position = Vector3(0, -dist + car.tires.wheel_size * 0.5, 0)
 	
 	return total_force.length()
 
@@ -123,7 +134,8 @@ func _friction() -> void:
 	car.apply_force(force, get_contact_point())
 
 func _rotate_wheel(angle) -> void:
-	wheel.rotate(Vector3.FORWARD, angle)
+	if is_instance_valid(wheel_mesh):
+		wheel_mesh.rotate(Vector3.FORWARD, angle)
 
 # updates tire marks particles
 func update_particles() -> void:

@@ -39,7 +39,6 @@ var drivetrain := DrivetrainStats.new()
 
 ################################
 # tuning variables
-@export var rear_grip_boost : float = 1.1
 @export var brake_bias : float = 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
 @export var aero_bias : float = 0.0
 @export var turning_deg : float = 20

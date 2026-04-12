@@ -7,7 +7,7 @@ const main_path := "res://Resources/"
 @onready var back_button = $HBox/Back
 @onready var buttons = [$HBox/Back, $HBox/Engine, $HBox/Transmission, $HBox/Aspiration, $HBox/Suspension, $HBox/Tires, $HBox/Aero, $HBox/WeightKit, $HBox/Brakes, $HBox/Drivetrain]
 
-@onready var button_example = preload("res://UI/ButtonExample.tscn")
+@onready var button_example = preload("res://UI/button_component.tscn")
 
 func set_visibility(b : bool) -> void:
 	panel.visible = b

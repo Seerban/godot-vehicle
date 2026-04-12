@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cl7k3c8e6tcns"]
+
+[ext_resource type="Material" uid="uid://bgjujqbc3w7rh" path="res://Material/Misc/tire.tres" id="1_1jtuk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_e1kgk"]
+size = Vector3(0.1, 1.03, 0.2)
+
+[node name="Node3D" type="Node3D" unique_id=987006271]
+
+[node name="CSG" type="CSGCylinder3D" parent="." unique_id=2093023074]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+operation = 2
+height = 0.2
+sides = 16
+material = ExtResource("1_1jtuk")
+
+[node name="CSGSubtraction" type="CSGCylinder3D" parent="CSG" unique_id=686286342]
+operation = 2
+radius = 0.35
+height = 0.2
+sides = 16
+
+[node name="RimOuter" type="CSGCylinder3D" parent="." unique_id=633343893]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+radius = 0.35
+height = 0.2
+sides = 16
+
+[node name="CSGSubtraction" type="CSGCylinder3D" parent="RimOuter" unique_id=888752179]
+operation = 2
+radius = 0.33
+height = 0.2
+sides = 16
+
+[node name="RimInner" type="CSGCylinder3D" parent="." unique_id=846719475]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+radius = 0.35
+height = 0.05
+sides = 16
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=104514193]
+operation = 2
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=970737608]
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1340328535]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1984412066]
+transform = Transform3D(0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1177018615]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1665375157]
+transform = Transform3D(0.5, -0.86602545, 0, 0.86602545, 0.5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=483234514]
+transform = Transform3D(0.25881904, -0.96592575, 0, 0.96592575, 0.25881904, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1912416907]
+transform = Transform3D(0, -0.99999994, 0, 0.99999994, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1322577428]
+transform = Transform3D(-0.25881907, -0.9659258, 0, 0.9659258, -0.25881907, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=2026421450]
+transform = Transform3D(-0.5, -0.86602545, 0, 0.86602545, -0.5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1806486530]
+transform = Transform3D(-0.70710677, -0.7071068, 0, 0.7071068, -0.70710677, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D11" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=87024886]
+transform = Transform3D(-0.8660254, -0.5, 0, 0.5, -0.8660254, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGMesh3D12" type="CSGMesh3D" parent="CSGCombiner3D" unique_id=1564800094]
+transform = Transform3D(-0.9659258, -0.25881904, 0, 0.25881904, -0.9659258, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_e1kgk")
+material = ExtResource("1_1jtuk")
+
+[node name="CSGSubtraction2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=429519790]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+operation = 2
+radius = 0.35
+height = 0.5
+sides = 16

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcti02ix7cig3"]
 
-[ext_resource type="Script" uid="uid://bnxl7u74wtydv" path="res://Scripts/ui/vehicle_component_button.gd" id="1_kckqu"]
+[ext_resource type="Script" uid="uid://bnxl7u74wtydv" path="res://Scripts/ui/vehicle_component_button.gd" id="1_irosb"]
 
 [node name="Button" type="Button" unique_id=1527372045]
 anchors_preset = 15
@@ -11,6 +11,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "text"
-script = ExtResource("1_kckqu")
+script = ExtResource("1_irosb")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

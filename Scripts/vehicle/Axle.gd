@@ -38,16 +38,19 @@ func update() -> void:
 	var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
 	add_child(wheel)
 	
-	wheel.update_dimensions()
 	wheel.target_position = Vector3(0, -car.suspension.length, 0)
 
 	
-	if is_rear(): 	wheel.position = Vector3(0, 0, -half_width - car.tires.wheel_width * car.rear_grip_boost / 2.0 )
-	else:			wheel.position = Vector3(0, 0, -half_width - car.tires.wheel_width / 2.0 )
+	if is_rear(): 	wheel.position = Vector3(0, 0, -half_width - 0.5 * car.tires.wheel_width * car.tires.rear_grip_boost / 2.0 )
+	else:			wheel.position = Vector3(0, 0, -half_width - 0.5 * car.tires.wheel_width / 2.0 )
 	
 	# connect wheels
 	var wheel_opp : Wheel = wheel.duplicate()
 	add_child(wheel_opp)
+	
+	wheel.update_mesh()
+	wheel_opp.update_mesh()
+	
 	wheel_opp.position = Vector3(0, 0, -wheel.position.z)
 	
 	wheel.mirror_wheel = wheel_opp

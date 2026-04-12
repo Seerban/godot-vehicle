@@ -311,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 material_override = ExtResource("5_q0mm3")
 mesh = SubResource("BoxMesh_np2xp")
 
-[node name="Terrain3D" type="Terrain3D" parent="." unique_id=2119128327]
+[node name="Terrain" type="Terrain3D" parent="." unique_id=2119128327 groups=["offroad"]]
 data_directory = "res://addons/terrain_data/"
 material = SubResource("Terrain3DMaterial_q6lx1")
 assets = SubResource("Terrain3DAssets_k63oc")
