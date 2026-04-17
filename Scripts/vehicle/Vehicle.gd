@@ -70,6 +70,18 @@ func get_forward_speed() -> float:
 func get_power_output() -> float:
 	return get_power() * accel_curve.sample( get_forward_speed() / get_top_speed() )
 
+# update mesh material and color
+func update_color(c : Color, mat : String = "") -> void:
+	var mesh : MeshColorable
+	for i in get_children():
+		if i is MeshColorable:
+			mesh = i
+			break
+	
+	if mesh == null: return
+	if mat:
+		mesh.update_material(mat)
+	mesh.update_color(c)
 
 # axle initializes wheels
 func update_wheels() -> void:

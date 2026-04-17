@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dw6rlckembj5p"]
 
 [ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
+[ext_resource type="Material" uid="uid://enxdcdlq23a2" path="res://Material/Paint/Matte.tres" id="2_r7o47"]
 [ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/MeshColorable.gd" id="2_yrpag"]
 [ext_resource type="Script" uid="uid://b0w4gqiavrivh" path="res://Scripts/vehicle/LightsManager.gd" id="4_7tm40"]
 [ext_resource type="Script" uid="uid://dbjj6tvfptdq0" path="res://Scripts/vehicle/Axle.gd" id="7_7tm40"]
@@ -110,6 +111,7 @@ script = ExtResource("1_n8cda")
 transform = Transform3D(-2.64, 0, 3.14722e-07, 0, 2.5999997, 0, -2.3079613e-07, 0, -3.6, -0.13948905, 0.15243553, -1.219452e-08)
 mesh = SubResource("ArrayMesh_7tm40")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_r7o47")
 script = ExtResource("2_yrpag")
 
 [node name="WindowsMesh" type="MeshInstance3D" parent="." unique_id=590826577]

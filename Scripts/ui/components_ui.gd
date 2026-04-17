@@ -1,6 +1,7 @@
 extends Control
 
-var car_copy
+var car_copy : Vehicle
+var chosen_color : Color
 
 const main_path := "res://Resources/"
 @onready var hint = $Hint
@@ -132,3 +133,27 @@ func _on_suspension_pressed() -> void:
 
 func _on_aspiration_pressed() -> void:
 	load_buttons("Aspirations")
+
+################################################################
+# Vehicle Color Functions
+func _on_color_picker_color_changed(color: Color) -> void:
+	chosen_color = color
+	global.player_car.update_color(color)
+
+func _on_matt_pressed() -> void:
+	global.player_car.update_color(chosen_color, "Matte")
+
+func _on_gloss_pressed() -> void:
+	global.player_car.update_color(chosen_color, "Gloss")
+
+func _on_candy_pressed() -> void:
+	global.player_car.update_color(chosen_color, "Candy")
+
+func _on_metal_pressed() -> void:
+	global.player_car.update_color(chosen_color, "Metal")
+
+func _on_pearl_pressed() -> void:
+	global.player_car.update_color(chosen_color, "Pearl")
+
+func _on_toon_pressed() -> void:
+	global.player_car.update_color(chosen_color, "Toon")

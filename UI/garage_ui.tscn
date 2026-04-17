@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://kdy0pdgq6vog" path="res://Scripts/ui/components_ui.gd" id="1_foa2b"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_k44av"]
+font_size = 24
+
 [node name="ComponentsUI" type="Control" unique_id=681594695]
 layout_mode = 3
 anchors_preset = 15
@@ -131,6 +134,74 @@ text = "Downforce:"
 layout_mode = 2
 text = "Drag"
 
+[node name="ColorPicker" type="HBoxContainer" parent="." unique_id=1718196247]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -89.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="ColorPicker" unique_id=133506056]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Materials:"
+label_settings = SubResource("LabelSettings_k44av")
+vertical_alignment = 1
+
+[node name="Matt" type="Button" parent="ColorPicker" unique_id=1979449553]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Matte"
+
+[node name="Gloss" type="Button" parent="ColorPicker" unique_id=464120872]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Gloss"
+
+[node name="Candy" type="Button" parent="ColorPicker" unique_id=661861063]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Candy"
+
+[node name="Metal" type="Button" parent="ColorPicker" unique_id=1227837096]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Metal"
+
+[node name="Pearl" type="Button" parent="ColorPicker" unique_id=1152406361]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Pearl"
+
+[node name="Toon" type="Button" parent="ColorPicker" unique_id=1599648097]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Toon"
+
+[node name="ColorPicker" type="ColorPicker" parent="ColorPicker" unique_id=552058596]
+layout_mode = 2
+edit_alpha = false
+edit_intensity = false
+color_mode = 1
+picker_shape = 2
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+hex_visible = false
+presets_visible = false
+
 [connection signal="pressed" from="HBox/Back" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBox/Engine" to="." method="_on_engine_pressed"]
 [connection signal="pressed" from="HBox/Transmission" to="." method="_on_transmission_pressed"]
@@ -141,3 +212,10 @@ text = "Drag"
 [connection signal="pressed" from="HBox/WeightKit" to="." method="_on_weight_kit_pressed"]
 [connection signal="pressed" from="HBox/Brakes" to="." method="_on_brakes_pressed"]
 [connection signal="pressed" from="HBox/Drivetrain" to="." method="_on_drivetrain_pressed"]
+[connection signal="pressed" from="ColorPicker/Matt" to="." method="_on_matt_pressed"]
+[connection signal="pressed" from="ColorPicker/Gloss" to="." method="_on_gloss_pressed"]
+[connection signal="pressed" from="ColorPicker/Candy" to="." method="_on_candy_pressed"]
+[connection signal="pressed" from="ColorPicker/Metal" to="." method="_on_metal_pressed"]
+[connection signal="pressed" from="ColorPicker/Pearl" to="." method="_on_pearl_pressed"]
+[connection signal="pressed" from="ColorPicker/Toon" to="." method="_on_toon_pressed"]
+[connection signal="color_changed" from="ColorPicker/ColorPicker" to="." method="_on_color_picker_color_changed"]
