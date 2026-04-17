@@ -26,6 +26,7 @@ func set_sprint_prompt(b : bool, sprint : Node3D = null) -> void:
 
 func set_garage_ui(b : bool) -> void:
 	$GarageUI.visible = b
+	$GarageUI.init()
 	$Meters.visible = !b
 	$Radar.visible = !b
 

@@ -85,6 +85,52 @@ Weight:
 Grip:
 "
 
+[node name="Stats" type="VBoxContainer" parent="." unique_id=670010045]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Power" type="Label" parent="Stats" unique_id=335042334]
+layout_mode = 2
+text = "Power:"
+
+[node name="Speed" type="Label" parent="Stats" unique_id=504521022]
+layout_mode = 2
+text = "Speed:"
+
+[node name="Braking" type="Label" parent="Stats" unique_id=1613346295]
+layout_mode = 2
+text = "Braking:"
+
+[node name="Grip" type="Label" parent="Stats" unique_id=1398072965]
+layout_mode = 2
+text = "Grip:"
+
+[node name="Offroading" type="Label" parent="Stats" unique_id=2010833761]
+layout_mode = 2
+text = "Offroading:"
+
+[node name="Drivetrain" type="Label" parent="Stats" unique_id=536372473]
+layout_mode = 2
+text = "Drivetrain:"
+
+[node name="Weight" type="Label" parent="Stats" unique_id=28635666]
+layout_mode = 2
+text = "Weight:"
+
+[node name="Downforce" type="Label" parent="Stats" unique_id=1513429987]
+layout_mode = 2
+text = "Downforce:"
+
+[node name="Drag" type="Label" parent="Stats" unique_id=1072655939]
+layout_mode = 2
+text = "Drag"
+
 [connection signal="pressed" from="HBox/Back" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBox/Engine" to="." method="_on_engine_pressed"]
 [connection signal="pressed" from="HBox/Transmission" to="." method="_on_transmission_pressed"]

@@ -1,25 +1,75 @@
 extends Control
 
+var car_copy
+
 const main_path := "res://Resources/"
 @onready var hint = $Hint
 @onready var panel = $HBox
 @onready var equipped = $Equipped
 @onready var back_button = $HBox/Back
+@onready var stats_panel = $Stats
 @onready var buttons = [$HBox/Back, $HBox/Engine, $HBox/Transmission, $HBox/Aspiration, $HBox/Suspension, $HBox/Tires, $HBox/Aero, $HBox/WeightKit, $HBox/Brakes, $HBox/Drivetrain]
 
 @onready var button_example = preload("res://UI/button_component.tscn")
 
-func set_visibility(b : bool) -> void:
-	panel.visible = b
-	equipped.visible = b
-	hint.visible = !b
+func init() -> void:
+	car_copy = global.player_car.duplicate(15)
 
+# updates simplified stats text
 func update() -> void:
-	equipped.text = "Engine Top Speed - " + str(global.player_car.get_top_speed()) + "\n" \
-	 	+ "Power - " + str(global.player_car.get_power()) + '\n' \
-		+ "0-50 - " + '\n' \
-		+ "Weight - " + str(global.player_car.get_weight()) + '\n' \
-		+ "Grip - " + str((global.player_car.tires.longitudinal_grip + global.player_car.tires.longitudinal_grip) / 2)
+	if car_copy == null: return
+	
+	if global.player_car.get_power() != car_copy.get_power():
+		stats_panel.get_node("Power").text = "Power: \t" + str( car_copy.get_power() ) + "->" + str( global.player_car.get_power() )
+	else:
+		stats_panel.get_node("Power").text = "Power: \t" + str( global.player_car.get_power() )
+	
+	if global.player_car.get_top_speed() != car_copy.get_top_speed():
+		stats_panel.get_node("Speed").text = "Speed: \t" + str(car_copy.get_top_speed()) + "->" + str( global.player_car.get_top_speed() )
+	else:
+		stats_panel.get_node("Speed").text = "Speed: \t" + str( global.player_car.get_top_speed() )
+	
+	if global.player_car.get_weight() != car_copy.get_weight():
+		stats_panel.get_node("Weight").text = "Weight: \t" + str(car_copy.get_weight()) + "->" + str( global.player_car.get_weight() )
+	else:
+		stats_panel.get_node("Weight").text = "Weight: \t" + str( global.player_car.get_weight() )
+	
+	if global.player_car.get_brake_power() != car_copy.get_brake_power():
+		stats_panel.get_node("Braking").text = "Braking: \t" + str(car_copy.get_brake_power()) + "->" + str( global.player_car.get_brake_power() )
+	else:
+		stats_panel.get_node("Braking").text = "Braking: \t" + str( global.player_car.get_brake_power() )
+	
+	var global_car_grip = (global.player_car.tires.lateral_grip + global.player_car.tires.longitudinal_grip) / 2
+	var copy_car_grip = (car_copy.tires.lateral_grip + car_copy.tires.longitudinal_grip) / 2
+	var global_car_offroad_grip = global_car_grip * global.player_car.tires.offroad_multiplier
+	var copy_car_offroad_grip = copy_car_grip * car_copy.tires.offroad_multiplier
+	
+	if global_car_grip != copy_car_grip:
+		stats_panel.get_node("Grip").text = "Grip: \t" + str(copy_car_grip) + "->" + str(global_car_grip)
+		stats_panel.get_node("Offroading").text = "Offroading: \t" + str(copy_car_offroad_grip) + "->" + str(global_car_offroad_grip)
+	else:
+		stats_panel.get_node("Grip").text = "Grip: \t" + str(global_car_grip)
+		stats_panel.get_node("Offroading").text = "Offroading: \t" + str(global_car_offroad_grip)
+	
+	if global.player_car.get_drag() != car_copy.get_drag():
+		stats_panel.get_node("Downforce").text = "Downforce: " + str(car_copy.get_downforce()) + "->" + str(global.player_car.get_downforce())
+		stats_panel.get_node("Drag").text = "Drag: " + str(car_copy.get_drag()) + "->" + str(global.player_car.get_drag())
+	else:
+		stats_panel.get_node("Downforce").text = "Downforce: " + str(global.player_car.get_downforce())
+		stats_panel.get_node("Drag").text = "Drag: " + str(global.player_car.get_drag())
+	
+	var type = ""
+	var clone_type = ""
+	if global.player_car.drivetrain.bias  == -1.0: type = "RWD"
+	elif global.player_car.drivetrain.bias  == 1.0: type = "FWD"
+	else: type = "AWD"
+	if car_copy.drivetrain.bias == -1.0: clone_type = "RWD"
+	elif car_copy.drivetrain.bias  == 1.0: clone_type = "FWD"
+	else: clone_type = "AWD"
+	if clone_type != type:
+		stats_panel.get_node("Drivetrain").text = "Drivetrain: " + clone_type + "->" + type
+	else:
+		stats_panel.get_node("Drivetrain").text = "Drivetrain: " + type
 
 func add_button(res : VehicleComponent) -> void:
 	var button = button_example.instantiate()

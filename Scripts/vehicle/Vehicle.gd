@@ -19,23 +19,22 @@ var wheels : Array[Wheel]
 
 ################################
 # Components
-var engine := EngineStats.new()
-var transmission := TransmissionStats.new()
-var aspiration := AspirationStats.new()
-var chassis := ChassisStats.new()
-var weight_kit := WeightKitStats.new() : 
+@export var engine := EngineStats.new()
+@export var transmission := TransmissionStats.new()
+@export var aspiration := AspirationStats.new()
+@export var chassis := ChassisStats.new()
+@export var weight_kit := WeightKitStats.new() : 
 	set(x):
 		weight_kit = x
 		mass = get_weight()
-var aero_kit := AeroKitStats.new()
-var suspension := SuspensionStats.new() :
+@export var aero_kit := AeroKitStats.new()
+@export var suspension := SuspensionStats.new() :
 	set(x):
 		suspension = x
-		print(x.name)
 		update_wheels()
-var tires := TiresStats.new()
-var brakes := BrakesStats.new()
-var drivetrain := DrivetrainStats.new()
+@export var tires := TiresStats.new()
+@export var brakes := BrakesStats.new()
+@export var drivetrain := DrivetrainStats.new()
 
 ################################
 # tuning variables
