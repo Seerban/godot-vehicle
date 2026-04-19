@@ -19,22 +19,48 @@ var wheels : Array[Wheel]
 
 ################################
 # Components
-@export var engine := EngineStats.new()
-@export var transmission := TransmissionStats.new()
-@export var aspiration := AspirationStats.new()
-@export var chassis := ChassisStats.new()
+@export var engine := EngineStats.new() :
+	set(x):
+		engine = x
+		update_weight()
+@export var transmission := TransmissionStats.new() :
+	set(x):
+		transmission = x
+		update_weight()
+@export var aspiration := AspirationStats.new() :
+	set(x):
+		aspiration = x
+		update_weight()
+@export var chassis := ChassisStats.new() :
+	set(x):
+		chassis = x
+		update_weight()
 @export var weight_kit := WeightKitStats.new() : 
 	set(x):
 		weight_kit = x
-		mass = get_weight()
-@export var aero_kit := AeroKitStats.new()
+		update_weight()
+@export var aero_kit := AeroKitStats.new() :
+	set(x):
+		aero_kit = x
+		update_weight()
 @export var suspension := SuspensionStats.new() :
 	set(x):
 		suspension = x
 		update_wheels()
-@export var tires := TiresStats.new()
-@export var brakes := BrakesStats.new()
-@export var drivetrain := DrivetrainStats.new()
+		update_weight()
+@export var tires := TiresStats.new() :
+	set(x):
+		tires = x
+		update_wheels()
+		update_weight()
+@export var brakes := BrakesStats.new() :
+	set(x):
+		brakes = x
+		update_weight()
+@export var drivetrain := DrivetrainStats.new() :
+	set(x):
+		drivetrain = x
+		update_weight()
 
 ################################
 # tuning variables
@@ -44,8 +70,17 @@ var wheels : Array[Wheel]
 
 ################################
 # getters from car components
+func get_components() -> Array[VehicleComponent]:
+	return [engine, transmission, aspiration, chassis, weight_kit, aero_kit, suspension, tires, brakes, drivetrain]
+
 func get_weight() -> float:
-	return chassis.weight * weight_kit.weight_multiplier
+	var weight = 0
+	for i in get_components():
+		if i is ChassisStats:
+			weight += i.weight * weight_kit.weight_multiplier
+		else:
+			weight += i.weight
+	return weight
 
 func get_drag() -> float:
 	return chassis.drag + aero_kit.drag
@@ -82,6 +117,11 @@ func update_color(c : Color, mat : String = "") -> void:
 	if mat:
 		mesh.update_material(mat)
 	mesh.update_color(c)
+
+func update_weight() -> void:
+	mass = get_weight()
+	print("new mass: ", mass)
+	center_of_mass.y = chassis.CoM_Y
 
 # axle initializes wheels
 func update_wheels() -> void:

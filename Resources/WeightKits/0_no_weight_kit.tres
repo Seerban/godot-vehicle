@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_bcxy8")
 name = "No Weight Kit"
+weight = 10.0
 metadata/_custom_type_script = "uid://cf5lbkrhx63wf"

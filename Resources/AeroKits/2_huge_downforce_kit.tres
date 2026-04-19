@@ -7,4 +7,5 @@ script = ExtResource("1_h73gk")
 drag = 40.0
 downforce = 40.0
 name = "Huge Downforce Kit"
+weight = 2.0
 metadata/_custom_type_script = "uid://bd5378s81ddp6"

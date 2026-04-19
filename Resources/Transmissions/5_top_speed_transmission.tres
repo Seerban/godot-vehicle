@@ -7,4 +7,5 @@ script = ExtResource("1_tnx62")
 speed_multiplier = 1.4
 power_multiplier = 0.85
 name = "Top Speed Trans"
+weight = 3.0
 metadata/_custom_type_script = "uid://dwx6bdnomhfav"

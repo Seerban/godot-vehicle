@@ -1,7 +1,7 @@
 extends Control
 
 var car_copy : Vehicle
-var chosen_color : Color
+var chosen_color := Color.WHITE
 
 const main_path := "res://Resources/"
 @onready var hint = $Hint

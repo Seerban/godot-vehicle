@@ -6,6 +6,6 @@
 script = ExtResource("1_uulm8")
 length = 0.6
 damping = 7500.0
-antiroll = 0.0
 name = "Offroad Suspension"
+weight = 13.0
 metadata/_custom_type_script = "uid://45klxp17xyel"

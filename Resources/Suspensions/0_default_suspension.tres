@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_ihoq4")
-antiroll = 0.0
 name = "Stock Suspension"
+weight = 10.0
 metadata/_custom_type_script = "uid://45klxp17xyel"

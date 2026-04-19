@@ -6,4 +6,5 @@
 script = ExtResource("1_r555e")
 bias = -0.3
 name = "AWD"
+weight = 30.0
 metadata/_custom_type_script = "uid://bamnakjydoo6j"

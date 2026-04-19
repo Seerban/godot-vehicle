@@ -7,4 +7,5 @@ script = ExtResource("1_vam5x")
 power = 250.0
 speed = 140.0
 name = "Max Engine"
+weight = 25.0
 metadata/_custom_type_script = "uid://c2sos8kslywl0"

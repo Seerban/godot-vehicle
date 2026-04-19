@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_tqv27")
 name = "Stock Trans"
+weight = 5.0
 metadata/_custom_type_script = "uid://dwx6bdnomhfav"

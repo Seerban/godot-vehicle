@@ -6,4 +6,5 @@
 script = ExtResource("1_adelr")
 brake_power = 1700.0
 name = "Pro Brakes"
+weight = 1.0
 metadata/_custom_type_script = "uid://bq5nth0qsvkdb"

@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_5puoc")
 name = "Stock Brakes"
+weight = 2.0
 metadata/_custom_type_script = "uid://bq5nth0qsvkdb"

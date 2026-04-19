@@ -7,4 +7,5 @@ script = ExtResource("1_65w7n")
 speed_multiplier = 1.1
 power_multiplier = 1.1
 name = "Racing Trans"
+weight = 3.0
 metadata/_custom_type_script = "uid://dwx6bdnomhfav"

@@ -6,4 +6,5 @@
 script = ExtResource("1_e4fwg")
 brake_power = 1300.0
 name = "Custom Brakes"
+weight = 2.0
 metadata/_custom_type_script = "uid://bq5nth0qsvkdb"

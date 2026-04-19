@@ -7,4 +7,5 @@ script = ExtResource("1_wobbd")
 power = 175.0
 speed = 125.0
 name = "Pro Engine"
+weight = 22.0
 metadata/_custom_type_script = "uid://c2sos8kslywl0"
