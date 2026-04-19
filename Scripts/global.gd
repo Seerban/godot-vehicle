@@ -3,6 +3,7 @@ extends Node
 # REFERENCES
 @export var player_car : Vehicle
 @export var radar : Control
+@export var grip_ui : Control
 @export var ui_manager : UIManager
 
 # GLOBAL UTILITY CURVES
@@ -36,7 +37,18 @@ func get_material_grip(mat_res : Material):
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
+func format_time(ms: float) -> String:
+	var total_ms: int = int(ms * 1000)
+
+	var milliseconds = total_ms % 1000
+	var total_seconds = total_ms / 1000
+	var seconds = total_seconds % 60
+	var minutes = total_seconds / 60
+	
+	return "%02d:%02d:%03d" % [minutes, seconds, milliseconds]
+
 func _ready() -> void:
 	player_car = get_tree().get_first_node_in_group("car")
 	radar = get_tree().get_first_node_in_group("radar").get_node("Texture")
 	ui_manager = get_tree().get_first_node_in_group("ui")
+	grip_ui = ui_manager.get_node("Grip")

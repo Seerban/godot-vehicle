@@ -4,12 +4,14 @@ class_name Radar
 @export var paths : Array[RoadPath]
 @export var water_bodies : Array[Path3D]
 @onready var vehicles : Node3D = null
+var garages : Node3D = null
 
 @onready var middle_offset = get_parent().size / 2
 @onready var car_texture = load("res://Textures/race-car.png")
 
 var car_radius := 4
 var node_radius := 3
+var garage_radius := 10
 var cp_node_radius := 5
 var line_color := Color.BLACK
 var node_color := Color.BLACK
@@ -62,6 +64,11 @@ func draw_cars():
 	for i in vehicles.get_children():
 		draw_circle(offset + Vector2(i.global_position.x, i.global_position.z), car_radius, Color.RED)
 
+func draw_garages():
+	for i in garages.get_children():
+		draw_circle(offset + Vector2(i.global_position.x, i.global_position.z), garage_radius+3, Color.BLACK)
+		draw_circle(offset + Vector2(i.global_position.x, i.global_position.z), garage_radius, Color.ROYAL_BLUE)
+
 func _draw():
 	offset = middle_offset
 	if car != null:
@@ -70,6 +77,7 @@ func _draw():
 	for wb in water_bodies: draw_polygon_from_path(wb)
 	for path in paths: draw_path3d_topdown(path)
 	draw_checkpoint() # only draws if active race
+	draw_garages()
 	draw_cars()
 	
 	# draw car last
@@ -85,3 +93,4 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	vehicles = get_tree().get_first_node_in_group("vehicles")
+	garages = get_tree().get_first_node_in_group("garages")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TransmissionStats" format=3 uid="uid://ctd1qdn2n4sad"]
+
+[ext_resource type="Script" uid="uid://dwx6bdnomhfav" path="res://Scripts/vehicle/components/Transmission.gd" id="1_vaarb"]
+
+[resource]
+script = ExtResource("1_vaarb")
+speed_multiplier = 0.85
+power_multiplier = 1.4
+name = "Drag Trans"
+weight = 3.0
+metadata/_custom_type_script = "uid://dwx6bdnomhfav"

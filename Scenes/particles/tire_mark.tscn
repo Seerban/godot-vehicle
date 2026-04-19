@@ -20,7 +20,7 @@ material = ExtResource("1_7e57o")
 size = Vector3(5, 1, 5)
 
 [node name="TireMark" type="GPUParticles3D" unique_id=661630129]
-amount = 100
+amount = 200
 lifetime = 1.5
 trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_r7o47")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DrivetrainStats" format=3 uid="uid://b2vmfgv47mmng"]
+
+[ext_resource type="Script" uid="uid://bamnakjydoo6j" path="res://Scripts/vehicle/components/Drivetrain.gd" id="1_10xni"]
+
+[resource]
+script = ExtResource("1_10xni")
+name = "RWD"
+weight = 13.0
+metadata/_custom_type_script = "uid://bamnakjydoo6j"

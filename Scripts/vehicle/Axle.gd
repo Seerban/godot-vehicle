@@ -2,11 +2,9 @@
 extends Node3D
 class_name VehicleAxle
 
-@onready var car = $".."
+@onready var car : Vehicle = $".."
 
-@export var half_width := 1.0
-@export var powered := true
-@export var steering := true
+@export var half_width := 1.0 # distance from center of vehicle to wheel start
 @export var steering_multiplier := 1.0
 
 # render for editor
@@ -33,22 +31,32 @@ func render_editor_spheres() -> void:
 func _ready():
 	render_editor_spheres()
 
-func add_wheels() -> void:
+func is_rear() -> bool:
+	return position.x < 0
+
+func update() -> void:
+	if !is_instance_valid(car): return
+	
 	var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
+	add_child(wheel)
 	
-	wheel.position = Vector3(0, 0, half_width )
-	wheel.steering_multiplier = steering_multiplier
-	wheel.steering = steering
-	wheel.powered = powered
+	wheel.target_position = Vector3(0, -car.suspension.length, 0)
+
 	
+	if is_rear(): 	wheel.position = Vector3(0, 0, -half_width - 0.5 * car.tires.wheel_width * car.tires.rear_grip_boost / 2.0 )
+	else:			wheel.position = Vector3(0, 0, -half_width - 0.5 * car.tires.wheel_width / 2.0 )
+	
+	# connect wheels
 	var wheel_opp : Wheel = wheel.duplicate()
-	wheel_opp.position = Vector3(0, 0, -half_width)
+	add_child(wheel_opp)
+	
+	wheel.update_mesh()
+	wheel_opp.update_mesh()
+	
+	wheel_opp.position = Vector3(0, 0, -wheel.position.z)
 	
 	wheel.mirror_wheel = wheel_opp
 	wheel_opp.mirror_wheel = wheel
-	
-	add_child(wheel)
-	add_child(wheel_opp)
 	
 	car.wheels.append(wheel)
 	car.wheels.append(wheel_opp)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BrakesStats" format=3 uid="uid://egercg3u32q4"]
+
+[ext_resource type="Script" uid="uid://bq5nth0qsvkdb" path="res://Scripts/vehicle/components/Brakes.gd" id="1_adelr"]
+
+[resource]
+script = ExtResource("1_adelr")
+brake_power = 1700.0
+name = "Pro Brakes"
+weight = 1.0
+metadata/_custom_type_script = "uid://bq5nth0qsvkdb"

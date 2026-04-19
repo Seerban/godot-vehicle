@@ -7,7 +7,7 @@ var speed_threshold := 50
 func _ready() -> void:
 	car = get_tree().get_first_node_in_group("player")
 
-func update_vars(rear_intens : float) -> void:
+func update_vars() -> void:
 	if car.linear_velocity.dot(car.global_basis.x) < speed_threshold:
 		emitting = false
 		return

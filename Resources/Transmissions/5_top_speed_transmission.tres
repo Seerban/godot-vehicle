@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TransmissionStats" format=3 uid="uid://dpfcd03kv83xn"]
+
+[ext_resource type="Script" uid="uid://dwx6bdnomhfav" path="res://Scripts/vehicle/components/Transmission.gd" id="1_tnx62"]
+
+[resource]
+script = ExtResource("1_tnx62")
+speed_multiplier = 1.4
+power_multiplier = 0.85
+name = "Top Speed Trans"
+weight = 3.0
+metadata/_custom_type_script = "uid://dwx6bdnomhfav"

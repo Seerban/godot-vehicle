@@ -117,7 +117,9 @@ func add_trails() -> void:
 		trails.append(rear_trail)
 		
 		rear_trail.position = i.position
-		rear_trail.draw_pass_1.size.y = i.mesh.size.z # same length as mesh
+		rear_trail.draw_pass_1.size.y = i.mesh.size.y
+		rear_trail.draw_pass_1.size.x = i.mesh.size.x
+		rear_trail.draw_pass_1.size.z = i.mesh.size.z
 
 func set_enabled_trails(b : bool) -> void:
 	for i in trails:
@@ -162,4 +164,4 @@ func _ready() -> void:
 
 func update_trails() -> void:
 	for i in trails:
-		i.update_vars(current_back_intensity)
+		i.update_vars()

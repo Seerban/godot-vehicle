@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EngineStats" format=3 uid="uid://b7jv3ht4bl3vu"]
+
+[ext_resource type="Script" uid="uid://c2sos8kslywl0" path="res://Scripts/vehicle/components/Engine.gd" id="1_1fejb"]
+
+[resource]
+script = ExtResource("1_1fejb")
+power = 70.0
+speed = 70.0
+name = "Rusty Engine"
+weight = 20.0
+metadata/_custom_type_script = "uid://c2sos8kslywl0"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AeroKitStats" format=3 uid="uid://brhl3k73sacaw"]
+
+[ext_resource type="Script" uid="uid://bd5378s81ddp6" path="res://Scripts/vehicle/components/AeroKit.gd" id="1_d8rp7"]
+
+[resource]
+script = ExtResource("1_d8rp7")
+drag = 15.0
+downforce = 15.0
+name = "Downforce Kit"
+weight = 1.0
+metadata/_custom_type_script = "uid://bd5378s81ddp6"

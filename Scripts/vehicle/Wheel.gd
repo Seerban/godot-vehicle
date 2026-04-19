@@ -1,8 +1,16 @@
 extends RayCast3D
 class_name Wheel
 
+const mesh_path = "res://Models/Wheels/"
+var wheel_mesh : Node3D
+
 const particle_rate_multiplier := 2
 
+const lateral_long_penalty := 0.3 # How much lateral grip loss from accel/brake
+const grip_per_mass := 0.0003
+
+################################
+# dynamically updated directions
 var forward := Vector3.ZERO # forward
 var normal := Vector3.ZERO # up
 var forward_projection := Vector3.ZERO # forward direction projected on floor
@@ -10,98 +18,106 @@ var side_projection := Vector3.ZERO
 var relative_pos := Vector3.ZERO
 var on_ground := false
 
-# inputs for applying brake/acceleration
-@export var powered := false
-@export var steering := false
-@export var steering_multiplier := 1.0
-
-@onready var wheel := $WheelMesh
+################################
+# references
 @onready var car : Vehicle = $"../.." # parent is axle, parent.parent is car
-
-@export_group("Tires")
-@export var tire_radius := 0.5
-@export var radius := 0.0 # practical size, not visual
-@export var grip := 3.0
-@export var acceleration_grip_usage_multiplier := 0.3 # makes acceleration less costly
-@export var grip_forgiveness := 0.75 # makes acceleration and braking use less grip
+@onready var axle : VehicleAxle = $".."
 
 @onready var tire_mark : GPUParticles3D # visual skid particle
 
-@export_group("Suspension")
-@export var spring_length := 0.5
-@export var spring_strength := 20.0
-@export var damping := 120.0
-@export var anti_roll := 15.0
+################################
+# dynamic wheel stats
+var mirror_wheel : Wheel
+var brake_power := 0.0
+var accel_power := 0.0
+var long_grip_left := 0.0
+var lat_grip_left := 0.0
+var spring_prev := 0.0
+var spring_force := 0.0
 
-@export_group("dynamic")
-@export var mirror_wheel : Wheel
-@export var brake_power := 0.0
-@export var accel_power := 0.0
-@export var grip_left := 0.0
-@export var spring_prev := 0.0 # previous frame spring compression
+func update_mesh() -> void:
+	if is_instance_valid(wheel_mesh):
+		wheel_mesh.queue_free()
+	
+	wheel_mesh = load(mesh_path + car.tires.wheel_type + ".tscn").instantiate()
+	add_child(wheel_mesh)
+	
+	var multi := 1.0
+	if axle.is_rear():
+		multi = car.tires.rear_grip_boost
+	
+	wheel_mesh.scale.y *= car.tires.wheel_width
+	wheel_mesh.scale.x *= car.tires.wheel_size
+	wheel_mesh.scale.z *= car.tires.wheel_size * multi
 
-# length of suspension
-func set_length(x : float) -> void:
-	target_position = Vector3(0, -x, 0)
-	spring_length = x
-
-# only visual change, doesn't affect anything else
-func set_wheel_dimensions(r : float, width : float) -> void:
-	tire_radius = r
-	radius = r
-	var mesh = $WheelMesh.mesh as CylinderMesh
-	mesh.top_radius = r
-	mesh.bottom_radius = r
-	mesh.height = width
-
-# gets point on ground (if grounded)
+# gets point on ground (if grounded) relative to car
 func get_contact_point() -> Vector3:
 	return get_collision_point() - car.global_position
-	#return global_position - car.global_position - global_basis.y * radius
 
-# gets grip of ground material (currently doesn't work due to ground rework)
+# gets grip of ground material (currently doesn't work due to ground rework
 func get_ground_grip_multiplier() -> float:
-	return 1 # temporarily disabled
+	if is_colliding() and get_collider().is_in_group("offroad"):
+		return car.tires.offroad_multiplier
+	return 1
 
-# gets grip additive multiplier due to spring compression
+# bonus grip based on force pushing on ground, if near fully extended then grip rapidly decreases to 0
 func get_spring_grip_influence() -> float:
-	return global.spring_grip_curve.sample( (spring_length - spring_prev) / spring_length )
+	return (1 + spring_force * grip_per_mass) * global.spring_grip_curve.sample( (car.suspension.length - spring_prev) / car.suspension.length )
 
 # compute total grip
-func get_grip() -> float:
-	return grip * get_ground_grip_multiplier() * get_spring_grip_influence()
+func get_long_grip() -> float:
+	var multi = 1.0
+	if axle.is_rear():
+		multi = car.tires.rear_grip_boost
+	return car.tires.longitudinal_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
 
-# total grip used this tick
-func get_used_grip() -> float: # only for debug/ui
-	return get_grip() - grip_left
+func get_lat_grip() -> float:
+	var multi = 1.0
+	if axle.is_rear():
+		multi = car.tires.rear_grip_boost
+	return car.tires.lateral_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
 
-# apply spring force
-func _spring() -> void:
+
+# for grip ui
+func get_used_long_grip() -> float: # only for debug/ui
+	return get_long_grip() - long_grip_left
+
+# for grip ui
+func get_used_lat_grip() -> float:
+	return get_lat_grip() - lat_grip_left
+
+
+# apply spring force, return force length applied
+func _spring() -> float:
 	var up = global_basis.y
-	var dist := spring_length
+	var dist := car.suspension.length
+	var total_force : Vector3
 	
 	if on_ground:
 		# distance to ground
 		dist = -(get_collision_point() - global_position).dot(up)
 		# % of how compressed suspension is
-		var compression = (spring_length - dist) / spring_length
+		var compression = (car.suspension.length - dist) / car.suspension.length
 		
 		# difference since last frame used for damping
 		var spring_diff = clampf(compression - spring_prev, -1, 1)
 		spring_prev = compression
 		
-		var spring_force : float = compression * spring_strength
-		var damping_force : float = spring_diff * damping
+		var spring_force : float = compression * car.suspension.strength
+		var damping_force : float = spring_diff * car.suspension.damping
 		
 		var roll = spring_prev - mirror_wheel.spring_prev
-		var roll_force : float = roll * anti_roll
+		var roll_force : float = roll * car.suspension.antiroll
 		
-		var total_force : Vector3 = (spring_force + damping_force + roll_force) * up
+		total_force = (spring_force + damping_force + roll_force) * up
 		
 		car.apply_force(total_force, get_contact_point())
 	
 	# place mesh
-	wheel.position = Vector3(0, -dist+radius, 0)
+	if is_instance_valid(wheel_mesh):
+		wheel_mesh.position = Vector3(0, -dist + car.tires.wheel_size * 0.5, 0)
+	
+	return total_force.length()
 
 # apply friction sideways from tires (can slow down forward speed due to math inaccuracies)
 func _friction() -> void:
@@ -109,35 +125,37 @@ func _friction() -> void:
 	
 	var point_velocity := car.linear_velocity + car.angular_velocity.cross(relative_pos)
 	var side_velocity := point_velocity.dot(global_basis.z)
-	var force := side_projection * side_velocity * get_grip()
+	var force := side_projection * side_velocity * get_lat_grip()
 	
-	if force.length() > grip_left:
-		force = force.normalized() * grip_left
-	grip_left -= force.length()
+	if force.length() > lat_grip_left:
+		force = force.normalized() * lat_grip_left
+	lat_grip_left -= force.length()
 	
 	car.apply_force(force, get_contact_point())
 
 func _rotate_wheel(angle) -> void:
-	wheel.rotate(Vector3.FORWARD, angle)
+	if is_instance_valid(wheel_mesh):
+		wheel_mesh.rotate(Vector3.FORWARD, angle)
 
 # updates tire marks particles
 func update_particles() -> void:
-	tire_mark.emitting = grip_left <= 0.01
+	tire_mark.emitting = lat_grip_left <= 0.01 or long_grip_left <= 0.01
 	tire_mark.global_position = car.global_position + get_contact_point()
 	tire_mark.global_rotation = global_rotation
 
 # applies forward force
 func accelerate(power := 0.0) -> void:
-	if not on_ground or not powered: return
+	if not on_ground: return
 	
 	var force = forward_projection * power
-	var grip_used = force.length() * acceleration_grip_usage_multiplier
+	var long_grip_used = force.length()
 	
-	if grip_used > grip_left:
-		force = force.normalized() * grip_left / acceleration_grip_usage_multiplier
+	if long_grip_used > long_grip_left:
+		force = force.normalized() * long_grip_left
 	
-	grip_used = force.length() * acceleration_grip_usage_multiplier
-	grip_left -= grip_used * (1 - grip_forgiveness)
+	long_grip_used = force.length()
+	long_grip_left -= long_grip_used * (1 - car.grip_forgiveness)
+	lat_grip_left -= clamp(long_grip_used * lateral_long_penalty * (1 - car.grip_forgiveness), 0, lat_grip_left)
 	
 	car.apply_force(force, get_contact_point())
 
@@ -146,21 +164,20 @@ func brake(power := 0.0) -> void:
 	if not on_ground: return
 	
 	var forward_speed = car.linear_velocity.dot(forward)
-	var capped_force = car.linear_velocity.normalized() * clamp(forward_speed, -power, power)
+	var capped_force = car.linear_velocity.normalized() * clamp(forward_speed*power, -power, power)
 	var braking_force = -capped_force * sign(forward_speed)
 	
-	if braking_force.length() > grip_left:
-		braking_force = braking_force.normalized() * grip_left
+	if braking_force.length() > long_grip_left:
+		braking_force = braking_force.normalized() * long_grip_left
 	
-	grip_left -= braking_force.length() * (1 - grip_forgiveness)
+	long_grip_left -= braking_force.length() * (1 - car.grip_forgiveness)
+	lat_grip_left -= clamp(braking_force.length() * lateral_long_penalty * (1 - car.grip_forgiveness), 0, lat_grip_left)
 	
 	car.apply_force(braking_force, get_contact_point())
 
 func steer(angle := 0.0) -> void:
-	if not steering: return
-	
 	var steer_angle = deg_to_rad(angle)
-	rotation.y = steer_angle * steering_multiplier
+	rotation.y = steer_angle * axle.steering_multiplier
 
 func fetch_vars() -> void: # get dynamic observation data
 	forward = global_basis.x
@@ -171,22 +188,19 @@ func fetch_vars() -> void: # get dynamic observation data
 	relative_pos = global_position - car.global_position
 
 func _ready() -> void:
-	target_position = Vector3(0, -spring_length, 0)
-	wheel.mesh.top_radius = tire_radius
-	wheel.mesh.bottom_radius = tire_radius
-	radius = tire_radius * 0.94
 	tire_mark = load("res://Scenes/particles/tire_mark.tscn").instantiate()
 	get_tree().root.add_child.call_deferred(tire_mark)
 
 func _physics_process(delta: float) -> void:
 	fetch_vars()
 	
-	grip_left = get_grip()
-	_spring()
+	lat_grip_left = get_lat_grip()
+	long_grip_left = get_long_grip()
+	spring_force = _spring()
 	
 	brake(brake_power)
 	accelerate(accel_power)
 	_friction()
-	_rotate_wheel( car.linear_velocity.dot(global_basis.x) / 0.5 * delta )
+	_rotate_wheel( car.get_forward_speed() * 2 * delta )
 	
 	update_particles()

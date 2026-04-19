@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://bdota5kf7lvg1"]
+
+[ext_resource type="Script" uid="uid://kdy0pdgq6vog" path="res://Scripts/ui/components_ui.gd" id="1_foa2b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k44av"]
+font_size = 24
+
+[node name="ComponentsUI" type="Control" unique_id=681594695]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_foa2b")
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=368230969]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Back" type="Button" parent="HBox" unique_id=561927173]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+text = "X"
+
+[node name="Engine" type="Button" parent="HBox" unique_id=829072919]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Engine"
+
+[node name="Transmission" type="Button" parent="HBox" unique_id=1043036472]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Transmission"
+
+[node name="Aspiration" type="Button" parent="HBox" unique_id=1177016507]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Aspiration"
+
+[node name="Suspension" type="Button" parent="HBox" unique_id=692196432]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Suspension"
+
+[node name="Tires" type="Button" parent="HBox" unique_id=935250154]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tires"
+
+[node name="Aero" type="Button" parent="HBox" unique_id=87967334]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Aero Kit"
+
+[node name="WeightKit" type="Button" parent="HBox" unique_id=2027407557]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Weight
+Reduction"
+
+[node name="Brakes" type="Button" parent="HBox" unique_id=1133544640]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Brakes"
+
+[node name="Drivetrain" type="Button" parent="HBox" unique_id=1617889379]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Drivetrain"
+
+[node name="Equipped" type="Label" parent="." unique_id=404718584]
+visible = false
+layout_mode = 0
+offset_top = 485.0
+offset_right = 106.0
+offset_bottom = 664.0
+text = "Top Speed:
+Power:
+0-50:
+Weight:
+Grip:
+"
+
+[node name="Stats" type="VBoxContainer" parent="." unique_id=670010045]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Power" type="Label" parent="Stats" unique_id=335042334]
+layout_mode = 2
+text = "Power:"
+
+[node name="Speed" type="Label" parent="Stats" unique_id=504521022]
+layout_mode = 2
+text = "Speed:"
+
+[node name="Braking" type="Label" parent="Stats" unique_id=1613346295]
+layout_mode = 2
+text = "Braking:"
+
+[node name="Grip" type="Label" parent="Stats" unique_id=1398072965]
+layout_mode = 2
+text = "Grip:"
+
+[node name="Offroading" type="Label" parent="Stats" unique_id=2010833761]
+layout_mode = 2
+text = "Offroading:"
+
+[node name="Drivetrain" type="Label" parent="Stats" unique_id=536372473]
+layout_mode = 2
+text = "Drivetrain:"
+
+[node name="Weight" type="Label" parent="Stats" unique_id=28635666]
+layout_mode = 2
+text = "Weight:"
+
+[node name="Downforce" type="Label" parent="Stats" unique_id=1513429987]
+layout_mode = 2
+text = "Downforce:"
+
+[node name="Drag" type="Label" parent="Stats" unique_id=1072655939]
+layout_mode = 2
+text = "Drag"
+
+[node name="ColorPicker" type="HBoxContainer" parent="." unique_id=1718196247]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -89.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="ColorPicker" unique_id=133506056]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Materials:"
+label_settings = SubResource("LabelSettings_k44av")
+vertical_alignment = 1
+
+[node name="Matt" type="Button" parent="ColorPicker" unique_id=1979449553]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Matte"
+
+[node name="Gloss" type="Button" parent="ColorPicker" unique_id=464120872]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Gloss"
+
+[node name="Candy" type="Button" parent="ColorPicker" unique_id=661861063]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Candy"
+
+[node name="Metal" type="Button" parent="ColorPicker" unique_id=1227837096]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Metal"
+
+[node name="Pearl" type="Button" parent="ColorPicker" unique_id=1152406361]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Pearl"
+
+[node name="Toon" type="Button" parent="ColorPicker" unique_id=1599648097]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Toon"
+
+[node name="ColorPicker" type="ColorPicker" parent="ColorPicker" unique_id=552058596]
+layout_mode = 2
+edit_alpha = false
+edit_intensity = false
+color_mode = 1
+picker_shape = 2
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+hex_visible = false
+presets_visible = false
+
+[connection signal="pressed" from="HBox/Back" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBox/Engine" to="." method="_on_engine_pressed"]
+[connection signal="pressed" from="HBox/Transmission" to="." method="_on_transmission_pressed"]
+[connection signal="pressed" from="HBox/Aspiration" to="." method="_on_aspiration_pressed"]
+[connection signal="pressed" from="HBox/Suspension" to="." method="_on_suspension_pressed"]
+[connection signal="pressed" from="HBox/Tires" to="." method="_on_tires_pressed"]
+[connection signal="pressed" from="HBox/Aero" to="." method="_on_aero_pressed"]
+[connection signal="pressed" from="HBox/WeightKit" to="." method="_on_weight_kit_pressed"]
+[connection signal="pressed" from="HBox/Brakes" to="." method="_on_brakes_pressed"]
+[connection signal="pressed" from="HBox/Drivetrain" to="." method="_on_drivetrain_pressed"]
+[connection signal="pressed" from="ColorPicker/Matt" to="." method="_on_matt_pressed"]
+[connection signal="pressed" from="ColorPicker/Gloss" to="." method="_on_gloss_pressed"]
+[connection signal="pressed" from="ColorPicker/Candy" to="." method="_on_candy_pressed"]
+[connection signal="pressed" from="ColorPicker/Metal" to="." method="_on_metal_pressed"]
+[connection signal="pressed" from="ColorPicker/Pearl" to="." method="_on_pearl_pressed"]
+[connection signal="pressed" from="ColorPicker/Toon" to="." method="_on_toon_pressed"]
+[connection signal="color_changed" from="ColorPicker/ColorPicker" to="." method="_on_color_picker_color_changed"]

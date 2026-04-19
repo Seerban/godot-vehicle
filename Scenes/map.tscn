@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://db5b2kneaoojg" path="res://Material/Assets/Grass008_1K-JPG/Grass008_1K-JPG_Color.jpg" id="3_myvm1"]
 [ext_resource type="Texture2D" uid="uid://b1kr2uyg7wrhd" path="res://Material/Assets/Rock030_1K-JPG/Rock030_1K-JPG_Color.jpg" id="3_np2xp"]
 [ext_resource type="Texture2D" uid="uid://bcvb68loscepv" path="res://Material/Assets/Rock030_1K-JPG/Rock030_1K-JPG_NormalDX.jpg" id="4_w7jjh"]
-[ext_resource type="Material" uid="uid://b7plw4wfav54b" path="res://Material/Misc/water.tres" id="5_q0mm3"]
+[ext_resource type="Material" uid="uid://b7plw4wfav54b" path="res://Material/World/water.tres" id="5_q0mm3"]
 [ext_resource type="Texture2D" uid="uid://o0qtypdk38od" path="res://Material/Assets/Grass008_1K-JPG/Grass008_1K-JPG_NormalDX.jpg" id="6_6q3n4"]
 [ext_resource type="Texture2D" uid="uid://bgufy6uktaltl" path="res://Material/Assets/Ground080_1K-JPG/Ground080_1K-JPG_Color.jpg" id="7_6q3n4"]
 [ext_resource type="Texture2D" uid="uid://dgibxfukig3hf" path="res://Material/Assets/Ground080_1K-JPG/Ground080_1K-JPG_NormalDX.jpg" id="8_4c2oa"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://dakxynrdt52mx" path="res://Scenes/world_objects/building.tscn" id="16_riaky"]
 [ext_resource type="PackedScene" uid="uid://dgvry5fcssevm" path="res://Scenes/world_objects/pole.tscn" id="17_vtkp8"]
 [ext_resource type="PackedScene" uid="uid://bjts6tf71j1fu" path="res://Scenes/world_objects/bin.tscn" id="18_rg57b"]
+[ext_resource type="PackedScene" uid="uid://bdourhgiqb7l" path="res://Scenes/world_objects/garage.tscn" id="21_macow"]
+[ext_resource type="Script" uid="uid://cmbc6hdrh7tnw" path="res://Scripts/sprint/SprintRace.gd" id="21_rg57b"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_np2xp"]
 size = Vector3(5000, 50, 5000)
@@ -133,6 +135,13 @@ point_count = 6
 [sub_resource type="Curve3D" id="Curve3D_ie368"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -448, 50, 523, -42, 0, 109, 42, 0, -109, -414.1185, 50, 370.085),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_uus22"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 575, 49.6, -500, 0, 0, 0, 0, 0, 0, 5000, 49.6, -5000),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -302,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 material_override = ExtResource("5_q0mm3")
 mesh = SubResource("BoxMesh_np2xp")
 
-[node name="Terrain3D" type="Terrain3D" parent="." unique_id=2119128327]
+[node name="Terrain" type="Terrain3D" parent="." unique_id=2119128327 groups=["offroad"]]
 data_directory = "res://addons/terrain_data/"
 material = SubResource("Terrain3DMaterial_q6lx1")
 assets = SubResource("Terrain3DAssets_k63oc")
@@ -338,6 +347,12 @@ metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 [node name="RoadPath3" type="Path3D" parent="Objects/Roads" unique_id=1109116616]
 curve = SubResource("Curve3D_ie368")
 script = ExtResource("12_q6lx1")
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="RoadPath4" type="Path3D" parent="Objects/Roads" unique_id=1038101691]
+curve = SubResource("Curve3D_uus22")
+script = ExtResource("12_q6lx1")
+type = 4
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="DirtPath" type="Path3D" parent="Objects/Roads" unique_id=1695797388]
@@ -748,31 +763,56 @@ script = ExtResource("12_q6lx1")
 type = 3
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="Objects2" type="Node3D" parent="Objects" unique_id=1889396906]
+[node name="Objects" type="Node3D" parent="Objects" unique_id=1889396906]
 
-[node name="House2" parent="Objects/Objects2" unique_id=1246685143 instance=ExtResource("15_j4oe2")]
+[node name="House2" parent="Objects/Objects" unique_id=1246685143 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -348, 50.3, 489)
 
-[node name="House3" parent="Objects/Objects2" unique_id=421010853 instance=ExtResource("15_j4oe2")]
+[node name="House3" parent="Objects/Objects" unique_id=421010853 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -366, 50.3, 489)
 
-[node name="House4" parent="Objects/Objects2" unique_id=454882000 instance=ExtResource("15_j4oe2")]
+[node name="House4" parent="Objects/Objects" unique_id=454882000 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -384, 50.3, 489)
 
-[node name="House5" parent="Objects/Objects2" unique_id=1438608296 instance=ExtResource("15_j4oe2")]
+[node name="House5" parent="Objects/Objects" unique_id=1438608296 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -402, 50.3, 489)
 
-[node name="House6" parent="Objects/Objects2" unique_id=1389930081 instance=ExtResource("15_j4oe2")]
+[node name="House6" parent="Objects/Objects" unique_id=1389930081 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -330, 50.3, 489)
 
-[node name="Building" parent="Objects/Objects2" unique_id=554493730 instance=ExtResource("16_riaky")]
+[node name="Building" parent="Objects/Objects" unique_id=554493730 instance=ExtResource("16_riaky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 482)
 
-[node name="Building2" parent="Objects/Objects2" unique_id=148591006 instance=ExtResource("16_riaky")]
+[node name="Building2" parent="Objects/Objects" unique_id=148591006 instance=ExtResource("16_riaky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 281)
 
-[node name="Pole" parent="Objects/Objects2" unique_id=301916848 instance=ExtResource("17_vtkp8")]
+[node name="Pole" parent="Objects/Objects" unique_id=301916848 instance=ExtResource("17_vtkp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 345)
 
-[node name="Bin" parent="Objects/Objects2" unique_id=1688324648 instance=ExtResource("18_rg57b")]
+[node name="Bin" parent="Objects/Objects" unique_id=1688324648 instance=ExtResource("18_rg57b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 329)
+
+[node name="Races" type="Node3D" parent="Objects" unique_id=1818958179]
+
+[node name="SprintRace" type="Node3D" parent="Objects/Races" unique_id=1451318426]
+script = ExtResource("21_rg57b")
+metadata/_custom_type_script = "uid://cmbc6hdrh7tnw"
+
+[node name="Node3D" type="Node3D" parent="Objects/Races/SprintRace" unique_id=191344535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 51, -498)
+
+[node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace" unique_id=1704710394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 846, 51.9, -772)
+
+[node name="Node3D" type="Node3D" parent="Objects" unique_id=517511953]
+
+[node name="Garages" type="Node3D" parent="." unique_id=1257429207 groups=["garages"]]
+
+[node name="Garage" parent="Garages" unique_id=678169622 instance=ExtResource("21_macow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 526, 50, -320)
+
+[node name="Garage2" parent="Garages" unique_id=816891808 instance=ExtResource("21_macow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345, 50, 284)
+
+[node name="Garage3" parent="Garages" unique_id=167635475 instance=ExtResource("21_macow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 479, 204.01, 409)

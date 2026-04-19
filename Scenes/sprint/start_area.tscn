@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwigma6b3vsh1"]
 
-[ext_resource type="Material" uid="uid://c215l7jpypfh1" path="res://Material/Misc/checkpoint.tres" id="2_ylipq"]
+[ext_resource type="Material" uid="uid://c215l7jpypfh1" path="res://Material/Misc/glow_yellow.tres" id="2_ylipq"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_f8x3u"]
 top_radius = 8.0

@@ -7,14 +7,6 @@ var timing := false
 var in_sprint_radius := false
 var chosen_sprint : Node3D
 
-func show_sprint_prompt(sprint : Node3D) -> void:
-	$SprintLabel.visible = true
-	chosen_sprint = sprint
-
-func hide_sprint_prompt() -> void:
-	print("hiding sprint prompt")
-	$SprintLabel.visible = false
-
 func start_timer() -> void:
 	timing = true
 	timer = 0.0
@@ -24,6 +16,19 @@ func stop_timer() -> void:
 	timing = false
 	await global.wait(2)
 	$Timer.visible = false
+
+func set_sprint_prompt(b : bool, sprint : Node3D = null) -> void:
+	$SprintLabel.visible = b
+	if !b: return
+	
+	chosen_sprint = sprint
+	$SprintLabel.text = "Press E to start sprint race!\nPB:" + str( global.format_time(sprint.get_pb() ) )
+
+func set_garage_ui(b : bool) -> void:
+	$GarageUI.visible = b
+	$GarageUI.init()
+	$Meters.visible = !b
+	$Radar.visible = !b
 
 func _physics_process(delta: float) -> void:
 	if timing: timer += delta

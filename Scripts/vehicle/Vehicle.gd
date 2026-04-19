@@ -1,40 +1,129 @@
 extends RigidBody3D
 class_name Vehicle
 
-@export var controller : VehicleController = PlayerController.new()
-
-## performance variables
-# mass - rigidbody property
-# CoM - rigidbody property
-enum Drivetrain { FWD, RWD, AWD }
-@export var drivetrain : Drivetrain = Drivetrain.FWD
-@export var top_speed := 100.0
-@export var grip_multiplier := 3.0
-@export var power_multiplier := 7.0
-@export var brake_power_multiplier := 6.0
-
-# aero variables
-@export var body_drag := 0.1
-@export var body_downforce := 0.0
-@export var aero_offset := 0.0 # offset along length 
-
-# tune variables
-@export var rear_grip_boost := 1.2
-@export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
-@export var turning_deg := 18.0
-# to add: tunable steering and braking sensitivity, axle spacers
-
 # wheel setup
 var axles : Array[VehicleAxle]
 var wheels : Array[Wheel]
-var powered_wheels := 0 # divides power between all wheels
 
-@onready var lights : LightsManager = $Lights # managed in PlayerController
+# visual component
+@onready var lights : LightsManager # managed in PlayerController
 
-# accel curve
-var accel_curve : Curve = preload("res://Curves/acceleration.tres")
+# ai or player controller
+@export var controller : VehicleController = PlayerController.new()
 
-# axle contains powered/steerable data
+# 1 = no grip penalty from accelerating/braking, gives arcade feel
+@export var grip_forgiveness : float = 0.0
+
+# less acceleration nearer top speed, updated by aspiration type
+@export var accel_curve : Curve = load("res://Curves/acceleration.tres")
+
+################################
+# Components
+@export var engine := EngineStats.new() :
+	set(x):
+		engine = x
+		update_weight()
+@export var transmission := TransmissionStats.new() :
+	set(x):
+		transmission = x
+		update_weight()
+@export var aspiration := AspirationStats.new() :
+	set(x):
+		aspiration = x
+		update_weight()
+@export var chassis := ChassisStats.new() :
+	set(x):
+		chassis = x
+		update_weight()
+@export var weight_kit := WeightKitStats.new() : 
+	set(x):
+		weight_kit = x
+		update_weight()
+@export var aero_kit := AeroKitStats.new() :
+	set(x):
+		aero_kit = x
+		update_weight()
+@export var suspension := SuspensionStats.new() :
+	set(x):
+		suspension = x
+		update_wheels()
+		update_weight()
+@export var tires := TiresStats.new() :
+	set(x):
+		tires = x
+		update_wheels()
+		update_weight()
+@export var brakes := BrakesStats.new() :
+	set(x):
+		brakes = x
+		update_weight()
+@export var drivetrain := DrivetrainStats.new() :
+	set(x):
+		drivetrain = x
+		update_weight()
+
+################################
+# tuning variables
+@export var brake_bias : float = 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
+@export var aero_bias : float = 0.0
+@export var turning_deg : float = 20
+
+################################
+# getters from car components
+func get_components() -> Array[VehicleComponent]:
+	return [engine, transmission, aspiration, chassis, weight_kit, aero_kit, suspension, tires, brakes, drivetrain]
+
+func get_weight() -> float:
+	var weight = 0
+	for i in get_components():
+		if i is ChassisStats:
+			weight += i.weight * weight_kit.weight_multiplier
+		else:
+			weight += i.weight
+	return weight
+
+func get_drag() -> float:
+	return chassis.drag + aero_kit.drag
+
+func get_downforce() -> float:
+	return chassis.downforce + aero_kit.downforce
+
+func get_top_speed() -> float:
+	return engine.speed * transmission.speed_multiplier
+
+func get_power() -> float:
+	return engine.power * transmission.power_multiplier * aspiration.power_multiplier
+
+func get_brake_power() -> float:
+	return brakes.brake_power
+
+################################
+# dynamic getters
+func get_forward_speed() -> float:
+	return linear_velocity.dot(global_basis.x)
+
+func get_power_output() -> float:
+	return get_power() * accel_curve.sample( get_forward_speed() / get_top_speed() )
+
+# update mesh material and color
+func update_color(c : Color, mat : String = "") -> void:
+	var mesh : MeshColorable
+	for i in get_children():
+		if i is MeshColorable:
+			mesh = i
+			break
+	
+	if mesh == null: return
+	if mat:
+		mesh.update_material(mat)
+	mesh.update_color(c)
+
+func update_weight() -> void:
+	mass = get_weight()
+	print("new mass: ", mass)
+	center_of_mass.y = chassis.CoM_Y
+
+# axle initializes wheels
 func update_wheels() -> void:
 	# ---- Clear wheels and axles ----
 	for w in wheels:
@@ -42,29 +131,13 @@ func update_wheels() -> void:
 			w.queue_free()
 	wheels.clear()
 	axles.clear()
-	powered_wheels = 0
 	
-	# ---- add wheels using axle children data ----
+	# ---- initialize wheels in axle ----
 	for axle in get_children():
 		if !(axle is VehicleAxle): continue 
 		axles.append(axle)
-		
-		if (drivetrain == Drivetrain.RWD or drivetrain == Drivetrain.AWD) and axle.position.z < 0:
-			axle.powered = true
-		if (drivetrain == Drivetrain.FWD or drivetrain == Drivetrain.AWD) and axle.position.z > 0:
-			axle.powered = true
-		if axle.powered: powered_wheels += 2
-	
-	for axle in axles:
-		axle.add_wheels()
-	
-	for i in axles:
-		print(i.powered)
-	
-	# ---- Set wheel's grip ----
-	for w in wheels:
-		w.grip = grip_multiplier
-		if w.position[0] < 0: w.grip *= rear_grip_boost
+		axle.update()
+
 
 # body aero object is at 0 0 0
 func _aero() -> void:
@@ -73,41 +146,62 @@ func _aero() -> void:
 	
 	var force : float = global.aero_curve.sample(forward_speed)
 	
-	var downforce := -global_basis.y * force * body_downforce
-	var drag_force : Vector3 = -forward * force * body_drag
+	var downforce := -global_basis.y * force * get_downforce()
+	var drag_force : Vector3 = -forward * force * get_drag()
 	
-	var force_point = forward * aero_offset
+	var force_point = forward * aero_bias # not based on car length atm
+	
 	apply_force(downforce, force_point)
 	apply_force(drag_force, Vector3.ZERO)
 
-# 0 to 1 acceleration
+
+# [0-1] updates all wheels with power
 func set_acceleration(x := 0.) -> void:
-	for w in wheels:
-		# lower acceleration near top speed using curve
-		var accel_multi := accel_curve.sample( linear_velocity.length() / top_speed )
-		w.accel_power = x * power_multiplier * accel_multi / powered_wheels
+	for axle in axles:
+		for w in axle.get_children():
+			# split power based on drivetrain configuration
+			if axle.is_rear():
+				w.accel_power = x - x * drivetrain.bias
+			else:
+				w.accel_power = x + x * drivetrain.bias
+			
+			w.accel_power *= get_power_output()
+	
+	# update reverse lights
 	if x < 0: 	lights.set_reverse_intensity(-x)
 	else: 		lights.set_reverse_intensity(0)
 
-# 0 to 1 braking
+
+# [0-1] update all wheels with brake power
 func set_braking(x := 0.) -> void:
-	for w in wheels:
-		if w.position.x > 0:
-			w.brake_power = x + x * brake_bias
-		else:
-			w.brake_power = x - x * brake_bias
-		w.brake_power *= brake_power_multiplier
+	for axle in axles:
+		for w in axle.get_children():
+			# account for rear-front bias
+			if axle.is_rear():
+				w.brake_power = x + x * brake_bias
+			else:
+				w.brake_power = x - x * brake_bias
+			
+			w.brake_power *= get_brake_power()
+	
+	# update brake lights
 	if x > 0.25: lights.set_back_intensity(1)
 	else: lights.set_back_intensity(lights.back_default)
 
-# -1 to 1 steering
+
+# [-1-1] multiplier using turning degrees
 func set_steering(x := 0.) -> void:
 	for w in wheels:
 		w.steer(x * turning_deg)
 
+
 func _ready() -> void:
+	mass = get_weight()
+	center_of_mass.y = chassis.CoM_Y
 	controller.vehicle = self
 	update_wheels()
+	for i in get_children(): if i is LightsManager: lights = i
+
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
@@ -117,6 +211,7 @@ func _physics_process(delta : float) -> void:
 	set_braking( controller.brake_handler(delta) )
 	set_steering( controller.steer_handler(delta) )
 	_aero()
+
 
 func _on_body_entered(body: Node) -> void:
 	if body is Hittable:
