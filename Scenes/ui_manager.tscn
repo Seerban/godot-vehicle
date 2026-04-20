@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d1iwxqcpwrsai"]
 
 [ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/ui/UIManager.gd" id="1_k436y"]
-[ext_resource type="PackedScene" uid="uid://dcyyvp5e8iaqm" path="res://UI/grip_ui.tscn" id="2_wcp00"]
 [ext_resource type="PackedScene" uid="uid://vmjwheuujnye" path="res://UI/instructions.tscn" id="3_pwm6i"]
 [ext_resource type="PackedScene" uid="uid://dho54kt8g7vq1" path="res://UI/radar.tscn" id="5_sm38h"]
 [ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="6_0cbwa"]
@@ -12,15 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://dj1lhocphn5yc" path="res://Textures/ui/speedometer.png" id="8_0cbwa"]
 [ext_resource type="Texture2D" uid="uid://b1bsjphbnrqyc" path="res://Textures/ui/speedometer4.png" id="11_wflq5"]
 [ext_resource type="Texture2D" uid="uid://uokq0ockw34c" path="res://Textures/ui/speedometer3.png" id="12_irgxn"]
+[ext_resource type="Script" uid="uid://bdpqsfuo7mak" path="res://Scripts/ui/grip.gd" id="12_wflq5"]
+[ext_resource type="Texture2D" uid="uid://cok2ccsm0wo6x" path="res://Textures/RoundedRect2.png" id="13_irgxn"]
 
 [node name="UIManager" type="CanvasLayer" unique_id=429781008 groups=["ui"]]
 script = ExtResource("1_k436y")
 
-[node name="Grip" parent="." unique_id=1255977361 instance=ExtResource("2_wcp00")]
-visible = false
-
 [node name="Instructions" parent="." unique_id=2061278088 instance=ExtResource("3_pwm6i")]
-visible = false
 
 [node name="Radar" parent="." unique_id=2016502328 groups=["radar"] instance=ExtResource("5_sm38h")]
 visible = false
@@ -57,7 +54,7 @@ theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 28
 text = "adedf"
 
-[node name="GarageUI" parent="." unique_id=681594695 instance=ExtResource("6_y4mvd")]
+[node name="Garage" parent="." unique_id=681594695 instance=ExtResource("6_y4mvd")]
 visible = false
 
 [node name="Meters" type="Control" parent="." unique_id=1885040780]
@@ -74,6 +71,7 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 1
 theme = ExtResource("6_0cbwa")
 script = ExtResource("7_sm38h")
 
@@ -86,8 +84,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_pwm6i")
-expand_mode = 2
-stretch_mode = 5
+expand_mode = 4
+stretch_mode = 4
 
 [node name="SpeedBar" type="TextureProgressBar" parent="Meters/BG" unique_id=1792688063]
 clip_children = 1
@@ -189,8 +187,8 @@ offset_right = -247.99988
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("6_pwm6i")
-expand_mode = 2
-stretch_mode = 5
+expand_mode = 4
+stretch_mode = 4
 
 [node name="BoostBar" type="TextureProgressBar" parent="Meters/BG2" unique_id=325179980]
 clip_children = 1
@@ -237,5 +235,284 @@ offset_bottom = 21.999756
 grow_horizontal = 2
 grow_vertical = 2
 text = "BOOST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grip" type="Control" parent="." unique_id=2129753641]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("6_0cbwa")
+script = ExtResource("12_wflq5")
+
+[node name="Grid" type="GridContainer" parent="Grip" unique_id=854686528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="FLPanel" type="ColorRect" parent="Grip/Grid" unique_id=276899459]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(1, 1, 1, 0)
+
+[node name="Outline" type="TextureRect" parent="Grip/Grid/FLPanel" unique_id=506199043]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -1.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="Grip/Grid/FLPanel" unique_id=684646925]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.75000006
+anchor_bottom = 1.0
+offset_right = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "Line 1
+
+Line 2
+
+Line 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WheelRect" type="TextureRect" parent="Grip/Grid/FLPanel" unique_id=38364076]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.574997
+offset_top = 3.685
+offset_right = -12.574997
+offset_bottom = -14.315002
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="Spacer" type="ColorRect" parent="Grip/Grid" unique_id=520702437]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(1, 1, 1, 0)
+
+[node name="FRPanel" type="ColorRect" parent="Grip/Grid" unique_id=630662941]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(1, 1, 1, 0)
+
+[node name="Outline" type="TextureRect" parent="Grip/Grid/FRPanel" unique_id=1251449499]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = 56.0
+offset_bottom = -9.0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="Grip/Grid/FRPanel" unique_id=1718940914]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Line 1
+
+Line 2
+
+Line 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WheelRect" type="TextureRect" parent="Grip/Grid/FRPanel" unique_id=830482668]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.75
+offset_top = 3.685
+offset_right = -204.74992
+offset_bottom = -14.315002
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="RLPanel" type="ColorRect" parent="Grip/Grid" unique_id=876673103]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(1, 1, 1, 0)
+
+[node name="Outline" type="TextureRect" parent="Grip/Grid/RLPanel" unique_id=98114702]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -1.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="Grip/Grid/RLPanel" unique_id=894689089]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.75000006
+anchor_bottom = 1.0
+offset_right = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "Line 1
+
+Line 2
+
+Line 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WheelRect" type="TextureRect" parent="Grip/Grid/RLPanel" unique_id=1653924279]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.574997
+offset_top = 3.685
+offset_right = -12.574997
+offset_bottom = -14.315002
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="Spacer2" type="ColorRect" parent="Grip/Grid" unique_id=1902887973]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(1, 1, 1, 0)
+
+[node name="RRPanel" type="ColorRect" parent="Grip/Grid" unique_id=1461286007]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(1, 1, 1, 0)
+
+[node name="Outline" type="TextureRect" parent="Grip/Grid/RRPanel" unique_id=1924201164]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = 56.0
+offset_bottom = -9.0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="Grip/Grid/RRPanel" unique_id=1578868029]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Line 1
+
+Line 2
+
+Line 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WheelRect" type="TextureRect" parent="Grip/Grid/RRPanel" unique_id=761023304]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.75
+offset_top = 3.685
+offset_right = -204.74992
+offset_bottom = -14.315002
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_irgxn")
+expand_mode = 4
+
+[node name="DownForce" type="Label" parent="Grip" unique_id=1283389905]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.5
+offset_top = 32.0
+offset_right = 51.5
+offset_bottom = 73.0
+grow_horizontal = 2
+text = "Weight:
+Downforce:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Speed" type="Label" parent="Grip" unique_id=1764619605]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.5
+offset_top = -84.67999
+offset_right = 51.5
+offset_bottom = -43.679993
+grow_horizontal = 2
+grow_vertical = 0
+text = "Speed: "
 horizontal_alignment = 1
 vertical_alignment = 1

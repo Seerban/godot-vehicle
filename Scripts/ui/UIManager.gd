@@ -9,6 +9,15 @@ var chosen_sprint : Node3D
 
 @onready var meters = $Meters
 
+func show_unique_child(child_name: String, other := []) -> void:
+	for i in get_children():
+		i.visible = i.name == child_name or i.name in other
+
+func show_usual() -> void:
+	for i in get_children(): i.visible = false
+	$Meters.visible = true
+	$Instructions.visible = true
+
 func start_timer() -> void:
 	timing = true
 	timer = 0.0
@@ -25,12 +34,6 @@ func set_sprint_prompt(b : bool, sprint : Node3D = null) -> void:
 	
 	chosen_sprint = sprint
 	$SprintLabel.text = "Press E to start sprint race!\nPB:" + str( global.format_time(sprint.get_pb() ) )
-
-func set_garage_ui(b : bool) -> void:
-	$GarageUI.visible = b
-	$GarageUI.init()
-	$Meters.visible = !b
-	$Radar.visible = !b
 
 func _physics_process(delta: float) -> void:
 	if timing: timer += delta

@@ -116,13 +116,20 @@ func get_power_output() -> float:
 func get_boost_output() -> float:
 	return 1.0 + aspiration.boost_curve.sample( get_forward_speed() / get_top_speed() ) * aspiration.power_multiplier
 
+func get_downforce_output() -> float:
+	return global.aero_curve.sample(get_forward_speed()) * get_downforce()
+
+################################
+# mesh manager
 # update mesh material and color
-func update_color(c : Color, mat : String = "") -> void:
-	var mesh : MeshColorable
+func get_mesh() -> MeshColorable:
 	for i in get_children():
 		if i is MeshColorable:
-			mesh = i
-			break
+			return i
+	return null
+
+func update_color(c : Color, mat : String = "") -> void:
+	var mesh := get_mesh()
 	
 	if mesh == null: return
 	if mat:
@@ -167,7 +174,7 @@ func _aero() -> void:
 
 # [0-1] updates all wheels with power
 func set_acceleration(x := 0.) -> void:
-	current_accel = x
+	current_accel = abs(x)
 	
 	for axle in axles:
 		for w in axle.get_children():
