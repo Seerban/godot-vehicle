@@ -1,0 +1,105 @@
+[gd_resource type="Theme" format=3 uid="uid://bmg0hb20pv0je"]
+
+[ext_resource type="FontFile" uid="uid://b5f47l2oupjjx" path="res://Font/TitanOne-Regular.ttf" id="1_yd3fu"]
+[ext_resource type="Texture2D" uid="uid://c8ospcm8y352e" path="res://Textures/ui/check.png" id="2_23v3e"]
+[ext_resource type="Texture2D" uid="uid://4xius53oenh7" path="res://Textures/ui/uncheck.png" id="3_k1aya"]
+
+[sub_resource type="Gradient" id="Gradient_k1aya"]
+colors = PackedColorArray(0.20871013, 0.20871016, 0.20871013, 1, 0.099985994, 0.099985994, 0.099985994, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j4jqe"]
+gradient = SubResource("Gradient_k1aya")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t6dyh"]
+texture = SubResource("GradientTexture2D_j4jqe")
+
+[sub_resource type="Gradient" id="Gradient_23v3e"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.19434926, 0.19434929, 0.19434911, 1, 0.37165594, 0.37165594, 0.37165582, 1, 0.19607843, 0.19607843, 0.19607843, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yd3fu"]
+gradient = SubResource("Gradient_23v3e")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yd3fu"]
+texture = SubResource("GradientTexture2D_yd3fu")
+
+[sub_resource type="Gradient" id="Gradient_yd3fu"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.19434926, 0.19434929, 0.19434911, 1, 0.37165594, 0.37165594, 0.37165582, 1, 0.5489626, 0.5489626, 0.54896253, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k1aya"]
+gradient = SubResource("Gradient_yd3fu")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j4jqe"]
+texture = SubResource("GradientTexture2D_k1aya")
+
+[sub_resource type="Gradient" id="Gradient_y2aw4"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.29586655, 0.29586652, 0.29586622, 1, 0.50928617, 0.5092862, 0.509286, 1, 0.29411766, 0.29411766, 0.29411766, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7yw46"]
+gradient = SubResource("Gradient_y2aw4")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6xh3"]
+texture = SubResource("GradientTexture2D_7yw46")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1aya"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.09239706, 0.09239709, 0.09239695, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4jqe"]
+bg_color = Color(0.34509805, 1, 0.34901962, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.47975993, 0.0862141, 1)
+border_blend = true
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 0.4862745)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 0.972549, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_yd3fu")
+Button/styles/disabled = SubResource("StyleBoxTexture_t6dyh")
+Button/styles/hover = SubResource("StyleBoxTexture_yd3fu")
+Button/styles/normal = SubResource("StyleBoxTexture_j4jqe")
+Button/styles/pressed = SubResource("StyleBoxTexture_c6xh3")
+CheckBox/icons/checked = ExtResource("2_23v3e")
+CheckBox/icons/unchecked = ExtResource("3_k1aya")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 8
+Label/fonts/font = ExtResource("1_yd3fu")
+LineEdit/colors/caret_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/constants/outline_size = 8
+LineEdit/fonts/font = ExtResource("1_yd3fu")
+ProgressBar/colors/font_color = Color(1, 1, 1, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 12
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = ExtResource("1_yd3fu")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_k1aya")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_j4jqe")

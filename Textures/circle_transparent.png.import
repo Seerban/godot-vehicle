@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce1clmyscrbnu"
-path="res://.godot/imported/4steer.png-8b8cc190fc48dcb0d5543713b4431bb1.ctex"
+uid="uid://rsf13m7j0rcl"
+path="res://.godot/imported/circle_transparent.png-ad9bb10bf0c36a328e52ed031b51df23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ui/4steer.png"
-dest_files=["res://.godot/imported/4steer.png-8b8cc190fc48dcb0d5543713b4431bb1.ctex"]
+source_file="res://Textures/circle_transparent.png"
+dest_files=["res://.godot/imported/circle_transparent.png-ad9bb10bf0c36a328e52ed031b51df23.ctex"]
 
 [params]
 

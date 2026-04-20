@@ -40,6 +40,12 @@ func update() -> void:
 	else:
 		stats_panel.get_node("Braking").text = "Braking: \t" + str( global.player_car.get_brake_power() )
 	
+	if global.player_car.get_boost() != car_copy.get_boost():
+		stats_panel.get_node("Boost").text = "Boost: \t" + str(car_copy.get_boost()) + "->" + str( global.player_car.get_boost() )
+	else:
+		stats_panel.get_node("Boost").text = "Boost: \t" + str( global.player_car.get_boost() )
+	
+	
 	var global_car_grip = (global.player_car.tires.lateral_grip + global.player_car.tires.longitudinal_grip) / 2
 	var copy_car_grip = (car_copy.tires.lateral_grip + car_copy.tires.longitudinal_grip) / 2
 	var global_car_offroad_grip = global_car_grip * global.player_car.tires.offroad_multiplier

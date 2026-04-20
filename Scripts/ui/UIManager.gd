@@ -7,6 +7,8 @@ var timing := false
 var in_sprint_radius := false
 var chosen_sprint : Node3D
 
+@onready var meters = $Meters
+
 func start_timer() -> void:
 	timing = true
 	timer = 0.0

@@ -1,6 +1,10 @@
 extends RigidBody3D
 class_name Vehicle
 
+# control vars used for speedometer display
+var current_accel := 0.0
+var current_brake := 0.0
+
 # wheel setup
 var axles : Array[VehicleAxle]
 var wheels : Array[Wheel]
@@ -19,54 +23,54 @@ var wheels : Array[Wheel]
 
 ################################
 # Components
-@export var engine := EngineStats.new() :
+@export var engine := preload("res://Resources/Engines/1_engine_stock.tres") :
 	set(x):
 		engine = x
 		update_weight()
-@export var transmission := TransmissionStats.new() :
+@export var transmission := preload("res://Resources/Transmissions/0_stock_transmission.tres") :
 	set(x):
 		transmission = x
 		update_weight()
-@export var aspiration := AspirationStats.new() :
+@export var aspiration := preload("res://Resources/Aspirations/NA.tres") :
 	set(x):
 		aspiration = x
 		update_weight()
-@export var chassis := ChassisStats.new() :
+@export var chassis := preload("res://Resources/Chassis/default_chassis.tres") :
 	set(x):
 		chassis = x
 		update_weight()
-@export var weight_kit := WeightKitStats.new() : 
+@export var weight_kit := preload("res://Resources/WeightKits/0_no_weight_kit.tres") : 
 	set(x):
 		weight_kit = x
 		update_weight()
-@export var aero_kit := AeroKitStats.new() :
+@export var aero_kit := preload("res://Resources/AeroKits/0_no_aero.tres") :
 	set(x):
 		aero_kit = x
 		update_weight()
-@export var suspension := SuspensionStats.new() :
+@export var suspension := preload("res://Resources/Suspensions/0_default_suspension.tres") :
 	set(x):
 		suspension = x
 		update_wheels()
 		update_weight()
-@export var tires := TiresStats.new() :
+@export var tires := preload("res://Resources/Tires/0_default_tires.tres") :
 	set(x):
 		tires = x
 		update_wheels()
 		update_weight()
-@export var brakes := BrakesStats.new() :
+@export var brakes := preload("res://Resources/Brakes/0_stock_brakes.tres") :
 	set(x):
 		brakes = x
 		update_weight()
-@export var drivetrain := DrivetrainStats.new() :
+@export var drivetrain := preload("res://Resources/Drivetrains/1_RWD.tres") :
 	set(x):
 		drivetrain = x
 		update_weight()
 
 ################################
 # tuning variables
-@export var brake_bias : float = 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
-@export var aero_bias : float = 0.0
-@export var turning_deg : float = 20
+@export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
+@export var aero_bias := 0.0
+@export var turning_deg := 20.0
 
 ################################
 # getters from car components
@@ -92,7 +96,10 @@ func get_top_speed() -> float:
 	return engine.speed * transmission.speed_multiplier
 
 func get_power() -> float:
-	return engine.power * transmission.power_multiplier * aspiration.power_multiplier
+	return engine.power * transmission.power_multiplier
+
+func get_boost() -> float:
+	return aspiration.power_multiplier
 
 func get_brake_power() -> float:
 	return brakes.brake_power
@@ -103,7 +110,11 @@ func get_forward_speed() -> float:
 	return linear_velocity.dot(global_basis.x)
 
 func get_power_output() -> float:
-	return get_power() * accel_curve.sample( get_forward_speed() / get_top_speed() )
+	return get_power() * get_boost_output() * \
+		accel_curve.sample( get_forward_speed() / get_top_speed() )
+
+func get_boost_output() -> float:
+	return 1.0 + aspiration.boost_curve.sample( get_forward_speed() / get_top_speed() ) * aspiration.power_multiplier
 
 # update mesh material and color
 func update_color(c : Color, mat : String = "") -> void:
@@ -120,7 +131,6 @@ func update_color(c : Color, mat : String = "") -> void:
 
 func update_weight() -> void:
 	mass = get_weight()
-	print("new mass: ", mass)
 	center_of_mass.y = chassis.CoM_Y
 
 # axle initializes wheels
@@ -157,6 +167,8 @@ func _aero() -> void:
 
 # [0-1] updates all wheels with power
 func set_acceleration(x := 0.) -> void:
+	current_accel = x
+	
 	for axle in axles:
 		for w in axle.get_children():
 			# split power based on drivetrain configuration
@@ -174,6 +186,8 @@ func set_acceleration(x := 0.) -> void:
 
 # [0-1] update all wheels with brake power
 func set_braking(x := 0.) -> void:
+	current_brake = x
+	
 	for axle in axles:
 		for w in axle.get_children():
 			# account for rear-front bias

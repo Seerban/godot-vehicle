@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://d1iwxqcpwrsai"]
+
+[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/ui/UIManager.gd" id="1_k436y"]
+[ext_resource type="PackedScene" uid="uid://dcyyvp5e8iaqm" path="res://UI/grip_ui.tscn" id="2_wcp00"]
+[ext_resource type="PackedScene" uid="uid://vmjwheuujnye" path="res://UI/instructions.tscn" id="3_pwm6i"]
+[ext_resource type="PackedScene" uid="uid://dho54kt8g7vq1" path="res://UI/radar.tscn" id="5_sm38h"]
+[ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="6_0cbwa"]
+[ext_resource type="Texture2D" uid="uid://rsf13m7j0rcl" path="res://Textures/circle_transparent.png" id="6_pwm6i"]
+[ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://UI/garage_ui.tscn" id="6_y4mvd"]
+[ext_resource type="Texture2D" uid="uid://nu2vo4xwoewr" path="res://Textures/ui/speedometer2.png" id="7_pwm6i"]
+[ext_resource type="Script" uid="uid://ya1iltnlulns" path="res://Scripts/ui/meters.gd" id="7_sm38h"]
+[ext_resource type="Texture2D" uid="uid://dj1lhocphn5yc" path="res://Textures/ui/speedometer.png" id="8_0cbwa"]
+[ext_resource type="Texture2D" uid="uid://b1bsjphbnrqyc" path="res://Textures/ui/speedometer4.png" id="11_wflq5"]
+[ext_resource type="Texture2D" uid="uid://uokq0ockw34c" path="res://Textures/ui/speedometer3.png" id="12_irgxn"]
+
+[node name="UIManager" type="CanvasLayer" unique_id=429781008 groups=["ui"]]
+script = ExtResource("1_k436y")
+
+[node name="Grip" parent="." unique_id=1255977361 instance=ExtResource("2_wcp00")]
+visible = false
+
+[node name="Instructions" parent="." unique_id=2061278088 instance=ExtResource("3_pwm6i")]
+visible = false
+
+[node name="Radar" parent="." unique_id=2016502328 groups=["radar"] instance=ExtResource("5_sm38h")]
+visible = false
+
+[node name="SprintLabel" type="Label" parent="." unique_id=1442320862]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -11.5
+offset_right = 124.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "PRESS 'E' TO START SPRINT RACE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="." unique_id=1310019911]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.5
+offset_right = 38.5
+offset_bottom = 39.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 28
+text = "adedf"
+
+[node name="GarageUI" parent="." unique_id=681594695 instance=ExtResource("6_y4mvd")]
+visible = false
+
+[node name="Meters" type="Control" parent="." unique_id=1885040780]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -272.0
+offset_top = -272.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("6_0cbwa")
+script = ExtResource("7_sm38h")
+
+[node name="BG" type="TextureRect" parent="Meters" unique_id=670813888]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pwm6i")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SpeedBar" type="TextureProgressBar" parent="Meters/BG" unique_id=1792688063]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 4
+radial_initial_angle = 183.0
+radial_fill_degrees = 264.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_pwm6i")
+texture_progress = ExtResource("8_0cbwa")
+tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
+
+[node name="AccelBar" type="TextureProgressBar" parent="Meters/BG" unique_id=704141633]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 5
+radial_initial_angle = 168.0
+radial_fill_degrees = 66.0
+nine_patch_stretch = true
+texture_under = ExtResource("11_wflq5")
+texture_progress = ExtResource("12_irgxn")
+tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
+tint_progress = Color(0.21176471, 0.8627451, 0.22745098, 1)
+
+[node name="BrakeBar" type="TextureProgressBar" parent="Meters/BG" unique_id=670342651]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 4
+radial_initial_angle = 102.0
+radial_fill_degrees = 66.0
+nine_patch_stretch = true
+texture_progress = ExtResource("12_irgxn")
+tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
+tint_progress = Color(1, 0.22745098, 0.22745098, 1)
+
+[node name="SpeedLabel" type="Label" parent="Meters/BG" unique_id=296934059]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Units" type="Label" parent="Meters/BG" unique_id=61768541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 32.0
+offset_right = 1.0
+offset_bottom = 31.999756
+grow_horizontal = 2
+grow_vertical = 2
+text = "UPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BG2" type="TextureRect" parent="Meters" unique_id=758789887]
+clip_children = 2
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -128.0
+offset_right = -247.99988
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_pwm6i")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="BoostBar" type="TextureProgressBar" parent="Meters/BG2" unique_id=325179980]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 4
+radial_initial_angle = 183.0
+radial_fill_degrees = 264.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_pwm6i")
+texture_progress = ExtResource("8_0cbwa")
+tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
+
+[node name="BoostLabel" type="Label" parent="Meters/BG2" unique_id=1419844418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Units" type="Label" parent="Meters/BG2" unique_id=668567219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 22.0
+offset_right = 1.0
+offset_bottom = 21.999756
+grow_horizontal = 2
+grow_vertical = 2
+text = "BOOST"
+horizontal_alignment = 1
+vertical_alignment = 1

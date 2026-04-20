@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1v46idyahhtj"
-path="res://.godot/imported/8x8.png-d01406c8037071eb430569f327ca2ca6.ctex"
+uid="uid://dj1lhocphn5yc"
+path="res://.godot/imported/speedometer.png-276360fc8a6bd610cdd9374c64c442ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ui/8x8.png"
-dest_files=["res://.godot/imported/8x8.png-d01406c8037071eb430569f327ca2ca6.ctex"]
+source_file="res://Textures/ui/speedometer.png"
+dest_files=["res://.godot/imported/speedometer.png-276360fc8a6bd610cdd9374c64c442ca.ctex"]
 
 [params]
 

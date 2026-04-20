@@ -102,6 +102,10 @@ grow_vertical = 2
 layout_mode = 2
 text = "Power:"
 
+[node name="Boost" type="Label" parent="Stats" unique_id=1350212367]
+layout_mode = 2
+text = "Boost:"
+
 [node name="Speed" type="Label" parent="Stats" unique_id=504521022]
 layout_mode = 2
 text = "Speed:"
