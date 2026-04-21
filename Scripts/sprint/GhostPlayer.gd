@@ -12,6 +12,7 @@ var frame_rate := 0.1
 var clock := 0.0
 
 var frames := []
+var cp_times := []
 
 func start_recording() -> void:
 	car = global.player_car

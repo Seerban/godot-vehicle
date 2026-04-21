@@ -7,52 +7,48 @@
 [ext_resource type="Texture2D" uid="uid://rsf13m7j0rcl" path="res://Textures/circle_transparent.png" id="6_pwm6i"]
 [ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://UI/garage_ui.tscn" id="6_y4mvd"]
 [ext_resource type="Texture2D" uid="uid://nu2vo4xwoewr" path="res://Textures/ui/speedometer2.png" id="7_pwm6i"]
-[ext_resource type="Script" uid="uid://ya1iltnlulns" path="res://Scripts/ui/meters.gd" id="7_sm38h"]
 [ext_resource type="Texture2D" uid="uid://dj1lhocphn5yc" path="res://Textures/ui/speedometer.png" id="8_0cbwa"]
 [ext_resource type="Texture2D" uid="uid://b1bsjphbnrqyc" path="res://Textures/ui/speedometer4.png" id="11_wflq5"]
 [ext_resource type="Texture2D" uid="uid://uokq0ockw34c" path="res://Textures/ui/speedometer3.png" id="12_irgxn"]
-[ext_resource type="Script" uid="uid://bdpqsfuo7mak" path="res://Scripts/ui/grip.gd" id="12_wflq5"]
+[ext_resource type="Script" uid="uid://bdpqsfuo7mak" path="res://Scripts/ui/grip_ui.gd" id="12_wflq5"]
+[ext_resource type="Script" uid="uid://cjrra7f6xv1ob" path="res://Scenes/timer.gd" id="13_02now"]
+[ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/sprint_ui.gd" id="13_4eo48"]
 [ext_resource type="Texture2D" uid="uid://cok2ccsm0wo6x" path="res://Textures/RoundedRect2.png" id="13_irgxn"]
+[ext_resource type="Script" uid="uid://cv57nf0genhhd" path="res://Scripts/ui/sprint_renderer.gd" id="14_4eo48"]
+[ext_resource type="FontFile" uid="uid://b6tmp21qg8doy" path="res://Font/RobotoMono-Bold.ttf" id="14_gvaor"]
+
+[sub_resource type="GDScript" id="GDScript_wflq5"]
+script/source = "extends Control
+
+@onready var speedometer := $BG/SpeedBar
+@onready var accelmeter := $BG/AccelBar
+@onready var brakemeter := $BG/BrakeBar
+@onready var speed_label := $BG/SpeedLabel
+
+@onready var boostmeter = $BG2/BoostBar
+@onready var boost_label = $BG2/BoostLabel
+
+func _process(delta: float) -> void:
+	speedometer.value = global.player_car.get_forward_speed() * 10.0
+	speedometer.max_value = global.player_car.get_top_speed() * 10.0
+	speed_label.text = str(abs(int(global.player_car.get_forward_speed())))
+	accelmeter.value = global.player_car.current_accel * 100.0
+	brakemeter.value = global.player_car.current_brake * 100.0
+	
+	boostmeter.value = float(round(global.player_car.get_boost_output() * 100) - 100) * 100.0
+	boostmeter.max_value = global.player_car.get_boost() * 100 * 100.0 + 0.1
+	
+	boost_label.text = str(int(round(global.player_car.get_boost_output() * 100)) - 100)
+"
 
 [node name="UIManager" type="CanvasLayer" unique_id=429781008 groups=["ui"]]
 script = ExtResource("1_k436y")
 
 [node name="Instructions" parent="." unique_id=2061278088 instance=ExtResource("3_pwm6i")]
+theme = ExtResource("6_0cbwa")
 
 [node name="Radar" parent="." unique_id=2016502328 groups=["radar"] instance=ExtResource("5_sm38h")]
 visible = false
-
-[node name="SprintLabel" type="Label" parent="." unique_id=1442320862]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -124.5
-offset_top = -11.5
-offset_right = 124.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "PRESS 'E' TO START SPRINT RACE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Label" parent="." unique_id=1310019911]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -38.5
-offset_right = 38.5
-offset_bottom = 39.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/font_size = 28
-text = "adedf"
 
 [node name="Garage" parent="." unique_id=681594695 instance=ExtResource("6_y4mvd")]
 visible = false
@@ -73,7 +69,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 1
 theme = ExtResource("6_0cbwa")
-script = ExtResource("7_sm38h")
+script = SubResource("GDScript_wflq5")
 
 [node name="BG" type="TextureRect" parent="Meters" unique_id=670813888]
 clip_children = 2
@@ -508,11 +504,153 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -51.5
-offset_top = -84.67999
+offset_top = -104.275024
 offset_right = 51.5
-offset_bottom = -43.679993
+offset_bottom = -62.335022
 grow_horizontal = 2
 grow_vertical = 0
 text = "Speed: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Timer" type="Control" parent="." unique_id=1393103811]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_0cbwa")
+script = ExtResource("13_02now")
+
+[node name="Label" type="Label" parent="Timer" unique_id=1633340112]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.5
+offset_top = -74.58502
+offset_right = 86.5
+offset_bottom = -31.585022
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("14_gvaor")
+theme_override_font_sizes/font_size = 32
+text = "Time Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeDiff" type="VBoxContainer" parent="Timer" unique_id=77362504]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.5
+offset_top = 45.335
+offset_right = 32.5
+offset_bottom = 87.33501
+grow_horizontal = 2
+
+[node name="Time" type="Label" parent="Timer/TimeDiff" unique_id=1865551670]
+layout_mode = 2
+text = "ABCDEF"
+
+[node name="Diff" type="Label" parent="Timer/TimeDiff" unique_id=448842340]
+layout_mode = 2
+text = "ABCDEF"
+
+[node name="CP" type="Label" parent="Timer" unique_id=129410672]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -25.539978
+offset_right = 34.0
+offset_bottom = -6.539978
+grow_horizontal = 2
+grow_vertical = 0
+text = "CP: 0/10"
+
+[node name="Sprint" type="Control" parent="." unique_id=1520827980]
+visible = false
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 425.88
+grow_horizontal = 0
+theme = ExtResource("6_0cbwa")
+script = ExtResource("13_4eo48")
+
+[node name="HBox" type="HBoxContainer" parent="Sprint" unique_id=366141625]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -404.0
+offset_bottom = 368.0
+grow_horizontal = 0
+
+[node name="Times" type="VBoxContainer" parent="Sprint/HBox" unique_id=1271026597]
+layout_mode = 2
+
+[node name="Goal" type="RichTextLabel" parent="Sprint/HBox/Times" unique_id=1850179128]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "1.11:111"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="PB" type="RichTextLabel" parent="Sprint/HBox/Times" unique_id=1566538957]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "PB: 0.00:000"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Sprint/HBox" unique_id=2017300908]
+layout_mode = 2
+
+[node name="Info" type="VBoxContainer" parent="Sprint/HBox/VBox" unique_id=1890520763]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Sprint/HBox/VBox/Info" unique_id=1350294101]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Sprint/HBox/VBox/Info" unique_id=1674115826]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Length" type="Label" parent="Sprint/HBox/VBox/Info" unique_id=923550278]
+layout_mode = 2
+text = "Length"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Path" type="Control" parent="Sprint/HBox/VBox/Info" unique_id=572137968]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+script = ExtResource("14_4eo48")
+
+[node name="PB2" type="RichTextLabel" parent="Sprint/HBox/VBox" unique_id=1499306127]
+layout_mode = 2
+bbcode_enabled = true
+text = "Press [color=orange]'E'[/color] to begin."
+fit_content = true
+horizontal_alignment = 1

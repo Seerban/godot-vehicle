@@ -103,3 +103,6 @@ ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = ExtResource("1_yd3fu")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_k1aya")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_j4jqe")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/constants/outline_size = 8
+RichTextLabel/fonts/normal_font = ExtResource("1_yd3fu")

@@ -6,6 +6,9 @@ extends Node
 @export var grip_ui : Control
 @export var ui_manager : UIManager
 
+var player_is_racing := false
+var sprint_node: SprintRace
+
 # GLOBAL UTILITY CURVES
 var aero_curve := load("res://Curves/aero.tres")
 var spring_grip_curve := load("res://Curves/spring_grip.tres")

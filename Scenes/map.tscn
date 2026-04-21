@@ -804,15 +804,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 51, -498)
 [node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace" unique_id=1704710394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 846, 51.9, -772)
 
+[node name="SprintRace2" type="Node3D" parent="Objects/Races" unique_id=673055939]
+script = ExtResource("21_rg57b")
+metadata/_custom_type_script = "uid://cmbc6hdrh7tnw"
+
+[node name="Node3D" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1049821579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 51, -327)
+
+[node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1482712742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508, 51, -337)
+
+[node name="Node3D3" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1952317246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 51, -337)
+
+[node name="Node3D4" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1977378720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 445, 51, -360)
+
 [node name="Node3D" type="Node3D" parent="Objects" unique_id=517511953]
 
-[node name="Garages" type="Node3D" parent="." unique_id=1257429207 groups=["garages"]]
+[node name="Garages" type="Node3D" parent="Objects" unique_id=1257429207 groups=["garages"]]
 
-[node name="Garage" parent="Garages" unique_id=678169622 instance=ExtResource("21_macow")]
+[node name="Garage" parent="Objects/Garages" unique_id=678169622 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 526, 50, -320)
 
-[node name="Garage2" parent="Garages" unique_id=816891808 instance=ExtResource("21_macow")]
+[node name="Garage2" parent="Objects/Garages" unique_id=816891808 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345, 50, 284)
 
-[node name="Garage3" parent="Garages" unique_id=167635475 instance=ExtResource("21_macow")]
+[node name="Garage3" parent="Objects/Garages" unique_id=167635475 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 479, 204.01, 409)
