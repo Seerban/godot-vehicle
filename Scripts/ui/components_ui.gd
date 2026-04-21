@@ -17,7 +17,8 @@ func init() -> void:
 
 # updates simplified stats text
 func update() -> void:
-	if car_copy == null: return
+	if car_copy == null:
+		car_copy = global.player_car.duplicate(15)
 	
 	if global.player_car.get_power() != car_copy.get_power():
 		stats_panel.get_node("Power").text = "Power: \t" + str( car_copy.get_power() ) + "->" + str( global.player_car.get_power() )

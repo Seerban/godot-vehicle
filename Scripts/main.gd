@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var ui := $UIManager
+@onready var ui: UIManager = $UIManager
 
 func flip_car() -> void:
 	var car := get_tree().get_first_node_in_group("player")

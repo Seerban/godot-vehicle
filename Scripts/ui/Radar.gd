@@ -7,7 +7,6 @@ class_name Radar
 var garages : Node3D = null
 
 @onready var middle_offset = get_parent().size / 2
-@onready var car_texture = load("res://Textures/race-car.png")
 
 var car_radius := 4
 var node_radius := 3
