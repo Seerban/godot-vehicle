@@ -34,6 +34,8 @@ script/source = "extends Control
 @onready var boost_label = $BG2/BoostLabel
 
 func _process(delta: float) -> void:
+	if !is_instance_valid(global.player_car): return
+	
 	speedometer.value = global.player_car.get_forward_speed() * 10.0
 	speedometer.max_value = global.player_car.get_top_speed() * 10.0
 	speed_label.text = str(abs(int(global.player_car.get_forward_speed())))
@@ -1250,6 +1252,7 @@ shadow_size = 16
 script = ExtResource("1_k436y")
 
 [node name="LeftMenu" type="VBoxContainer" parent="." unique_id=2046324825]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1316,6 +1319,7 @@ script = ExtResource("2_khpyi")
 visible = false
 
 [node name="Meters" type="Control" parent="." unique_id=1885040780]
+visible = false
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 3
 anchors_preset = 3
@@ -1918,7 +1922,6 @@ fit_content = true
 horizontal_alignment = 1
 
 [node name="Menu" type="Control" parent="." unique_id=1881732354]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1994,7 +1997,17 @@ anchor_right = 0.18400002
 anchor_bottom = 1.0
 offset_right = -0.005004883
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Menu/VBox" unique_id=1033262925]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 24
+text = "Seerban"
+horizontal_alignment = 1
+text_overrun_behavior = 5
+uppercase = true
 
 [node name="Continue" type="Button" parent="Menu/VBox" unique_id=694205074]
 clip_children = 2
@@ -2100,8 +2113,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_font_sizes/font_size = 24
-text = "Achievements"
+theme_override_font_sizes/font_size = 32
+text = "Trophies"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2213,6 +2226,64 @@ theme_override_font_sizes/font_size = 32
 text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Vehicle" type="Label" parent="Menu" unique_id=848835625]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23984376
+anchor_top = 0.9361111
+anchor_right = 0.47421876
+anchor_bottom = 0.9763889
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "No Vehicle"
+metadata/_edit_use_anchors_ = true
+
+[node name="Tier" type="Label" parent="Menu" unique_id=1226318849]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2296875
+anchor_top = 0.88472223
+anchor_right = 0.4640625
+anchor_bottom = 0.925
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Tier 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Trophies" type="Label" parent="Menu" unique_id=1001254607]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23046875
+anchor_top = 0.08194444
+anchor_right = 0.46484375
+anchor_bottom = 0.12222222
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.5176471, 1)
+theme_override_font_sizes/font_size = 24
+text = "0/100 🏆"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cash" type="Label" parent="Menu" unique_id=1195656743]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23671874
+anchor_top = 0.023611112
+anchor_right = 0.47109374
+anchor_bottom = 0.06388889
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5411765, 1, 0.5921569, 1)
+theme_override_font_sizes/font_size = 24
+text = "$0"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Menu/VBox/Continue" to="Menu" method="_on_continue_pressed"]
 [connection signal="pressed" from="Menu/VBox/Exit" to="Menu" method="_on_exit_pressed"]

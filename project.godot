@@ -48,6 +48,7 @@ rand=""
 vehicles=""
 garages=""
 offroad=""
+camera=""
 
 [input]
 

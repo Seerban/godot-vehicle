@@ -4,10 +4,11 @@ extends Node
 const CAR_MODEL_PATH := "res://Models/Cars/"
 
 # REFERENCES
-@export var player_car : Vehicle
-@export var radar : Control
-@export var grip_ui : Control
-@export var ui_manager : UIManager
+var player_car: Vehicle
+var camera: CameraHandler
+var radar: Control
+var grip_ui: Control
+var ui_manager: UIManager
 
 var player_is_racing := false
 var sprint_node: SprintRace
@@ -36,8 +37,23 @@ func format_time(ms: float) -> String:
 	
 	return "%02d:%02d:%03d" % [minutes, seconds, milliseconds]
 
+func spawn_player() -> void:
+	if player_car:
+		print("error, player already spawned")
+		return
+	
+	var player: Vehicle = load("res://Scenes/vehicle/vehicle.tscn").instantiate()
+	player_car = player
+	player.controller = PlayerController.new()
+	get_tree().get_first_node_in_group("vehicles").add_child(player)
+	player.global_position = Vector3(583, 51, -392) # :v
+	player.rotation_degrees.y += -125
+	
+	camera.node_to_follow = player
+	camera.reset()
+
 func _ready() -> void:
-	player_car = get_tree().get_first_node_in_group("car")
+	camera = get_tree().get_first_node_in_group("camera")
 	ui_manager = get_tree().get_first_node_in_group("ui")
 	radar = ui_manager.get_node("LeftMenu/Minimap/Control")
 	grip_ui = ui_manager.get_node("Grip")

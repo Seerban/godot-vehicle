@@ -17,7 +17,7 @@ var wheels : Array[Wheel]
 @onready var lights : LightsManager # managed in PlayerController
 
 # ai or player controller
-@export var controller : VehicleController = PlayerController.new()
+@export var controller : VehicleController = VehicleController.new()
 
 # 1 = no grip penalty from accelerating/braking, gives arcade feel
 @export var grip_forgiveness : float = 0.0
@@ -216,6 +216,7 @@ func _ready() -> void:
 	mesh = $CarMesh
 	mass = get_weight()
 	center_of_mass.y = chassis.CoM_Y
+	if controller is PlayerController: global.player_car = self
 	controller.vehicle = self
 	update_wheels()
 	for i in get_children(): if i is LightsManager: lights = i

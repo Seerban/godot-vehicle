@@ -4,9 +4,6 @@ var trail_material = load("res://Material/Misc/trail.tres")
 var car : Vehicle
 var speed_threshold := 50
 
-func _ready() -> void:
-	car = get_tree().get_first_node_in_group("player")
-
 func update_vars() -> void:
 	if car.linear_velocity.dot(car.global_basis.x) < speed_threshold:
 		emitting = false

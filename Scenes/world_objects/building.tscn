@@ -16,7 +16,7 @@ clearcoat_roughness = 0.0
 size = Vector3(30, 60, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5361"]
-size = Vector3(30, 60, 30)
+size = Vector3(30, 60.3, 30)
 
 [node name="Building" type="StaticBody3D" unique_id=1246685143]
 
@@ -26,7 +26,7 @@ material_override = SubResource("StandardMaterial3D_64r2v")
 mesh = SubResource("BoxMesh_mo2lu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=140264547]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.15, 0)
 shape = SubResource("BoxShape3D_y5361")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=127282278]
