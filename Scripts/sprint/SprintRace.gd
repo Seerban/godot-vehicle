@@ -11,13 +11,13 @@ var cp_instance : Area3D # checkpoint beam reference
 var cp_idx : int # index of checkpoint
 var start_cp : Area3D
 
-var gold_time := 25.0
-var silver_time := 40.0
-var bronze_time := 60.0
+@export var gold_ghost: GhostPlayer = null
+@export var silver_ghost: GhostPlayer = null
+@export var bronze_ghost: GhostPlayer = null
 
 #### Data
 func get_pb() -> float:
-	if ghost == null: return 0
+	if best_ghost == null: return 0
 	return best_ghost.total_time
 
 func get_length() -> float:
@@ -31,6 +31,30 @@ func get_length() -> float:
 	return total
 
 #### Race management
+# Starts recording and replay if available
+func start_ghost() -> void:
+	ghost = GhostPlayer.new()
+	add_child(ghost)
+	ghost.start_recording()
+	
+	# if medal ghosts are available
+	if bronze_ghost != null:
+		if get_pb() > bronze_ghost.total_time or get_pb() == 0:
+			print("replaying bronze ghost")
+			bronze_ghost.start_replay(Color.SANDY_BROWN)
+		elif get_pb() > silver_ghost.total_time:
+			print("replaying silver ghost")
+			silver_ghost.start_replay(Color.SILVER)
+		elif get_pb() > gold_ghost.total_time:
+			print("replaying gold ghost")
+			gold_ghost.start_replay(Color.GOLDENROD)
+		else:
+			best_ghost.start_replay()
+	elif best_ghost != null:
+		best_ghost.start_replay()
+	else:
+		print("No ghost replays available")
+
 func start_race() -> void:
 	if race_started: return
 	global.player_is_racing = true
@@ -43,7 +67,7 @@ func start_race() -> void:
 	global.ui_manager.get_node("Sprint").visible = false
 	global.ui_manager.timer.start()
 	
-	global.player_car.global_position = start_cp.global_position
+	global.player_car.global_position = start_cp.global_position + Vector3(0, 0.25, 0)
 	global.player_car.linear_velocity = Vector3.ZERO
 	
 	next_checkpoint()
@@ -52,12 +76,7 @@ func start_race() -> void:
 	global.player_car.look_at(cp_instance.global_position)
 	global.player_car.rotation.y += PI/2
 	
-	# startup ghost recording, replay if exists
-	ghost = GhostPlayer.new()
-	add_child(ghost)
-	ghost.start_recording()
-	
-	if best_ghost != null: best_ghost.start_replay()
+	start_ghost()
 
 func next_checkpoint() -> void:
 	cp_idx += 1
@@ -95,16 +114,14 @@ func finish_race() -> void:
 	if best_ghost == null or ghost.total_time < best_ghost.total_time:
 		best_ghost = ghost
 
-#### Initializers
-func init_checkpoints() -> void:
-	for i in get_children():
-		checkpoints.append(i.global_position)
-
 func _ready() -> void:
-	init_checkpoints()
+	for i in get_children():
+		if i is not Node3D: continue
+		checkpoints.append(i.global_position)
 	
 	start_cp = load("res://Scenes/sprint/start_area.tscn").instantiate()
 	add_child(start_cp)
+	start_cp.get_node("Name").text = name
 	start_cp.global_position = checkpoints[0]
 	start_cp.body_entered.connect(_on_area_3d_body_entered)
 	start_cp.body_exited.connect(_on_area_3d_body_exited)

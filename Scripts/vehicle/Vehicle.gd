@@ -1,6 +1,10 @@
 extends RigidBody3D
 class_name Vehicle
 
+var car_model := "car"
+# References
+var mesh: MeshColorable
+
 # control vars used for speedometer display
 var current_accel := 0.0
 var current_brake := 0.0
@@ -122,15 +126,7 @@ func get_downforce_output() -> float:
 ################################
 # mesh manager
 # update mesh material and color
-func get_mesh() -> MeshColorable:
-	for i in get_children():
-		if i is MeshColorable:
-			return i
-	return null
-
 func update_color(c : Color, mat : String = "") -> void:
-	var mesh := get_mesh()
-	
 	if mesh == null: return
 	if mat:
 		mesh.update_material(mat)
@@ -217,6 +213,7 @@ func set_steering(x := 0.) -> void:
 
 
 func _ready() -> void:
+	mesh = $CarMesh
 	mass = get_weight()
 	center_of_mass.y = chassis.CoM_Y
 	controller.vehicle = self

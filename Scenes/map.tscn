@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bjts6tf71j1fu" path="res://Scenes/world_objects/bin.tscn" id="18_rg57b"]
 [ext_resource type="PackedScene" uid="uid://bdourhgiqb7l" path="res://Scenes/world_objects/garage.tscn" id="21_macow"]
 [ext_resource type="Script" uid="uid://cmbc6hdrh7tnw" path="res://Scripts/sprint/SprintRace.gd" id="21_rg57b"]
+[ext_resource type="PackedScene" path="res://GhostData/SprintRace2_PB.tscn" id="22_ltf6m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_np2xp"]
 size = Vector3(5000, 50, 5000)
@@ -804,21 +805,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 51, -498)
 [node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace" unique_id=1704710394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 846, 51.9, -772)
 
-[node name="SprintRace2" type="Node3D" parent="Objects/Races" unique_id=673055939]
+[node name="SprintRace2" type="Node3D" parent="Objects/Races" unique_id=673055939 node_paths=PackedStringArray("gold_ghost", "silver_ghost", "bronze_ghost")]
 script = ExtResource("21_rg57b")
+gold_ghost = NodePath("_Node_115")
+silver_ghost = NodePath("_Node_115")
+bronze_ghost = NodePath("_Node_115")
 metadata/_custom_type_script = "uid://cmbc6hdrh7tnw"
 
 [node name="Node3D" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1049821579]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 51, -327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 50.8, -327)
 
 [node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1482712742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 508, 51, -337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540, 50.8, -337)
 
-[node name="Node3D3" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1952317246]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470, 51, -337)
-
-[node name="Node3D4" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1977378720]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 445, 51, -360)
+[node name="_Node_115" parent="Objects/Races/SprintRace2" unique_id=1865375788 instance=ExtResource("22_ltf6m")]
 
 [node name="Node3D" type="Node3D" parent="Objects" unique_id=517511953]
 

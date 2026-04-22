@@ -15,9 +15,12 @@ func popup(sprint : SprintRace) -> void:
 	var left_panel = $HBox/Times
 	
 	var next_goal = 0
-	if sprint.get_pb() > sprint.gold_time: next_goal = sprint.gold_time
-	if sprint.get_pb() > sprint.silver_time: next_goal = sprint.silver_time
-	if sprint.get_pb() > sprint.bronze_time or sprint.get_pb() == 0: next_goal = sprint.bronze_time
+	if sprint.gold_ghost != null and sprint.gold_ghost.total_time != 0:
+		if sprint.get_pb() > sprint.gold_ghost.total_time: next_goal = sprint.gold_ghost.total_time
+		if sprint.get_pb() > sprint.silver_ghost.total_time: next_goal = sprint.silver_ghost.total_time
+		if sprint.get_pb() > sprint.bronze_ghost.total_time or sprint.get_pb() == 0: next_goal = sprint.bronze_ghost.total_time
+	else:
+		next_goal = 0
 	
 	right_panel.get_node("Name").text = sprint.name
 	var length = int(sprint.get_length())
@@ -39,3 +42,11 @@ func _physics_process(delta: float) -> void:
 		sprint_ref.start_race()
 		set_physics_process(false)
 		visible = false
+	
+	if Input.is_key_pressed(KEY_X):
+		if sprint_ref.best_ghost != null:
+			var pc = PackedScene.new()
+			pc.pack(sprint_ref.best_ghost)
+			ResourceSaver.save(pc, "res://GhostData/" + sprint_ref.name + "_PB.tscn")
+			
+			print("EXPORTED GHOST")

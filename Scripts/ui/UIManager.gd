@@ -13,7 +13,7 @@ func show_unique_children(child_name: Array[String]) -> void:
 		i.visible = i.name in child_name
 
 func show_usual() -> void:
-	show_unique_children(["Meters", "Instructions"])
+	show_unique_children(["Meters", "LeftMenu"])
 
 func update_sprint(sprint : Node3D = null) -> void:
 	chosen_sprint = sprint
