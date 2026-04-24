@@ -797,7 +797,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 329)
 
 [node name="SprintRace" type="Node3D" parent="Objects/Races" unique_id=1451318426]
 script = ExtResource("21_rg57b")
-checkpoints = Array[Vector3]([Vector3(580, 51, -498), Vector3(846, 51.9, -772)])
+checkpoints = Array[Vector3]([])
 metadata/_custom_type_script = "uid://cmbc6hdrh7tnw"
 
 [node name="Node3D" type="Node3D" parent="Objects/Races/SprintRace" unique_id=191344535]
@@ -808,7 +808,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 846, 51.9, -775)
 
 [node name="SprintRace2" type="Node3D" parent="Objects/Races" unique_id=673055939 node_paths=PackedStringArray("gold_ghost", "silver_ghost", "bronze_ghost")]
 script = ExtResource("21_rg57b")
-checkpoints = Array[Vector3]([Vector3(580, 50.8, -327), Vector3(540, 50.8, -337)])
+checkpoints = Array[Vector3]([])
 gold_ghost = NodePath("_Node_115")
 silver_ghost = NodePath("_Node_115")
 bronze_ghost = NodePath("_Node_115")

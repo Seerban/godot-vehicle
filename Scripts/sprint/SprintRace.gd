@@ -7,7 +7,7 @@ var best_ghost : GhostPlayer = null
 
 var ghost: GhostPlayer
 
-@export var checkpoints : Array[Vector3]
+var checkpoints : Array[Vector3]
 var cp_instance : Area3D # checkpoint beam reference
 var cp_idx : int # index of checkpoint
 var start_cp : Area3D
@@ -65,17 +65,19 @@ func start_race() -> void:
 	
 	start_cp.visible = false
 	start_cp.monitoring = false
-	global.ui_manager.get_node("Sprint").visible = false
-	global.ui_manager.timer.start()
+	global.ui_manager.show_usual() # show_usual displays additional UIs if global.player_is_racing
+	global.ui_manager.sprint_live_ui.start()
 	
 	global.player_car.global_position = start_cp.global_position + Vector3(0, 0.25, 0)
 	global.player_car.linear_velocity = Vector3.ZERO
 	
+	# initialize checkpoint
 	next_checkpoint()
 	
-	# Face toward first checkpoint
+	# Face toward first checkpoint and update camera
 	global.player_car.look_at(cp_instance.global_position)
 	global.player_car.rotation.y += PI/2
+	global.camera.reset()
 	
 	start_ghost()
 
@@ -88,26 +90,35 @@ func next_checkpoint() -> void:
 		finish_race()
 		return
 	
-	global.ui_manager.timer.update_checkpoint()
+	global.ui_manager.sprint_live_ui.update_checkpoint()
 	
 	if cp_idx > 1:
 		if best_ghost != null:
-			global.ui_manager.timer.signal_checkpoint(best_ghost.cp_times[cp_idx-2])
-		ghost.cp_times.append(global.ui_manager.timer.time_passed)
+			global.ui_manager.sprint_live_ui.signal_checkpoint(best_ghost.cp_times[cp_idx-2])
+		ghost.cp_times.append(global.ui_manager.sprint_live_ui.time_passed)
 	
 	cp_instance = load("res://Scenes/sprint/checkpoint.tscn").instantiate()
 	add_child(cp_instance)
 	cp_instance.global_position = checkpoints[cp_idx]
 
-func finish_race() -> void:
+func finish_race(forced := false) -> void:
 	race_started = false
 	global.player_is_racing = false
 	global.sprint_node = null
 	ghost.recording = false
-	global.ui_manager.timer.stop()
+	
+	global.ui_manager.sprint_live_ui.stop()
+	global.ui_manager.show_usual()
 	
 	start_cp.visible = true
 	start_cp.monitoring = true
+	
+	# Don't update PB if forced exit
+	if forced: 
+		cp_instance.queue_free()
+		return
+	
+	global.ui_manager.sprint_finish_ui.popup(self, ghost.total_time)
 	
 	# save ghost if best
 	print("sprint time: ", ghost.total_time)

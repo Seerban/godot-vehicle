@@ -2,7 +2,10 @@ extends Control
 
 var time_passed := 0.0
 var cp_idx := 0
-@onready var label = $Label
+@onready var timer = $Timer
+
+var exit_progress := 0.0
+@onready var exit_bar := $Exit/Bar
 
 func start():
 	visible = true
@@ -33,9 +36,18 @@ func signal_checkpoint(time_to_beat : float):
 	
 	$TimeDiff.visible = false
 
+func signal_end_race():
+	global.force_end_race()
+
 func _ready() -> void:
 	set_process(false)
 
 func _process(delta: float) -> void:
 	time_passed += delta
-	label.text = global.format_time(time_passed)
+	timer.text = global.format_time(time_passed)
+	
+	exit_progress = move_toward(exit_progress, int(Input.is_key_pressed(KEY_Q)), delta)
+	exit_bar.value = exit_progress
+	
+	if exit_bar.value == 1.0:
+		signal_end_race()

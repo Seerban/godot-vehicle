@@ -10,11 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://b1bsjphbnrqyc" path="res://Textures/ui/speedometer4.png" id="11_wflq5"]
 [ext_resource type="Texture2D" uid="uid://uokq0ockw34c" path="res://Textures/ui/speedometer3.png" id="12_irgxn"]
 [ext_resource type="Script" uid="uid://bdpqsfuo7mak" path="res://Scripts/ui/grip_ui.gd" id="12_wflq5"]
-[ext_resource type="Script" uid="uid://cjrra7f6xv1ob" path="res://Scripts/ui/timer.gd" id="13_02now"]
+[ext_resource type="Script" uid="uid://cjrra7f6xv1ob" path="res://Scripts/ui/sprint_live_ui.gd" id="13_02now"]
 [ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/sprint_ui.gd" id="13_4eo48"]
 [ext_resource type="Texture2D" uid="uid://cok2ccsm0wo6x" path="res://Textures/RoundedRect2.png" id="13_irgxn"]
 [ext_resource type="Script" uid="uid://cv57nf0genhhd" path="res://Scripts/ui/sprint_renderer.gd" id="14_4eo48"]
 [ext_resource type="FontFile" uid="uid://b6tmp21qg8doy" path="res://Font/RobotoMono-Bold.ttf" id="14_gvaor"]
+[ext_resource type="Script" uid="uid://bbffyc6i6kaax" path="res://Scripts/sprint/sprint_finish.gd" id="16_khpyi"]
 [ext_resource type="Script" uid="uid://b0qcopxyccu4n" path="res://Scripts/ui/menu.gd" id="17_mgq08"]
 [ext_resource type="Texture2D" uid="uid://fdsvj3hjcbl2" path="res://Textures/menu.png" id="18_xvsgm"]
 [ext_resource type="Texture2D" uid="uid://ck5k7bfctrg54" path="res://Textures/tile.png" id="19_khpyi"]
@@ -47,6 +48,11 @@ func _process(delta: float) -> void:
 	
 	boost_label.text = str(int(round(global.player_car.get_boost_output() * 100)) - 100)
 "
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvsgm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfdfk"]
+bg_color = Color(0.99999267, 0.42360702, 0.4489599, 1)
 
 [sub_resource type="Gradient" id="Gradient_xvsgm"]
 colors = PackedColorArray(0, 0, 0, 0.5019608, 0, 0, 0, 0)
@@ -1779,7 +1785,7 @@ text = "Speed: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Control" parent="." unique_id=1393103811]
+[node name="SprintLive" type="Control" parent="." unique_id=1393103811]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -1790,7 +1796,7 @@ grow_vertical = 2
 theme = ExtResource("6_0cbwa")
 script = ExtResource("13_02now")
 
-[node name="Label" type="Label" parent="Timer" unique_id=1633340112]
+[node name="Timer" type="Label" parent="SprintLive" unique_id=1633340112]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1810,7 +1816,7 @@ text = "Time Here"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimeDiff" type="VBoxContainer" parent="Timer" unique_id=77362504]
+[node name="TimeDiff" type="VBoxContainer" parent="SprintLive" unique_id=77362504]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -1822,15 +1828,15 @@ offset_right = 32.5
 offset_bottom = 87.33501
 grow_horizontal = 2
 
-[node name="Time" type="Label" parent="Timer/TimeDiff" unique_id=1865551670]
+[node name="Time" type="Label" parent="SprintLive/TimeDiff" unique_id=1865551670]
 layout_mode = 2
 text = "ABCDEF"
 
-[node name="Diff" type="Label" parent="Timer/TimeDiff" unique_id=448842340]
+[node name="Diff" type="Label" parent="SprintLive/TimeDiff" unique_id=448842340]
 layout_mode = 2
 text = "ABCDEF"
 
-[node name="CP" type="Label" parent="Timer" unique_id=129410672]
+[node name="CP" type="Label" parent="SprintLive" unique_id=129410672]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1844,6 +1850,25 @@ offset_bottom = -6.539978
 grow_horizontal = 2
 grow_vertical = 0
 text = "CP: 0/10"
+
+[node name="Exit" type="VBoxContainer" parent="SprintLive" unique_id=2065608404]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 170.0
+offset_bottom = 48.0
+
+[node name="Label" type="Label" parent="SprintLive/Exit" unique_id=1802779928]
+layout_mode = 2
+text = "Hold Q to exit race."
+
+[node name="Bar" type="ProgressBar" parent="SprintLive/Exit" unique_id=1245231381]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_xvsgm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tfdfk")
+max_value = 1.0
+show_percentage = false
 
 [node name="Sprint" type="Control" parent="." unique_id=1520827980]
 visible = false
@@ -1918,6 +1943,62 @@ script = ExtResource("14_4eo48")
 layout_mode = 2
 bbcode_enabled = true
 text = "Press [color=orange]'E'[/color] to begin."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="SprintFinish" type="Control" parent="." unique_id=222966449]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 200.0
+grow_horizontal = 0
+theme = ExtResource("6_0cbwa")
+script = ExtResource("16_khpyi")
+
+[node name="VBox" type="VBoxContainer" parent="SprintFinish" unique_id=1048543338]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Title" type="Label" parent="SprintFinish/VBox" unique_id=828364114]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "RACE RESULT"
+
+[node name="Name" type="Label" parent="SprintFinish/VBox" unique_id=420785294]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "Race Name"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="SprintFinish/VBox" unique_id=364906445]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "Time: "
+horizontal_alignment = 1
+
+[node name="Diff" type="RichTextLabel" parent="SprintFinish/VBox" unique_id=738227970]
+layout_mode = 2
+size_flags_vertical = 6
+bbcode_enabled = true
+text = "Diff: "
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Medal" type="RichTextLabel" parent="SprintFinish/VBox" unique_id=2099321750]
+layout_mode = 2
+size_flags_vertical = 6
+bbcode_enabled = true
+text = "Medal: "
 fit_content = true
 horizontal_alignment = 1
 

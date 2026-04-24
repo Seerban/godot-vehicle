@@ -52,6 +52,12 @@ func spawn_player() -> void:
 	camera.node_to_follow = player
 	camera.reset()
 
+func force_end_race():
+	if sprint_node == null:
+		print("ERROR: No race to force end.")
+	
+	sprint_node.finish_race(true)
+
 func _ready() -> void:
 	camera = get_tree().get_first_node_in_group("camera")
 	ui_manager = get_tree().get_first_node_in_group("ui")
