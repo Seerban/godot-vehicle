@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 const CAR_MODEL_PATH := "res://Models/Cars/"
@@ -6,9 +5,10 @@ const CAR_MODEL_PATH := "res://Models/Cars/"
 # REFERENCES
 var player_car: Vehicle
 var camera: CameraHandler
-var radar: Control
+var minimap: Control
 var grip_ui: Control
 var ui_manager: UIManager
+var map: Node3D
 
 var player_is_racing := false
 var sprint_node: SprintRace
@@ -20,6 +20,29 @@ var brake_curve := load("res://Curves/brake.tres")
 var steer_curve := load("res://Curves/steer.tres")
 
 # utility functions
+func get_height_at_coords(pos: Vector2, layers := [1]) -> float:
+	var space_state = map.get_world_3d().direct_space_state
+	
+	# cast ray downward from the sky to determine altitude
+	var from = Vector3(pos.x, 500.0, pos.y)
+	var to = Vector3(pos.x, 0.0, pos.y)
+	
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	
+	# update mask with parameter
+	var mask := 0
+	for layer in layers:
+		mask |= 1 << (layer - 1)
+	query.collision_mask = mask
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		return result.position.y
+	return -1
+
 func get_car_model_instance(s : String) -> MeshColorable:
 	var instance = load(CAR_MODEL_PATH + s + ".tscn").instantiate()
 	return instance
@@ -59,7 +82,8 @@ func force_end_race():
 	sprint_node.finish_race(true)
 
 func _ready() -> void:
+	map = get_tree().get_first_node_in_group("map")
 	camera = get_tree().get_first_node_in_group("camera")
 	ui_manager = get_tree().get_first_node_in_group("ui")
-	radar = ui_manager.get_node("LeftMenu/Minimap/Control")
+	minimap = get_tree().get_first_node_in_group("minimap")
 	grip_ui = ui_manager.get_node("Grip")

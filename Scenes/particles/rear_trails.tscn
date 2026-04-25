@@ -36,7 +36,6 @@ amount = 20
 lifetime = 0.5
 visibility_aabb = AABB(0, 0, 0, 8, 8, 8)
 local_coords = true
-trail_enabled = true
 trail_lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_6ro4g")
 draw_pass_1 = SubResource("BoxMesh_sayf1")

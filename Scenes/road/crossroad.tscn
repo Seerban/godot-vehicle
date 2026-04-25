@@ -25,6 +25,7 @@ _data = {
 point_count = 2
 
 [node name="Intersection" type="StaticBody3D" unique_id=201121798]
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=772238331]
 mesh = SubResource("BoxMesh_1albg")

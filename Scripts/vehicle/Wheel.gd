@@ -190,6 +190,7 @@ func fetch_vars() -> void: # get dynamic observation data
 func _ready() -> void:
 	tire_mark = load("res://Scenes/particles/tire_mark.tscn").instantiate()
 	get_tree().root.add_child.call_deferred(tire_mark)
+	set_collision_mask_value(2, true)
 
 func _physics_process(delta: float) -> void:
 	fetch_vars()

@@ -1,7 +1,10 @@
 [gd_scene format=4 uid="uid://d1iwxqcpwrsai"]
 
-[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/ui/UIManager.gd" id="1_k436y"]
-[ext_resource type="Script" uid="uid://cfbxbvc8th77u" path="res://Scripts/ui/Radar.gd" id="2_khpyi"]
+[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/UIManager.gd" id="1_k436y"]
+[ext_resource type="Script" uid="uid://djvyek5wii0q7" path="res://Scripts/minimap.gd" id="2_2o30e"]
+[ext_resource type="Script" uid="uid://1ar8up2a0bgu" path="res://Scripts/ui/map_static.gd" id="3_cl1wc"]
+[ext_resource type="Script" uid="uid://bdvj7b5usylxj" path="res://Scripts/ui/map_dynamic.gd" id="4_2o30e"]
+[ext_resource type="Texture2D" uid="uid://c8afv5e8og2hj" path="res://Textures/ui/icon.png" id="5_xmyfn"]
 [ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="6_0cbwa"]
 [ext_resource type="Texture2D" uid="uid://rsf13m7j0rcl" path="res://Textures/circle_transparent.png" id="6_pwm6i"]
 [ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://UI/garage_ui.tscn" id="6_y4mvd"]
@@ -1309,17 +1312,68 @@ bbcode_enabled = true
 text = "[img=32]res://Textures/ui/light.png[/img] H"
 fit_content = true
 
-[node name="Minimap" type="Panel" parent="LeftMenu" unique_id=1865769458]
-clip_children = 2
+[node name="Minimap" type="ColorRect" parent="LeftMenu" unique_id=1044302213]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xmyfn")
+color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 
-[node name="Control" type="Control" parent="LeftMenu/Minimap" unique_id=245907671 groups=["radar"]]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_khpyi")
+[node name="InnerMinimap" type="Panel" parent="LeftMenu/Minimap" unique_id=1865769458 groups=["minimap"]]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xmyfn")
+script = ExtResource("2_2o30e")
+
+[node name="StaticMap" type="Control" parent="LeftMenu/Minimap/InnerMinimap" unique_id=477427871]
+custom_minimum_size = Vector2(10000, 10000)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4872.0
+offset_top = -4872.0
+offset_right = 4872.0
+offset_bottom = 4872.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_cl1wc")
+
+[node name="DynamicMap" type="Control" parent="LeftMenu/Minimap/InnerMinimap" unique_id=299607439]
+custom_minimum_size = Vector2(10000, 10000)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4872.0
+offset_top = -4872.0
+offset_right = 4872.0
+offset_bottom = 4872.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_2o30e")
+
+[node name="Icon" type="TextureRect" parent="LeftMenu/Minimap/InnerMinimap" unique_id=474405221]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -7.5
+offset_right = 10.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(10, 7.5)
+texture = ExtResource("5_xmyfn")
+expand_mode = 1
 
 [node name="Garage" parent="." unique_id=681594695 instance=ExtResource("6_y4mvd")]
 visible = false
@@ -1947,6 +2001,7 @@ fit_content = true
 horizontal_alignment = 1
 
 [node name="SprintFinish" type="Control" parent="." unique_id=222966449]
+visible = false
 custom_minimum_size = Vector2(250, 200)
 layout_mode = 3
 anchors_preset = 1

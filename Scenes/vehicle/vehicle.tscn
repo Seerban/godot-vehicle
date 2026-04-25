@@ -100,6 +100,7 @@ size = Vector3(0.1, 0.1, 0.4)
 
 [node name="Vehicle" type="RigidBody3D" unique_id=973883457 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_r7o47")
 center_of_mass_mode = 1
 contact_monitor = true

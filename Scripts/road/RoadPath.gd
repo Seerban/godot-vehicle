@@ -10,6 +10,8 @@ func _ready() -> void:
 	if types[type] != "Invisible":
 		var road : CSGPolygon3D = load("res://Scenes/road/road_csg.tscn").instantiate()
 		add_child(road)
+		road.set_collision_layer_value(2, true)
+		road.set_collision_layer_value(1, false)
 		road.material = load(mat_path + types[type] + ".tres")
 		road.global_position = Vector3.ZERO
 		road.path_node = ^".."
@@ -19,4 +21,4 @@ func _ready() -> void:
 			road.polygon[2].x *= 2
 			road.polygon[3].x *= 2
 	
-	global.radar.paths.append(self)
+	global.minimap.paths.append(self)

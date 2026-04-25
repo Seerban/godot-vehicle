@@ -43,12 +43,13 @@ car=""
 grip_ui=""
 ui=""
 player=""
-radar=""
 rand=""
 vehicles=""
 garages=""
 offroad=""
 camera=""
+minimap=""
+map=""
 
 [input]
 
@@ -85,8 +86,8 @@ lights={
 [layer_names]
 
 3d_physics/layer_1="World"
-3d_physics/layer_2="Player"
-3d_physics/layer_3="AI"
+3d_physics/layer_2="Road"
+3d_physics/layer_3="Other"
 
 [rendering]
 

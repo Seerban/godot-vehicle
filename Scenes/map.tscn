@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://3754a4tci73o" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_Color.jpg" id="9_dlo4w"]
 [ext_resource type="Texture2D" uid="uid://b2pyay57gx01f" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_NormalDX.jpg" id="10_q6lx1"]
 [ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="12_q6lx1"]
-[ext_resource type="Script" uid="uid://c6n401r8aj2xn" path="res://Scripts/ui/RadarWaterBody.gd" id="13_5qtum"]
+[ext_resource type="Script" uid="uid://c6n401r8aj2xn" path="res://Scripts/ui/map_polygon.gd" id="13_5qtum"]
 [ext_resource type="Material" uid="uid://btpe15dydy4a8" path="res://Material/Misc/test_material.tres" id="14_ie368"]
 [ext_resource type="PackedScene" uid="uid://cpffb2yrm5d8o" path="res://Scenes/world_objects/house.tscn" id="15_j4oe2"]
 [ext_resource type="PackedScene" uid="uid://6rfro48aykxg" path="res://Scenes/road/crossroad.tscn" id="15_vtkp8"]
@@ -305,7 +305,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Map" type="Node3D" unique_id=213433501]
+[node name="Map" type="Node3D" unique_id=213433501 groups=["map"]]
 
 [node name="WaterMesh" type="MeshInstance3D" parent="." unique_id=2065732947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -317,6 +317,7 @@ data_directory = "res://addons/terrain_data/"
 material = SubResource("Terrain3DMaterial_q6lx1")
 assets = SubResource("Terrain3DAssets_k63oc")
 save_16_bit = true
+collision_mode = 3
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -382,6 +383,7 @@ metadata/_custom_type_script = "uid://c6n401r8aj2xn"
 [node name="Tests" type="Node3D" parent="Objects" unique_id=524687718]
 
 [node name="SuspensionTest1" type="StaticBody3D" parent="Objects/Tests" unique_id=769075256]
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Tests/SuspensionTest1" unique_id=1130815457]
 transform = Transform3D(2, 0, 0, 0, -1.7484555e-07, -1, 0, 4, -4.371139e-08, 470, 50, -322)
@@ -493,6 +495,7 @@ shape = SubResource("CylinderShape3D_tuwt4")
 
 [node name="SuspensionTest5" type="StaticBody3D" parent="Objects/Tests" unique_id=2031779413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Tests/SuspensionTest5" unique_id=728994239]
 transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, -1, 0, 4, -4.371139e-08, 477, 50, -322)
@@ -550,6 +553,7 @@ shape = SubResource("ConcavePolygonShape3D_a0h6a")
 
 [node name="SuspensionTest6" type="StaticBody3D" parent="Objects/Tests" unique_id=290401540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Tests/SuspensionTest6" unique_id=1307898756]
 transform = Transform3D(4, 0, 0, 0, -1.7484555e-07, -2, 0, 4, -8.742278e-08, 477, 50, -322)
@@ -607,6 +611,7 @@ shape = SubResource("ConcavePolygonShape3D_y410r")
 
 [node name="SuspensionTest3" type="StaticBody3D" parent="Objects/Tests" unique_id=700062234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34)
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Tests/SuspensionTest3" unique_id=867816598]
 transform = Transform3D(25, 0, 0, 0, 5, 0, 0, 0, 25, 470, 50, -420)
@@ -619,6 +624,7 @@ shape = SubResource("ConcavePolygonShape3D_1ye5v")
 
 [node name="SuspensionTest4" type="StaticBody3D" parent="Objects/Tests" unique_id=1434248319]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 773.30835, 0, 89.61206)
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Tests/SuspensionTest4" unique_id=808835811]
 transform = Transform3D(24.148146, 1.2940953, 0, -6.470475, 4.829629, 0, 0, 0, 25, 470, 50, -420)
@@ -649,6 +655,7 @@ shape = SubResource("ConcavePolygonShape3D_078fj")
 
 [node name="SuspensionTest7" type="StaticBody3D" parent="Objects/Tests" unique_id=1288743782]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -345.69165, 54, -388.38794)
+collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Tests/SuspensionTest7" unique_id=1627499651]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 32, 0)
@@ -659,6 +666,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 32, 0)
 shape = SubResource("ConcavePolygonShape3D_x5dfk")
 
 [node name="SuspensionTest8" type="StaticBody3D" parent="Objects/Tests" unique_id=537256215]
+collision_layer = 2
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Objects/Tests/SuspensionTest8" unique_id=886752550]
 use_collision = true
@@ -681,6 +689,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 curve = SubResource("Curve3D_rg57b")
 
 [node name="SuspensionTest9" type="StaticBody3D" parent="Objects/Tests" unique_id=1983077074]
+collision_layer = 2
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Objects/Tests/SuspensionTest9" unique_id=1895395718]
 transform = Transform3D(0.8057215, 0, 0.59229445, 0, 1, 0, -0.59229445, 0, 0.8057215, 124, -0.8731499, 45)
@@ -704,6 +713,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 curve = SubResource("Curve3D_macow")
 
 [node name="Jump" type="StaticBody3D" parent="Objects/Tests" unique_id=1712020238]
+collision_layer = 2
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Objects/Tests/Jump" unique_id=120966562]
 use_collision = true
@@ -726,6 +736,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 curve = SubResource("Curve3D_riaky")
 
 [node name="Jump2" type="StaticBody3D" parent="Objects/Tests" unique_id=1816722849]
+collision_layer = 2
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Objects/Tests/Jump2" unique_id=1088360210]
 use_collision = true
@@ -768,36 +779,51 @@ metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="House2" parent="Objects/Objects" unique_id=1246685143 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -348, 50.3, 489)
+collision_layer = 4
+collision_mask = 3
 
 [node name="House3" parent="Objects/Objects" unique_id=421010853 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -366, 50.3, 489)
+collision_layer = 4
+collision_mask = 3
 
 [node name="House4" parent="Objects/Objects" unique_id=454882000 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -384, 50.3, 489)
+collision_layer = 4
+collision_mask = 3
 
 [node name="House5" parent="Objects/Objects" unique_id=1438608296 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -402, 50.3, 489)
+collision_layer = 4
+collision_mask = 3
 
 [node name="House6" parent="Objects/Objects" unique_id=1389930081 instance=ExtResource("15_j4oe2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -330, 50.3, 489)
+collision_layer = 4
+collision_mask = 3
 
 [node name="Building" parent="Objects/Objects" unique_id=554493730 instance=ExtResource("16_riaky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 482)
+collision_layer = 4
+collision_mask = 3
 
 [node name="Building2" parent="Objects/Objects" unique_id=148591006 instance=ExtResource("16_riaky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 281)
+collision_layer = 4
+collision_mask = 3
 
 [node name="Pole" parent="Objects/Objects" unique_id=301916848 instance=ExtResource("17_vtkp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 345)
+collision_mask = 3
 
 [node name="Bin" parent="Objects/Objects" unique_id=1688324648 instance=ExtResource("18_rg57b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 329)
+collision_mask = 3
 
 [node name="Races" type="Node3D" parent="Objects" unique_id=1818958179]
 
 [node name="SprintRace" type="Node3D" parent="Objects/Races" unique_id=1451318426]
 script = ExtResource("21_rg57b")
-checkpoints = Array[Vector3]([])
 metadata/_custom_type_script = "uid://cmbc6hdrh7tnw"
 
 [node name="Node3D" type="Node3D" parent="Objects/Races/SprintRace" unique_id=191344535]
@@ -808,7 +834,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 846, 51.9, -775)
 
 [node name="SprintRace2" type="Node3D" parent="Objects/Races" unique_id=673055939 node_paths=PackedStringArray("gold_ghost", "silver_ghost", "bronze_ghost")]
 script = ExtResource("21_rg57b")
-checkpoints = Array[Vector3]([])
 gold_ghost = NodePath("_Node_115")
 silver_ghost = NodePath("_Node_115")
 bronze_ghost = NodePath("_Node_115")
@@ -822,9 +847,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540, 50.8, -337)
 
 [node name="_Node_115" parent="Objects/Races/SprintRace2" unique_id=1865375788 instance=ExtResource("22_ltf6m")]
 
-[node name="Node3D" type="Node3D" parent="Objects" unique_id=517511953]
-
-[node name="Garages" type="Node3D" parent="Objects" unique_id=1257429207 groups=["garages"]]
+[node name="Garages" type="Node3D" parent="Objects" unique_id=1257429207]
 
 [node name="Garage" parent="Objects/Garages" unique_id=678169622 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 526, 50, -320)
