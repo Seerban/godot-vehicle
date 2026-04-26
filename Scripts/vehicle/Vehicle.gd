@@ -9,6 +9,10 @@ var mesh: MeshColorable
 var current_accel := 0.0
 var current_brake := 0.0
 
+var is_grounded := false
+var is_drifting := false
+var is_speeding := false
+
 # wheel setup
 var axles : Array[VehicleAxle]
 var wheels : Array[Wheel]
@@ -123,6 +127,23 @@ func get_boost_output() -> float:
 func get_downforce_output() -> float:
 	return global.aero_curve.sample(get_forward_speed()) * get_downforce()
 
+func get_grounded() -> bool:
+	if !get_colliding_bodies().is_empty(): return true
+	
+	for w in wheels:
+		if w.is_colliding(): return true
+	
+	return false
+
+func get_drift_factor() -> float:
+	var vel = linear_velocity
+	if vel.length() < 1.0: return 0.0
+	
+	var forward_speed = linear_velocity.dot(global_basis.x)
+	#var side_speed = linear_velocity.dot(global_basis.z)
+	
+	return (vel.length() - abs(forward_speed)) / vel.length()
+
 ################################
 # mesh manager
 # update mesh material and color
@@ -224,6 +245,10 @@ func _ready() -> void:
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
+	is_grounded = get_grounded()
+	is_drifting = get_drift_factor() > 0.03 and get_forward_speed() > 5.0
+	is_speeding = get_forward_speed() > 50.0
+	
 	controller.custom_process(delta)
 	lights.update_trails()
 	set_acceleration( controller.accel_handler(delta) )

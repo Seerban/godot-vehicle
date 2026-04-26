@@ -10,12 +10,12 @@ func popup(sprint : SprintRace, time : float):
 	position.y = -get_rect().size.y
 	
 	$VBox/Name.text = sprint.name
-	$VBox/Time.text = "Time: " + global.format_time(time)
+	$VBox/Time.text = "Time: %s" % global.format_time(time)
 	var diff := 0.0
 	if sprint.get_pb() != 0.0:
 		diff = time - sprint.get_pb()
-	if diff < 0: 	$VBox/Diff.text = "Diff: [color=blue]" + global.format_time(abs(diff)) + "[/color]"
-	else: 			$VBox/Diff.text = "Diff: [color=red]"+ global.format_time(diff) + "[/color]"
+	if diff < 0: 	$VBox/Diff.text = "Diff: [color=blue] %s [/color]" % global.format_time(abs(diff))
+	else: 			$VBox/Diff.text = "Diff: [color=red] %s [/color]" % global.format_time(diff)
 	
 	if time < sprint.gold_ghost.total_time: $VBox/Medal.text = "Medal: [color=gold]Gold[/color]"
 	elif time < sprint.silver_ghost.total_time: $VBox/Medal.text = "Medal: [color=silver]Silver[/color]"

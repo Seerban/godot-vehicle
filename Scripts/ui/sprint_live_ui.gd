@@ -22,7 +22,7 @@ func update_checkpoint() -> void:
 	if global.sprint_node == null:
 		$CP.text = ""
 		return
-	$CP.text = "CP: " + str(cp_idx) + '/' + str(len(global.sprint_node.checkpoints))
+	$CP.text = "CP: %s/%s" % [str(cp_idx), str(len(global.sprint_node.checkpoints))]
  
 func signal_checkpoint(time_to_beat : float):
 	$TimeDiff.visible = true

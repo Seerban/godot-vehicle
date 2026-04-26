@@ -1312,12 +1312,15 @@ bbcode_enabled = true
 text = "[img=32]res://Textures/ui/light.png[/img] H"
 fit_content = true
 
-[node name="Minimap" type="ColorRect" parent="LeftMenu" unique_id=1044302213]
+[node name="HBox" type="HBoxContainer" parent="LeftMenu" unique_id=766756125]
+layout_mode = 2
+
+[node name="Minimap" type="ColorRect" parent="LeftMenu/HBox" unique_id=1044302213]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 color = Color(0.11858138, 0.11858138, 0.11858138, 1)
 
-[node name="InnerMinimap" type="Panel" parent="LeftMenu/Minimap" unique_id=1865769458 groups=["minimap"]]
+[node name="InnerMinimap" type="Panel" parent="LeftMenu/HBox/Minimap" unique_id=1865769458 groups=["minimap"]]
 clip_contents = true
 layout_mode = 1
 anchors_preset = -1
@@ -1330,7 +1333,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xmyfn")
 script = ExtResource("2_2o30e")
 
-[node name="StaticMap" type="Control" parent="LeftMenu/Minimap/InnerMinimap" unique_id=477427871]
+[node name="StaticMap" type="Control" parent="LeftMenu/HBox/Minimap/InnerMinimap" unique_id=477427871]
 custom_minimum_size = Vector2(10000, 10000)
 layout_mode = 1
 anchors_preset = 15
@@ -1344,7 +1347,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_cl1wc")
 
-[node name="DynamicMap" type="Control" parent="LeftMenu/Minimap/InnerMinimap" unique_id=299607439]
+[node name="DynamicMap" type="Control" parent="LeftMenu/HBox/Minimap/InnerMinimap" unique_id=299607439]
 custom_minimum_size = Vector2(10000, 10000)
 layout_mode = 1
 anchors_preset = 15
@@ -1358,7 +1361,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_2o30e")
 
-[node name="Icon" type="TextureRect" parent="LeftMenu/Minimap/InnerMinimap" unique_id=474405221]
+[node name="Icon" type="TextureRect" parent="LeftMenu/HBox/Minimap/InnerMinimap" unique_id=474405221]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1374,6 +1377,22 @@ grow_vertical = 2
 pivot_offset = Vector2(10, 7.5)
 texture = ExtResource("5_xmyfn")
 expand_mode = 1
+
+[node name="ScorePopup" type="VBoxContainer" parent="LeftMenu/HBox" unique_id=1062813195]
+layout_mode = 2
+alignment = 2
+
+[node name="Airtime" type="Label" parent="LeftMenu/HBox/ScorePopup" unique_id=1833090766]
+layout_mode = 2
+text = "AIRTIME POPUP"
+
+[node name="Drift" type="Label" parent="LeftMenu/HBox/ScorePopup" unique_id=1552227135]
+layout_mode = 2
+text = "AIRTIME POPUP"
+
+[node name="Speed" type="Label" parent="LeftMenu/HBox/ScorePopup" unique_id=130742254]
+layout_mode = 2
+text = "AIRTIME POPUP"
 
 [node name="Garage" parent="." unique_id=681594695 instance=ExtResource("6_y4mvd")]
 visible = false
