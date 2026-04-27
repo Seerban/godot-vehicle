@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6rfro48aykxg"]
 
 [ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_ykaeh"]
-[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="3_de4x6"]
+[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/world_objects/RoadPath.gd" id="3_de4x6"]
 [ext_resource type="Texture2D" uid="uid://vq5xf6y8xiqc" path="res://Textures/square.png" id="3_r8rg5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1albg"]

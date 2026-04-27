@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbubjqnrsxaur"]
 
 [ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_grlyq"]
-[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="2_grlyq"]
+[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/world_objects/RoadPath.gd" id="2_grlyq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1albg"]
 size = Vector3(10, 1, 10)

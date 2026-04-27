@@ -1,6 +1,9 @@
 extends Node
 
 const CAR_MODEL_PATH := "res://Models/Cars/"
+const SAVE_PATH := "res://SAVEDATA.tres"
+
+var player_data: PlayerData
 
 # REFERENCES
 var player_car: Vehicle
@@ -18,6 +21,41 @@ var aero_curve := load("res://Curves/aero.tres")
 var spring_grip_curve := load("res://Curves/spring_grip.tres")
 var brake_curve := load("res://Curves/brake.tres")
 var steer_curve := load("res://Curves/steer.tres")
+
+# player management
+func spawn_player() -> void:
+	if player_car:
+		print("error, player already spawned")
+		return
+	
+	var player = player_data.vehicle
+	player_car = player.add_as_vehicle( get_tree().get_first_node_in_group("vehicles") )
+	player_car.controller = PlayerController.new()
+	player_car.global_position = Vector3(583, 51, -392) # :v
+	player_car.rotation_degrees.y += -125
+	
+	camera.node_to_follow = player_car
+	camera.reset()
+
+func load_player_data() -> void:
+	if ResourceLoader.exists(SAVE_PATH):
+		print("loading player data")
+		player_data = load(SAVE_PATH)
+	else:
+		print("creating new user data")
+		player_data = PlayerData.new()
+		save_player_data()
+
+func save_player_data() -> void:
+	if player_car == null:
+		print("NOT LOADED YET. CANT SAVE!")
+		return
+	
+	player_data.vehicle = player_car.save_as_vehicle_data()
+	var err = ResourceSaver.save(player_data, SAVE_PATH)
+	
+	if err == OK: print("saved user data for %s" % player_data.user)
+	else: print("failed to save user data, Error: %d" % err)
 
 # utility functions
 func get_height_at_coords(pos: Vector2, layers := [1]) -> float:
@@ -44,8 +82,9 @@ func get_height_at_coords(pos: Vector2, layers := [1]) -> float:
 	return -1
 
 func get_car_model_instance(s : String) -> MeshColorable:
+	print("loading car model " + s)
 	var instance = load(CAR_MODEL_PATH + s + ".tscn").instantiate()
-	return instance
+	return instance.get_node("CarMesh").duplicate()
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
@@ -60,21 +99,6 @@ func format_time(ms: float) -> String:
 	
 	return "%02d:%02d:%03d" % [minutes, seconds, milliseconds]
 
-func spawn_player() -> void:
-	if player_car:
-		print("error, player already spawned")
-		return
-	
-	var player: Vehicle = load("res://Scenes/vehicle/vehicle.tscn").instantiate()
-	player_car = player
-	player.controller = PlayerController.new()
-	get_tree().get_first_node_in_group("vehicles").add_child(player)
-	player.global_position = Vector3(583, 51, -392) # :v
-	player.rotation_degrees.y += -125
-	
-	camera.node_to_follow = player
-	camera.reset()
-
 func force_end_race():
 	if sprint_node == null:
 		print("ERROR: No race to force end.")
@@ -82,6 +106,8 @@ func force_end_race():
 	sprint_node.finish_race(true)
 
 func _ready() -> void:
+	load_player_data()
+	
 	map = get_tree().get_first_node_in_group("map")
 	camera = get_tree().get_first_node_in_group("camera")
 	ui_manager = get_tree().get_first_node_in_group("ui")

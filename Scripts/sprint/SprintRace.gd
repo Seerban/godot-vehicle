@@ -2,24 +2,26 @@
 extends Node3D
 class_name SprintRace
 
-var race_started := false
-var best_ghost : GhostPlayer = null
+@export var base_reward := 100.0 # multiplied by medal
 
-var ghost: GhostPlayer
+var race_started := false
+var ghost: GhostPlayer # current tracking gohst
+var best_ghost := GhostPlayer.new() # for replays
 
 var checkpoints : Array[Vector3]
 var cp_instance : Area3D # checkpoint beam reference
 var cp_idx : int # index of checkpoint
 var start_cp : Area3D
 
-@export var gold_ghost: GhostPlayer = null
-@export var silver_ghost: GhostPlayer = null
-@export var bronze_ghost: GhostPlayer = null
+@export var gold_data: GhostData = null
+@export var silver_data: GhostData = null
+@export var bronze_data: GhostData = null
 
 #### Data
 func get_pb() -> float:
-	if best_ghost == null: return 0
-	return best_ghost.total_time
+	if !global.player_data.times.get(name):
+		return 0.0
+	return global.player_data.times.get(name).total_time
 
 func get_length() -> float:
 	var total := 0.0
@@ -38,21 +40,22 @@ func start_ghost() -> void:
 	add_child(ghost)
 	ghost.start_recording()
 	
-	# if medal ghosts are available
-	if bronze_ghost != null:
-		if get_pb() > bronze_ghost.total_time or get_pb() == 0:
-			print("replaying bronze ghost")
-			bronze_ghost.start_replay(Color.SANDY_BROWN)
-		elif get_pb() > silver_ghost.total_time:
-			print("replaying silver ghost")
-			silver_ghost.start_replay(Color.SILVER)
-		elif get_pb() > gold_ghost.total_time:
-			print("replaying gold ghost")
-			gold_ghost.start_replay(Color.GOLDENROD)
+	# if medal ghosts are available, start replay
+	add_child(best_ghost)
+	if gold_data != null or (get_pb() != 0 and get_pb() > gold_data.total_time):
+		if get_pb() > bronze_data.total_time or get_pb() == 0:
+			best_ghost.data = bronze_data
+			best_ghost.start_replay(Color.SANDY_BROWN)
+		elif get_pb() > silver_data.total_time:
+			best_ghost.data = silver_data
+			best_ghost.start_replay(Color.SILVER)
+		elif get_pb() > gold_data.total_time:
+			best_ghost.data = gold_data
+			best_ghost.start_replay(Color.GOLDENROD)
 		else:
-			best_ghost.start_replay()
-	elif best_ghost != null:
-		best_ghost.start_replay()
+			if get_pb() != 0:
+				best_ghost.data = global.player_data.times[name]
+			best_ghost.start_replay(Color.WHITE)
 	else:
 		print("No ghost replays available")
 
@@ -118,13 +121,22 @@ func finish_race(forced := false) -> void:
 		cp_instance.queue_free()
 		return
 	
-	global.ui_manager.sprint_finish_ui.popup(self, ghost.total_time)
+	
+	var cash_reward = 0
+	if bronze_data != null:
+		var cash_multiplier := 0.33
+		if ghost.data.total_time < bronze_data.total_time: cash_multiplier = 1.0
+		if ghost.data.total_time < silver_data.total_time: cash_multiplier = 2.0
+		if ghost.data.total_time < silver_data.total_time: cash_multiplier = 3.0
+		cash_reward = base_reward * cash_multiplier
+	
+	global.ui_manager.sprint_finish_ui.popup(self, ghost.data.total_time, cash_reward)
+	global.player_data.cash += cash_reward
 	
 	# save ghost if best
-	print("sprint time: ", ghost.total_time)
-	if best_ghost != null: print("best ghost time: ", best_ghost.total_time)
-	if best_ghost == null or ghost.total_time < best_ghost.total_time:
-		best_ghost = ghost
+	print("sprint time: ", ghost.data.total_time)
+	if get_pb() == 0 or global.player_data.times[name].total_time > ghost.data.total_time:
+		global.player_data.times[name] = ghost.data
 
 func _ready() -> void:
 	for i in get_children():
@@ -137,6 +149,9 @@ func _ready() -> void:
 	start_cp.global_position = checkpoints[0]
 	start_cp.body_entered.connect(_on_area_3d_body_entered)
 	start_cp.body_exited.connect(_on_area_3d_body_exited)
+	
+	if global.player_data.times.get(name):
+		best_ghost.data = global.player_data.times[name]
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != global.player_car: return

@@ -10,7 +10,7 @@ const main_path := "res://Resources/"
 @onready var stats_panel = $Stats
 @onready var buttons = [$HBox/Back, $HBox/Engine, $HBox/Transmission, $HBox/Aspiration, $HBox/Suspension, $HBox/Tires, $HBox/Aero, $HBox/WeightKit, $HBox/Brakes, $HBox/Drivetrain]
 
-@onready var button_example = preload("res://UI/button_component.tscn")
+@onready var button_example = preload("res://Scenes/ui/button_component.tscn")
 
 func init() -> void:
 	car_copy = global.player_car.duplicate(15)

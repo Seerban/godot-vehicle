@@ -4,22 +4,24 @@ const time_limit := 6.0
 var time_left := 0.0
 
 # This function is called before updating PB in SprintRace for accurate diff
-func popup(sprint : SprintRace, time : float):
+func popup(sprint : SprintRace, time : float, cash : int):
 	visible = true
 	time_left = time_limit
 	position.y = -get_rect().size.y
 	
 	$VBox/Name.text = sprint.name
 	$VBox/Time.text = "Time: %s" % global.format_time(time)
+	$VBox/Cash.text = "+$%d" % cash
 	var diff := 0.0
 	if sprint.get_pb() != 0.0:
 		diff = time - sprint.get_pb()
 	if diff < 0: 	$VBox/Diff.text = "Diff: [color=blue] %s [/color]" % global.format_time(abs(diff))
 	else: 			$VBox/Diff.text = "Diff: [color=red] %s [/color]" % global.format_time(diff)
 	
-	if time < sprint.gold_ghost.total_time: $VBox/Medal.text = "Medal: [color=gold]Gold[/color]"
-	elif time < sprint.silver_ghost.total_time: $VBox/Medal.text = "Medal: [color=silver]Silver[/color]"
-	elif time < sprint.bronze_ghost.total_time: $VBox/Medal.text = "Medal: [color=sandybrown]Bronze[/color]"
+	if sprint.bronze_data != null:
+		if time < sprint.gold_data.total_time: $VBox/Medal.text = "Medal: [color=gold]Gold[/color]"
+		elif time < sprint.silver_data.total_time: $VBox/Medal.text = "Medal: [color=silver]Silver[/color]"
+		elif time < sprint.bronze_data.total_time: $VBox/Medal.text = "Medal: [color=sandybrown]Bronze[/color]"
 	else: $VBox/Medal.text = "Medal: None"
 	
 	set_physics_process(true)

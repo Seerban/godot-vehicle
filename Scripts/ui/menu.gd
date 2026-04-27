@@ -1,5 +1,11 @@
 extends Control
 
+func update_player_data() -> void:
+	$Cash.text = "$%d" % global.player_data.cash
+	$Vehicle.text = "Car: " + global.player_data.vehicle.model
+	$Tier.text = "Tier 1"
+	$VBox/User.text = global.player_data.user
+
 func _physics_process(delta: float) -> void:
 	if visible: position.x = lerp(position.x, 0.0, 0.03)
 	else: position.x = -size.x
@@ -20,3 +26,6 @@ func _on_continue_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func _on_save_pressed() -> void:
+	global.save_player_data()

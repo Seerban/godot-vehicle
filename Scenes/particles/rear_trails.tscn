@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://de72ta0orvxyk"]
 
 [ext_resource type="Material" uid="uid://l3nxg5f73vr2" path="res://Material/Misc/trail.tres" id="1_2t8eu"]
-[ext_resource type="Script" uid="uid://1gu6apkuhgxw" path="res://Scripts/particles/rear_trails.gd" id="1_7ii5v"]
+[ext_resource type="Script" uid="uid://1gu6apkuhgxw" path="res://Scripts/vehicle/rear_trails.gd" id="1_7ii5v"]
 
 [sub_resource type="Curve" id="Curve_4kwsu"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

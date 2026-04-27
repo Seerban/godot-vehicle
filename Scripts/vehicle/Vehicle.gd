@@ -21,64 +21,85 @@ var wheels : Array[Wheel]
 @onready var lights : LightsManager # managed in PlayerController
 
 # ai or player controller
-@export var controller : VehicleController = VehicleController.new()
+var controller : VehicleController = VehicleController.new()
 
 # 1 = no grip penalty from accelerating/braking, gives arcade feel
 @export var grip_forgiveness : float = 0.0
 
-# less acceleration nearer top speed, updated by aspiration type
-@export var accel_curve : Curve = load("res://Curves/acceleration.tres")
+var accel_curve : Curve = load("res://Curves/acceleration.tres")
 
 ################################
 # Components
-@export var engine := preload("res://Resources/Engines/1_engine_stock.tres") :
+var engine := preload("res://Resources/Engines/1_engine_stock.tres") :
 	set(x):
 		engine = x
 		update_weight()
-@export var transmission := preload("res://Resources/Transmissions/0_stock_transmission.tres") :
+var transmission := preload("res://Resources/Transmissions/0_stock_transmission.tres") :
 	set(x):
 		transmission = x
 		update_weight()
-@export var aspiration := preload("res://Resources/Aspirations/NA.tres") :
+var aspiration := preload("res://Resources/Aspirations/NA.tres") :
 	set(x):
 		aspiration = x
 		update_weight()
-@export var chassis := preload("res://Resources/Chassis/default_chassis.tres") :
+var chassis := preload("res://Resources/Chassis/default_chassis.tres") :
 	set(x):
 		chassis = x
 		update_weight()
-@export var weight_kit := preload("res://Resources/WeightKits/0_no_weight_kit.tres") : 
+var weight_kit := preload("res://Resources/WeightKits/0_no_weight_kit.tres") : 
 	set(x):
 		weight_kit = x
 		update_weight()
-@export var aero_kit := preload("res://Resources/AeroKits/0_no_aero.tres") :
+var aero_kit := preload("res://Resources/AeroKits/0_no_aero.tres") :
 	set(x):
 		aero_kit = x
 		update_weight()
-@export var suspension := preload("res://Resources/Suspensions/0_default_suspension.tres") :
+var suspension := preload("res://Resources/Suspensions/0_default_suspension.tres") :
 	set(x):
 		suspension = x
 		update_wheels()
 		update_weight()
-@export var tires := preload("res://Resources/Tires/0_default_tires.tres") :
+var tires := preload("res://Resources/Tires/0_default_tires.tres") :
 	set(x):
 		tires = x
 		update_wheels()
 		update_weight()
-@export var brakes := preload("res://Resources/Brakes/0_stock_brakes.tres") :
+var brakes := preload("res://Resources/Brakes/0_stock_brakes.tres") :
 	set(x):
 		brakes = x
 		update_weight()
-@export var drivetrain := preload("res://Resources/Drivetrains/1_RWD.tres") :
+var drivetrain := preload("res://Resources/Drivetrains/1_RWD.tres") :
 	set(x):
 		drivetrain = x
 		update_weight()
 
 ################################
 # tuning variables
-@export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
-@export var aero_bias := 0.0
-@export var turning_deg := 20.0
+var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
+var aero_bias := 0.0
+var turning_deg := 20.0
+
+func save_as_vehicle_data() -> VehicleData:
+	var data = VehicleData.new()
+	data.model = car_model
+	data.color = mesh.get_color()
+	data.material = mesh.get_material()
+	
+	data.engine = engine
+	data.transmission = transmission
+	data.aspiration = aspiration
+	data.chassis = chassis
+	data.weight_kit = weight_kit
+	data.aero_kit = aero_kit
+	data.suspension = suspension
+	data.tires = tires
+	data.brakes = brakes
+	data.drivetrain = drivetrain
+	
+	data.brake_bias = brake_bias
+	data.aero_bias = aero_bias
+	data.turning_deg = turning_deg
+	return data
 
 ################################
 # getters from car components
@@ -246,7 +267,7 @@ func _ready() -> void:
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
 	is_grounded = get_grounded()
-	is_drifting = get_drift_factor() > 0.03 and get_forward_speed() > 5.0
+	is_drifting = get_drift_factor() > 0.02 and get_forward_speed() > 5.0 and is_grounded
 	is_speeding = get_forward_speed() > 50.0
 	
 	controller.custom_process(delta)

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cbubjqnrsxaur" path="res://Scenes/road/empty.tscn" id="9_4c2oa"]
 [ext_resource type="Texture2D" uid="uid://3754a4tci73o" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_Color.jpg" id="9_dlo4w"]
 [ext_resource type="Texture2D" uid="uid://b2pyay57gx01f" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_NormalDX.jpg" id="10_q6lx1"]
-[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/road/RoadPath.gd" id="12_q6lx1"]
+[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/world_objects/RoadPath.gd" id="12_q6lx1"]
 [ext_resource type="Script" uid="uid://c6n401r8aj2xn" path="res://Scripts/ui/map_polygon.gd" id="13_5qtum"]
 [ext_resource type="Material" uid="uid://btpe15dydy4a8" path="res://Material/Misc/test_material.tres" id="14_ie368"]
 [ext_resource type="PackedScene" uid="uid://cpffb2yrm5d8o" path="res://Scenes/world_objects/house.tscn" id="15_j4oe2"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bjts6tf71j1fu" path="res://Scenes/world_objects/bin.tscn" id="18_rg57b"]
 [ext_resource type="PackedScene" uid="uid://bdourhgiqb7l" path="res://Scenes/world_objects/garage.tscn" id="21_macow"]
 [ext_resource type="Script" uid="uid://cmbc6hdrh7tnw" path="res://Scripts/sprint/SprintRace.gd" id="21_rg57b"]
-[ext_resource type="PackedScene" path="res://GhostData/SprintRace2_PB.tscn" id="22_ltf6m"]
+[ext_resource type="Resource" path="res://GhostData/SprintRace2_PB.tres" id="22_ltf6m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_np2xp"]
 size = Vector3(5000, 50, 5000)
@@ -832,11 +832,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 51, -505)
 [node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace" unique_id=1704710394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 846, 51.9, -775)
 
-[node name="SprintRace2" type="Node3D" parent="Objects/Races" unique_id=673055939 node_paths=PackedStringArray("gold_ghost", "silver_ghost", "bronze_ghost")]
+[node name="SprintRace2" type="Node3D" parent="Objects/Races" unique_id=673055939]
 script = ExtResource("21_rg57b")
-gold_ghost = NodePath("_Node_115")
-silver_ghost = NodePath("_Node_115")
-bronze_ghost = NodePath("_Node_115")
+gold_data = ExtResource("22_ltf6m")
+silver_data = ExtResource("22_ltf6m")
+bronze_data = ExtResource("22_ltf6m")
 metadata/_custom_type_script = "uid://cmbc6hdrh7tnw"
 
 [node name="Node3D" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1049821579]
@@ -844,8 +844,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 50.8, -327)
 
 [node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1482712742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540, 50.8, -337)
-
-[node name="_Node_115" parent="Objects/Races/SprintRace2" unique_id=1865375788 instance=ExtResource("22_ltf6m")]
 
 [node name="Garages" type="Node3D" parent="Objects" unique_id=1257429207]
 

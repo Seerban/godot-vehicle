@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="Shader" uid="uid://6hb34jpqci2e" path="res://Material/sky.gdshader" id="3_6iyac"]
-[ext_resource type="PackedScene" uid="uid://d1iwxqcpwrsai" path="res://Scenes/ui_manager.tscn" id="5_21xkr"]
+[ext_resource type="PackedScene" uid="uid://d1iwxqcpwrsai" path="res://Scenes/ui/ui_manager.tscn" id="5_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
 [ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/vehicle/vehicle.tscn" id="7_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dn0qui4knucok" path="res://Scenes/map.tscn" id="11_d1ilt"]

@@ -1,27 +1,27 @@
 [gd_scene format=4 uid="uid://d1iwxqcpwrsai"]
 
-[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/UIManager.gd" id="1_k436y"]
-[ext_resource type="Script" uid="uid://djvyek5wii0q7" path="res://Scripts/minimap.gd" id="2_2o30e"]
-[ext_resource type="Script" uid="uid://1ar8up2a0bgu" path="res://Scripts/ui/map_static.gd" id="3_cl1wc"]
-[ext_resource type="Script" uid="uid://bdvj7b5usylxj" path="res://Scripts/ui/map_dynamic.gd" id="4_2o30e"]
-[ext_resource type="Texture2D" uid="uid://c8afv5e8og2hj" path="res://Textures/ui/icon.png" id="5_xmyfn"]
-[ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="6_0cbwa"]
-[ext_resource type="Texture2D" uid="uid://rsf13m7j0rcl" path="res://Textures/circle_transparent.png" id="6_pwm6i"]
-[ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://UI/garage_ui.tscn" id="6_y4mvd"]
-[ext_resource type="Texture2D" uid="uid://nu2vo4xwoewr" path="res://Textures/ui/speedometer2.png" id="7_pwm6i"]
-[ext_resource type="Texture2D" uid="uid://dj1lhocphn5yc" path="res://Textures/ui/speedometer.png" id="8_0cbwa"]
-[ext_resource type="Texture2D" uid="uid://b1bsjphbnrqyc" path="res://Textures/ui/speedometer4.png" id="11_wflq5"]
-[ext_resource type="Texture2D" uid="uid://uokq0ockw34c" path="res://Textures/ui/speedometer3.png" id="12_irgxn"]
-[ext_resource type="Script" uid="uid://bdpqsfuo7mak" path="res://Scripts/ui/grip_ui.gd" id="12_wflq5"]
-[ext_resource type="Script" uid="uid://cjrra7f6xv1ob" path="res://Scripts/ui/sprint_live_ui.gd" id="13_02now"]
-[ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/sprint_ui.gd" id="13_4eo48"]
-[ext_resource type="Texture2D" uid="uid://cok2ccsm0wo6x" path="res://Textures/RoundedRect2.png" id="13_irgxn"]
-[ext_resource type="Script" uid="uid://cv57nf0genhhd" path="res://Scripts/ui/sprint_renderer.gd" id="14_4eo48"]
-[ext_resource type="FontFile" uid="uid://b6tmp21qg8doy" path="res://Font/RobotoMono-Bold.ttf" id="14_gvaor"]
-[ext_resource type="Script" uid="uid://bbffyc6i6kaax" path="res://Scripts/sprint/sprint_finish.gd" id="16_khpyi"]
-[ext_resource type="Script" uid="uid://b0qcopxyccu4n" path="res://Scripts/ui/menu.gd" id="17_mgq08"]
-[ext_resource type="Texture2D" uid="uid://fdsvj3hjcbl2" path="res://Textures/menu.png" id="18_xvsgm"]
-[ext_resource type="Texture2D" uid="uid://ck5k7bfctrg54" path="res://Textures/tile.png" id="19_khpyi"]
+[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/UIManager.gd" id="1_tuwxu"]
+[ext_resource type="Script" uid="uid://djvyek5wii0q7" path="res://Scripts/ui/minimap.gd" id="2_qokbk"]
+[ext_resource type="Script" uid="uid://1ar8up2a0bgu" path="res://Scripts/ui/map_static.gd" id="3_fh02c"]
+[ext_resource type="Script" uid="uid://bdvj7b5usylxj" path="res://Scripts/ui/map_dynamic.gd" id="4_3qqp5"]
+[ext_resource type="Texture2D" uid="uid://c8afv5e8og2hj" path="res://Textures/ui/icon.png" id="5_cgrnb"]
+[ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://Scenes/ui/garage_ui.tscn" id="6_r85vj"]
+[ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="7_y8xa2"]
+[ext_resource type="Texture2D" uid="uid://rsf13m7j0rcl" path="res://Textures/circle_transparent.png" id="8_yvdio"]
+[ext_resource type="Texture2D" uid="uid://nu2vo4xwoewr" path="res://Textures/ui/speedometer2.png" id="9_cetxx"]
+[ext_resource type="Texture2D" uid="uid://dj1lhocphn5yc" path="res://Textures/ui/speedometer.png" id="10_8rni6"]
+[ext_resource type="Texture2D" uid="uid://b1bsjphbnrqyc" path="res://Textures/ui/speedometer4.png" id="11_j5xg7"]
+[ext_resource type="Texture2D" uid="uid://uokq0ockw34c" path="res://Textures/ui/speedometer3.png" id="12_ys3bk"]
+[ext_resource type="Script" uid="uid://bdpqsfuo7mak" path="res://Scripts/ui/grip_ui.gd" id="13_kvweo"]
+[ext_resource type="Texture2D" uid="uid://cok2ccsm0wo6x" path="res://Textures/RoundedRect2.png" id="14_a31vb"]
+[ext_resource type="Script" uid="uid://cjrra7f6xv1ob" path="res://Scripts/ui/sprint_live_ui.gd" id="15_m7thg"]
+[ext_resource type="FontFile" uid="uid://b6tmp21qg8doy" path="res://Font/RobotoMono-Bold.ttf" id="16_m5a7q"]
+[ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/sprint_ui.gd" id="17_sqr7q"]
+[ext_resource type="Script" uid="uid://cv57nf0genhhd" path="res://Scripts/ui/sprint_renderer.gd" id="18_bqx7h"]
+[ext_resource type="Script" uid="uid://bbffyc6i6kaax" path="res://Scripts/sprint/sprint_finish.gd" id="19_22gth"]
+[ext_resource type="Script" uid="uid://b0qcopxyccu4n" path="res://Scripts/ui/menu.gd" id="20_828mu"]
+[ext_resource type="Texture2D" uid="uid://fdsvj3hjcbl2" path="res://Textures/menu.png" id="21_donbq"]
+[ext_resource type="Texture2D" uid="uid://ck5k7bfctrg54" path="res://Textures/tile.png" id="22_bs632"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmyfn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
@@ -1258,7 +1258,7 @@ border_color = Color(0, 0, 0, 1)
 shadow_size = 16
 
 [node name="UIManager" type="CanvasLayer" unique_id=429781008 groups=["ui"]]
-script = ExtResource("1_k436y")
+script = ExtResource("1_tuwxu")
 
 [node name="LeftMenu" type="VBoxContainer" parent="." unique_id=2046324825]
 visible = false
@@ -1331,7 +1331,7 @@ anchor_bottom = 0.97
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xmyfn")
-script = ExtResource("2_2o30e")
+script = ExtResource("2_qokbk")
 
 [node name="StaticMap" type="Control" parent="LeftMenu/HBox/Minimap/InnerMinimap" unique_id=477427871]
 custom_minimum_size = Vector2(10000, 10000)
@@ -1345,7 +1345,7 @@ offset_right = 4872.0
 offset_bottom = 4872.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_cl1wc")
+script = ExtResource("3_fh02c")
 
 [node name="DynamicMap" type="Control" parent="LeftMenu/HBox/Minimap/InnerMinimap" unique_id=299607439]
 custom_minimum_size = Vector2(10000, 10000)
@@ -1359,7 +1359,7 @@ offset_right = 4872.0
 offset_bottom = 4872.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_2o30e")
+script = ExtResource("4_3qqp5")
 
 [node name="Icon" type="TextureRect" parent="LeftMenu/HBox/Minimap/InnerMinimap" unique_id=474405221]
 layout_mode = 1
@@ -1375,7 +1375,7 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(10, 7.5)
-texture = ExtResource("5_xmyfn")
+texture = ExtResource("5_cgrnb")
 expand_mode = 1
 
 [node name="ScorePopup" type="VBoxContainer" parent="LeftMenu/HBox" unique_id=1062813195]
@@ -1394,7 +1394,7 @@ text = "AIRTIME POPUP"
 layout_mode = 2
 text = "AIRTIME POPUP"
 
-[node name="Garage" parent="." unique_id=681594695 instance=ExtResource("6_y4mvd")]
+[node name="Garage" parent="." unique_id=681594695 instance=ExtResource("6_r85vj")]
 visible = false
 
 [node name="Meters" type="Control" parent="." unique_id=1885040780]
@@ -1413,7 +1413,7 @@ offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 1
-theme = ExtResource("6_0cbwa")
+theme = ExtResource("7_y8xa2")
 script = SubResource("GDScript_wflq5")
 
 [node name="BG" type="TextureRect" parent="Meters" unique_id=670813888]
@@ -1424,7 +1424,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_pwm6i")
+texture = ExtResource("8_yvdio")
 expand_mode = 4
 stretch_mode = 4
 
@@ -1443,8 +1443,8 @@ fill_mode = 4
 radial_initial_angle = 183.0
 radial_fill_degrees = 264.0
 nine_patch_stretch = true
-texture_under = ExtResource("7_pwm6i")
-texture_progress = ExtResource("8_0cbwa")
+texture_under = ExtResource("9_cetxx")
+texture_progress = ExtResource("10_8rni6")
 tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
 
 [node name="AccelBar" type="TextureProgressBar" parent="Meters/BG" unique_id=704141633]
@@ -1462,8 +1462,8 @@ fill_mode = 5
 radial_initial_angle = 168.0
 radial_fill_degrees = 66.0
 nine_patch_stretch = true
-texture_under = ExtResource("11_wflq5")
-texture_progress = ExtResource("12_irgxn")
+texture_under = ExtResource("11_j5xg7")
+texture_progress = ExtResource("12_ys3bk")
 tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
 tint_progress = Color(0.21176471, 0.8627451, 0.22745098, 1)
 
@@ -1482,7 +1482,7 @@ fill_mode = 4
 radial_initial_angle = 102.0
 radial_fill_degrees = 66.0
 nine_patch_stretch = true
-texture_progress = ExtResource("12_irgxn")
+texture_progress = ExtResource("12_ys3bk")
 tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
 tint_progress = Color(1, 0.22745098, 0.22745098, 1)
 
@@ -1527,7 +1527,7 @@ offset_top = -128.0
 offset_right = -247.99988
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("6_pwm6i")
+texture = ExtResource("8_yvdio")
 expand_mode = 4
 stretch_mode = 4
 
@@ -1546,8 +1546,8 @@ fill_mode = 4
 radial_initial_angle = 183.0
 radial_fill_degrees = 264.0
 nine_patch_stretch = true
-texture_under = ExtResource("7_pwm6i")
-texture_progress = ExtResource("8_0cbwa")
+texture_under = ExtResource("9_cetxx")
+texture_progress = ExtResource("10_8rni6")
 tint_under = Color(0.103743516, 0.10374353, 0.103743516, 1)
 
 [node name="BoostLabel" type="Label" parent="Meters/BG2" unique_id=1419844418]
@@ -1588,8 +1588,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme = ExtResource("6_0cbwa")
-script = ExtResource("12_wflq5")
+theme = ExtResource("7_y8xa2")
+script = ExtResource("13_kvweo")
 
 [node name="Grid" type="GridContainer" parent="Grip" unique_id=854686528]
 layout_mode = 1
@@ -1621,7 +1621,7 @@ offset_right = -8.0
 offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="Label" type="Label" parent="Grip/Grid/FLPanel" unique_id=684646925]
@@ -1652,7 +1652,7 @@ offset_right = -12.574997
 offset_bottom = -14.315002
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="Spacer" type="ColorRect" parent="Grip/Grid" unique_id=520702437]
@@ -1679,7 +1679,7 @@ offset_top = -1.0
 offset_right = 56.0
 offset_bottom = -9.0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="Label" type="Label" parent="Grip/Grid/FRPanel" unique_id=1718940914]
@@ -1710,7 +1710,7 @@ offset_right = -204.74992
 offset_bottom = -14.315002
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="RLPanel" type="ColorRect" parent="Grip/Grid" unique_id=876673103]
@@ -1734,7 +1734,7 @@ offset_right = -8.0
 offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="Label" type="Label" parent="Grip/Grid/RLPanel" unique_id=894689089]
@@ -1765,7 +1765,7 @@ offset_right = -12.574997
 offset_bottom = -14.315002
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="Spacer2" type="ColorRect" parent="Grip/Grid" unique_id=1902887973]
@@ -1792,7 +1792,7 @@ offset_top = -1.0
 offset_right = 56.0
 offset_bottom = -9.0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="Label" type="Label" parent="Grip/Grid/RRPanel" unique_id=1578868029]
@@ -1823,7 +1823,7 @@ offset_right = -204.74992
 offset_bottom = -14.315002
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("13_irgxn")
+texture = ExtResource("14_a31vb")
 expand_mode = 4
 
 [node name="DownForce" type="Label" parent="Grip" unique_id=1283389905]
@@ -1866,8 +1866,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("6_0cbwa")
-script = ExtResource("13_02now")
+theme = ExtResource("7_y8xa2")
+script = ExtResource("15_m7thg")
 
 [node name="Timer" type="Label" parent="SprintLive" unique_id=1633340112]
 layout_mode = 1
@@ -1883,7 +1883,7 @@ offset_bottom = -31.585022
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("14_gvaor")
+theme_override_fonts/font = ExtResource("16_m5a7q")
 theme_override_font_sizes/font_size = 32
 text = "Time Here"
 horizontal_alignment = 1
@@ -1952,8 +1952,8 @@ anchor_right = 1.0
 offset_left = -200.0
 offset_bottom = 425.88
 grow_horizontal = 0
-theme = ExtResource("6_0cbwa")
-script = ExtResource("13_4eo48")
+theme = ExtResource("7_y8xa2")
+script = ExtResource("17_sqr7q")
 
 [node name="HBox" type="HBoxContainer" parent="Sprint" unique_id=366141625]
 custom_minimum_size = Vector2(400, 0)
@@ -2010,7 +2010,7 @@ vertical_alignment = 1
 [node name="Path" type="Control" parent="Sprint/HBox/VBox/Info" unique_id=572137968]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-script = ExtResource("14_4eo48")
+script = ExtResource("18_bqx7h")
 
 [node name="PB2" type="RichTextLabel" parent="Sprint/HBox/VBox" unique_id=1499306127]
 layout_mode = 2
@@ -2029,8 +2029,8 @@ anchor_right = 1.0
 offset_left = -250.0
 offset_bottom = 200.0
 grow_horizontal = 0
-theme = ExtResource("6_0cbwa")
-script = ExtResource("16_khpyi")
+theme = ExtResource("7_y8xa2")
+script = ExtResource("19_22gth")
 
 [node name="VBox" type="VBoxContainer" parent="SprintFinish" unique_id=1048543338]
 layout_mode = 1
@@ -2076,6 +2076,13 @@ text = "Medal: "
 fit_content = true
 horizontal_alignment = 1
 
+[node name="Cash" type="Label" parent="SprintFinish/VBox" unique_id=1603742067]
+modulate = Color(0.5411765, 1, 0.5921569, 1)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
 [node name="Menu" type="Control" parent="." unique_id=1881732354]
 layout_mode = 3
 anchors_preset = 15
@@ -2083,8 +2090,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("6_0cbwa")
-script = ExtResource("17_mgq08")
+theme = ExtResource("7_y8xa2")
+script = ExtResource("20_828mu")
 
 [node name="BG" type="Control" parent="Menu" unique_id=1430401845]
 layout_mode = 1
@@ -2116,7 +2123,7 @@ offset_right = 490.0
 offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("18_xvsgm")
+texture = ExtResource("21_donbq")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="Menu/BG" unique_id=781519089]
@@ -2130,7 +2137,7 @@ offset_left = 14.0
 offset_right = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("18_xvsgm")
+texture = ExtResource("21_donbq")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="Menu/BG" unique_id=2057161381]
@@ -2141,7 +2148,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("18_xvsgm")
+texture = ExtResource("21_donbq")
 expand_mode = 1
 
 [node name="VBox" type="VBoxContainer" parent="Menu" unique_id=348534336]
@@ -2154,7 +2161,7 @@ offset_right = -0.005004883
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="Menu/VBox" unique_id=1033262925]
+[node name="User" type="Label" parent="Menu/VBox" unique_id=1033262925]
 layout_mode = 2
 size_flags_vertical = 10
 size_flags_stretch_ratio = 0.5
@@ -2183,7 +2190,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_khpyi")
+texture = ExtResource("22_bs632")
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="Menu/VBox/Continue" unique_id=1669572492]
@@ -2210,7 +2217,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xvsgm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cl1wc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_khpyi")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_2o30e")
-disabled = true
 
 [node name="Pattern" type="TextureRect" parent="Menu/VBox/Save" unique_id=1434867171]
 modulate = Color(0, 0, 0, 0.078431375)
@@ -2220,7 +2226,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_khpyi")
+texture = ExtResource("22_bs632")
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="Menu/VBox/Save" unique_id=125579697]
@@ -2232,7 +2238,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 32
-text = "Saves"
+text = "Save"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -2257,7 +2263,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_khpyi")
+texture = ExtResource("22_bs632")
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="Menu/VBox/Achievements" unique_id=2017768230]
@@ -2294,7 +2300,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_khpyi")
+texture = ExtResource("22_bs632")
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="Menu/VBox/Controls" unique_id=1678866187]
@@ -2331,7 +2337,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_khpyi")
+texture = ExtResource("22_bs632")
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="Menu/VBox/Settings" unique_id=1834425310]
@@ -2366,7 +2372,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_khpyi")
+texture = ExtResource("22_bs632")
 stretch_mode = 1
 
 [node name="Label" type="Label" parent="Menu/VBox/Exit" unique_id=1166728134]
@@ -2441,4 +2447,5 @@ text = "$0"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Menu/VBox/Continue" to="Menu" method="_on_continue_pressed"]
+[connection signal="pressed" from="Menu/VBox/Save" to="Menu" method="_on_save_pressed"]
 [connection signal="pressed" from="Menu/VBox/Exit" to="Menu" method="_on_exit_pressed"]
