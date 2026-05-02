@@ -14,10 +14,24 @@ var chosen_sprint : Node3D
 @onready var sprint_ui = $Sprint
 @onready var sprint_live_ui := $SprintLive
 @onready var sprint_finish_ui := $SprintFinish
+@onready var autoshop_ui := $Autoshop
+@onready var autoshop_popup := $AutoshopPopup
 @onready var score := $LeftMenu/HBox/ScorePopup
 @onready var airtime_label = score.get_node("Airtime")
 @onready var drift_label = score.get_node("Drift")
 @onready var speed_label = score.get_node("Speed")
+
+func _ready() -> void:
+	for i in get_children():
+		if i.has_method("update_player_data"):
+				i.update_player_data()
+
+func _physics_process(delta: float) -> void:
+	if global.player_car != null:
+		update_airtime(delta)
+		update_drifttime(delta)
+		update_speedtime(delta)
+	else: airtime = 0
 
 # main function for switching UIs
 func show_unique_children(child_name: Array[String]) -> void:
@@ -86,15 +100,3 @@ func update_speedtime(delta: float) -> void:
 	
 	if speed_label.modulate.a < 0.1:
 		speed_label.visible = false
-
-func _ready() -> void:
-	for i in get_children():
-		if i.has_method("update_player_data"):
-				i.update_player_data()
-
-func _physics_process(delta: float) -> void:
-	if global.player_car != null:
-		update_airtime(delta)
-		update_drifttime(delta)
-		update_speedtime(delta)
-	else: airtime = 0

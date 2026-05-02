@@ -8,16 +8,14 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	var car = global.player_car
-	if res is EngineStats: 			car.engine = res
-	if res is TransmissionStats: 	car.transmission = res
-	if res is WeightKitStats:		car.weight_kit = res
-	if res is DrivetrainStats:		car.drivetrain = res
-	if res is BrakesStats:			car.brakes = res
-	if res is AeroKitStats:			car.aero_kit = res
-	if res is TiresStats:
-		car.tires = res
-		car.update_wheels()
-	if res is SuspensionStats:		car.suspension = res
-	if res is AspirationStats:		car.aspiration = res
+	if res is EngineStats: 			car.components.engine = res
+	if res is TransmissionStats: 	car.components.transmission = res
+	if res is WeightKitStats:		car.components.weight_kit = res
+	if res is DrivetrainStats:		car.components.drivetrain = res
+	if res is BrakesStats:			car.components.brakes = res
+	if res is AeroKitStats:			car.components.aero_kit = res
+	if res is TiresStats:			car.components.tires = res
+	if res is SuspensionStats:		car.components.suspension = res
+	if res is AspirationStats:		car.components.aspiration = res
 	
 	initializer_ref.update()

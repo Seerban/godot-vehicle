@@ -18,7 +18,7 @@ var auto_camera_height_angle := 15.0
 
 # vars for camera zoom / offset
 var cam_default_height_offset := 0.6
-var cam_default_offset := 4.6
+var cam_default_offset := 5.0
 var cam_default_fov := 75.0
 var cam_offset_scaling := 0.02
 var cam_fov_scaling := 0.02
@@ -50,12 +50,13 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func reset() -> void:
+func reset(y_offset := 0.0) -> void:
 	if node_to_follow == null: return
 	
 	global_rotation = node_to_follow.global_rotation
 	target.y = -rad_to_deg( Vector3.FORWARD.signed_angle_to(node_to_follow.global_basis.x, Vector3.DOWN) ) - 90
 	rotation.x = 0
+	target.y += y_offset
 	target.x = 0
 	scale = Vector3(1, 1, 1)
 	

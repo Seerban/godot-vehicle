@@ -2,7 +2,7 @@ extends Control
 
 var water_bodies := []
 var paths := []
-var garages: Node3D
+var autoshops: Node3D
 var garage_texture = load("res://Textures/ui/shop48.png")
 var races: Node3D
 var race_texture := load("res://Textures/ui/flag48.png")
@@ -58,7 +58,7 @@ func _draw() -> void:
 	for i in paths:
 		draw_path3d_topdown(i, Color.BLACK)
 	
-	for i in garages.get_children():
+	for i in autoshops.get_children():
 		draw_texture(garage_texture, 
 		Vector2(i.global_position.x + get_rect().size.x - 24, i.global_position.z + get_rect().size.y - 24),
 		Color.WHITE)

@@ -20,10 +20,12 @@ func update() -> void:
 	if car_copy == null:
 		car_copy = global.player_car.duplicate(15)
 	
+	var auto = global.autoshop
+	
 	if global.player_car.get_power() != car_copy.get_power():
-		stats_panel.get_node("Power").text = "Power: \t" + str( car_copy.get_power() ) + "->" + str( global.player_car.get_power() )
+		auto.get_node("Power").text = "Power: \t" + str( car_copy.get_power() ) + "->" + str( global.player_car.get_power() )
 	else:
-		stats_panel.get_node("Power").text = "Power: \t" + str( global.player_car.get_power() )
+		auto.get_node("Power").text = "Power: \t" + str( global.player_car.get_power() )
 	
 	if global.player_car.get_top_speed() != car_copy.get_top_speed():
 		stats_panel.get_node("Speed").text = "Speed: \t" + str(car_copy.get_top_speed()) + "->" + str( global.player_car.get_top_speed() )
@@ -46,10 +48,10 @@ func update() -> void:
 		stats_panel.get_node("Boost").text = "Boost: \t" + str( global.player_car.get_boost() )
 	
 	
-	var global_car_grip = (global.player_car.tires.lateral_grip + global.player_car.tires.longitudinal_grip) / 2
-	var copy_car_grip = (car_copy.tires.lateral_grip + car_copy.tires.longitudinal_grip) / 2
-	var global_car_offroad_grip = global_car_grip * global.player_car.tires.offroad_multiplier
-	var copy_car_offroad_grip = copy_car_grip * car_copy.tires.offroad_multiplier
+	var global_car_grip = (global.player_car.components.tires.lateral_grip + global.player_car.components.tires.longitudinal_grip) / 2
+	var copy_car_grip = (car_copy.components.tires.lateral_grip + car_copy.components.tires.longitudinal_grip) / 2
+	var global_car_offroad_grip = global_car_grip * global.player_car.components.tires.offroad_multiplier
+	var copy_car_offroad_grip = copy_car_grip * car_copy.components.tires.offroad_multiplier
 	
 	if global_car_grip != copy_car_grip:
 		stats_panel.get_node("Grip").text = "Grip: \t" + str(copy_car_grip) + "->" + str(global_car_grip)
@@ -67,11 +69,11 @@ func update() -> void:
 	
 	var type = ""
 	var clone_type = ""
-	if global.player_car.drivetrain.bias  == -1.0: type = "RWD"
-	elif global.player_car.drivetrain.bias  == 1.0: type = "FWD"
+	if global.player_car.components.drivetrain.bias  == -1.0: type = "RWD"
+	elif global.player_car.components.drivetrain.bias  == 1.0: type = "FWD"
 	else: type = "AWD"
-	if car_copy.drivetrain.bias == -1.0: clone_type = "RWD"
-	elif car_copy.drivetrain.bias  == 1.0: clone_type = "FWD"
+	if car_copy.components.drivetrain.bias == -1.0: clone_type = "RWD"
+	elif car_copy.components.drivetrain.bias  == 1.0: clone_type = "FWD"
 	else: clone_type = "AWD"
 	if clone_type != type:
 		stats_panel.get_node("Drivetrain").text = "Drivetrain: " + clone_type + "->" + type
@@ -111,6 +113,14 @@ func load_buttons(path) -> void:
 		file = dir.get_next()
 
 func _on_button_pressed() -> void:
+	# check random button to see if in main selection ui or deeper
+	if $HBox/Engine.visible == true:
+		print("sending player back")
+		visible = false
+		
+		global.player_in_autoshop = false
+		global.spawn_player()
+		global.ui_manager.show_usual()
 	unload_buttons()
 
 func _on_engine_pressed() -> void:
@@ -144,22 +154,22 @@ func _on_aspiration_pressed() -> void:
 # Vehicle Color Functions
 func _on_color_picker_color_changed(color: Color) -> void:
 	chosen_color = color
-	global.player_car.update_color(color)
+	global.player_car.components.color = color
 
 func _on_matt_pressed() -> void:
-	global.player_car.update_color(chosen_color, "Matte")
+	global.player_car.components.material = "Matte"
 
 func _on_gloss_pressed() -> void:
-	global.player_car.update_color(chosen_color, "Gloss")
+	global.player_car.components.material = "Gloss"
 
 func _on_candy_pressed() -> void:
-	global.player_car.update_color(chosen_color, "Candy")
+	global.player_car.components.material = "Candy"
 
 func _on_metal_pressed() -> void:
-	global.player_car.update_color(chosen_color, "Metal")
+	global.player_car.components.material = "Metal"
 
 func _on_pearl_pressed() -> void:
-	global.player_car.update_color(chosen_color, "Pearl")
+	global.player_car.components.material = "Pearl"
 
 func _on_toon_pressed() -> void:
-	global.player_car.update_color(chosen_color, "Toon")
+	global.player_car.components.material = "Toon"

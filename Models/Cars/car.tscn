@@ -103,6 +103,7 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_r7o47")
 center_of_mass_mode = 1
+can_sleep = false
 contact_monitor = true
 max_contacts_reported = 5
 linear_damp_mode = 1

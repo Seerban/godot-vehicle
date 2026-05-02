@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dakxynrdt52mx" path="res://Scenes/world_objects/building.tscn" id="16_riaky"]
 [ext_resource type="PackedScene" uid="uid://dgvry5fcssevm" path="res://Scenes/world_objects/pole.tscn" id="17_vtkp8"]
 [ext_resource type="PackedScene" uid="uid://bjts6tf71j1fu" path="res://Scenes/world_objects/bin.tscn" id="18_rg57b"]
-[ext_resource type="PackedScene" uid="uid://bdourhgiqb7l" path="res://Scenes/world_objects/garage.tscn" id="21_macow"]
+[ext_resource type="PackedScene" uid="uid://c40sxfhtkipb8" path="res://Scenes/world_objects/autoshop.tscn" id="21_macow"]
 [ext_resource type="Script" uid="uid://cmbc6hdrh7tnw" path="res://Scripts/sprint/SprintRace.gd" id="21_rg57b"]
 [ext_resource type="Resource" path="res://GhostData/SprintRace2_PB.tres" id="22_ltf6m"]
 
@@ -304,6 +304,24 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_ltf6m"]
+size = Vector2(40, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ltf6m"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ltf6m"]
+size = Vector3(10, 1, 1.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uus22"]
+albedo_color = Color(0.3328807, 0.33288068, 0.33288068, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ltf6m"]
+data = PackedVector3Array(-5, 0.5, 0.625, 5, 0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, -0.625, 5, -0.5, -0.625, -5, 0.5, -0.625, -5, -0.5, -0.625, 5, -0.5, -0.625, 5, 0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, -0.625, 5, -0.5, 0.625, -5, 0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, 0.625, -5, -0.5, -0.625, 5, 0.5, 0.625, -5, 0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, 0.625, -5, 0.5, -0.625, 5, 0.5, -0.625, -5, -0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, -0.625, 5, -0.5, 0.625, 5, -0.5, -0.625, -5, -0.5, -0.625)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uus22"]
+data = PackedVector3Array(-5, 0.5, 0.625, 5, 0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, -0.625, 5, -0.5, -0.625, -5, 0.5, -0.625, -5, -0.5, -0.625, 5, -0.5, -0.625, 5, 0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, -0.625, 5, -0.5, 0.625, -5, 0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, 0.625, -5, -0.5, -0.625, 5, 0.5, 0.625, -5, 0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, 0.625, -5, 0.5, -0.625, 5, 0.5, -0.625, -5, -0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, -0.625, 5, -0.5, 0.625, 5, -0.5, -0.625, -5, -0.5, -0.625)
 
 [node name="Map" type="Node3D" unique_id=213433501 groups=["map"]]
 
@@ -845,13 +863,54 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 580, 50.8, -327)
 [node name="Node3D2" type="Node3D" parent="Objects/Races/SprintRace2" unique_id=1482712742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540, 50.8, -337)
 
-[node name="Garages" type="Node3D" parent="Objects" unique_id=1257429207]
+[node name="Autoshops" type="Node3D" parent="Objects" unique_id=1257429207]
 
-[node name="Garage" parent="Objects/Garages" unique_id=678169622 instance=ExtResource("21_macow")]
+[node name="1" parent="Objects/Autoshops" unique_id=678169622 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 526, 50, -320)
 
-[node name="Garage2" parent="Objects/Garages" unique_id=816891808 instance=ExtResource("21_macow")]
+[node name="2" parent="Objects/Autoshops" unique_id=816891808 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345, 50, 284)
 
-[node name="Garage3" parent="Objects/Garages" unique_id=167635475 instance=ExtResource("21_macow")]
+[node name="3" parent="Objects/Autoshops" unique_id=167635475 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 479, 204.01, 409)
+
+[node name="Autoshop" type="StaticBody3D" parent="." unique_id=966026460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3020, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="Autoshop" unique_id=1022821814]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_ltf6m")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Autoshop" unique_id=59915183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ltf6m")
+
+[node name="LookAt" type="Node3D" parent="Autoshop" unique_id=400875243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Autoshop" unique_id=1162033218]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, -8.742278e-08)
+mesh = SubResource("BoxMesh_ltf6m")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_uus22")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Autoshop" unique_id=1403505525]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, 0, -8.742278e-08)
+shape = SubResource("ConcavePolygonShape3D_ltf6m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Autoshop" unique_id=1114527290]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 0, 8.742278e-08)
+mesh = SubResource("BoxMesh_ltf6m")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_uus22")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Autoshop" unique_id=861189908]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1, 0, 8.742278e-08)
+shape = SubResource("ConcavePolygonShape3D_uus22")
+
+[node name="Power" type="Label3D" parent="Autoshop" unique_id=1798858231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -8)
+text = "Hello World"
+font_size = 256
+outline_size = 32

@@ -16,8 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://cok2ccsm0wo6x" path="res://Textures/RoundedRect2.png" id="14_a31vb"]
 [ext_resource type="Script" uid="uid://cjrra7f6xv1ob" path="res://Scripts/ui/sprint_live_ui.gd" id="15_m7thg"]
 [ext_resource type="FontFile" uid="uid://b6tmp21qg8doy" path="res://Font/RobotoMono-Bold.ttf" id="16_m5a7q"]
-[ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/sprint_ui.gd" id="17_sqr7q"]
+[ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/autoshop_ui.gd" id="17_sqr7q"]
 [ext_resource type="Script" uid="uid://cv57nf0genhhd" path="res://Scripts/ui/sprint_renderer.gd" id="18_bqx7h"]
+[ext_resource type="Script" uid="uid://dkldcdadfe103" path="res://Scripts/ui/sprint_ui.gd" id="18_qokbk"]
 [ext_resource type="Script" uid="uid://bbffyc6i6kaax" path="res://Scripts/sprint/sprint_finish.gd" id="19_22gth"]
 [ext_resource type="Script" uid="uid://b0qcopxyccu4n" path="res://Scripts/ui/menu.gd" id="20_828mu"]
 [ext_resource type="Texture2D" uid="uid://fdsvj3hjcbl2" path="res://Textures/menu.png" id="21_donbq"]
@@ -1394,8 +1395,37 @@ text = "AIRTIME POPUP"
 layout_mode = 2
 text = "AIRTIME POPUP"
 
-[node name="Garage" parent="." unique_id=681594695 instance=ExtResource("6_r85vj")]
+[node name="Autoshop" parent="." unique_id=681594695 instance=ExtResource("6_r85vj")]
 visible = false
+
+[node name="AutoshopPopup" type="Control" parent="." unique_id=1939431506]
+visible = false
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 425.88
+grow_horizontal = 0
+theme = ExtResource("7_y8xa2")
+script = ExtResource("17_sqr7q")
+
+[node name="VBox" type="VBoxContainer" parent="AutoshopPopup" unique_id=1592861090]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -59.0
+offset_bottom = 80.0
+grow_horizontal = 0
+
+[node name="PB2" type="RichTextLabel" parent="AutoshopPopup/VBox" unique_id=1214954049]
+layout_mode = 2
+bbcode_enabled = true
+text = "Press [color=orange]'E'[/color] to enter autoshop."
+fit_content = true
+horizontal_alignment = 1
 
 [node name="Meters" type="Control" parent="." unique_id=1885040780]
 visible = false
@@ -1953,7 +1983,7 @@ offset_left = -200.0
 offset_bottom = 425.88
 grow_horizontal = 0
 theme = ExtResource("7_y8xa2")
-script = ExtResource("17_sqr7q")
+script = ExtResource("18_qokbk")
 
 [node name="HBox" type="HBoxContainer" parent="Sprint" unique_id=366141625]
 custom_minimum_size = Vector2(400, 0)

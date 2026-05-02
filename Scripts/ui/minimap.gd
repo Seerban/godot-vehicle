@@ -31,7 +31,7 @@ func _ready() -> void:
 		static_map.map = map
 		static_map.terrain = terrain
 		static_map.races = map.get_node("Objects/Races")
-		static_map.garages = map.get_node("Objects/Garages")
+		static_map.autoshops = map.get_node("Objects/Autoshops")
 		static_map.queue_redraw()
 
 func _process(delta: float) -> void:

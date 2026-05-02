@@ -14,6 +14,3 @@ func _input(event: InputEvent) -> void:
 		var grip_visible = ui.get_node("Grip").visible
 		if !grip_visible: ui.show_unique_children(["Grip"])
 		else: ui.show_usual()
-
-func _ready() -> void:
-	pass

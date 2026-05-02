@@ -5,7 +5,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_k44av"]
 font_size = 24
 
-[node name="ComponentsUI" type="Control" unique_id=681594695]
+[node name="Autoshop" type="Control" unique_id=681594695]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,19 +74,6 @@ text = "Brakes"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Drivetrain"
-
-[node name="Equipped" type="Label" parent="." unique_id=404718584]
-visible = false
-layout_mode = 0
-offset_top = 485.0
-offset_right = 106.0
-offset_bottom = 664.0
-text = "Top Speed:
-Power:
-0-50:
-Weight:
-Grip:
-"
 
 [node name="Stats" type="VBoxContainer" parent="." unique_id=670010045]
 layout_mode = 1

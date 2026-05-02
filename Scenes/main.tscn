@@ -75,10 +75,7 @@ transform = Transform3D(-0.83651614, 0.25881904, -0.482963, 0.22414383, 0.965925
 
 [node name="Map" parent="." unique_id=213433501 instance=ExtResource("11_d1ilt")]
 
-[node name="CarSpawnPos" type="Node3D" parent="." unique_id=651303083]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -351, 55, 267)
-
 [node name="UIManager" parent="." unique_id=429781008 instance=ExtResource("5_21xkr")]
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=96823950]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 583.285, 51, -392)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 531.285, 51, -343)

@@ -4,6 +4,7 @@ const CAR_MODEL_PATH := "res://Models/Cars/"
 const SAVE_PATH := "res://SAVEDATA.tres"
 
 var player_data: PlayerData
+var spawn_position := Vector3.ZERO # tracker to bring player back after teleporting
 
 # REFERENCES
 var player_car: Vehicle
@@ -12,8 +13,10 @@ var minimap: Control
 var grip_ui: Control
 var ui_manager: UIManager
 var map: Node3D
+var autoshop: Node3D
 
 var player_is_racing := false
+var player_in_autoshop := false
 var sprint_node: SprintRace
 
 # GLOBAL UTILITY CURVES
@@ -22,16 +25,32 @@ var spring_grip_curve := load("res://Curves/spring_grip.tres")
 var brake_curve := load("res://Curves/brake.tres")
 var steer_curve := load("res://Curves/steer.tres")
 
+func _ready() -> void:
+	load_player_data()
+	
+	map = get_tree().get_first_node_in_group("map")
+	autoshop = map.get_node("Autoshop")
+	camera = get_tree().get_first_node_in_group("camera")
+	ui_manager = get_tree().get_first_node_in_group("ui")
+	minimap = get_tree().get_first_node_in_group("minimap")
+	grip_ui = ui_manager.get_node("Grip")
+
+func set_player_pos():
+	player_car.global_position = spawn_position
+	player_car.rotation.x = 0
+
 # player management
 func spawn_player() -> void:
-	if player_car:
-		print("error, player already spawned")
+	if player_car != null:
+		set_player_pos()
+		call_deferred("set_player_pos")
+		player_car.enable()
 		return
 	
 	var player = player_data.vehicle
 	player_car = player.add_as_vehicle( get_tree().get_first_node_in_group("vehicles") )
 	player_car.controller = PlayerController.new()
-	player_car.global_position = Vector3(583, 51, -392) # :v
+	player_car.global_position = get_tree().current_scene.get_node("PlayerSpawn").global_position
 	player_car.rotation_degrees.y += -125
 	
 	camera.node_to_follow = player_car
@@ -51,7 +70,7 @@ func save_player_data() -> void:
 		print("NOT LOADED YET. CANT SAVE!")
 		return
 	
-	player_data.vehicle = player_car.save_as_vehicle_data()
+	player_data.vehicle = player_car.components
 	var err = ResourceSaver.save(player_data, SAVE_PATH)
 	
 	if err == OK: print("saved user data for %s" % player_data.user)
@@ -104,12 +123,3 @@ func force_end_race():
 		print("ERROR: No race to force end.")
 	
 	sprint_node.finish_race(true)
-
-func _ready() -> void:
-	load_player_data()
-	
-	map = get_tree().get_first_node_in_group("map")
-	camera = get_tree().get_first_node_in_group("camera")
-	ui_manager = get_tree().get_first_node_in_group("ui")
-	minimap = get_tree().get_first_node_in_group("minimap")
-	grip_ui = ui_manager.get_node("Grip")
