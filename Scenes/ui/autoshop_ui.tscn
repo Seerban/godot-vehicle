@@ -29,7 +29,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBox" type="HBoxContainer" parent="ScrollTop" unique_id=2013559807]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -104,6 +103,7 @@ script = ExtResource("2_44t7a")
 layout_mode = 2
 
 [node name="Colors" type="HBoxContainer" parent="ScrollTop" unique_id=1629215711]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -217,6 +217,152 @@ text = "Metal"
 [node name="Spacer2" type="Control" parent="ScrollTop/Colors" unique_id=1871347395]
 layout_mode = 2
 
+[node name="Tune" type="HBoxContainer" parent="." unique_id=774551627]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 132.0
+offset_right = 20.0
+offset_bottom = 172.0
+grow_horizontal = 2
+
+[node name="Aero" type="VBoxContainer" parent="Tune" unique_id=1714663910]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Aero" unique_id=1409212969]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "Aero Front Bias"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AeroSlider" type="HSlider" parent="Tune/Aero" unique_id=1803554083]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Aero" unique_id=1399963550]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Brakes" type="VBoxContainer" parent="Tune" unique_id=1516413890]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Brakes" unique_id=737389617]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "Front Brake Bias"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BrakeBiasSlider" type="HSlider" parent="Tune/Brakes" unique_id=919708117]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Brakes" unique_id=1553831513]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Drivetrain" type="VBoxContainer" parent="Tune" unique_id=206433956]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Drivetrain" unique_id=1285651971]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "Rear/Front Bias"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrivetrainSlider" type="HSlider" parent="Tune/Drivetrain" unique_id=1521899692]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Drivetrain" unique_id=63035023]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transmission" type="VBoxContainer" parent="Tune" unique_id=13267444]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Transmission" unique_id=1525173290]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "Accel/Speed Bias"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TransSlider" type="HSlider" parent="Tune/Transmission" unique_id=108725991]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -0.3
+max_value = 0.3
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Transmission" unique_id=1761107709]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Suspension" type="VBoxContainer" parent="Tune" unique_id=1082196748]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Suspension" unique_id=2076963268]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "Height Offset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuspensionSlider" type="HSlider" parent="Tune/Suspension" unique_id=238098708]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Suspension" unique_id=162644190]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Q" type="Label" parent="." unique_id=2108326235]
 custom_minimum_size = Vector2(0, 132)
 layout_mode = 0
@@ -280,3 +426,8 @@ text = "CAR MODEL"
 [connection signal="pressed" from="ScrollTop/Colors/Mats/Matte" to="." method="_on_matte_pressed"]
 [connection signal="pressed" from="ScrollTop/Colors/Mats/Candy" to="." method="_on_candy_pressed"]
 [connection signal="pressed" from="ScrollTop/Colors/Mats/Metal" to="." method="_on_metal_pressed"]
+[connection signal="value_changed" from="Tune/Aero/AeroSlider" to="." method="_on_aero_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Brakes/BrakeBiasSlider" to="." method="_on_brake_bias_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Drivetrain/DrivetrainSlider" to="." method="_on_drivetrain_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Transmission/TransSlider" to="." method="_on_trans_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Suspension/SuspensionSlider" to="." method="_on_suspension_slider_value_changed"]

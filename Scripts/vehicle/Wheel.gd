@@ -62,7 +62,7 @@ func get_ground_grip_multiplier() -> float:
 
 # bonus grip based on force pushing on ground, if near fully extended then grip rapidly decreases to 0
 func get_spring_grip_influence() -> float:
-	return (1 + spring_force * grip_per_mass) * global.spring_grip_curve.sample( (car.components.suspension.length - spring_prev) / car.components.suspension.length )
+	return (1 + spring_force * grip_per_mass) * global.spring_grip_curve.sample( (car.components.suspension.get_length() - spring_prev) / car.components.suspension.get_length() )
 
 # compute total grip
 func get_long_grip() -> float:
@@ -90,14 +90,14 @@ func get_used_lat_grip() -> float:
 # apply spring force, return force length applied
 func _spring() -> float:
 	var up = global_basis.y
-	var dist := car.components.suspension.length
+	var dist := car.components.suspension.get_length()
 	var total_force : Vector3
 	
 	if on_ground:
 		# distance to ground
 		dist = -(get_collision_point() - global_position).dot(up)
 		# % of how compressed suspension is
-		var compression = (car.components.suspension.length - dist) / car.components.suspension.length
+		var compression = (car.components.suspension.get_length() - dist) / car.components.suspension.get_length()
 		
 		# difference since last frame used for damping
 		var spring_diff = clampf(compression - spring_prev, -1, 1)

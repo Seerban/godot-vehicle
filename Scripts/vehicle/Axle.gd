@@ -40,8 +40,8 @@ func update() -> void:
 	var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
 	add_child(wheel)
 	
-	wheel.target_position = Vector3(0, -car.components.suspension.length, 0)
-
+	wheel.target_position = Vector3(0, -car.components.suspension.get_length(), 0)
+	print(wheel.target_position)
 	
 	if is_rear(): 	wheel.position = Vector3(0, 0, -half_width - 0.5 * car.components.tires.wheel_width * car.components.tires.rear_grip_boost / 2.0 )
 	else:			wheel.position = Vector3(0, 0, -half_width - 0.5 * car.components.tires.wheel_width / 2.0 )

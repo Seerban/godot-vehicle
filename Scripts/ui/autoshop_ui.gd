@@ -13,6 +13,7 @@ var top_offset := 0.0
 @onready var back_button := $ScrollTop/HBox/Back
 @onready var component_button := $ScrollTop/HBox/ComponentButton
 @onready var default_buttons := [$ScrollTop/HBox/Back, $ScrollTop/HBox/Color, $ScrollTop/HBox/Engine, $ScrollTop/HBox/Transmission, $ScrollTop/HBox/Aspiration, $ScrollTop/HBox/Suspension, $ScrollTop/HBox/Tires, $ScrollTop/HBox/Aero, $ScrollTop/HBox/Weight, $ScrollTop/HBox/Brakes, $ScrollTop/HBox/Drivetrain, $ScrollTop/HBox/ComponentButton]
+@onready var tune_vbox := $Tune
 
 func _ready() -> void:
 	$ScrollTop/HBox/Spacer.custom_minimum_size.x = get_viewport_rect().size.x / 2 - button_size / 2
@@ -72,6 +73,19 @@ func get_visible_buttons() -> int:
 func update_stats() -> void:
 	if global.player_car == null: return
 	$Model.text = global.player_car.components.model
+	
+	var comps = global.player_car.components
+	
+	tune_vbox.get_node("Aero/AeroSlider").value = comps.aero_kit.front_bias
+	tune_vbox.get_node("Aero/Value").text = "%.2f" % comps.aero_kit.front_bias
+	tune_vbox.get_node("Brakes/BrakeBiasSlider").value = comps.brakes.bias
+	tune_vbox.get_node("Brakes/Value").text = "%.2f" % comps.brakes.bias
+	tune_vbox.get_node("Drivetrain/DrivetrainSlider").value = comps.drivetrain.bias
+	tune_vbox.get_node("Drivetrain/Value").text = "%.2f" % comps.drivetrain.bias
+	tune_vbox.get_node("Transmission/TransSlider").value = comps.transmission.long_bias
+	tune_vbox.get_node("Transmission/Value").text = "%.2f" % comps.transmission.long_bias
+	tune_vbox.get_node("Suspension/SuspensionSlider").value = comps.suspension.length_tune
+	tune_vbox.get_node("Suspension/Value").text = "%.2f" % comps.suspension.length_tune
 
 func update_modulate() -> void:
 	var temp_idx := 0.0	
@@ -88,6 +102,9 @@ func update_modulate() -> void:
 func _on_back_pressed() -> void:
 	top_idx = 0.0
 	top_offset = 0.0
+	
+	for i in tune_vbox.get_children():
+		i.visible = false
 	
 	if back_button.text == "Exit":
 		visible = false
@@ -143,21 +160,31 @@ func load_parts_buttons(path: String) -> void:
 
 func _on_engine_pressed() -> void : load_parts_buttons("Engines")
 
-func _on_transmission_pressed() -> void: load_parts_buttons("Transmissions")
+func _on_transmission_pressed() -> void:
+	load_parts_buttons("Transmissions")
+	tune_vbox.get_node("Transmission").visible = true
 
 func _on_aspiration_pressed() -> void: load_parts_buttons("Aspirations")
 
-func _on_suspension_pressed() -> void: load_parts_buttons("Suspensions")
+func _on_suspension_pressed() -> void:
+	load_parts_buttons("Suspensions")
+	tune_vbox.get_node("Suspension").visible = true
 
 func _on_tires_pressed() -> void: load_parts_buttons("Tires")
 
-func _on_aero_pressed() -> void: load_parts_buttons("AeroKits")
+func _on_aero_pressed() -> void:
+	load_parts_buttons("AeroKits")
+	tune_vbox.get_node("Aero").visible = true
 
 func _on_weight_pressed() -> void: load_parts_buttons("WeightKits")
 
-func _on_brakes_pressed() -> void: load_parts_buttons("Brakes")
+func _on_brakes_pressed() -> void:
+	load_parts_buttons("Brakes")
+	tune_vbox.get_node("Brakes").visible = true
 
-func _on_drivetrain_pressed() -> void: load_parts_buttons("Drivetrains")
+func _on_drivetrain_pressed() -> void:
+	load_parts_buttons("Drivetrains")
+	tune_vbox.get_node("Drivetrain").visible = true
 
 func _on_color_pressed() -> void:
 	top_idx = 0.0
@@ -202,3 +229,47 @@ func _on_candy_pressed() -> void:
 
 func _on_metal_pressed() -> void:
 	global.player_car.components.material = "Metal"
+
+func _on_aero_slider_value_changed(value: float) -> void:
+	if global.player_car.components.aero_kit.tunable == false:
+		$Tune/Aero/AeroSlider.value = 0.0
+		$Tune/Aero/Value.text = "0.00"
+		return
+	
+	$Tune/Aero/Value.text = "%.2f" % value
+	global.player_car.components.aero_kit.front_bias = value
+
+func _on_brake_bias_slider_value_changed(value: float) -> void:
+	if global.player_car.components.brakes.tunable == false:
+		$Tune/Brakes/BrakeBiasSlider.value = 0.0
+		$Tune/Brakes/Value.text = "0.00"
+		return
+	
+	$Tune/Brakes/Value.text = "%.2f" % value
+	global.player_car.components.brakes.bias = value
+
+func _on_drivetrain_slider_value_changed(value: float) -> void:
+	if global.player_car.components.drivetrain.type == DrivetrainStats.types.RWD:
+		$Tune/Drivetrain/DrivetrainSlider.value = -1.0
+		$Tune/Drivetrain/Value.text = "-1.00"
+		return
+	elif global.player_car.components.drivetrain.type == DrivetrainStats.types.FWD:
+		$Tune/Drivetrain/DrivetrainSlider.value = 1.0
+		$Tune/Drivetrain/Value.text = "1.00"
+		return
+	
+	$Tune/Drivetrain/Value.text = "%.2f" % value
+	global.player_car.components.drivetrain.bias = value
+
+func _on_trans_slider_value_changed(value: float) -> void:
+	value = clamp(value, -global.player_car.components.transmission.tune_limit, global.player_car.components.transmission.tune_limit)
+	$Tune/Transmission/TransSlider.value = value
+	$Tune/Transmission/Value.text = "%.2f" % value
+	global.player_car.components.transmission.long_bias = value
+
+func _on_suspension_slider_value_changed(value: float) -> void:
+	value = clamp(value, -global.player_car.components.suspension.length_tune_limit, global.player_car.components.suspension.length_tune_limit)
+	$Tune/Suspension/SuspensionSlider.value = value
+	$Tune/Suspension/Value.text = "%.2f" % value
+	global.player_car.components.suspension.length_tune = value
+	global.player_car.update()

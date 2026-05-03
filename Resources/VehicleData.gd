@@ -59,20 +59,11 @@ var attached_body: Node3D
 		drivetrain = x
 		if attached_body != null: attached_body.update()
 
-################################
-# tuning variables
-@export var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
-@export var aero_bias := 0.0
 @export var turning_deg := 20.0
 
 func add_as_vehicle(target : Node) -> Vehicle:
 	var vehicle: Vehicle = load(global.CAR_MODEL_PATH + model + ".tscn").instantiate()
 	target.add_child(vehicle)
 	vehicle.components = self
-	
-	vehicle.brake_bias = brake_bias
-	vehicle.aero_bias = aero_bias
-	
-	vehicle.turning_deg = turning_deg
 	
 	return vehicle

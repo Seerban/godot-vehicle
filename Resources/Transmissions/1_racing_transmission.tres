@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="TransmissionStats" format=3 uid="uid://cup1ge7yw0h1i"]
 
-[ext_resource type="Script" uid="uid://dwx6bdnomhfav" path="res://Resources/Transmission.gd" id="1_65w7n"]
+[ext_resource type="Script" uid="uid://dwx6bdnomhfav" path="res://Resources/Transmission.gd" id="1_oc5bo"]
 
 [resource]
-script = ExtResource("1_65w7n")
-speed_multiplier = 1.1
-power_multiplier = 1.1
+script = ExtResource("1_oc5bo")
+multiplier = 1.05
+tune_limit = 0.1
 name = "Racing Trans"
 weight = 3.0
 metadata/_custom_type_script = "uid://dwx6bdnomhfav"

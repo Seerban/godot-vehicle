@@ -1,7 +1,10 @@
 extends RigidBody3D
 class_name Vehicle
 
+var accel_curve : Curve = load("res://Curves/acceleration.tres")
+
 var enabled := true
+var controller : VehicleController = VehicleController.new() # ai/player controller
 # References
 var mesh: MeshColorable
 
@@ -17,16 +20,10 @@ var is_speeding := false
 var axles : Array[VehicleAxle]
 var wheels : Array[Wheel]
 
-# visual component
-@onready var lights : LightsManager # managed in PlayerController
-
-# ai or player controller
-var controller : VehicleController = VehicleController.new()
-
 # 1 = no grip penalty from accelerating/braking, gives arcade feel
 @export var grip_forgiveness : float = 0.0
 
-var accel_curve : Curve = load("res://Curves/acceleration.tres")
+@onready var lights : LightsManager # managed in PlayerController
 
 # all components that give data
 var components := VehicleData.new() :
@@ -34,12 +31,6 @@ var components := VehicleData.new() :
 		components = x
 		components.attached_body = self
 		update()
-
-################################
-# tuning variables
-var brake_bias := 0.0 # rear-front force split (-1 = 100% rear,  1 = 100% front)
-var aero_bias := 0.0
-var turning_deg := 20.0
 
 func _ready() -> void:
 	components.attached_body = self
@@ -85,10 +76,10 @@ func get_downforce() -> float:
 	return components.chassis.downforce + components.aero_kit.downforce
 
 func get_top_speed() -> float:
-	return components.engine.speed * components.transmission.speed_multiplier
+	return components.engine.speed * components.transmission.multiplier * (1 + components.transmission.long_bias)
 
 func get_power() -> float:
-	return components.engine.power * components.transmission.power_multiplier
+	return components.engine.power * components.transmission.multiplier * (1 - components.transmission.long_bias)
 
 func get_boost() -> float:
 	return components.aspiration.power_multiplier
@@ -181,7 +172,7 @@ func _aero() -> void:
 	var downforce := -global_basis.y * force * get_downforce()
 	var drag_force : Vector3 = -forward * force * get_drag()
 	
-	var force_point = forward * aero_bias # not based on car length atm
+	var force_point = forward * components.aero_kit.front_bias # not based on car length atm
 	
 	apply_force(downforce, force_point)
 	apply_force(drag_force, Vector3.ZERO)
@@ -214,9 +205,9 @@ func set_braking(x := 0.) -> void:
 		for w in axle.get_children():
 			# account for rear-front bias
 			if axle.is_rear():
-				w.brake_power = x + x * brake_bias
+				w.brake_power = x + x * components.brakes.bias
 			else:
-				w.brake_power = x - x * brake_bias
+				w.brake_power = x - x * components.brakes.bias
 			
 			w.brake_power *= get_brake_power()
 	
@@ -228,4 +219,4 @@ func set_braking(x := 0.) -> void:
 # [-1-1] multiplier using turning degrees
 func set_steering(x := 0.) -> void:
 	for w in wheels:
-		w.steer(x * turning_deg)
+		w.steer(x * components.turning_deg)
