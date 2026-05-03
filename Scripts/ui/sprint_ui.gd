@@ -36,11 +36,12 @@ func _ready() -> void:
 	set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
+	if !visible: set_physics_process(false)
+	
 	position.y = lerp(position.y, 0.0, 0.03)
 	
 	if Input.is_key_pressed(KEY_E):
 		sprint_ref.start_race()
-		set_physics_process(false)
 		visible = false
 	
 	if Input.is_key_pressed(KEY_X):
@@ -48,3 +49,7 @@ func _physics_process(delta: float) -> void:
 			var path = "res://GhostData/" + sprint_ref.name + "_PB.tres"
 			var err = ResourceSaver.save(sprint_ref.best_ghost.data, path)
 			print("EXPORTED GHOST DATA")
+
+
+func _on_visibility_changed() -> void:
+	set_physics_process(true)

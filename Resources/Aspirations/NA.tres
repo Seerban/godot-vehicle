@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AspirationStats" format=3 uid="uid://cqrhl7a63a3vu"]
 
 [ext_resource type="Curve" uid="uid://cbxlmj24mb1lq" path="res://Curves/constant.tres" id="1_66fju"]
-[ext_resource type="Script" uid="uid://b1033iwdic35n" path="res://Scripts/vehicle/components/Aspiration.gd" id="2_wfwdn"]
+[ext_resource type="Script" uid="uid://b1033iwdic35n" path="res://Resources/Aspiration.gd" id="2_wfwdn"]
 
 [resource]
 script = ExtResource("2_wfwdn")

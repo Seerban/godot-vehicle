@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EngineStats" format=3 uid="uid://crivdb2lb64gs"]
 
-[ext_resource type="Script" uid="uid://c2sos8kslywl0" path="res://Scripts/vehicle/components/Engine.gd" id="1_x45a8"]
+[ext_resource type="Script" uid="uid://c2sos8kslywl0" path="res://Resources/Engine.gd" id="1_x45a8"]
 
 [resource]
 script = ExtResource("1_x45a8")

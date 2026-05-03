@@ -1,14 +1,15 @@
 [gd_scene format=4 uid="uid://d1iwxqcpwrsai"]
 
-[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/UIManager.gd" id="1_tuwxu"]
-[ext_resource type="Script" uid="uid://djvyek5wii0q7" path="res://Scripts/ui/minimap.gd" id="2_qokbk"]
+[ext_resource type="Script" uid="uid://c03twg66f0tmp" path="res://Scripts/ui/UIManager.gd" id="1_tuwxu"]
+[ext_resource type="Script" uid="uid://djvyek5wii0q7" path="res://Scripts/ui/map.gd" id="2_qokbk"]
 [ext_resource type="Script" uid="uid://1ar8up2a0bgu" path="res://Scripts/ui/map_static.gd" id="3_fh02c"]
 [ext_resource type="Script" uid="uid://bdvj7b5usylxj" path="res://Scripts/ui/map_dynamic.gd" id="4_3qqp5"]
 [ext_resource type="Texture2D" uid="uid://c8afv5e8og2hj" path="res://Textures/ui/icon.png" id="5_cgrnb"]
-[ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://Scenes/ui/garage_ui.tscn" id="6_r85vj"]
+[ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://Scenes/ui/autoshop_ui.tscn" id="6_r85vj"]
 [ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="7_y8xa2"]
 [ext_resource type="Texture2D" uid="uid://rsf13m7j0rcl" path="res://Textures/circle_transparent.png" id="8_yvdio"]
 [ext_resource type="Texture2D" uid="uid://nu2vo4xwoewr" path="res://Textures/ui/speedometer2.png" id="9_cetxx"]
+[ext_resource type="Script" uid="uid://do1ejp1etblch" path="res://Scripts/ui/meters.gd" id="9_fh02c"]
 [ext_resource type="Texture2D" uid="uid://dj1lhocphn5yc" path="res://Textures/ui/speedometer.png" id="10_8rni6"]
 [ext_resource type="Texture2D" uid="uid://b1bsjphbnrqyc" path="res://Textures/ui/speedometer4.png" id="11_j5xg7"]
 [ext_resource type="Texture2D" uid="uid://uokq0ockw34c" path="res://Textures/ui/speedometer3.png" id="12_ys3bk"]
@@ -16,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cok2ccsm0wo6x" path="res://Textures/RoundedRect2.png" id="14_a31vb"]
 [ext_resource type="Script" uid="uid://cjrra7f6xv1ob" path="res://Scripts/ui/sprint_live_ui.gd" id="15_m7thg"]
 [ext_resource type="FontFile" uid="uid://b6tmp21qg8doy" path="res://Font/RobotoMono-Bold.ttf" id="16_m5a7q"]
-[ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/autoshop_ui.gd" id="17_sqr7q"]
+[ext_resource type="Script" uid="uid://b5p6y6bixijov" path="res://Scripts/ui/autoshop_popup.gd" id="17_sqr7q"]
 [ext_resource type="Script" uid="uid://cv57nf0genhhd" path="res://Scripts/ui/sprint_renderer.gd" id="18_bqx7h"]
 [ext_resource type="Script" uid="uid://dkldcdadfe103" path="res://Scripts/ui/sprint_ui.gd" id="18_qokbk"]
 [ext_resource type="Script" uid="uid://bbffyc6i6kaax" path="res://Scripts/sprint/sprint_finish.gd" id="19_22gth"]
@@ -26,32 +27,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmyfn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
-
-[sub_resource type="GDScript" id="GDScript_wflq5"]
-script/source = "extends Control
-
-@onready var speedometer := $BG/SpeedBar
-@onready var accelmeter := $BG/AccelBar
-@onready var brakemeter := $BG/BrakeBar
-@onready var speed_label := $BG/SpeedLabel
-
-@onready var boostmeter = $BG2/BoostBar
-@onready var boost_label = $BG2/BoostLabel
-
-func _process(delta: float) -> void:
-	if !is_instance_valid(global.player_car): return
-	
-	speedometer.value = global.player_car.get_forward_speed() * 10.0
-	speedometer.max_value = global.player_car.get_top_speed() * 10.0
-	speed_label.text = str(abs(int(global.player_car.get_forward_speed())))
-	accelmeter.value = global.player_car.current_accel * 100.0
-	brakemeter.value = global.player_car.current_brake * 100.0
-	
-	boostmeter.value = float(round(global.player_car.get_boost_output() * 100) - 100) * 100.0
-	boostmeter.max_value = global.player_car.get_boost() * 100 * 100.0 + 0.1
-	
-	boost_label.text = str(int(round(global.player_car.get_boost_output() * 100)) - 100)
-"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvsgm"]
 
@@ -1444,7 +1419,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 1
 theme = ExtResource("7_y8xa2")
-script = SubResource("GDScript_wflq5")
+script = ExtResource("9_fh02c")
 
 [node name="BG" type="TextureRect" parent="Meters" unique_id=670813888]
 clip_children = 2
@@ -2476,6 +2451,11 @@ theme_override_font_sizes/font_size = 24
 text = "$0"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="visibility_changed" from="AutoshopPopup" to="AutoshopPopup" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Grip" to="Grip" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="SprintLive" to="SprintLive" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Sprint" to="Sprint" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="SprintFinish" to="SprintFinish" method="_on_visibility_changed"]
 [connection signal="pressed" from="Menu/VBox/Continue" to="Menu" method="_on_continue_pressed"]
 [connection signal="pressed" from="Menu/VBox/Save" to="Menu" method="_on_save_pressed"]
 [connection signal="pressed" from="Menu/VBox/Exit" to="Menu" method="_on_exit_pressed"]

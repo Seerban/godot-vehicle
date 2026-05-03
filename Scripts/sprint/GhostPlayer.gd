@@ -17,7 +17,7 @@ func start_recording() -> void:
 	set_process(true)
 	
 	car = global.player_car
-	data.model = car.car_model
+	data.model = car.components.model
 	car_mesh = car.mesh
 	
 	recording = true

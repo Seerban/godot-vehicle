@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WeightKitStats" format=3 uid="uid://d37vhen1rbnu5"]
 
-[ext_resource type="Script" uid="uid://cf5lbkrhx63wf" path="res://Scripts/vehicle/components/WeightKit.gd" id="1_7ohy1"]
+[ext_resource type="Script" uid="uid://cf5lbkrhx63wf" path="res://Resources/WeightKit.gd" id="1_7ohy1"]
 
 [resource]
 script = ExtResource("1_7ohy1")

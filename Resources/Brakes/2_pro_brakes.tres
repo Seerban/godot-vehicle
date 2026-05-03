@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BrakesStats" format=3 uid="uid://egercg3u32q4"]
 
-[ext_resource type="Script" uid="uid://bq5nth0qsvkdb" path="res://Scripts/vehicle/components/Brakes.gd" id="1_adelr"]
+[ext_resource type="Script" uid="uid://bq5nth0qsvkdb" path="res://Resources/Brakes.gd" id="1_adelr"]
 
 [resource]
 script = ExtResource("1_adelr")

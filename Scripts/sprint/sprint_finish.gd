@@ -23,10 +23,10 @@ func popup(sprint : SprintRace, time : float, cash : int):
 		elif time < sprint.silver_data.total_time: $VBox/Medal.text = "Medal: [color=silver]Silver[/color]"
 		elif time < sprint.bronze_data.total_time: $VBox/Medal.text = "Medal: [color=sandybrown]Bronze[/color]"
 	else: $VBox/Medal.text = "Medal: None"
-	
-	set_physics_process(true)
 
 func _physics_process(delta: float) -> void:
+	if !visible: set_physics_process(false)
+	
 	# if near end, lerp back up
 	if time_left < 1.0: lerp(position.y, -get_rect().size.y, 0.05)
 	else: position.y = lerp(position.y, 0.0, 0.05)
@@ -34,5 +34,7 @@ func _physics_process(delta: float) -> void:
 	time_left -= delta
 	
 	if time_left <= 0.0:
-		set_physics_process(false)
 		visible = false
+
+func _on_visibility_changed() -> void:
+	set_physics_process(true)

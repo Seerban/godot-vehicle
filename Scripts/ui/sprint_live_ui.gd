@@ -43,6 +43,8 @@ func _ready() -> void:
 	set_process(false)
 
 func _process(delta: float) -> void:
+	if !visible: set_process(false)
+	
 	time_passed += delta
 	timer.text = global.format_time(time_passed)
 	
@@ -51,3 +53,6 @@ func _process(delta: float) -> void:
 	
 	if exit_bar.value == 1.0:
 		signal_end_race()
+
+func _on_visibility_changed() -> void:
+	set_process(true)

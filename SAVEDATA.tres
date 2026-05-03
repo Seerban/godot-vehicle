@@ -1,18 +1,18 @@
-[gd_resource type="Resource" script_class="PlayerData" format=3]
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://brucuekrfk44q"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerData.gd" id="1_0fhjm"]
-[ext_resource type="Script" path="res://Scripts/sprint/GhostData.gd" id="2_03lks"]
-[ext_resource type="Resource" path="res://Resources/AeroKits/0_no_aero.tres" id="3_gbenl"]
-[ext_resource type="Resource" path="res://Resources/Aspirations/NA.tres" id="4_d5kgd"]
-[ext_resource type="Resource" path="res://Resources/Brakes/0_stock_brakes.tres" id="5_3fpde"]
-[ext_resource type="Resource" path="res://Resources/Chassis/default_chassis.tres" id="6_nxnnc"]
-[ext_resource type="Resource" path="res://Resources/Drivetrains/1_RWD.tres" id="7_g1oew"]
-[ext_resource type="Resource" path="res://Resources/Engines/1_engine_stock.tres" id="8_b7xhm"]
-[ext_resource type="Script" path="res://Resources/VehicleData.gd" id="9_4yqw6"]
-[ext_resource type="Resource" path="res://Resources/Suspensions/0_default_suspension.tres" id="10_kxgup"]
-[ext_resource type="Resource" path="res://Resources/Tires/1_racing_tires.tres" id="11_0fhjm"]
-[ext_resource type="Resource" path="res://Resources/Transmissions/0_stock_transmission.tres" id="12_o63j8"]
-[ext_resource type="Resource" path="res://Resources/WeightKits/0_no_weight_kit.tres" id="13_41mnb"]
+[ext_resource type="Script" uid="uid://cglkin367gtm8" path="res://Scripts/PlayerData.gd" id="1_0fhjm"]
+[ext_resource type="Script" uid="uid://coxsugyx63y4i" path="res://Scripts/sprint/GhostData.gd" id="2_03lks"]
+[ext_resource type="Resource" uid="uid://bnyt8txyt18sj" path="res://Resources/AeroKits/0_no_aero.tres" id="3_gbenl"]
+[ext_resource type="Resource" uid="uid://cqrhl7a63a3vu" path="res://Resources/Aspirations/NA.tres" id="4_d5kgd"]
+[ext_resource type="Resource" uid="uid://b7kxj4yfmpkua" path="res://Resources/Brakes/0_stock_brakes.tres" id="5_3fpde"]
+[ext_resource type="Resource" uid="uid://duq6luu8xv53m" path="res://Resources/Chassis/default_chassis.tres" id="6_nxnnc"]
+[ext_resource type="Resource" uid="uid://b2vmfgv47mmng" path="res://Resources/Drivetrains/1_RWD.tres" id="7_g1oew"]
+[ext_resource type="Resource" uid="uid://crivdb2lb64gs" path="res://Resources/Engines/1_engine_stock.tres" id="8_b7xhm"]
+[ext_resource type="Script" uid="uid://cp0i37a18pwgp" path="res://Resources/VehicleData.gd" id="9_4yqw6"]
+[ext_resource type="Resource" uid="uid://4pvktt8wdc6b" path="res://Resources/Suspensions/2_racing_suspension.tres" id="10_0fhjm"]
+[ext_resource type="Resource" uid="uid://c0hqdk6v7t27" path="res://Resources/Tires/0_default_tires.tres" id="11_03lks"]
+[ext_resource type="Resource" uid="uid://k5yjiw4uukwn" path="res://Resources/Transmissions/0_stock_transmission.tres" id="12_o63j8"]
+[ext_resource type="Resource" uid="uid://rv2m6il0vvky" path="res://Resources/WeightKits/0_no_weight_kit.tres" id="13_41mnb"]
 
 [sub_resource type="Resource" id="Resource_0fhjm"]
 script = ExtResource("2_03lks")
@@ -151,8 +151,8 @@ frames = [{
 
 [sub_resource type="Resource" id="Resource_03lks"]
 script = ExtResource("9_4yqw6")
-color = Color(1, 0.9280192, 0.2670809, 1)
-tires = ExtResource("11_0fhjm")
+color = Color(0.6294441, 0.44000405, 1, 1)
+suspension = ExtResource("10_0fhjm")
 
 [resource]
 script = ExtResource("1_0fhjm")

@@ -45,6 +45,7 @@ func spawn_player() -> void:
 		set_player_pos()
 		call_deferred("set_player_pos")
 		player_car.enable()
+		ui_manager.show_usual()
 		return
 	
 	var player = player_data.vehicle

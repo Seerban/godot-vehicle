@@ -2,7 +2,6 @@ extends RigidBody3D
 class_name Vehicle
 
 var enabled := true
-var car_model := "car"
 # References
 var mesh: MeshColorable
 

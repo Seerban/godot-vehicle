@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AeroKitStats" format=3 uid="uid://bnyt8txyt18sj"]
 
-[ext_resource type="Script" uid="uid://bd5378s81ddp6" path="res://Scripts/vehicle/components/AeroKit.gd" id="1_2on22"]
+[ext_resource type="Script" uid="uid://bd5378s81ddp6" path="res://Resources/AeroKit.gd" id="1_2on22"]
 
 [resource]
 script = ExtResource("1_2on22")

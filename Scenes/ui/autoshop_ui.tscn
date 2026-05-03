@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bdota5kf7lvg1"]
+
+[ext_resource type="Script" uid="uid://kdy0pdgq6vog" path="res://Scripts/ui/autoshop_ui.gd" id="1_foa2b"]
+[ext_resource type="Script" uid="uid://wqq2tagyhdo2" path="res://Scripts/ui/component_button.gd" id="2_44t7a"]
+[ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="2_oetqw"]
+
+[node name="Autoshop" type="Control" unique_id=681594695]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_foa2b")
+
+[node name="ScrollTop" type="ScrollContainer" parent="." unique_id=1077363926]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="BG" type="ColorRect" parent="ScrollTop" unique_id=1030257437]
+custom_minimum_size = Vector2(20000, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBox" type="HBoxContainer" parent="ScrollTop" unique_id=2013559807]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Spacer2" type="Control" parent="ScrollTop/HBox" unique_id=1333746560]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="ScrollTop/HBox" unique_id=914053996]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Exit"
+
+[node name="Color" type="Button" parent="ScrollTop/HBox" unique_id=1790202939]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Color"
+
+[node name="Engine" type="Button" parent="ScrollTop/HBox" unique_id=2032232276]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Engine"
+
+[node name="Transmission" type="Button" parent="ScrollTop/HBox" unique_id=1491158855]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Transmission"
+
+[node name="Aspiration" type="Button" parent="ScrollTop/HBox" unique_id=307117442]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Aspiration"
+
+[node name="Suspension" type="Button" parent="ScrollTop/HBox" unique_id=2083267203]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Suspension"
+
+[node name="Tires" type="Button" parent="ScrollTop/HBox" unique_id=405052957]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Tires"
+
+[node name="Aero" type="Button" parent="ScrollTop/HBox" unique_id=1902323982]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Aero"
+
+[node name="Weight" type="Button" parent="ScrollTop/HBox" unique_id=271184936]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Weight"
+
+[node name="Brakes" type="Button" parent="ScrollTop/HBox" unique_id=1807543353]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Brakes"
+
+[node name="Drivetrain" type="Button" parent="ScrollTop/HBox" unique_id=312029535]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Drivetrain"
+
+[node name="ComponentButton" type="Button" parent="ScrollTop/HBox" unique_id=1654252626]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "COMPONENT"
+script = ExtResource("2_44t7a")
+
+[node name="Spacer" type="Control" parent="ScrollTop/HBox" unique_id=1070902263]
+layout_mode = 2
+
+[node name="Q" type="Label" parent="." unique_id=2108326235]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 32
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="Label" parent="." unique_id=2012035560]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 132.0
+grow_horizontal = 0
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 32
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Model" type="Label" parent="." unique_id=1646543050]
+layout_mode = 0
+offset_top = 132.0
+offset_right = 40.0
+offset_bottom = 155.0
+theme = ExtResource("2_oetqw")
+text = "CAR MODEL"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="ScrollTop/HBox/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Engine" to="." method="_on_engine_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Transmission" to="." method="_on_transmission_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Aspiration" to="." method="_on_aspiration_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Suspension" to="." method="_on_suspension_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Tires" to="." method="_on_tires_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Aero" to="." method="_on_aero_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Weight" to="." method="_on_weight_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Brakes" to="." method="_on_brakes_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Drivetrain" to="." method="_on_drivetrain_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/ComponentButton" to="ScrollTop/HBox/ComponentButton" method="_on_pressed"]

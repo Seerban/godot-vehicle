@@ -6,13 +6,16 @@ var panels : Dictionary[Wheel, Control]
 @onready var gradient := preload("res://Curves/grip_gradient.tres")
 
 func initialize() -> void:
+	if global.player_car == null: return
+	
 	var panels_refs = [$Grid/RLPanel, $Grid/RRPanel, $Grid/FLPanel, $Grid/FRPanel]
 	panels.clear()
 	for i in range(4):
 		panels[global.player_car.wheels[i]] = panels_refs[i]
 
 func _process(delta: float) -> void:
-	if !visible: return
+	if !visible: set_physics_process(false)
+	
 	if len(panels) == 0 or !is_instance_valid(panels.keys()[0]):
 		initialize()
 		return
@@ -38,3 +41,6 @@ func _process(delta: float) -> void:
 		str(int(global.player_car.get_downforce_output())) ]
 	
 	$Speed.text = "Speed: %s" % str(int(global.player_car.get_forward_speed()))
+
+func _on_visibility_changed() -> void:
+	set_physics_process(true)

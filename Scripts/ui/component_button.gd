@@ -1,10 +1,13 @@
 extends Button
 
 @export var res : VehicleComponent
-@export var initializer_ref : Control
+@export var autoshop : Control
 
 func _ready() -> void:
-	text = res.name
+	if res == null:
+		text = "INVALID BUTTON"
+	else:
+		text = res.name
 
 func _on_pressed() -> void:
 	var car = global.player_car
@@ -18,4 +21,4 @@ func _on_pressed() -> void:
 	if res is SuspensionStats:		car.components.suspension = res
 	if res is AspirationStats:		car.components.aspiration = res
 	
-	initializer_ref.update()
+	autoshop.update_stats()
