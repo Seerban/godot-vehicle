@@ -2,6 +2,8 @@ extends Control
 
 const PARTS_PATH = "res://Resources/"
 
+var rgb := Color.WHITE
+
 var top_idx := 0.0
 var top_offset := 0.0
 
@@ -18,14 +20,18 @@ func _ready() -> void:
 	update_modulate()
 
 func _physics_process(delta: float) -> void:
-	if !visible: set_physics_process(false)
+	if !visible: 
+		set_physics_process(false)
+		return
 	scroll_top.scroll_horizontal = lerpf(scroll_top.scroll_horizontal, top_offset, 0.05)
+	global.player_car.linear_velocity *= 0.8
 
 func _input(event: InputEvent) -> void:
-	if scroll_top.visible == false: return
+	if !visible: return
 	
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_Q:
+			if !scroll_top_hbox.visible: return
 			if top_offset <= 0.1: return
 			top_offset -= button_size
 			top_idx -= 1
@@ -33,11 +39,24 @@ func _input(event: InputEvent) -> void:
 			update_modulate()
 		
 		elif event.keycode == KEY_E:
+			if !scroll_top_hbox.visible: return
 			if top_offset >= (get_visible_buttons()-1) * button_size - 1.0: return
 			top_offset += button_size
 			top_idx += 1
 			
 			update_modulate()
+		
+		elif event.keycode == KEY_ENTER:
+			if scroll_top_hbox.visible:
+				var temp = top_idx
+				for i in scroll_top_hbox.get_children():
+					if i is Button and i.visible:
+						if temp == 0:
+							i.emit_signal("pressed")
+							return
+						temp -= 1
+			elif $ScrollTop/Colors.visible:
+				$ScrollTop/Colors/BackColor.emit_signal("pressed")
 
 func _on_visibility_changed() -> void:
 	set_physics_process(true)
@@ -139,3 +158,47 @@ func _on_weight_pressed() -> void: load_parts_buttons("WeightKits")
 func _on_brakes_pressed() -> void: load_parts_buttons("Brakes")
 
 func _on_drivetrain_pressed() -> void: load_parts_buttons("Drivetrains")
+
+func _on_color_pressed() -> void:
+	top_idx = 0.0
+	top_offset = 0.0
+	$ScrollTop/HBox.visible = false
+	$ScrollTop/Colors.visible = true
+
+func _on_back_color_pressed() -> void:
+	top_idx = 0.0
+	top_offset = 0.0
+	$ScrollTop/HBox.visible = true
+	$ScrollTop/Colors.visible = false
+	update_modulate()
+
+func update_color():
+	global.player_car.components.color = rgb
+
+func _on_g_slider_drag_ended(value_changed: bool) -> void:
+	rgb.g = value_changed
+	update_color()
+
+func _on_r_slider_value_changed(value: float) -> void:
+	rgb.r = value
+	update_color()
+
+func _on_g_slider_value_changed(value: float) -> void:
+	rgb.g = value
+	update_color()
+
+func _on_b_slider_value_changed(value: float) -> void:
+	rgb.b = value
+	update_color()
+
+func _on_gloss_pressed() -> void:
+	global.player_car.components.material = "Gloss"
+
+func _on_matte_pressed() -> void:
+	global.player_car.components.material = "Matte"
+
+func _on_candy_pressed() -> void:
+	global.player_car.components.material = "Candy"
+
+func _on_metal_pressed() -> void:
+	global.player_car.components.material = "Metal"

@@ -54,7 +54,7 @@ func start_replay(label_col := Color.WHITE) -> void:
 	clock = 0.0
 	replaying = true
 
-func _replay_process(delta : float) -> void:
+func _replay_process(delta: float) -> void:
 	if !is_instance_valid(body):
 		print("ERROR: invalid ghost body to replay")
 		return

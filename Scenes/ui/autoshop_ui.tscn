@@ -29,6 +29,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBox" type="HBoxContainer" parent="ScrollTop" unique_id=2013559807]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -102,6 +103,120 @@ script = ExtResource("2_44t7a")
 [node name="Spacer" type="Control" parent="ScrollTop/HBox" unique_id=1070902263]
 layout_mode = 2
 
+[node name="Colors" type="HBoxContainer" parent="ScrollTop" unique_id=1629215711]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 64
+
+[node name="Spacer3" type="Control" parent="ScrollTop/Colors" unique_id=303388271]
+layout_mode = 2
+
+[node name="BackColor" type="Button" parent="ScrollTop/Colors" unique_id=1189353155]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.3
+text = "Back"
+
+[node name="RGB" type="VBoxContainer" parent="ScrollTop/Colors" unique_id=1789651555]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_oetqw")
+
+[node name="RedSplit" type="HSplitContainer" parent="ScrollTop/Colors/RGB" unique_id=1510611167]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollTop/Colors/RGB/RedSplit" unique_id=36612155]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "RED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RSlider" type="HSlider" parent="ScrollTop/Colors/RGB/RedSplit" unique_id=1038078011]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="GreenSplit" type="HSplitContainer" parent="ScrollTop/Colors/RGB" unique_id=321020260]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollTop/Colors/RGB/GreenSplit" unique_id=1904001616]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "GREEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GSlider" type="HSlider" parent="ScrollTop/Colors/RGB/GreenSplit" unique_id=498212416]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BlueSplit" type="HSplitContainer" parent="ScrollTop/Colors/RGB" unique_id=770023013]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollTop/Colors/RGB/BlueSplit" unique_id=2073428295]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+theme_override_colors/font_color = Color(0.003921569, 0, 1, 1)
+text = "BLUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BSlider" type="HSlider" parent="ScrollTop/Colors/RGB/BlueSplit" unique_id=1219277887]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Mats" type="GridContainer" parent="ScrollTop/Colors" unique_id=1741147111]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+columns = 4
+
+[node name="Gloss" type="Button" parent="ScrollTop/Colors/Mats" unique_id=847376762]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Gloss"
+
+[node name="Matte" type="Button" parent="ScrollTop/Colors/Mats" unique_id=2121375875]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Matte"
+
+[node name="Candy" type="Button" parent="ScrollTop/Colors/Mats" unique_id=1599007567]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Candy"
+
+[node name="Metal" type="Button" parent="ScrollTop/Colors/Mats" unique_id=1567022840]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Metal"
+
+[node name="Spacer2" type="Control" parent="ScrollTop/Colors" unique_id=1871347395]
+layout_mode = 2
+
 [node name="Q" type="Label" parent="." unique_id=2108326235]
 custom_minimum_size = Vector2(0, 132)
 layout_mode = 0
@@ -128,16 +243,25 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Model" type="Label" parent="." unique_id=1646543050]
+[node name="Mouse" type="Label" parent="." unique_id=668108412]
 layout_mode = 0
 offset_top = 132.0
-offset_right = 40.0
+offset_right = 94.0
 offset_bottom = 155.0
+theme = ExtResource("2_oetqw")
+text = "Press C to move mouse freely"
+
+[node name="Model" type="Label" parent="." unique_id=1646543050]
+layout_mode = 0
+offset_top = 164.0
+offset_right = 94.0
+offset_bottom = 187.0
 theme = ExtResource("2_oetqw")
 text = "CAR MODEL"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="ScrollTop/HBox/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Color" to="." method="_on_color_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/Engine" to="." method="_on_engine_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/Transmission" to="." method="_on_transmission_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/Aspiration" to="." method="_on_aspiration_pressed"]
@@ -148,3 +272,11 @@ text = "CAR MODEL"
 [connection signal="pressed" from="ScrollTop/HBox/Brakes" to="." method="_on_brakes_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/Drivetrain" to="." method="_on_drivetrain_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/ComponentButton" to="ScrollTop/HBox/ComponentButton" method="_on_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/BackColor" to="." method="_on_back_color_pressed"]
+[connection signal="value_changed" from="ScrollTop/Colors/RGB/RedSplit/RSlider" to="." method="_on_r_slider_value_changed"]
+[connection signal="value_changed" from="ScrollTop/Colors/RGB/GreenSplit/GSlider" to="." method="_on_g_slider_value_changed"]
+[connection signal="value_changed" from="ScrollTop/Colors/RGB/BlueSplit/BSlider" to="." method="_on_b_slider_value_changed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Gloss" to="." method="_on_gloss_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Matte" to="." method="_on_matte_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Candy" to="." method="_on_candy_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Metal" to="." method="_on_metal_pressed"]
