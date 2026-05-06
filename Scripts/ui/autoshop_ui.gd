@@ -94,7 +94,9 @@ func update_modulate() -> void:
 			var a = 1.0 - abs(temp_idx - top_idx) * 0.2
 			a = clampf(a, 0.0, 1.0)
 			
-			i.modulate.a = a
+			i.modulate = Color(1, 1, 1, a)
+			if temp_idx == top_idx:
+				i.modulate = Color.ROYAL_BLUE
 			
 			temp_idx += 1
 
@@ -106,13 +108,13 @@ func _on_back_pressed() -> void:
 	for i in tune_vbox.get_children():
 		i.visible = false
 	
-	if back_button.text == "Exit":
+	if back_button.get_node("VBox/Label").text == "Exit":
 		visible = false
 		global.player_in_autoshop = false
 		global.spawn_player()
-	elif back_button.text == "Back":
+	elif back_button.get_node("VBox/Label").text == "Back":
 		load_parts_buttons('')
-		back_button.text = "Exit"
+		back_button.get_node("VBox/Label").text = "Exit"
 	
 	update_modulate()
 
@@ -141,7 +143,7 @@ func load_parts_buttons(path: String) -> void:
 		top_idx = 0.0
 		top_offset = 0.0
 		
-		back_button.text = "Back"
+		back_button.get_node("VBox/Label").text = "Back"
 		for i in default_buttons: i.visible = false
 		back_button.visible = true
 		

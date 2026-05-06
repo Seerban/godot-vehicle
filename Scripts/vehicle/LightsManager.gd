@@ -114,10 +114,13 @@ func add_lights() -> void:
 
 func add_trails() -> void:
 	for i in backs:
+		
 		var rear_trail : GPUParticles3D = load("res://Scenes/particles/rear_trails.tscn").instantiate()
 		add_child(rear_trail)
 		rear_trail.car = car
 		trails.append(rear_trail)
+		
+		if not (i.mesh is BoxMesh): return
 		
 		rear_trail.position = i.position
 		rear_trail.draw_pass_1.size.y = i.mesh.size.y

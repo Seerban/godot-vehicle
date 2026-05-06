@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		panel.get_node("WheelRect").modulate = lerp(panel.get_node("WheelRect").modulate, gradient.gradient.sample(grip_used), 0.5)
 	
 	$DownForce.text = "Weight: %s\n Downforce: %s" % \
-		[ str(int(global.player_car.get_weight())),
+		[ str(int(global.player_car.components.get_weight())),
 		str(int(global.player_car.get_downforce_output())) ]
 	
 	$Speed.text = "Speed: %s" % str(int(global.player_car.get_forward_speed()))

@@ -30,7 +30,7 @@ var attached_body: Node3D
 	set(x):
 		aspiration = x
 		if attached_body != null: attached_body.update()
-@export var chassis := preload("res://Resources/Chassis/default_chassis.tres") :
+@export var chassis := preload("res://Resources/Chassis/car_chassis.tres") :
 	set(x):
 		chassis = x
 		if attached_body != null: attached_body.update()
@@ -60,6 +60,32 @@ var attached_body: Node3D
 		if attached_body != null: attached_body.update()
 
 @export var turning_deg := 20.0
+
+func _init() -> void:
+	print("initialized vehicledata of model " + model)
+	chassis = load("res://Resources/Chassis/%s_chassis.tres" % model)
+
+func get_weight() -> float:
+	return chassis.weight * weight_kit.weight_multiplier + engine.weight + transmission.weight + aspiration.weight \
+		+ aero_kit.weight + suspension.weight + tires.weight + brakes.weight + drivetrain.weight
+
+func get_drag() -> float:
+	return chassis.drag + aero_kit.drag
+
+func get_downforce() -> float:
+	return chassis.downforce + aero_kit.downforce
+
+func get_top_speed() -> float:
+	return engine.speed * transmission.multiplier * (1 + transmission.long_bias)
+
+func get_power() -> float:
+	return engine.power * transmission.multiplier * (1 - transmission.long_bias)
+
+func get_boost() -> float:
+	return aspiration.power_multiplier
+
+func get_brake_power() -> float:
+	return brakes.brake_power
 
 func add_as_vehicle(target : Node) -> Vehicle:
 	var vehicle: Vehicle = load(global.CAR_MODEL_PATH + model + ".tscn").instantiate()

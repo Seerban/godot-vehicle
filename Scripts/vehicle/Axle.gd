@@ -41,10 +41,9 @@ func update() -> void:
 	add_child(wheel)
 	
 	wheel.target_position = Vector3(0, -car.components.suspension.get_length(), 0)
-	print(wheel.target_position)
 	
-	if is_rear(): 	wheel.position = Vector3(0, 0, -half_width - 0.5 * car.components.tires.wheel_width * car.components.tires.rear_grip_boost / 2.0 )
-	else:			wheel.position = Vector3(0, 0, -half_width - 0.5 * car.components.tires.wheel_width / 2.0 )
+	if is_rear(): 	wheel.position = Vector3(0, 0, -half_width - 0.5 * car.components.chassis.wheel_width * car.components.tires.rear_grip_boost / 2.0 )
+	else:			wheel.position = Vector3(0, 0, -half_width - 0.5 * car.components.chassis.wheel_width / 2.0 )
 	
 	# connect wheels
 	var wheel_opp : Wheel = wheel.duplicate()

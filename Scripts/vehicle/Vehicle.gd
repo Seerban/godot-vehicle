@@ -23,10 +23,10 @@ var wheels : Array[Wheel]
 # 1 = no grip penalty from accelerating/braking, gives arcade feel
 @export var grip_forgiveness : float = 0.0
 
-@onready var lights : LightsManager # managed in PlayerController
+@onready var lights : LightsManager = $LightsManager # managed in PlayerController
 
-# all components that give data
-var components := VehicleData.new() :
+# all components that give vehicle stats
+@export var components := VehicleData.new() :
 	set(x):
 		components = x
 		components.attached_body = self
@@ -35,12 +35,11 @@ var components := VehicleData.new() :
 func _ready() -> void:
 	components.attached_body = self
 	mesh = $CarMesh
-	mass = get_weight()
+	mass = components.get_weight()
 	center_of_mass.y = components.chassis.CoM_Y
 	if controller is PlayerController: global.player_car = self
 	controller.vehicle = self
 	update_wheels()
-	for i in get_children(): if i is LightsManager: lights = i
 
 
 @warning_ignore("unused_parameter")
@@ -66,41 +65,20 @@ func _on_body_entered(body: Node) -> void:
 ################################
 # getters from car components
 
-func get_weight() -> float:
-	return 100.0
-
-func get_drag() -> float:
-	return components.chassis.drag + components.aero_kit.drag
-
-func get_downforce() -> float:
-	return components.chassis.downforce + components.aero_kit.downforce
-
-func get_top_speed() -> float:
-	return components.engine.speed * components.transmission.multiplier * (1 + components.transmission.long_bias)
-
-func get_power() -> float:
-	return components.engine.power * components.transmission.multiplier * (1 - components.transmission.long_bias)
-
-func get_boost() -> float:
-	return components.aspiration.power_multiplier
-
-func get_brake_power() -> float:
-	return components.brakes.brake_power
-
 ################################
 # dynamic getters
 func get_forward_speed() -> float:
 	return linear_velocity.dot(global_basis.x)
 
 func get_power_output() -> float:
-	return get_power() * get_boost_output() * \
-		accel_curve.sample( get_forward_speed() / get_top_speed() )
+	return components.get_power() * get_boost_output() * \
+		accel_curve.sample( get_forward_speed() / components.get_top_speed() )
 
 func get_boost_output() -> float:
-	return 1.0 + components.aspiration.boost_curve.sample( get_forward_speed() / get_top_speed() ) * components.aspiration.power_multiplier
+	return 1.0 + components.aspiration.boost_curve.sample( get_forward_speed() / components.get_top_speed() ) * components.aspiration.power_multiplier
 
 func get_downforce_output() -> float:
-	return global.aero_curve.sample(get_forward_speed()) * get_downforce()
+	return global.aero_curve.sample(get_forward_speed()) * components.get_downforce()
 
 func get_grounded() -> bool:
 	if !get_colliding_bodies().is_empty(): return true
@@ -133,7 +111,7 @@ func update_color() -> void:
 	mesh.update_color(components.color)
 
 func update_weight() -> void:
-	mass = get_weight()
+	mass = components.get_weight()
 	center_of_mass.y = components.chassis.CoM_Y
 
 # axle initializes wheels
@@ -169,8 +147,8 @@ func _aero() -> void:
 	
 	var force : float = global.aero_curve.sample(forward_speed)
 	
-	var downforce := -global_basis.y * force * get_downforce()
-	var drag_force : Vector3 = -forward * force * get_drag()
+	var downforce := -global_basis.y * force * components.get_downforce()
+	var drag_force : Vector3 = -forward * force * components.get_drag()
 	
 	var force_point = forward * components.aero_kit.front_bias # not based on car length atm
 	
@@ -209,7 +187,7 @@ func set_braking(x := 0.) -> void:
 			else:
 				w.brake_power = x - x * components.brakes.bias
 			
-			w.brake_power *= get_brake_power()
+			w.brake_power *= components.get_brake_power()
 	
 	# update brake lights
 	if x > 0.25: lights.set_back_intensity(1)

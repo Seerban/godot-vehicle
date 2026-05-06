@@ -46,9 +46,9 @@ func update_mesh() -> void:
 	if axle.is_rear():
 		multi = car.components.tires.rear_grip_boost
 	
-	wheel_mesh.scale.y *= car.components.tires.wheel_width
-	wheel_mesh.scale.x *= car.components.tires.wheel_size
-	wheel_mesh.scale.z *= car.components.tires.wheel_size * multi
+	wheel_mesh.scale.y *= car.components.chassis.wheel_size
+	wheel_mesh.scale.x *= car.components.chassis.wheel_size
+	wheel_mesh.scale.z *= car.components.chassis.wheel_width * multi
 
 # gets point on ground (if grounded) relative to car
 func get_contact_point() -> Vector3:
@@ -115,7 +115,7 @@ func _spring() -> float:
 	
 	# place mesh
 	if is_instance_valid(wheel_mesh):
-		wheel_mesh.position = Vector3(0, -dist + car.components.tires.wheel_size * 0.5, 0)
+		wheel_mesh.position = Vector3(0, -dist + car.components.chassis.wheel_size * 0.5, 0)
 	
 	return total_force.length()
 

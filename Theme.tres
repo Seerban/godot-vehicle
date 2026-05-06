@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://b5f47l2oupjjx" path="res://Font/TitanOne-Regular.ttf" id="1_yd3fu"]
 [ext_resource type="Texture2D" uid="uid://c8ospcm8y352e" path="res://Textures/ui/check.png" id="2_23v3e"]
 [ext_resource type="Texture2D" uid="uid://4xius53oenh7" path="res://Textures/ui/uncheck.png" id="3_k1aya"]
+[ext_resource type="Texture2D" uid="uid://8ac475opptbq" path="res://Textures/ui/slider.png" id="4_j4jqe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o30e"]
 border_width_left = 4
@@ -51,6 +52,19 @@ border_color = Color(1, 1, 1, 1)
 shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6dyh"]
+bg_color = Color(0.4745098, 0.6117647, 1, 1)
+skew = Vector2(1.12, 0)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1aya"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
@@ -86,6 +100,10 @@ Button/styles/normal = SubResource("StyleBoxFlat_xvsgm")
 Button/styles/pressed = SubResource("StyleBoxFlat_cl1wc")
 CheckBox/icons/checked = ExtResource("2_23v3e")
 CheckBox/icons/unchecked = ExtResource("3_k1aya")
+HSlider/icons/grabber = ExtResource("4_j4jqe")
+HSlider/icons/grabber_highlight = ExtResource("4_j4jqe")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_t6dyh")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_t6dyh")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 8

@@ -1,8 +1,7 @@
 extends VehicleComponent
 class_name TiresStats
 
-@export var wheel_size := 1.0
-@export var wheel_width := 1.0
+# size determined by chassis
 @export var wheel_type := "wheel_basic"
 
 @export var lateral_grip := 300.0

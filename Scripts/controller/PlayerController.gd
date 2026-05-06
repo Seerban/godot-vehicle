@@ -43,4 +43,4 @@ func accel_handler(delta : float) -> float:
 # Called in vehicle phys_process since not in tree
 func custom_process(delta: float) -> void:
 	if Input.is_action_just_pressed("lights"):
-		vehicle.lights.use_next_preset()
+		global.player_car.lights.use_next_preset()
