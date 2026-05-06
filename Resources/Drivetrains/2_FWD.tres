@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DrivetrainStats" format=3 uid="uid://bq7wpgsfi1bfr"]
 
-[ext_resource type="Script" uid="uid://bamnakjydoo6j" path="res://Scripts/vehicle/components/Drivetrain.gd" id="1_q47jx"]
+[ext_resource type="Script" uid="uid://bamnakjydoo6j" path="res://Resources/Drivetrain.gd" id="1_q47jx"]
 
 [resource]
 script = ExtResource("1_q47jx")

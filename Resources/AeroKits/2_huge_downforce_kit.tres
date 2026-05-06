@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="AeroKitStats" format=3 uid="uid://c74wtt6aobosy"]
 
-[ext_resource type="Script" uid="uid://bd5378s81ddp6" path="res://Scripts/vehicle/components/AeroKit.gd" id="1_h73gk"]
+[ext_resource type="Script" uid="uid://bd5378s81ddp6" path="res://Resources/AeroKit.gd" id="1_h73gk"]
 
 [resource]
 script = ExtResource("1_h73gk")
-drag = 40.0
-downforce = 40.0
-name = "Huge Downforce Kit"
+drag = 17.0
+downforce = 17.0
+tunable = true
+name = "High Downforce Kit"
 weight = 2.0
 metadata/_custom_type_script = "uid://bd5378s81ddp6"

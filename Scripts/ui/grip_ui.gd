@@ -1,39 +1,46 @@
-extends ColorRect
+extends Control
 
-const display_multiplier := 0.1
+# bars[wheel ref] = panel ref
+var panels : Dictionary[Wheel, Control]
 
-@onready var car
-var bars : Array[ProgressBar]
+@onready var gradient := preload("res://Curves/grip_gradient.tres")
 
-func update_ui() -> void:
-	print("Updating grip ui")
+func initialize() -> void:
+	if global.player_car == null: return
 	
-	for bar in bars: bar.queue_free()
-	bars.clear()
-	
-	for axle in car.axles:
-		for wheel in axle.get_children():
-			var bar : ProgressBar = load("res://UI/grip_bar.tscn").instantiate()
-			
-			bar.position.x = (axle.position.z + wheel.position.z) * 32 - 16
-			bar.position.y = (axle.position.x + wheel.position.x) * -32 - 16
-			
-			add_child(bar)
-			bars.append(bar)
+	var panels_refs = [$Grid/RLPanel, $Grid/RRPanel, $Grid/FLPanel, $Grid/FRPanel]
+	panels.clear()
+	for i in range(4):
+		panels[global.player_car.wheels[i]] = panels_refs[i]
 
-func _ready() -> void:
-	car = get_tree().get_first_node_in_group("car")
-	update_ui()
-
-@warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void:
-	if not car:
-		car = global.player_car
-	if len(bars) == 0:
-		update_ui()
+func _process(delta: float) -> void:
+	if !visible: set_physics_process(false)
 	
-	for i in range( len(bars) ):
-		var used_grip = car.wheels[i].get_used_lat_grip() + car.wheels[i].get_used_long_grip()
-		var max_grip = car.wheels[i].get_lat_grip() + car.wheels[i].get_long_grip()
-		bars[i].value = used_grip / max_grip * 100
-		bars[i].get_node("Label").text = str( int( used_grip * display_multiplier) )
+	if len(panels) == 0 or !is_instance_valid(panels.keys()[0]):
+		initialize()
+		return
+	
+	for wheel in panels:
+		var panel: Control = panels[wheel]
+		var label = panel.get_node("Label")
+		
+		var spring_grip_decimals = str(int(wheel.get_spring_grip_influence() * 100) % 100)
+		if len(spring_grip_decimals) == 1: spring_grip_decimals = "0" + spring_grip_decimals
+		
+		label.text = "Used Long Grip - %s\nUsed Lat Grip - %s\nSpring Grip - %s\nCompression - %s" % \
+			[str(int(wheel.get_used_long_grip()) / 10),
+			str(int(wheel.get_used_lat_grip()) / 10),
+			str(int(wheel.get_spring_grip_influence())) + spring_grip_decimals,
+			str(int(wheel.spring_prev * 100)) ]
+		
+		var grip_used = (wheel.get_used_lat_grip() + wheel.get_used_long_grip()) / (wheel.get_lat_grip() + wheel.get_long_grip())
+		panel.get_node("WheelRect").modulate = lerp(panel.get_node("WheelRect").modulate, gradient.gradient.sample(grip_used), 0.5)
+	
+	$DownForce.text = "Weight: %s\n Downforce: %s" % \
+		[ str(int(global.player_car.components.get_weight())),
+		str(int(global.player_car.get_downforce_output())) ]
+	
+	$Speed.text = "Speed: %s" % str(int(global.player_car.get_forward_speed()))
+
+func _on_visibility_changed() -> void:
+	set_physics_process(true)

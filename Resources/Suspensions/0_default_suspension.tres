@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SuspensionStats" format=3 uid="uid://ba8rhfytdggjt"]
 
-[ext_resource type="Script" uid="uid://45klxp17xyel" path="res://Scripts/vehicle/components/Suspension.gd" id="1_ihoq4"]
+[ext_resource type="Script" uid="uid://45klxp17xyel" path="res://Resources/Suspension.gd" id="1_ihoq4"]
 
 [resource]
 script = ExtResource("1_ihoq4")

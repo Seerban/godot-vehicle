@@ -1,0 +1,728 @@
+[gd_scene format=3 uid="uid://bdota5kf7lvg1"]
+
+[ext_resource type="Script" uid="uid://kdy0pdgq6vog" path="res://Scripts/ui/autoshop_ui.gd" id="1_foa2b"]
+[ext_resource type="Script" uid="uid://wqq2tagyhdo2" path="res://Scripts/ui/component_button.gd" id="2_44t7a"]
+[ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="2_oetqw"]
+[ext_resource type="Texture2D" uid="uid://nywjj2q1ahr2" path="res://Textures/ui/reverse.png" id="2_onaob"]
+[ext_resource type="Texture2D" uid="uid://2oic1dq2e15k" path="res://Textures/ui/spray.png" id="4_rqach"]
+[ext_resource type="Texture2D" uid="uid://dknnoc8t865m1" path="res://Textures/ui/engine.png" id="5_jflnf"]
+[ext_resource type="Texture2D" uid="uid://cyqmaf203nm8i" path="res://Textures/ui/gear-stick.png" id="6_yrym1"]
+[ext_resource type="Texture2D" uid="uid://cqh6dis1s01p0" path="res://Textures/ui/turbo.psd.png" id="7_i4y5e"]
+[ext_resource type="Texture2D" uid="uid://bg4gvd3wb3j6k" path="res://Textures/ui/spring.png" id="8_aj1mm"]
+[ext_resource type="Texture2D" uid="uid://d0ct3igxo5kt5" path="res://Textures/ui/car-wheel(2).png" id="9_ydbwt"]
+[ext_resource type="Texture2D" uid="uid://bcc8vdad0g7cn" path="res://Textures/ui/paper-plane.png" id="10_ql110"]
+[ext_resource type="Texture2D" uid="uid://b30dumxg4i6sj" path="res://Textures/ui/weight.png" id="11_ik603"]
+[ext_resource type="Texture2D" uid="uid://d3ogoavxo871l" path="res://Textures/ui/brakes.png" id="12_u00oh"]
+[ext_resource type="Texture2D" uid="uid://cfek5y8bjrc5o" path="res://Textures/ui/drivetrain.png" id="13_u7oa1"]
+
+[node name="Autoshop" type="Control" unique_id=681594695]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_oetqw")
+script = ExtResource("1_foa2b")
+
+[node name="ScrollTop" type="ScrollContainer" parent="." unique_id=1077363926]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="BG" type="ColorRect" parent="ScrollTop" unique_id=1030257437]
+custom_minimum_size = Vector2(20000, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBox" type="HBoxContainer" parent="ScrollTop" unique_id=2013559807]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Spacer2" type="Control" parent="ScrollTop/HBox" unique_id=1333746560]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="ScrollTop/HBox" unique_id=914053996]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Back" unique_id=2124525711]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Back/VBox" unique_id=1566315718]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("2_onaob")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Back/VBox" unique_id=1761654967]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Color" type="Button" parent="ScrollTop/HBox" unique_id=1790202939]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Color" unique_id=1888843253]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Color/VBox" unique_id=779394764]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("4_rqach")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Color/VBox" unique_id=1024687114]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Paint"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Engine" type="Button" parent="ScrollTop/HBox" unique_id=2032232276]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Engine" unique_id=512058924]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Engine/VBox" unique_id=686642029]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("5_jflnf")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Engine/VBox" unique_id=2008338747]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Engine"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Transmission" type="Button" parent="ScrollTop/HBox" unique_id=1491158855]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Transmission" unique_id=720034724]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Transmission/VBox" unique_id=1591385954]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("6_yrym1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Transmission/VBox" unique_id=1620247059]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Transmission"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Aspiration" type="Button" parent="ScrollTop/HBox" unique_id=307117442]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Aspiration" unique_id=122629960]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Aspiration/VBox" unique_id=732185543]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("7_i4y5e")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Aspiration/VBox" unique_id=1826526049]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Aspiration"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Suspension" type="Button" parent="ScrollTop/HBox" unique_id=2083267203]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Suspension" unique_id=164390983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Suspension/VBox" unique_id=777488651]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("8_aj1mm")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Suspension/VBox" unique_id=1257994713]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Suspension"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Tires" type="Button" parent="ScrollTop/HBox" unique_id=405052957]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Tires" unique_id=269727759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Tires/VBox" unique_id=719287051]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("9_ydbwt")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Tires/VBox" unique_id=480356264]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Tires"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Aero" type="Button" parent="ScrollTop/HBox" unique_id=1902323982]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Aero" unique_id=2097644265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Aero/VBox" unique_id=357093707]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("10_ql110")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Aero/VBox" unique_id=467930224]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Aero"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Weight" type="Button" parent="ScrollTop/HBox" unique_id=271184936]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Weight" unique_id=297693191]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Weight/VBox" unique_id=1122202534]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("11_ik603")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Weight/VBox" unique_id=852864188]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Weight"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Brakes" type="Button" parent="ScrollTop/HBox" unique_id=1807543353]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Brakes" unique_id=825668072]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Brakes/VBox" unique_id=1509113723]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("12_u00oh")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Brakes/VBox" unique_id=1662792619]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Brakes"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Drivetrain" type="Button" parent="ScrollTop/HBox" unique_id=312029535]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Drivetrain" unique_id=1993501957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Drivetrain/VBox" unique_id=592290917]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("13_u7oa1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Drivetrain/VBox" unique_id=1940897986]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Drivetrain"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="ComponentButton" type="Button" parent="ScrollTop/HBox" unique_id=1654252626]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "COMPONENT"
+flat = true
+script = ExtResource("2_44t7a")
+
+[node name="Spacer" type="Control" parent="ScrollTop/HBox" unique_id=1070902263]
+layout_mode = 2
+
+[node name="Colors" type="HBoxContainer" parent="ScrollTop" unique_id=1629215711]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 64
+
+[node name="Spacer3" type="Control" parent="ScrollTop/Colors" unique_id=303388271]
+layout_mode = 2
+
+[node name="BackColor" type="Button" parent="ScrollTop/Colors" unique_id=1189353155]
+modulate = Color(0.21960784, 0.49019608, 1, 1)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.3
+text = "Back"
+flat = true
+
+[node name="RGB" type="VBoxContainer" parent="ScrollTop/Colors" unique_id=1789651555]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_oetqw")
+
+[node name="RedSplit" type="HSplitContainer" parent="ScrollTop/Colors/RGB" unique_id=1510611167]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollTop/Colors/RGB/RedSplit" unique_id=36612155]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "RED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RSlider" type="HSlider" parent="ScrollTop/Colors/RGB/RedSplit" unique_id=1038078011]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="GreenSplit" type="HSplitContainer" parent="ScrollTop/Colors/RGB" unique_id=321020260]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollTop/Colors/RGB/GreenSplit" unique_id=1904001616]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "GREEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GSlider" type="HSlider" parent="ScrollTop/Colors/RGB/GreenSplit" unique_id=498212416]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BlueSplit" type="HSplitContainer" parent="ScrollTop/Colors/RGB" unique_id=770023013]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollTop/Colors/RGB/BlueSplit" unique_id=2073428295]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+theme_override_colors/font_color = Color(0.003921569, 0, 1, 1)
+text = "BLUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BSlider" type="HSlider" parent="ScrollTop/Colors/RGB/BlueSplit" unique_id=1219277887]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Mats" type="GridContainer" parent="ScrollTop/Colors" unique_id=1741147111]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+columns = 4
+
+[node name="Gloss" type="Button" parent="ScrollTop/Colors/Mats" unique_id=847376762]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Gloss"
+flat = true
+
+[node name="Matte" type="Button" parent="ScrollTop/Colors/Mats" unique_id=2121375875]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Matte"
+flat = true
+
+[node name="Candy" type="Button" parent="ScrollTop/Colors/Mats" unique_id=1599007567]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Candy"
+flat = true
+
+[node name="Metal" type="Button" parent="ScrollTop/Colors/Mats" unique_id=1567022840]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "Metal"
+flat = true
+
+[node name="Spacer2" type="Control" parent="ScrollTop/Colors" unique_id=1871347395]
+layout_mode = 2
+
+[node name="Tune" type="HBoxContainer" parent="." unique_id=774551627]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 132.0
+offset_right = 20.0
+offset_bottom = 172.0
+grow_horizontal = 2
+
+[node name="Aero" type="VBoxContainer" parent="Tune" unique_id=1714663910]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Aero" unique_id=1409212969]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "REAR < Aero > FRONT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AeroSlider" type="HSlider" parent="Tune/Aero" unique_id=1803554083]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Aero" unique_id=1399963550]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Brakes" type="VBoxContainer" parent="Tune" unique_id=1516413890]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Brakes" unique_id=737389617]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "REAR < Brakes > FRONT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BrakeBiasSlider" type="HSlider" parent="Tune/Brakes" unique_id=919708117]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Brakes" unique_id=1553831513]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Drivetrain" type="VBoxContainer" parent="Tune" unique_id=206433956]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Drivetrain" unique_id=1285651971]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "REAR < Power > FRONT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrivetrainSlider" type="HSlider" parent="Tune/Drivetrain" unique_id=1521899692]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Drivetrain" unique_id=63035023]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transmission" type="VBoxContainer" parent="Tune" unique_id=13267444]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Transmission" unique_id=1525173290]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "SHORT < Gears > LONG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TransSlider" type="HSlider" parent="Tune/Transmission" unique_id=108725991]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -0.3
+max_value = 0.3
+step = 0.01
+value = -0.3
+
+[node name="Value" type="Label" parent="Tune/Transmission" unique_id=1761107709]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Suspension" type="VBoxContainer" parent="Tune" unique_id=1082196748]
+visible = false
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Tune/Suspension" unique_id=2076963268]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "LOW < Height > HIGH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SuspensionSlider" type="HSlider" parent="Tune/Suspension" unique_id=238098708]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="Value" type="Label" parent="Tune/Suspension" unique_id=162644190]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+text = "0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Q" type="Label" parent="." unique_id=2108326235]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 32
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="Label" parent="." unique_id=2012035560]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 132.0
+grow_horizontal = 0
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 32
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mouse" type="Label" parent="." unique_id=668108412]
+layout_mode = 0
+offset_top = 132.0
+offset_right = 94.0
+offset_bottom = 155.0
+theme = ExtResource("2_oetqw")
+text = "Press C to move mouse freely"
+
+[node name="Model" type="Label" parent="." unique_id=1646543050]
+layout_mode = 0
+offset_top = 164.0
+offset_right = 94.0
+offset_bottom = 187.0
+theme = ExtResource("2_oetqw")
+text = "CAR MODEL"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="ScrollTop/HBox/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Color" to="." method="_on_color_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Engine" to="." method="_on_engine_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Transmission" to="." method="_on_transmission_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Aspiration" to="." method="_on_aspiration_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Suspension" to="." method="_on_suspension_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Tires" to="." method="_on_tires_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Aero" to="." method="_on_aero_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Weight" to="." method="_on_weight_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Brakes" to="." method="_on_brakes_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Drivetrain" to="." method="_on_drivetrain_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/ComponentButton" to="ScrollTop/HBox/ComponentButton" method="_on_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/BackColor" to="." method="_on_back_color_pressed"]
+[connection signal="value_changed" from="ScrollTop/Colors/RGB/RedSplit/RSlider" to="." method="_on_r_slider_value_changed"]
+[connection signal="value_changed" from="ScrollTop/Colors/RGB/GreenSplit/GSlider" to="." method="_on_g_slider_value_changed"]
+[connection signal="value_changed" from="ScrollTop/Colors/RGB/BlueSplit/BSlider" to="." method="_on_b_slider_value_changed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Gloss" to="." method="_on_gloss_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Matte" to="." method="_on_matte_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Candy" to="." method="_on_candy_pressed"]
+[connection signal="pressed" from="ScrollTop/Colors/Mats/Metal" to="." method="_on_metal_pressed"]
+[connection signal="value_changed" from="Tune/Aero/AeroSlider" to="." method="_on_aero_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Brakes/BrakeBiasSlider" to="." method="_on_brake_bias_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Drivetrain/DrivetrainSlider" to="." method="_on_drivetrain_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Transmission/TransSlider" to="." method="_on_trans_slider_value_changed"]
+[connection signal="value_changed" from="Tune/Suspension/SuspensionSlider" to="." method="_on_suspension_slider_value_changed"]

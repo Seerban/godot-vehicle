@@ -39,16 +39,16 @@ func update_mesh() -> void:
 	if is_instance_valid(wheel_mesh):
 		wheel_mesh.queue_free()
 	
-	wheel_mesh = load(mesh_path + car.tires.wheel_type + ".tscn").instantiate()
+	wheel_mesh = load(mesh_path + car.components.tires.wheel_type + ".tscn").instantiate()
 	add_child(wheel_mesh)
 	
 	var multi := 1.0
 	if axle.is_rear():
-		multi = car.tires.rear_grip_boost
+		multi = car.components.tires.rear_grip_boost
 	
-	wheel_mesh.scale.y *= car.tires.wheel_width
-	wheel_mesh.scale.x *= car.tires.wheel_size
-	wheel_mesh.scale.z *= car.tires.wheel_size * multi
+	wheel_mesh.scale.y *= car.components.chassis.wheel_size
+	wheel_mesh.scale.x *= car.components.chassis.wheel_size
+	wheel_mesh.scale.z *= car.components.chassis.wheel_width * multi
 
 # gets point on ground (if grounded) relative to car
 func get_contact_point() -> Vector3:
@@ -57,25 +57,25 @@ func get_contact_point() -> Vector3:
 # gets grip of ground material (currently doesn't work due to ground rework
 func get_ground_grip_multiplier() -> float:
 	if is_colliding() and get_collider().is_in_group("offroad"):
-		return car.tires.offroad_multiplier
+		return car.components.tires.offroad_multiplier
 	return 1
 
 # bonus grip based on force pushing on ground, if near fully extended then grip rapidly decreases to 0
 func get_spring_grip_influence() -> float:
-	return (1 + spring_force * grip_per_mass) * global.spring_grip_curve.sample( (car.suspension.length - spring_prev) / car.suspension.length )
+	return (1 + spring_force * grip_per_mass) * global.spring_grip_curve.sample( (car.components.suspension.get_length() - spring_prev) / car.components.suspension.get_length() )
 
 # compute total grip
 func get_long_grip() -> float:
 	var multi = 1.0
 	if axle.is_rear():
-		multi = car.tires.rear_grip_boost
-	return car.tires.longitudinal_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
+		multi = car.components.tires.rear_grip_boost
+	return car.components.tires.longitudinal_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
 
 func get_lat_grip() -> float:
 	var multi = 1.0
 	if axle.is_rear():
-		multi = car.tires.rear_grip_boost
-	return car.tires.lateral_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
+		multi = car.components.tires.rear_grip_boost
+	return car.components.tires.lateral_grip * get_ground_grip_multiplier() * get_spring_grip_influence() * multi
 
 
 # for grip ui
@@ -90,24 +90,24 @@ func get_used_lat_grip() -> float:
 # apply spring force, return force length applied
 func _spring() -> float:
 	var up = global_basis.y
-	var dist := car.suspension.length
+	var dist := car.components.suspension.get_length()
 	var total_force : Vector3
 	
 	if on_ground:
 		# distance to ground
 		dist = -(get_collision_point() - global_position).dot(up)
 		# % of how compressed suspension is
-		var compression = (car.suspension.length - dist) / car.suspension.length
+		var compression = (car.components.suspension.get_length() - dist) / car.components.suspension.get_length()
 		
 		# difference since last frame used for damping
 		var spring_diff = clampf(compression - spring_prev, -1, 1)
 		spring_prev = compression
 		
-		var spring_force : float = compression * car.suspension.strength
-		var damping_force : float = spring_diff * car.suspension.damping
+		var spring_force : float = compression * car.components.suspension.strength
+		var damping_force : float = spring_diff * car.components.suspension.damping
 		
 		var roll = spring_prev - mirror_wheel.spring_prev
-		var roll_force : float = roll * car.suspension.antiroll
+		var roll_force : float = roll * car.components.suspension.antiroll
 		
 		total_force = (spring_force + damping_force + roll_force) * up
 		
@@ -115,7 +115,7 @@ func _spring() -> float:
 	
 	# place mesh
 	if is_instance_valid(wheel_mesh):
-		wheel_mesh.position = Vector3(0, -dist + car.tires.wheel_size * 0.5, 0)
+		wheel_mesh.position = Vector3(0, -dist + car.components.chassis.wheel_size * 0.5, 0)
 	
 	return total_force.length()
 
@@ -190,6 +190,7 @@ func fetch_vars() -> void: # get dynamic observation data
 func _ready() -> void:
 	tire_mark = load("res://Scenes/particles/tire_mark.tscn").instantiate()
 	get_tree().root.add_child.call_deferred(tire_mark)
+	set_collision_mask_value(2, true)
 
 func _physics_process(delta: float) -> void:
 	fetch_vars()

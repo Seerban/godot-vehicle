@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TransmissionStats" format=3 uid="uid://k5yjiw4uukwn"]
 
-[ext_resource type="Script" uid="uid://dwx6bdnomhfav" path="res://Scripts/vehicle/components/Transmission.gd" id="1_tqv27"]
+[ext_resource type="Script" uid="uid://dwx6bdnomhfav" path="res://Resources/Transmission.gd" id="1_tqv27"]
 
 [resource]
 script = ExtResource("1_tqv27")

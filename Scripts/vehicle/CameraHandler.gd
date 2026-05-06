@@ -18,7 +18,7 @@ var auto_camera_height_angle := 15.0
 
 # vars for camera zoom / offset
 var cam_default_height_offset := 0.6
-var cam_default_offset := 4.6
+var cam_default_offset := 5.0
 var cam_default_fov := 75.0
 var cam_offset_scaling := 0.02
 var cam_fov_scaling := 0.02
@@ -30,10 +30,11 @@ func _ready():
 	cam.v_offset = cam_default_height_offset
 	
 	node_to_follow = global.player_car
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target = rotation_degrees
 
 func _input(event: InputEvent) -> void:
+	if !is_instance_valid(node_to_follow): return
+	
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		target.y -= event.relative.x * sens
 		target.z += event.relative.y * sens
@@ -49,6 +50,18 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func reset(y_offset := 0.0) -> void:
+	if node_to_follow == null: return
+	
+	global_rotation = node_to_follow.global_rotation
+	target.y = -rad_to_deg( Vector3.FORWARD.signed_angle_to(node_to_follow.global_basis.x, Vector3.DOWN) ) - 90
+	rotation.x = 0
+	target.y += y_offset
+	target.x = 0
+	scale = Vector3(1, 1, 1)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 # lerps angle without rotating 360 degrees when changing quadrant
 func custom_lerp_angle(from : Vector3, to : Vector3, p: float) -> Vector3:
 	var diff_x = wrapf(to.x - from.x, -180.0, 180.0)
@@ -57,6 +70,8 @@ func custom_lerp_angle(from : Vector3, to : Vector3, p: float) -> Vector3:
 	return from + Vector3(diff_x, diff_y, diff_z) * p
 
 func _physics_process(delta: float) -> void:
+	if !is_instance_valid(node_to_follow): return
+	
 	time_since_movement += delta
 	
 	# Move target angle and lerp towards it for smoothing

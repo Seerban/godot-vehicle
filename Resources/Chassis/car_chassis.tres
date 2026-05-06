@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ChassisStats" format=3 uid="uid://duq6luu8xv53m"]
+
+[ext_resource type="Script" uid="uid://d1h86ieukxixo" path="res://Resources/Chassis.gd" id="1_6i2n0"]
+
+[resource]
+script = ExtResource("1_6i2n0")
+name = "Default Chassis"
+weight = 50.0
+metadata/_custom_type_script = "uid://d1h86ieukxixo"

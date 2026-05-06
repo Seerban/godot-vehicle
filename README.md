@@ -4,15 +4,16 @@ My own custom implementation of a 3D Raycast Vehicle, alternative to VehicleBody
 
 Proper documentation and ease of use for custom nodes node are not a priority at the moment. <br>
 
-# Relevant Classes:
+# Main Classes:
 <ol>
 <li><b>Vehicle</b>:  Handles the controls and general properties and layout of vehicle.</li>
-<li><b>Axle/Wheel</b> Handles the suspension and grip. (Axle is for positioning)</li>
-<li><b>LightsManager</b>:  Turns meshes into working dynamic lights. (Based on node.name atm).
-<li><b>SprintRace</b>: Turns Node3D children into checkpoints for a race and handles timer & <b>GhostPlayer</b> for replays.</li>
-<li><b>GhostPlayer</b>:  Can record or replay actions of vehicle object.</li>
-<li><b>RoadCurve</b>: Small wrapper for Path3D and CSGPolygon, updates <b>Radar</b>.</li>
-<li><b>Radar</b>: Draws roads, checkpoints & vehicles. (Currently unoptimized and unfinished)</li>
+<li><b>Wheel</b> Handles the suspension and grip. (<b>Axle</b> is for positioning)</li>
+<li><b>LightsManager/MeshColorable/WheelMesh</b>: Utility classes for changing colors/materials/lighting.</li>
+<li><b>GhostPlayer/GhostData</b>: Record or replayd actions of target vehicle.</li>
+<li><b>RoadPath</b>: Wrapper for Path3D and CSGPolygon, updates <b>Minimap</b>.</li>
+<li><b>SprintRace</b>: Spawns checkpoints for a race and handles <b>GhostPlayer</b> for replays/medals.</li>
+<li><b>Minimap</b>: Draws map height and roadpaths.</li>
+<li><b>PlayerData</b>: Stores info about user, vehicle and sprint times, managed in global.gd.</li>
 </ol>
 
 
