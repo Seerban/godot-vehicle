@@ -1,5 +1,5 @@
-extends Node3D
 class_name  VehicleController
+extends Node3D
 
 @export var vehicle : Vehicle
 

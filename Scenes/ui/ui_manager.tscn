@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://djvyek5wii0q7" path="res://Scripts/ui/map.gd" id="2_qokbk"]
 [ext_resource type="Script" uid="uid://1ar8up2a0bgu" path="res://Scripts/ui/map_static.gd" id="3_fh02c"]
 [ext_resource type="Script" uid="uid://bdvj7b5usylxj" path="res://Scripts/ui/map_dynamic.gd" id="4_3qqp5"]
-[ext_resource type="Texture2D" uid="uid://c8afv5e8og2hj" path="res://Textures/ui/icon.png" id="5_cgrnb"]
 [ext_resource type="PackedScene" uid="uid://bdota5kf7lvg1" path="res://Scenes/ui/autoshop_ui.tscn" id="6_r85vj"]
 [ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="7_y8xa2"]
 [ext_resource type="Texture2D" uid="uid://rsf13m7j0rcl" path="res://Textures/circle_transparent.png" id="8_yvdio"]
@@ -1336,23 +1335,6 @@ offset_bottom = 4872.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_3qqp5")
-
-[node name="Icon" type="TextureRect" parent="LeftMenu/HBox/Minimap/InnerMinimap" unique_id=474405221]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -7.5
-offset_right = 10.0
-offset_bottom = 7.5
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(10, 7.5)
-texture = ExtResource("5_cgrnb")
-expand_mode = 1
 
 [node name="ScorePopup" type="VBoxContainer" parent="LeftMenu/HBox" unique_id=1062813195]
 layout_mode = 2

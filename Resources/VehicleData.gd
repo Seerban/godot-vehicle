@@ -17,6 +17,17 @@ var attached_body: Node3D
 		if attached_body != null: attached_body.update()
 
 ################################
+# stats computed from components
+var weight := 1.0
+var drag := 1.0
+var downforce := 1.0
+var top_speed := 1.0
+var power := 1.0
+var boost := 1.0
+var brake_power := 1.0
+var height := 1.0
+
+################################
 # Components
 @export var engine := preload("res://Resources/Engines/1_engine_stock.tres") :
 	set(x):
@@ -65,31 +76,32 @@ func _init() -> void:
 	print("initialized vehicledata of model " + model)
 	chassis = load("res://Resources/Chassis/%s_chassis.tres" % model)
 
-func get_weight() -> float:
-	return chassis.weight * weight_kit.weight_multiplier + engine.weight + transmission.weight + aspiration.weight \
+func get_weight() -> float: return weight
+func get_drag() -> float: return drag
+func get_downforce() -> float: return downforce
+func get_top_speed() -> float: return top_speed
+func get_power() -> float: return power
+func get_boost() -> float: return boost
+func get_brake_power() -> float: return brake_power
+func get_height() -> float: return height
+
+func update():
+	weight = chassis.weight * weight_kit.weight_multiplier + engine.weight + transmission.weight + aspiration.weight \
 		+ aero_kit.weight + suspension.weight + tires.weight + brakes.weight + drivetrain.weight
+	drag = chassis.drag + aero_kit.drag
+	downforce = chassis.downforce + aero_kit.downforce
+	top_speed = engine.speed * transmission.multiplier * (1 + transmission.long_bias)
+	power = engine.power * transmission.multiplier * (1 - transmission.long_bias)
+	boost = aspiration.power_multiplier
+	brake_power = brakes.brake_power
+	height = suspension.get_length()
 
-func get_drag() -> float:
-	return chassis.drag + aero_kit.drag
-
-func get_downforce() -> float:
-	return chassis.downforce + aero_kit.downforce
-
-func get_top_speed() -> float:
-	return engine.speed * transmission.multiplier * (1 + transmission.long_bias)
-
-func get_power() -> float:
-	return engine.power * transmission.multiplier * (1 - transmission.long_bias)
-
-func get_boost() -> float:
-	return aspiration.power_multiplier
-
-func get_brake_power() -> float:
-	return brakes.brake_power
-
-func add_as_vehicle(target : Node) -> Vehicle:
+func add_as_vehicle(target : Node, low_detail = false) -> Vehicle:
 	var vehicle: Vehicle = load(global.CAR_MODEL_PATH + model + ".tscn").instantiate()
+	if low_detail:
+		vehicle.set_script( load("res://Scripts/vehicle/LDVehicle.gd") )
+	
 	target.add_child(vehicle)
-	vehicle.components = self
+	vehicle.components = self # auto calls update on vehicle
 	
 	return vehicle

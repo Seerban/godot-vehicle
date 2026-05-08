@@ -4,7 +4,7 @@ class_name Vehicle
 var accel_curve : Curve = load("res://Curves/acceleration.tres")
 
 var enabled := true
-var controller : VehicleController = VehicleController.new() # ai/player controller
+@export var controller : VehicleController = VehicleController.new() # ai/player controller
 # References
 var mesh: MeshColorable
 
@@ -100,6 +100,7 @@ func get_drift_factor() -> float:
 ################################
 # mesh manager
 func update() -> void:
+	components.update()
 	update_color()
 	update_weight()
 	update_wheels()

@@ -1,10 +1,10 @@
-[gd_scene format=4 uid="uid://dw6rlckembj5p"]
+[gd_scene format=4 uid="uid://dypj3v67xbdcc"]
 
-[ext_resource type="Script" uid="uid://c0vdjuiu0v74d" path="res://Scripts/vehicle/Vehicle.gd" id="1_n8cda"]
-[ext_resource type="Material" uid="uid://enxdcdlq23a2" path="res://Material/Paint/Matte.tres" id="2_r7o47"]
-[ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/MeshColorable.gd" id="2_yrpag"]
-[ext_resource type="Script" uid="uid://b0w4gqiavrivh" path="res://Scripts/vehicle/LightsManager.gd" id="4_7tm40"]
-[ext_resource type="Script" uid="uid://dbjj6tvfptdq0" path="res://Scripts/vehicle/Axle.gd" id="7_7tm40"]
+[ext_resource type="Script" uid="uid://drs8um7k7agdk" path="res://Scripts/vehicle/LDVehicle.gd" id="1_4splc"]
+[ext_resource type="Material" uid="uid://enxdcdlq23a2" path="res://Material/Paint/Matte.tres" id="2_v0fy7"]
+[ext_resource type="Script" uid="uid://d3ikrobwd5lgl" path="res://Scripts/vehicle/MeshColorable.gd" id="3_11fko"]
+[ext_resource type="Script" uid="uid://dbjj6tvfptdq0" path="res://Scripts/vehicle/Axle.gd" id="4_m1iw3"]
+[ext_resource type="Script" uid="uid://b0w4gqiavrivh" path="res://Scripts/vehicle/LightsManager.gd" id="5_umgq3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r7o47"]
 friction = 0.5
@@ -98,7 +98,7 @@ size = Vector3(0.1, 0.1, 0.4)
 [sub_resource type="BoxMesh" id="BoxMesh_7tm40"]
 size = Vector3(0.1, 0.1, 0.4)
 
-[node name="Vehicle2" type="RigidBody3D" unique_id=973883457 groups=["car"]]
+[node name="Vehicle" type="RigidBody3D" unique_id=973883457 groups=["car"]]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_r7o47")
@@ -107,14 +107,14 @@ can_sleep = false
 contact_monitor = true
 max_contacts_reported = 5
 linear_damp_mode = 1
-script = ExtResource("1_n8cda")
+script = ExtResource("1_4splc")
 
 [node name="CarMesh" type="MeshInstance3D" parent="." unique_id=1709991874]
 transform = Transform3D(-2.64, 0, 3.14722e-07, 0, 2.5999997, 0, -2.3079613e-07, 0, -3.6, -0.13948905, 0.15243553, -1.219452e-08)
 mesh = SubResource("ArrayMesh_7tm40")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_r7o47")
-script = ExtResource("2_yrpag")
+surface_material_override/0 = ExtResource("2_v0fy7")
+script = ExtResource("3_11fko")
 
 [node name="WindowsMesh" type="MeshInstance3D" parent="." unique_id=590826577]
 transform = Transform3D(-2.64, 0, 3.14722e-07, 0, 2.5999997, 0, -2.3079613e-07, 0, -3.6, -0.13948905, 0.15243553, -1.219452e-08)
@@ -128,19 +128,19 @@ shape = SubResource("BoxShape3D_ho8xs")
 
 [node name="VehicleAxleRear" type="Node3D" parent="." unique_id=2901479]
 transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, -1.6258781, -0.26747036, 0)
-script = ExtResource("7_7tm40")
+script = ExtResource("4_m1iw3")
 half_width = 0.75
 steering_multiplier = 0.0
 metadata/_custom_type_script = "uid://dbjj6tvfptdq0"
 
 [node name="VehicleAxleFront" type="Node3D" parent="." unique_id=345222783]
 transform = Transform3D(1, 0, 0, 0, 0.99999946, 0, 0, 0, 0.99999946, 1.5931201, -0.26747036, 0)
-script = ExtResource("7_7tm40")
+script = ExtResource("4_m1iw3")
 half_width = 0.75
 metadata/_custom_type_script = "uid://dbjj6tvfptdq0"
 
 [node name="LightsManager" type="Node3D" parent="." unique_id=1966949977]
-script = ExtResource("4_7tm40")
+script = ExtResource("5_umgq3")
 metadata/_custom_type_script = "uid://b0w4gqiavrivh"
 
 [node name="Front" type="MeshInstance3D" parent="LightsManager" unique_id=1264143328]

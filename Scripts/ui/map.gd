@@ -7,14 +7,12 @@ var water_bodies : Array[Path3D]
 
 @onready var static_map := $StaticMap
 @onready var dynamic_map := $DynamicMap
-@onready var icon := $Icon
 @onready var map
 var terrain: Terrain3D
 
 func update_offset(pos : Vector2) -> void:
 	static_map.position = pos * chosen_scale + get_rect().size / 2.0 - static_map.get_rect().size / 2.0
 	dynamic_map.position = pos * chosen_scale + get_rect().size / 2.0 - dynamic_map.get_rect().size / 2.0
-	if global.player_car != null: icon.rotation = -global.player_car.global_rotation.y + PI/2
 
 func _ready() -> void:
 	draw_rect(Rect2(Vector2.ZERO, get_rect().size), Color.BLACK)
