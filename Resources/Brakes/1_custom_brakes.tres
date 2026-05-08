@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="BrakesStats" format=3 uid="uid://pnokdbrgjfj1"]
+[gd_resource type="Resource" script_class="BrakesStats" format=3 uid="uid://di8tlkjy5h3oc"]
 
-[ext_resource type="Script" uid="uid://bq5nth0qsvkdb" path="res://Resources/Brakes.gd" id="1_e4fwg"]
+[ext_resource type="Script" uid="uid://btjllraeby0v0" path="res://Resources/Brakes.gd" id="1_e4fwg"]
 
 [resource]
 script = ExtResource("1_e4fwg")
@@ -8,4 +8,4 @@ brake_power = 1300.0
 tunable = true
 name = "Custom Brakes"
 weight = 2.0
-metadata/_custom_type_script = "uid://bq5nth0qsvkdb"
+metadata/_custom_type_script = "uid://btjllraeby0v0"

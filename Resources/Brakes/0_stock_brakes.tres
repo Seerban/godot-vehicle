@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="BrakesStats" format=3 uid="uid://b7kxj4yfmpkua"]
+[gd_resource type="Resource" script_class="BrakesStats" format=3 uid="uid://vagcjbtt4ryy"]
 
-[ext_resource type="Script" uid="uid://bq5nth0qsvkdb" path="res://Resources/Brakes.gd" id="1_5puoc"]
+[ext_resource type="Script" uid="uid://btjllraeby0v0" path="res://Resources/Brakes.gd" id="1_5puoc"]
 
 [resource]
 script = ExtResource("1_5puoc")
 name = "Stock Brakes"
 weight = 2.0
-metadata/_custom_type_script = "uid://bq5nth0qsvkdb"
+metadata/_custom_type_script = "uid://btjllraeby0v0"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BrakesStats" format=3 uid="uid://c6c7r0t32bmsf"]
+
+[ext_resource type="Script" uid="uid://btjllraeby0v0" path="res://Resources/Brakes.gd" id="1_wl8d1"]
+
+[resource]
+script = ExtResource("1_wl8d1")
+brake_power = 1700.0
+tunable = true
+name = "Racing Brakes"
+weight = 1.0
+metadata/_custom_type_script = "uid://btjllraeby0v0"

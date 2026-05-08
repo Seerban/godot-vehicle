@@ -15,8 +15,6 @@ func update_offset(pos : Vector2) -> void:
 	dynamic_map.position = pos * chosen_scale + get_rect().size / 2.0 - dynamic_map.get_rect().size / 2.0
 
 func _ready() -> void:
-	draw_rect(Rect2(Vector2.ZERO, get_rect().size), Color.BLACK)
-	
 	map = get_tree().get_first_node_in_group("map")
 	terrain = map.get_node("Terrain")
 	

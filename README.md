@@ -1,44 +1,66 @@
 # godot-vehicle
 
-My own custom implementation of a 3D Raycast Vehicle, alternative to VehicleBody3D node (Not related).
+A WIP racing game made in Godot 4.6 that has a custom Raycast vehicle implementation, racing with ghost replays, vehicle performance customization and tuning, UI for saving, minimap, previewing events and for seeing vehicle performance and grip. 
 
-Proper documentation and ease of use for custom nodes node are not a priority at the moment. <br>
+Plan on adding: AI opponents/traffic, more visual customization and more gamification using currency, achievements and more vehicle types, ingame city and more map variety.
 
-# Main Classes:
-<ol>
-<li><b>Vehicle</b>:  Handles the controls and general properties and layout of vehicle.</li>
-<li><b>Wheel</b> Handles the suspension and grip. (<b>Axle</b> is for positioning)</li>
-<li><b>LightsManager/MeshColorable/WheelMesh</b>: Utility classes for changing colors/materials/lighting.</li>
-<li><b>GhostPlayer/GhostData</b>: Record or replayd actions of target vehicle.</li>
-<li><b>RoadPath</b>: Wrapper for Path3D and CSGPolygon, updates <b>Minimap</b>.</li>
-<li><b>SprintRace</b>: Spawns checkpoints for a race and handles <b>GhostPlayer</b> for replays/medals.</li>
-<li><b>Minimap</b>: Draws map height and roadpaths.</li>
-<li><b>PlayerData</b>: Stores info about user, vehicle and sprint times, managed in global.gd.</li>
-</ol>
+## [Vehicle Classes](Scripts/vehicle):
+**Vehicle** Manages the vehicle stats (inside **VehicleData**), input from **VehicleController** and *Axle* to place and connect the wheels. *LD* versions use simplified physics (for non player vehicles).
 
+**Wheel**: Handles the suspension and grip. Applies all forces to vehicle (besides Drag/Downforce)
 
-# Adjustable Parameters
-**Power & Brake Force**: How much force the wheels can produce. (Limited by max grip) <br>
-**Brake Bias**: Where the brake force is applied, causes drifty handling toward -1 (rear) and understeer toward 1 (front) <br>
-**Turn Angle**: Maximum wheel angle when turning. <br>
-**Grip**: Multiplier to maximum grip. <br>
-**Grip Forgiveness**: Makes acceleration and braking less costly on grip. Gives the "Arcade" feel (1 = more arcadey, grip not reduced under acceleration or braking).<br>
-**Height, Strength, Damping**: Suspension parameters. <br>
-**Anti-roll**: Counter-force to rotation. (Might cause undesired understeer) <br>
-**Aero**: Downforce at position of aero component. (One at rear and one at front for example vehicle) <br>
-**Stabilizer**: Keeps vehicle straight and less likely to spin out. (If placed behind center)
+**LightsManager/MeshColorable**: Utility classes for changing colors/materials/lighting of meshes.
 
-### Parameters (soon to be adjustable)
-**Curves for acceleration, braking and others** <br>
-**Lights parameters** <br>
-**Material Properties** <br>
-**Center of Mass** <br>
+**PlayerData**: Stores info about user, user's vehicle and sprint times. Managed in *global.gd*.
+
+## [Race Classes](Scripts/sprint)
+
+**SprintRace**: Spawns **Checkpoint**s for a race and handles **GhostPlayer** for replays/medals.
+
+**GhostPlayer**/**GhostData**: Record and replay actions of target vehicle.
+
+## Other
+
+**RoadPath**: Wrapper for Path3D and CSGPolygon to create roads, updates **Minimap**.
+
+**UI Manager**: Handles all ui elements.
+
+**GripUI** for seeing current grip usage and breakdown.
+
+**Map** Draws map height, roadpaths, important places (ex: autoshops) and vehicle icons.
+
+**SprintUI**/**SprintPopup** Shows a preview of a race and data about time and checkpoint status, also starts **SprintRace**.
+
+**Autoshop** Gives the player options for customization and tuning.
+
+## [Car Components](Resources)
+**Chassis** Not modifiable, unique for each car (Currently only 1 car implemented)
+
+**Engine** Gives base Power and TopSpeed stats.
+
+**Transmission** Allows tuning of gear ratio and multiplies engine performance.
+
+**Aspiration** Allows for use of Turbo/Superchargers and modifies the acceleration curve of the vehicle.
+
+**Suspension** Currently only allows for customization of ride height.
+
+**Tires** Changes the wheels visual on the vehicle and handle differently in different terrains. Some are better for straight line and others for cornering.
+
+**Drivetrain** Changes the power distribution of the vehicle to the wheels.
+
+**Weight Kit** and **Aero Kit** simply modify the weight and drag/downforce of the chassis
+
+All components are managed in VehicleData.
+
 
 ## Credits
-Terrain made using [Terrain3D](https://tokisan.com/terrain3d/) <br>
-Placeholder materials sourced from [ambientcg.com](https://ambientcg.com/) <br>
-Shader Materials from [GodotShaders](https://godotshaders.com/)
+Terrain made using [Terrain3D](https://tokisan.com/terrain3d/)
+
+Placeholder materials sourced from [ambientcg.com](https://ambientcg.com/)
+
+Couple Paint Shaders and Skybox Materials from [GodotShaders](https://godotshaders.com/)
+
+Many UI Icons from [game-icons.net](https://game-icons.net/)
 
 ## How to Run:
-**Windows**: download and run the .exe from latest release. <br>
-**Linux**: Run project inside editor or run using steam Proton by adding as a game to steam, selecting properties and compatibility and latest Proton version.
+Download latest release and run .exe on Windows or .x86-64 on Linux (Might need to run with Wine or steam's Proton if not available) or clone the repo and run inside Godot 4.6 editor
