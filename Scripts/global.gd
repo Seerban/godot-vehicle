@@ -35,11 +35,21 @@ func _ready() -> void:
 	minimap = get_tree().get_first_node_in_group("minimap")
 	grip_ui = ui_manager.get_node("Grip")
 
+func spawn_ai(pos: Vector3) -> void:
+	var car_data = player_data.vehicle
+	var car = car_data.add_as_vehicle( get_tree().get_first_node_in_group("vehicles"), true )
+	var controller = AIController.new()
+	add_child(controller)
+	car.controller = controller
+	controller.vehicle = car
+	car.global_position = pos
+	car.rotation_degrees.y += -125
+
+# player management
 func set_player_pos():
 	player_car.global_position = spawn_position
 	player_car.rotation.x = 0
 
-# player management
 func spawn_player() -> void:
 	if player_car != null:
 		set_player_pos()
@@ -105,6 +115,20 @@ func get_car_model_instance(s : String) -> MeshColorable:
 	print("loading car model " + s)
 	var instance = load(CAR_MODEL_PATH + s + ".tscn").instantiate()
 	return instance.get_node("CarMesh").duplicate()
+
+func get_mouse_world_position():
+	var camera = get_viewport().get_camera_3d()
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_origin = camera.project_ray_origin(mouse_pos)
+	var ray_direction = camera.project_ray_normal(mouse_pos)
+	var ray_length = 1000.0
+	var ray_end = ray_origin + ray_direction * ray_length
+	var space_state = map.get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+	var result = space_state.intersect_ray(query)
+	if result:
+		return result.position
+	return null
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

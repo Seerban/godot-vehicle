@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var ui: UIManager = $UIManager
 
+func _ready() -> void:
+	global.spawn_ai( Vector3(490, 63, -343) )
+
 func flip_car() -> void:
 	if global.player_car != null:
 		global.player_car.linear_velocity += Vector3(0, 5, 0)

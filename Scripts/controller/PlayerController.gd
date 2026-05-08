@@ -1,5 +1,5 @@
-extends VehicleController
 class_name PlayerController
+extends VehicleController
 
 # acceleration curve is in Vehicle due to being limited by speed and not by user input
 # Accel gradually

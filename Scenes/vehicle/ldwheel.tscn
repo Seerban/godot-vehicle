@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://xv4myy0ug8pe"]
+
+[ext_resource type="Script" uid="uid://dx6c4wsnld045" path="res://Scripts/vehicle/LDWheel.gd" id="1_jwv4d"]
+
+[node name="CustomWheel" type="RayCast3D" unique_id=2059454740]
+target_position = Vector3(0, -20, 0)
+debug_shape_custom_color = Color(1, 0, 1, 1)
+debug_shape_thickness = 5
+script = ExtResource("1_jwv4d")

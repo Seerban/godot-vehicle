@@ -1,5 +1,5 @@
-extends RayCast3D
 class_name Wheel
+extends RayCast3D
 
 const mesh_path = "res://Models/Wheels/"
 var wheel_mesh : Node3D
@@ -54,7 +54,7 @@ func update_mesh() -> void:
 func get_contact_point() -> Vector3:
 	return get_collision_point() - car.global_position
 
-# gets grip of ground material (currently doesn't work due to ground rework
+# if touching the terrain3d node then count as offroading
 func get_ground_grip_multiplier() -> float:
 	if is_colliding() and get_collider().is_in_group("offroad"):
 		return car.components.tires.offroad_multiplier
@@ -62,7 +62,7 @@ func get_ground_grip_multiplier() -> float:
 
 # bonus grip based on force pushing on ground, if near fully extended then grip rapidly decreases to 0
 func get_spring_grip_influence() -> float:
-	return (1 + spring_force * grip_per_mass) * global.spring_grip_curve.sample( (car.components.suspension.get_length() - spring_prev) / car.components.suspension.get_length() )
+	return (1 + spring_force * grip_per_mass) * global.spring_grip_curve.sample( (car.components.get_height() - spring_prev) / car.components.get_height() )
 
 # compute total grip
 func get_long_grip() -> float:
@@ -90,14 +90,14 @@ func get_used_lat_grip() -> float:
 # apply spring force, return force length applied
 func _spring() -> float:
 	var up = global_basis.y
-	var dist := car.components.suspension.get_length()
+	var dist := car.components.get_height()
 	var total_force : Vector3
 	
 	if on_ground:
 		# distance to ground
 		dist = -(get_collision_point() - global_position).dot(up)
 		# % of how compressed suspension is
-		var compression = (car.components.suspension.get_length() - dist) / car.components.suspension.get_length()
+		var compression = (car.components.get_height() - dist) / car.components.get_height()
 		
 		# difference since last frame used for damping
 		var spring_diff = clampf(compression - spring_prev, -1, 1)

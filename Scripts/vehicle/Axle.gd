@@ -2,6 +2,8 @@
 extends Node3D
 class_name VehicleAxle
 
+var use_ldwheel := false
+
 @onready var car : Vehicle = $".."
 
 @export var half_width := 1.0 # distance from center of vehicle to wheel start
@@ -37,7 +39,9 @@ func is_rear() -> bool:
 func update() -> void:
 	if !is_instance_valid(car): return
 	
-	var wheel : Wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
+	var wheel : Wheel
+	if use_ldwheel: wheel = load("res://Scenes/vehicle/ldwheel.tscn").instantiate()
+	else: wheel = load("res://Scenes/vehicle/wheel.tscn").instantiate()
 	add_child(wheel)
 	
 	wheel.target_position = Vector3(0, -car.components.suspension.get_length(), 0)

@@ -50,6 +50,7 @@ offroad=""
 camera=""
 minimap=""
 map=""
+debug_marker=""
 
 [input]
 
