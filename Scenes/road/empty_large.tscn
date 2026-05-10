@@ -1,17 +1,17 @@
-[gd_scene format=3 uid="uid://cbubjqnrsxaur"]
+[gd_scene format=3 uid="uid://casq18bnsqq78"]
 
-[ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_grlyq"]
-[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/world_objects/RoadPath.gd" id="2_grlyq"]
+[ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_d8nur"]
+[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/world_objects/RoadPath.gd" id="2_663sj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1albg"]
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ek87d"]
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 20)
 
-[sub_resource type="Curve3D" id="Curve3D_scf5g"]
+[sub_resource type="Curve3D" id="Curve3D_d8nur"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, -5),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, -10),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -22,13 +22,13 @@ collision_layer = 2
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=772238331]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("BoxMesh_1albg")
-surface_material_override/0 = ExtResource("1_grlyq")
+surface_material_override/0 = ExtResource("1_d8nur")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1872477993]
 shape = SubResource("BoxShape3D_ek87d")
 
-[node name="RoadPath" type="Path3D" parent="." unique_id=378528713]
-curve = SubResource("Curve3D_scf5g")
-script = ExtResource("2_grlyq")
+[node name="RoadPath2" type="Path3D" parent="." unique_id=1727674792]
+curve = SubResource("Curve3D_d8nur")
+script = ExtResource("2_663sj")
 type = 2
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"

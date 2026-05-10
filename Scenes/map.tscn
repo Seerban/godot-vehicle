@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://c40sxfhtkipb8" path="res://Scenes/world_objects/autoshop.tscn" id="21_macow"]
 [ext_resource type="Script" uid="uid://cmbc6hdrh7tnw" path="res://Scripts/sprint/SprintRace.gd" id="21_rg57b"]
 [ext_resource type="Resource" path="res://GhostData/SprintRace2_PB.tres" id="22_ltf6m"]
+[ext_resource type="PackedScene" uid="uid://dlrcnptlryc1c" path="res://Scenes/road/crossroad_large.tscn" id="23_uus22"]
+[ext_resource type="PackedScene" uid="uid://casq18bnsqq78" path="res://Scenes/road/empty_large.tscn" id="24_tuwt4"]
+[ext_resource type="Script" uid="uid://bx8uhu40xuo4l" path="res://Scenes/testing_target.gd" id="25_tuwt4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_np2xp"]
 size = Vector3(5000, 50, 5000)
@@ -299,6 +302,8 @@ data = PackedVector3Array(-5, 0.5, 0.625, 5, 0.5, 0.625, -5, -0.5, 0.625, 5, 0.5
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uus22"]
 data = PackedVector3Array(-5, 0.5, 0.625, 5, 0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, -0.625, 5, -0.5, -0.625, -5, 0.5, -0.625, -5, -0.5, -0.625, 5, -0.5, -0.625, 5, 0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, -0.625, 5, -0.5, 0.625, -5, 0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, 0.625, -5, -0.5, -0.625, 5, 0.5, 0.625, -5, 0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, 0.625, -5, 0.5, -0.625, 5, 0.5, -0.625, -5, -0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, -0.625, 5, -0.5, 0.625, 5, -0.5, -0.625, -5, -0.5, -0.625)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uus22"]
 
 [node name="Map" type="Node3D" unique_id=213433501 groups=["map"]]
 
@@ -753,6 +758,12 @@ script = ExtResource("12_q6lx1")
 type = 3
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
+[node name="Intersection4" parent="Objects/RoadExperiment" unique_id=821882785 instance=ExtResource("23_uus22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -422, 49.9, 271)
+
+[node name="Intersection5" parent="Objects/RoadExperiment" unique_id=1208516520 instance=ExtResource("24_tuwt4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392, 49.9, 271)
+
 [node name="Objects" type="Node3D" parent="Objects" unique_id=1889396906]
 
 [node name="House2" parent="Objects/Objects" unique_id=1246685143 instance=ExtResource("15_j4oe2")]
@@ -874,3 +885,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -8)
 text = "Hello World"
 font_size = 256
 outline_size = 32
+
+[node name="AIPath" type="Node3D" parent="." unique_id=1633568477]
+
+[node name="Marker3D" type="Node3D" parent="." unique_id=750757603 node_paths=PackedStringArray("target_path") groups=["debug_marker"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 52, -247)
+script = ExtResource("25_tuwt4")
+target_path = NodePath("../Objects/Roads/RoadPath")
+reversed = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Marker3D" unique_id=627847308]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_uus22")

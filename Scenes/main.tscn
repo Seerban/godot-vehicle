@@ -55,8 +55,6 @@ fog_depth_begin = 0.0
 fog_depth_end = 53.0
 adjustment_enabled = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_21xkr"]
-
 [node name="Main" type="Node3D" unique_id=933953204]
 script = ExtResource("1_6bp64")
 
@@ -81,10 +79,3 @@ transform = Transform3D(-0.83651614, 0.25881904, -0.482963, 0.22414383, 0.965925
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=96823950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 590.285, 51, -400)
-
-[node name="Marker3D" type="Node3D" parent="." unique_id=336668579 groups=["debug_marker"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 52, -247)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Marker3D" unique_id=685787732]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_21xkr")

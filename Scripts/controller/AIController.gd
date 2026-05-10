@@ -46,7 +46,7 @@ func custom_process(_delta : float) -> void:
 	var max_angle = vehicle.components.turning_deg
 	target_angle = clamp( angle_to_target(), -max_angle, max_angle)
 	
-	target_speed = dist_to_target() ** 0.8 / clamp(abs(target_angle) / 10.0, 1.0, 20.0)
+	target_speed = dist_to_target() ** 1.0 / clamp(abs(target_angle) / 10.0, 1.0, 20.0)
 	if dist_to_target() < 2.0: target_speed = 0.0
 	
 	#if global.get_mouse_world_position() != null:

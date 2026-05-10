@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://dlrcnptlryc1c"]
+
+[ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_bjuy5"]
+[ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/world_objects/RoadPath.gd" id="2_qyqpc"]
+[ext_resource type="Texture2D" uid="uid://vq5xf6y8xiqc" path="res://Textures/square.png" id="3_ke5lg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1albg"]
+size = Vector3(12, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7vyfa"]
+size = Vector3(16, 0.9, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bjuy5"]
+size = Vector3(10, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7vyfa"]
+size = Vector3(40, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjuy5"]
+size = Vector3(32, 0.9, 32)
+
+[sub_resource type="Curve3D" id="Curve3D_bjuy5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, -20, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_3ohqt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, -20),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Intersection" type="StaticBody3D" unique_id=201121798]
+collision_layer = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=772238331]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_1albg")
+surface_material_override/0 = ExtResource("1_bjuy5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2011299883]
+transform = Transform3D(1.4142135, 0, -1.4142135, 0, 1, 0, 1.4142135, 0, 1.4142135, 0, 0, 0)
+mesh = SubResource("BoxMesh_7vyfa")
+surface_material_override/0 = ExtResource("1_bjuy5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1385364660]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 15, 0, -4.7683716e-07)
+mesh = SubResource("BoxMesh_bjuy5")
+surface_material_override/0 = ExtResource("1_bjuy5")
+
+[node name="CapSprites" type="Node3D" parent="." unique_id=721103729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9, 0, 5)
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites" unique_id=1402280227]
+transform = Transform3D(0.08, 0, 0, 0, -1.7239772e-07, -1.042, 0, 3.944, -4.5547267e-08, 5.4254937, 0.502, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites" unique_id=297332482]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites" unique_id=671666187]
+transform = Transform3D(1.9667548, 0, 0, 0, -2.8412401e-09, -1.013, 0, 0.065, -4.4279638e-08, 10.145, 0.51, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites" unique_id=707254039]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D6" type="Sprite3D" parent="CapSprites" unique_id=1697961101]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, -10)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D11" type="Sprite3D" parent="CapSprites" unique_id=837117130]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -14.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=943434955]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.099998, 0, -4.7683716e-07)
+mesh = SubResource("BoxMesh_bjuy5")
+surface_material_override/0 = ExtResource("1_bjuy5")
+
+[node name="CapSprites2" type="Node3D" parent="." unique_id=164414817]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.999998, 0, -5)
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites2" unique_id=1408425445]
+transform = Transform3D(0.08, 0, 0, 0, -1.7239772e-07, -1.042, 0, 3.944, -4.5547267e-08, 5.4254937, 0.502, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites2" unique_id=1714647244]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites2" unique_id=1505793700]
+transform = Transform3D(1.9667548, 0, 0, 0, -2.8412401e-09, -1.013, 0, 0.065, -4.4279638e-08, 10.145, 0.51, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites2" unique_id=836160080]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D6" type="Sprite3D" parent="CapSprites2" unique_id=1285880037]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, -10)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D11" type="Sprite3D" parent="CapSprites2" unique_id=1277786336]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -14.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=772967446]
+transform = Transform3D(-2.1855695e-07, 0, 1, 0, 1, 0, -1, 0, -2.1855695e-07, -0.04000033, 0, -15.039999)
+mesh = SubResource("BoxMesh_bjuy5")
+surface_material_override/0 = ExtResource("1_bjuy5")
+
+[node name="CapSprites3" type="Node3D" parent="." unique_id=476281969]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.9600005, 0, -4.9399996)
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites3" unique_id=196061343]
+transform = Transform3D(0.08, 0, 0, 0, -1.7239772e-07, -1.042, 0, 3.944, -4.5547267e-08, 5.4254937, 0.502, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites3" unique_id=875499417]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites3" unique_id=1435581232]
+transform = Transform3D(1.9667548, 0, 0, 0, -2.8412401e-09, -1.013, 0, 0.065, -4.4279638e-08, 10.145, 0.51, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites3" unique_id=594119368]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D6" type="Sprite3D" parent="CapSprites3" unique_id=1037794159]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, -10)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D11" type="Sprite3D" parent="CapSprites3" unique_id=325025673]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -14.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." unique_id=260517189]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -0.039999016, 0, 15.059999)
+mesh = SubResource("BoxMesh_bjuy5")
+surface_material_override/0 = ExtResource("1_bjuy5")
+
+[node name="CapSprites4" type="Node3D" parent="." unique_id=1373760581]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.0399995, 0, 4.9599986)
+
+[node name="Sprite3D" type="Sprite3D" parent="CapSprites4" unique_id=500686454]
+transform = Transform3D(0.08, 0, 0, 0, -1.7239772e-07, -1.042, 0, 3.944, -4.5547267e-08, 5.4254937, 0.502, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D5" type="Sprite3D" parent="CapSprites4" unique_id=1765829643]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, 0)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D9" type="Sprite3D" parent="CapSprites4" unique_id=933038926]
+transform = Transform3D(1.9667548, 0, 0, 0, -2.8412401e-09, -1.013, 0, 0.065, -4.4279638e-08, 10.145, 0.51, -5)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D10" type="Sprite3D" parent="CapSprites4" unique_id=707554022]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.16, 0.502, 4.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D6" type="Sprite3D" parent="CapSprites4" unique_id=175972301]
+transform = Transform3D(1.2054749, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 8.609829, 0.502, -10)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="Sprite3D11" type="Sprite3D" parent="CapSprites4" unique_id=621528750]
+transform = Transform3D(1.9671259, 0, 0, 0, -2.8372158e-09, -1.013, 0, 0.06490794, -4.4279638e-08, 10.159628, 0.502, -14.7)
+modulate = Color(0.851769, 0.8517689, 0.85176885, 1)
+texture = ExtResource("3_ke5lg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=861560717]
+shape = SubResource("BoxShape3D_7vyfa")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1237722104]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_7vyfa")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1520328452]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, 0, 0, 0)
+shape = SubResource("BoxShape3D_bjuy5")
+
+[node name="RoadPath" type="Path3D" parent="." unique_id=51960765]
+curve = SubResource("Curve3D_bjuy5")
+script = ExtResource("2_qyqpc")
+type = 2
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="RoadPath4" type="Path3D" parent="." unique_id=1684107672]
+curve = SubResource("Curve3D_3ohqt")
+script = ExtResource("2_qyqpc")
+type = 2
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
