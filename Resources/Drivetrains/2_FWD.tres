@@ -7,4 +7,5 @@ script = ExtResource("1_q47jx")
 bias = 1.0
 name = "FWD"
 weight = 10.0
+price = 1000.0
 metadata/_custom_type_script = "uid://bamnakjydoo6j"

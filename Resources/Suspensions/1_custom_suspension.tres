@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_y7alh")
 length_tune_limit = 0.1
-antiroll_tune_limit = 1.0
 name = "Custom Suspension"
 weight = 10.0
+price = 400.0
 metadata/_custom_type_script = "uid://45klxp17xyel"

@@ -692,6 +692,33 @@ offset_bottom = 155.0
 theme = ExtResource("2_oetqw")
 text = "Press C to move mouse freely"
 
+[node name="Cash" type="RichTextLabel" parent="." unique_id=1546449340]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_right = 258.0
+offset_bottom = -32.0
+grow_vertical = 0
+theme = ExtResource("2_oetqw")
+bbcode_enabled = true
+text = "Cash: [color=green]hello[/color]"
+fit_content = true
+
+[node name="Cost" type="RichTextLabel" parent="." unique_id=276071123]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 258.0
+grow_vertical = 0
+theme = ExtResource("2_oetqw")
+bbcode_enabled = true
+text = "Price: [color=green]hello[/color]"
+fit_content = true
+
 [node name="Model" type="Label" parent="." unique_id=1646543050]
 layout_mode = 0
 offset_top = 164.0
@@ -699,6 +726,140 @@ offset_right = 94.0
 offset_bottom = 187.0
 theme = ExtResource("2_oetqw")
 text = "CAR MODEL"
+
+[node name="Stats" type="HBoxContainer" parent="." unique_id=1835128432]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -63.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Spacer2" type="Control" parent="Stats" unique_id=118139825]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Power" type="VBoxContainer" parent="Stats" unique_id=2053381456]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Stats/Power" unique_id=921020448]
+layout_mode = 2
+text = "Power"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Stats/Power" unique_id=1902146828]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewValue" type="Label" parent="Stats/Power" unique_id=1525114939]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopSpeed" type="VBoxContainer" parent="Stats" unique_id=1871383628]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Stats/TopSpeed" unique_id=9481694]
+layout_mode = 2
+text = "Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Stats/TopSpeed" unique_id=1587979422]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewValue" type="Label" parent="Stats/TopSpeed" unique_id=1809468771]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Weight" type="VBoxContainer" parent="Stats" unique_id=1117158868]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Stats/Weight" unique_id=1689828519]
+layout_mode = 2
+text = "Weight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Stats/Weight" unique_id=461358629]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewValue" type="Label" parent="Stats/Weight" unique_id=1840973950]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grip" type="VBoxContainer" parent="Stats" unique_id=1723430204]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Stats/Grip" unique_id=1727489279]
+layout_mode = 2
+text = "Grip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Stats/Grip" unique_id=1528411354]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewValue" type="Label" parent="Stats/Grip" unique_id=1544462138]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Offroading" type="VBoxContainer" parent="Stats" unique_id=1695499215]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Stats/Offroading" unique_id=477902344]
+layout_mode = 2
+text = "Offroading"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="Stats/Offroading" unique_id=803889366]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewValue" type="Label" parent="Stats/Offroading" unique_id=188596936]
+modulate = Color(1, 0, 1, 1)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Stats" unique_id=1527217340]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="ScrollTop/HBox/Back" to="." method="_on_back_pressed"]

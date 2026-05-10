@@ -8,4 +8,5 @@ multiplier = 1.1
 tune_limit = 0.2
 name = "Pro Trans"
 weight = 3.0
+price = 1000.0
 metadata/_custom_type_script = "uid://dwx6bdnomhfav"

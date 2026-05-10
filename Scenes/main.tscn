@@ -78,4 +78,4 @@ transform = Transform3D(-0.83651614, 0.25881904, -0.482963, 0.22414383, 0.965925
 [node name="UIManager" parent="." unique_id=429781008 instance=ExtResource("5_21xkr")]
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=96823950]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 590.285, 51, -400)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528.47064, 51, -318.66537)

@@ -1,6 +1,10 @@
 extends Control
 
 const PARTS_PATH = "res://Resources/"
+const PAINT_PRICE = 100.0
+const MATERIAL_PRICE = 250.0
+
+var vd_copy: VehicleData
 
 var rgb := Color.WHITE
 
@@ -70,6 +74,14 @@ func get_visible_buttons() -> int:
 			total += 1
 	return total
 
+func comp_value_and_modulate(val1, val2, to_modulate, reversed = false):
+	if val1 < val2: to_modulate.modulate = Color.ROYAL_BLUE
+	elif val1 == val2: to_modulate.modulate = Color.GRAY
+	else: to_modulate.modulate = Color.RED
+	
+	if reversed and to_modulate.modulate == Color.ROYAL_BLUE: to_modulate.modulate = Color.RED
+	if reversed and to_modulate.modulate == Color.RED: to_modulate.modulate = Color.ROYAL_BLUE
+
 func update_stats() -> void:
 	if global.player_car == null: return
 	$Model.text = global.player_car.components.model
@@ -86,6 +98,47 @@ func update_stats() -> void:
 	tune_vbox.get_node("Transmission/Value").text = "%.2f" % comps.transmission.long_bias
 	tune_vbox.get_node("Suspension/SuspensionSlider").value = comps.suspension.length_tune
 	tune_vbox.get_node("Suspension/Value").text = "%.2f" % comps.suspension.length_tune
+	
+	$Cash.text = "Cash: [color=green]$%d[/color]" % global.player_data.cash
+	
+	var vd = global.player_car.components
+	
+	global.player_car.components.update()
+	$Stats/Power/NewValue.text = str(int(vd.get_power()))
+	comp_value_and_modulate( vd_copy.get_power(), vd.get_power(), $Stats/Power/NewValue )
+	$Stats/TopSpeed/NewValue.text = str(int(vd.get_top_speed()))
+	comp_value_and_modulate( vd_copy.get_top_speed(), vd.get_top_speed(), $Stats/TopSpeed/NewValue )
+	$Stats/Weight/NewValue.text = str(int(vd.get_weight()))
+	comp_value_and_modulate( vd_copy.get_weight(), vd.get_weight(), $Stats/Weight/NewValue, true )
+	$Stats/Grip/NewValue.text = str(int(vd.tires.lateral_grip + vd.tires.longitudinal_grip))
+	
+	comp_value_and_modulate( vd_copy.tires.lateral_grip + vd_copy.tires.longitudinal_grip, \
+		vd.tires.lateral_grip + vd.tires.longitudinal_grip, $Stats/Grip/NewValue )
+	
+	$Stats/Offroading/NewValue.text = str(int((vd.tires.lateral_grip + vd.tires.longitudinal_grip) * vd.tires.offroad_multiplier ))
+	
+	comp_value_and_modulate( vd_copy.tires.lateral_grip + vd_copy.tires.longitudinal_grip * vd_copy.tires.offroad_multiplier, \
+		vd.tires.lateral_grip + vd.tires.longitudinal_grip * vd.tires.offroad_multiplier, $Stats/Offroading/NewValue )
+	
+	var total_price := 0.0
+	for i in range( len(vd_copy.as_array()) ):
+		if vd_copy.as_array()[i] != global.player_car.components.as_array()[i]:
+			total_price += global.player_car.components.as_array()[i].price
+	if vd_copy.color != global.player_car.components.color: total_price += PAINT_PRICE
+	if vd_copy.material != global.player_car.components.material: total_price += MATERIAL_PRICE
+	
+	$Cost.text = "Cost: [color=green]$%d[/color]" % total_price
+
+func update_default_stats() -> void:
+	var vd = global.player_car.components.duplicate()
+	vd_copy = vd
+	
+	vd.update()
+	$Stats/Power/Value.text = str(int(vd.get_power()))
+	$Stats/TopSpeed/Value.text = str(int(vd.get_top_speed()))
+	$Stats/Weight/Value.text = str(int(vd.get_weight()))
+	$Stats/Grip/Value.text = str(int(vd.tires.lateral_grip + vd.tires.longitudinal_grip))
+	$Stats/Offroading/Value.text = str(int((vd.tires.lateral_grip + vd.tires.longitudinal_grip) * vd.tires.offroad_multiplier))
 
 func update_modulate() -> void:
 	var temp_idx := 0.0	
@@ -207,30 +260,38 @@ func update_color():
 func _on_g_slider_drag_ended(value_changed: bool) -> void:
 	rgb.g = value_changed
 	update_color()
+	update_stats()
 
 func _on_r_slider_value_changed(value: float) -> void:
 	rgb.r = value
 	update_color()
+	update_stats()
 
 func _on_g_slider_value_changed(value: float) -> void:
 	rgb.g = value
 	update_color()
+	update_stats()
 
 func _on_b_slider_value_changed(value: float) -> void:
 	rgb.b = value
 	update_color()
+	update_stats()
 
 func _on_gloss_pressed() -> void:
 	global.player_car.components.material = "Gloss"
+	update_stats()
 
 func _on_matte_pressed() -> void:
 	global.player_car.components.material = "Matte"
+	update_stats()
 
 func _on_candy_pressed() -> void:
 	global.player_car.components.material = "Candy"
+	update_stats()
 
 func _on_metal_pressed() -> void:
 	global.player_car.components.material = "Metal"
+	update_stats()
 
 func _on_aero_slider_value_changed(value: float) -> void:
 	if global.player_car.components.aero_kit.tunable == false:
@@ -240,6 +301,7 @@ func _on_aero_slider_value_changed(value: float) -> void:
 	
 	$Tune/Aero/Value.text = "%.2f" % value
 	global.player_car.components.aero_kit.front_bias = value
+	update_stats()
 
 func _on_brake_bias_slider_value_changed(value: float) -> void:
 	if global.player_car.components.brakes.tunable == false:
@@ -249,6 +311,7 @@ func _on_brake_bias_slider_value_changed(value: float) -> void:
 	
 	$Tune/Brakes/Value.text = "%.2f" % value
 	global.player_car.components.brakes.bias = value
+	update_stats()
 
 func _on_drivetrain_slider_value_changed(value: float) -> void:
 	if global.player_car.components.drivetrain.type == DrivetrainStats.types.RWD:
@@ -262,12 +325,14 @@ func _on_drivetrain_slider_value_changed(value: float) -> void:
 	
 	$Tune/Drivetrain/Value.text = "%.2f" % value
 	global.player_car.components.drivetrain.bias = value
+	update_stats()
 
 func _on_trans_slider_value_changed(value: float) -> void:
 	value = clamp(value, -global.player_car.components.transmission.tune_limit, global.player_car.components.transmission.tune_limit)
 	$Tune/Transmission/TransSlider.value = value
 	$Tune/Transmission/Value.text = "%.2f" % value
 	global.player_car.components.transmission.long_bias = value
+	update_stats()
 
 func _on_suspension_slider_value_changed(value: float) -> void:
 	value = clamp(value, -global.player_car.components.suspension.length_tune_limit, global.player_car.components.suspension.length_tune_limit)
@@ -275,3 +340,4 @@ func _on_suspension_slider_value_changed(value: float) -> void:
 	$Tune/Suspension/Value.text = "%.2f" % value
 	global.player_car.components.suspension.length_tune = value
 	global.player_car.update()
+	update_stats()

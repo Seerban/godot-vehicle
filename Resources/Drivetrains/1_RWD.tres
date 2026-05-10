@@ -6,4 +6,5 @@
 script = ExtResource("1_10xni")
 name = "RWD"
 weight = 13.0
+price = 1000.0
 metadata/_custom_type_script = "uid://bamnakjydoo6j"

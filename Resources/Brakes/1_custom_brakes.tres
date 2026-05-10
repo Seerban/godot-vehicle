@@ -8,4 +8,5 @@ brake_power = 1300.0
 tunable = true
 name = "Custom Brakes"
 weight = 2.0
+price = 200.0
 metadata/_custom_type_script = "uid://btjllraeby0v0"

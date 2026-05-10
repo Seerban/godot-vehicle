@@ -6,4 +6,5 @@
 script = ExtResource("1_blj3j")
 weight_multiplier = 0.83
 name = "Weight Kit Stage 3"
+price = 1000.0
 metadata/_custom_type_script = "uid://cf5lbkrhx63wf"

@@ -9,4 +9,5 @@ power_multiplier = 0.4
 boost_curve = ExtResource("1_oio7j")
 name = "Twin Turbo"
 weight = 4.0
+price = 1000.0
 metadata/_custom_type_script = "uid://b1033iwdic35n"

@@ -7,7 +7,6 @@ var col : Color
 func update_material(mat : String) -> void:
 	mat_name = mat
 	var material = load("res://Material/Paint/" + mat + ".tres")
-	print(material)
 	set_surface_override_material(0, material)
 
 func update_color(col: Color) -> void:

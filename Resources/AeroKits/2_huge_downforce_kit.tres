@@ -9,4 +9,5 @@ downforce = 17.0
 tunable = true
 name = "High Downforce Kit"
 weight = 2.0
+price = 400.0
 metadata/_custom_type_script = "uid://bd5378s81ddp6"

@@ -96,6 +96,9 @@ func update():
 	brake_power = brakes.brake_power
 	height = suspension.get_length()
 
+func as_array() -> Array:
+	return [engine, transmission, chassis, aspiration, chassis, weight_kit, aero_kit, suspension, tires, brakes, drivetrain]
+
 func add_as_vehicle(target : Node, low_detail = false) -> Vehicle:
 	var vehicle: Vehicle = load(global.CAR_MODEL_PATH + model + ".tscn").instantiate()
 	if low_detail:

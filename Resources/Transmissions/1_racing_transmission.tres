@@ -8,4 +8,5 @@ multiplier = 1.05
 tune_limit = 0.1
 name = "Racing Trans"
 weight = 3.0
+price = 400.0
 metadata/_custom_type_script = "uid://dwx6bdnomhfav"

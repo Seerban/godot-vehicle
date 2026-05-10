@@ -8,4 +8,5 @@ script = ExtResource("2_mg7k7")
 boost_curve = ExtResource("1_ki82c")
 name = "Turbo"
 weight = 2.0
+price = 500.0
 metadata/_custom_type_script = "uid://b1033iwdic35n"

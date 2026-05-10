@@ -9,4 +9,5 @@ power_multiplier = 0.2
 boost_curve = ExtResource("1_amlfl")
 name = "Supercharger"
 weight = 1.0
+price = 750.0
 metadata/_custom_type_script = "uid://b1033iwdic35n"
