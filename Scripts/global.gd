@@ -2,6 +2,7 @@ extends Node
 
 const CAR_MODEL_PATH := "res://Models/Cars/"
 const SAVE_PATH := "res://SAVEDATA.tres"
+const WATER_LEVEL := 30
 
 var player_data: PlayerData
 var spawn_position := Vector3.ZERO # tracker to bring player back after teleporting
@@ -35,11 +36,15 @@ func _ready() -> void:
 	minimap = get_tree().get_first_node_in_group("minimap")
 	grip_ui = ui_manager.get_node("Grip")
 
-func spawn_ai(pos: Vector3) -> void:
+func spawn_ai(pos: Vector3, target_path: RoadPath) -> void:
 	var car_data = player_data.vehicle
 	var car = car_data.add_as_vehicle( get_tree().get_first_node_in_group("vehicles"), true )
 	var controller = AIController.new()
+	
+	controller.vehicle = car
+	controller.initial_target_path = target_path
 	add_child(controller)
+	
 	car.controller = controller
 	controller.vehicle = car
 	car.global_position = pos
@@ -60,6 +65,7 @@ func spawn_player() -> void:
 	
 	var player = player_data.vehicle
 	player_car = player.add_as_vehicle( get_tree().get_first_node_in_group("vehicles") )
+	player_car.name = "PlayerCar"
 	player_car.controller = PlayerController.new()
 	player_car.global_position = get_tree().current_scene.get_node("PlayerSpawn").global_position
 	player_car.rotation_degrees.y += -125

@@ -15,6 +15,8 @@ var current_brake := 0.0
 var is_grounded := false
 var is_drifting := false
 var is_speeding := false
+var is_underwater := false
+var is_flipped := false
 
 # wheel setup
 var axles : Array[VehicleAxle]
@@ -47,8 +49,12 @@ func _physics_process(delta : float) -> void:
 	is_grounded = get_grounded()
 	is_drifting = get_drift_factor() > 0.02 and get_forward_speed() > 5.0 and is_grounded
 	is_speeding = get_forward_speed() > 50.0
+	is_underwater = global_position.y < 20.0
 	
+	if is_flipped: print("flipped")
 	if !enabled: return
+	if is_underwater:
+		attempt_respawn()
 	
 	controller.custom_process(delta)
 	lights.update_trails()
@@ -61,9 +67,6 @@ func _physics_process(delta : float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body is Hittable:
 		body.hit()
-
-################################
-# getters from car components
 
 ################################
 # dynamic getters
@@ -141,6 +144,37 @@ func disable() -> void:
 	set_braking(1.0)
 	set_steering(0.0)
 
+func attempt_respawn() -> void:
+	var pos2d = Vector2(global_position.x, global_position.z)
+	
+	for i in range(10, 201, 10):
+		var offset = Vector2(i, 0)
+		
+		for j in range(7):
+			offset = offset.rotated(PI / 4)
+			
+			var final_pos = pos2d + offset
+			
+			var h1 = global.get_height_at_coords(final_pos)
+			var h2 = global.get_height_at_coords(final_pos + Vector2(1, 1))
+			
+			# spawn along normal height
+			if h1 <= 49.0 or h1 >= 53.0:
+				continue
+			# check for flatness
+			if abs(h1 - h2) > 0.2:
+				continue
+			
+			global_position = Vector3(final_pos.x, h1 + 1.0, final_pos.y)
+			
+			global_rotation.x = 0
+			global_rotation.z = 0
+			linear_velocity = Vector3.ZERO
+			angular_velocity = Vector3.ZERO
+			
+			if controller is PlayerController: global.camera.reset()
+			return
+
 # body aero object is at 0 0 0
 func _aero() -> void:
 	var forward = global_basis.x
@@ -173,7 +207,7 @@ func set_acceleration(x := 0.) -> void:
 	
 	# update reverse lights
 	if x < 0: 	lights.set_reverse_intensity(-x)
-	else: 		lights.set_reverse_intensity(0)
+	else:	lights.set_reverse_intensity(0)
 
 
 # [0-1] update all wheels with brake power
@@ -193,7 +227,6 @@ func set_braking(x := 0.) -> void:
 	# update brake lights
 	if x > 0.25: lights.set_back_intensity(1)
 	else: lights.set_back_intensity(lights.back_default)
-
 
 # [-1-1] multiplier using turning degrees
 func set_steering(x := 0.) -> void:

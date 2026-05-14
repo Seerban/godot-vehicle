@@ -12,19 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://b2pyay57gx01f" path="res://Material/Assets/Ground067_1K-JPG/Ground067_1K-JPG_NormalDX.jpg" id="10_q6lx1"]
 [ext_resource type="Script" uid="uid://c2ekw47xxqv1l" path="res://Scripts/world_objects/RoadPath.gd" id="12_q6lx1"]
 [ext_resource type="Material" uid="uid://btpe15dydy4a8" path="res://Material/Misc/test_material.tres" id="14_ie368"]
-[ext_resource type="PackedScene" uid="uid://cpffb2yrm5d8o" path="res://Scenes/world_objects/house.tscn" id="15_j4oe2"]
-[ext_resource type="PackedScene" uid="uid://6rfro48aykxg" path="res://Scenes/road/crossroad.tscn" id="15_vtkp8"]
 [ext_resource type="Material" uid="uid://jqr2qedgdmm1" path="res://Material/Misc/test_material2.tres" id="15_x5dfk"]
-[ext_resource type="PackedScene" uid="uid://dt6gtj272dk7k" path="res://Scenes/road/tsection.tscn" id="16_rg57b"]
 [ext_resource type="PackedScene" uid="uid://dakxynrdt52mx" path="res://Scenes/world_objects/building.tscn" id="16_riaky"]
-[ext_resource type="PackedScene" uid="uid://dgvry5fcssevm" path="res://Scenes/world_objects/pole.tscn" id="17_vtkp8"]
-[ext_resource type="PackedScene" uid="uid://bjts6tf71j1fu" path="res://Scenes/world_objects/bin.tscn" id="18_rg57b"]
 [ext_resource type="PackedScene" uid="uid://c40sxfhtkipb8" path="res://Scenes/world_objects/autoshop.tscn" id="21_macow"]
 [ext_resource type="Script" uid="uid://cmbc6hdrh7tnw" path="res://Scripts/sprint/SprintRace.gd" id="21_rg57b"]
 [ext_resource type="Resource" path="res://GhostData/SprintRace2_PB.tres" id="22_ltf6m"]
-[ext_resource type="PackedScene" uid="uid://dlrcnptlryc1c" path="res://Scenes/road/crossroad_large.tscn" id="23_uus22"]
-[ext_resource type="PackedScene" uid="uid://casq18bnsqq78" path="res://Scenes/road/empty_large.tscn" id="24_tuwt4"]
-[ext_resource type="Script" uid="uid://bx8uhu40xuo4l" path="res://Scenes/testing_target.gd" id="25_tuwt4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_np2xp"]
 size = Vector3(5000, 50, 5000)
@@ -123,24 +115,17 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 [sub_resource type="Curve3D" id="Curve3D_q6lx1"]
 closed = true
 _data = {
-"points": PackedVector3Array(0.90000004, 0, -0.7, -0.90000004, 0, 0.7, 368, 50, -273, 48.600002, 0, -127.8, -48.600002, 0, 127.8, -138.34727, 50, 144.36061, 123.8, 0, -70.8, -123.8, 0, 70.8, -260.84796, 50, 343.84784, 20, 0, 48, -20, 0, -48, -472.17786, 50, 304.75177, 0, 1, 117, 0, -1, -117, -487, 60, 24, 0.4, 0, 57.600002, -0.4, 0, -57.600002, -482.23065, 50, -203.05017, -67.1, 0, 53.2, 67.1, 0, -53.2, -380.49573, 50, -434.1971, -39.3, 0, -0.8, 39.3, 0, 0.8, -208.52544, 50, -469.84238, -124, 0, -12, 124, 0, 12, 90.57461, 58, -459.6893, -151, 0, -47, 151, 0, 47, 324.4, 50, -424, 14, 0, -10, -14, 0, 10, 394.46774, 50, -290.39313),
+"points": PackedVector3Array(0.90000004, 0, -0.7, -0.90000004, 0, 0.7, 368, 49.6, -273, 48.600002, 0, -127.8, -48.600002, 0, 127.8, -138.347, 49.6, 144.361, 123.8, 0, -70.8, -123.8, 0, 70.8, -260.848, 49.6, 343.848, 20, 0, 48, -20, 0, -48, -472.178, 49.6, 304.752, 0, 1, 117, 0, -1, -117, -487, 60, 24, 0.4, 0, 57.600002, -0.4, 0, -57.600002, -482.231, 49.6, -203.05, -67.1, 0, 53.2, 67.1, 0, -53.2, -380.496, 49.6, -434.197, -39.3, 0, -0.8, 39.3, 0, 0.8, -208.525, 49.6, -469.842, -124, 0, -12, 124, 0, 12, 90.57461, 58, -459.6893, -151, 0, -47, 151, 0, 47, 324.4, 49.6, -424, 14, 0, -10, -14, 0, 10, 394.468, 49.6, -290.393),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 11
 
 [sub_resource type="Curve3D" id="Curve3D_5qtum"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 373, 50, -270.9922, 1.1, 0, -107, -1.1, 0, 107, 444.2628, 50, -52.302326, 34.8, 0, -79.700005, -34.8, 0, 79.700005, 385.8786, 50, 231.54222, 130.5, 0, -12.5, -130.5, 0, 12.5, 121.630325, 50, 421.84332, 31.800001, 0, 23.5, -31.800001, 0, -23.5, -214.83705, 50, 394.72876, 0, 0, 0, 0, 0, 0, -259.114, 50, 348.12695),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 373, 49.6, -270.992, 1.1, 0, -107, -1.1, 0, 107, 444.263, 49.6, -52.302, 34.8, 0, -79.700005, -34.8, 0, 79.700005, 385.879, 49.6, 231.542, 130.5, 0, -12.5, -130.5, 0, 12.5, 121.63, 49.6, 421.843, 31.800001, 0, 23.5, -31.800001, 0, -23.5, -214.837, 49.6, 394.729, 0, 0, 0, 0, 0, 0, -259.114, 49.6, 348.127),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
-
-[sub_resource type="Curve3D" id="Curve3D_ie368"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -448, 50, 523, -42, 0, 109, 42, 0, -109, -414.1185, 50, 370.085),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_uus22"]
 _data = {
@@ -278,9 +263,65 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve3D" id="Curve3D_k63oc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -539, 49.6, 457, 0, 0, 0, 0, 0, 0, -499, 49.6, 457),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_unquq"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -539, 49.6, 507, 0, 0, 0, 0, 0, 0, -499, 49.6, 507),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_j4oe2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -539, 49.6, 407, 0, 0, 0, 0, 0, 0, -499, 49.6, 407),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [sub_resource type="Curve3D" id="Curve3D_ltf6m"]
 _data = {
-"points": PackedVector3Array(2.5, 0, 27.6, 0, 0, -50, -513, 50, 384, 50, 0, 0, -18.6, 0.3, -1.1, -497.858, 50, 419),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -544, 49.6, 453, 0, 0, 0, 0, 0, 0, -544, 49.6, 412),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_8cxpi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -0.96, 0, 0, -544, 49.6, 402, -50.375, 0, -0.395, 51.100002, -10.900001, -20.2, -484, 49.6, 345),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_078fj"]
+_data = {
+"points": PackedVector3Array(-18, 0, 14, 18, 0, -14, -493, 49.6, 406, 0, 0, 29, 0, 0, -29, -479, 49.63, 350),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_1ye5v"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -494, 49.6, 452, 0, 0, 0, 0, 0, 0, -494, 49.6, 412),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_wpvg5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -494, 49.6, 502, 0, 0, 0, 0, 0, 0, -494, 49.6, 462),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_tuwt4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -544, 49.6, 502, 0, 0, 0, 0, 0, 0, -544, 49.6, 462),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -303,12 +344,10 @@ data = PackedVector3Array(-5, 0.5, 0.625, 5, 0.5, 0.625, -5, -0.5, 0.625, 5, 0.5
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uus22"]
 data = PackedVector3Array(-5, 0.5, 0.625, 5, 0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, -0.625, 5, -0.5, -0.625, -5, 0.5, -0.625, -5, -0.5, -0.625, 5, -0.5, -0.625, 5, 0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, 0.625, 5, 0.5, -0.625, 5, -0.5, -0.625, 5, -0.5, 0.625, -5, 0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, -0.625, -5, 0.5, 0.625, -5, -0.5, 0.625, -5, -0.5, -0.625, 5, 0.5, 0.625, -5, 0.5, 0.625, 5, 0.5, -0.625, -5, 0.5, 0.625, -5, 0.5, -0.625, 5, 0.5, -0.625, -5, -0.5, 0.625, 5, -0.5, 0.625, -5, -0.5, -0.625, 5, -0.5, 0.625, 5, -0.5, -0.625, -5, -0.5, -0.625)
 
-[sub_resource type="SphereMesh" id="SphereMesh_uus22"]
-
 [node name="Map" type="Node3D" unique_id=213433501 groups=["map"]]
 
 [node name="WaterMesh" type="MeshInstance3D" parent="." unique_id=2065732947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -1)
 material_override = ExtResource("5_q0mm3")
 mesh = SubResource("BoxMesh_np2xp")
 
@@ -323,17 +362,6 @@ metadata/_edit_lock_ = true
 
 [node name="Objects" type="Node3D" parent="." unique_id=1023493706]
 
-[node name="Foundations" type="Node3D" parent="Objects" unique_id=181062262]
-
-[node name="City1" parent="Objects/Foundations" unique_id=1842989046 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(30, 0, 0, 0, 5, 0, 0, 0, 20, 476, 47.8, -326)
-
-[node name="City2" parent="Objects/Foundations" unique_id=59926073 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(40, 0, 0, 0, 5, 0, 0, 0, 30, -359, 47.8, 374)
-
-[node name="City3" parent="Objects/Foundations" unique_id=2048575514 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(21.213205, 0, 10.606602, 0, 5, 0, -21.213203, 0, 10.606603, -359, 47.8, -418)
-
 [node name="Roads" type="Node3D" parent="Objects" unique_id=1522114307]
 
 [node name="RoadPath" type="Path3D" parent="Objects/Roads" unique_id=578999873]
@@ -343,11 +371,6 @@ metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="RoadPath2" type="Path3D" parent="Objects/Roads" unique_id=1865011577]
 curve = SubResource("Curve3D_5qtum")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="RoadPath3" type="Path3D" parent="Objects/Roads" unique_id=1109116616]
-curve = SubResource("Curve3D_ie368")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
@@ -741,73 +764,7 @@ material = ExtResource("15_x5dfk")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 curve = SubResource("Curve3D_vtkp8")
 
-[node name="RoadExperiment" type="Node3D" parent="Objects" unique_id=177797100]
-
-[node name="Intersection" parent="Objects/RoadExperiment" unique_id=201121798 instance=ExtResource("15_vtkp8")]
-transform = Transform3D(0.99999994, -0.00023552414, -0.00018966355, 0.00023616129, 0.9999943, 0.0033723793, 0.0001888696, -0.003372424, 0.9999943, -513, 50, 419)
-
-[node name="Intersection2" parent="Objects/RoadExperiment" unique_id=1523085669 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -513, 50, 399)
-
-[node name="Intersection3" parent="Objects/RoadExperiment" unique_id=183811457 instance=ExtResource("16_rg57b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -513, 50, 389)
-
-[node name="RoadPath" type="Path3D" parent="Objects/RoadExperiment" unique_id=691126657]
-curve = SubResource("Curve3D_ltf6m")
-script = ExtResource("12_q6lx1")
-type = 3
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="Intersection4" parent="Objects/RoadExperiment" unique_id=821882785 instance=ExtResource("23_uus22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -422, 49.9, 271)
-
-[node name="Intersection5" parent="Objects/RoadExperiment" unique_id=1208516520 instance=ExtResource("24_tuwt4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -392, 49.9, 271)
-
 [node name="Objects" type="Node3D" parent="Objects" unique_id=1889396906]
-
-[node name="House2" parent="Objects/Objects" unique_id=1246685143 instance=ExtResource("15_j4oe2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -348, 50.3, 489)
-collision_layer = 4
-collision_mask = 3
-
-[node name="House3" parent="Objects/Objects" unique_id=421010853 instance=ExtResource("15_j4oe2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -366, 50.3, 489)
-collision_layer = 4
-collision_mask = 3
-
-[node name="House4" parent="Objects/Objects" unique_id=454882000 instance=ExtResource("15_j4oe2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -384, 50.3, 489)
-collision_layer = 4
-collision_mask = 3
-
-[node name="House5" parent="Objects/Objects" unique_id=1438608296 instance=ExtResource("15_j4oe2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -402, 50.3, 489)
-collision_layer = 4
-collision_mask = 3
-
-[node name="House6" parent="Objects/Objects" unique_id=1389930081 instance=ExtResource("15_j4oe2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -330, 50.3, 489)
-collision_layer = 4
-collision_mask = 3
-
-[node name="Building" parent="Objects/Objects" unique_id=554493730 instance=ExtResource("16_riaky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 482)
-collision_layer = 4
-collision_mask = 3
-
-[node name="Building2" parent="Objects/Objects" unique_id=148591006 instance=ExtResource("16_riaky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 50.5, 281)
-collision_layer = 4
-collision_mask = 3
-
-[node name="Pole" parent="Objects/Objects" unique_id=301916848 instance=ExtResource("17_vtkp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 345)
-collision_mask = 3
-
-[node name="Bin" parent="Objects/Objects" unique_id=1688324648 instance=ExtResource("18_rg57b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -508, 50, 329)
-collision_mask = 3
 
 [node name="Races" type="Node3D" parent="Objects" unique_id=1818958179]
 
@@ -844,6 +801,102 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -345, 50, 284)
 
 [node name="3" parent="Objects/Autoshops" unique_id=167635475 instance=ExtResource("21_macow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 479, 204.01, 409)
+
+[node name="GlassCity" type="Node3D" parent="Objects" unique_id=1200654805]
+
+[node name="Buildings" type="Node3D" parent="Objects/GlassCity" unique_id=1788720978]
+
+[node name="Building" parent="Objects/GlassCity/Buildings" unique_id=554493730 instance=ExtResource("16_riaky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 48.3, 482)
+
+[node name="Building3" parent="Objects/GlassCity/Buildings" unique_id=112869299 instance=ExtResource("16_riaky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -519, 48.3, 432)
+
+[node name="Roads" type="Node3D" parent="Objects/GlassCity" unique_id=1554819049]
+
+[node name="1" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=1561733102 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_k63oc")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../7"), NodePath("../8")]
+followup_backward = [NodePath("../9"), NodePath("../4")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="2" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=648166080 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_unquq")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../8")]
+followup_backward = [NodePath("../9")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="3" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=746261647 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_j4oe2")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../6"), NodePath("../7")]
+followup_backward = [NodePath("../4"), NodePath("../5")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="4" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=1839678132 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_ltf6m")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../3"), NodePath("../5")]
+followup_backward = [NodePath("../1"), NodePath("../9")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="5" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=1599291469 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_8cxpi")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../6")]
+followup_backward = [NodePath("../3"), NodePath("../4")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="6" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=686734 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_078fj")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../5")]
+followup_backward = [NodePath("../7"), NodePath("../3")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="7" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=1979579411 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_1ye5v")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../3"), NodePath("../6")]
+followup_backward = [NodePath("../1"), NodePath("../8")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="8" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=953235456 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_wpvg5")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../1"), NodePath("../7")]
+followup_backward = [NodePath("../2")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="9" type="Path3D" parent="Objects/GlassCity/Roads" unique_id=2089704715 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_tuwt4")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../1"), NodePath("../4")]
+followup_backward = [NodePath("../2")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="Intersection" parent="Objects/GlassCity/Roads" unique_id=1842989046 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -544, 49.6, 457)
+
+[node name="Intersection3" parent="Objects/GlassCity/Roads" unique_id=1724486193 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -494, 49.6, 457)
+
+[node name="Intersection6" parent="Objects/GlassCity/Roads" unique_id=1678406670 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -544, 49.6, 507)
+
+[node name="Intersection7" parent="Objects/GlassCity/Roads" unique_id=343419529 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -494, 49.6, 507)
+
+[node name="Intersection2" parent="Objects/GlassCity/Roads" unique_id=987740255 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -544, 49.6, 407)
+
+[node name="Intersection4" parent="Objects/GlassCity/Roads" unique_id=582392738 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -494, 49.6, 407)
+
+[node name="Intersection5" parent="Objects/GlassCity/Roads" unique_id=1959468503 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -479, 49.6, 345)
 
 [node name="Autoshop" type="StaticBody3D" parent="." unique_id=966026460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3020, 0)
@@ -887,13 +940,3 @@ font_size = 256
 outline_size = 32
 
 [node name="AIPath" type="Node3D" parent="." unique_id=1633568477]
-
-[node name="Marker3D" type="Node3D" parent="." unique_id=750757603 node_paths=PackedStringArray("target_path") groups=["debug_marker"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 52, -247)
-script = ExtResource("25_tuwt4")
-target_path = NodePath("../Objects/Roads/RoadPath")
-reversed = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Marker3D" unique_id=627847308]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_uus22")

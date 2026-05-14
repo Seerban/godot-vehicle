@@ -1,6 +1,9 @@
 class_name PlayerController
 extends VehicleController
 
+var reset_time := 2.0
+var reset_cooldown := 2.0
+
 # acceleration curve is in Vehicle due to being limited by speed and not by user input
 # Accel gradually
 var accel_speed := 2.0
@@ -42,5 +45,9 @@ func accel_handler(delta : float) -> float:
 
 # Called in vehicle phys_process since not in tree
 func custom_process(delta: float) -> void:
+	reset_cooldown -= delta
 	if Input.is_action_just_pressed("lights"):
 		global.player_car.lights.use_next_preset()
+	if Input.is_action_just_pressed("respawn") and reset_cooldown < 0.0:
+		global.player_car.attempt_respawn()
+		reset_cooldown = reset_time

@@ -3,7 +3,7 @@ extends Node3D
 @onready var ui: UIManager = $UIManager
 
 func _ready() -> void:
-	global.spawn_ai( Vector3(386, 55, -291) )
+	global.spawn_ai( Vector3(-524, 53, 527), $"Map/Objects/GlassCity/Roads/4")
 
 func flip_car() -> void:
 	if global.player_car != null:

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d0p17j0qk3fgc"]
+
+[ext_resource type="Texture2D" uid="uid://b4oli0b7kkwlx" path="res://Material/Assets/Concrete044D_1K-JPG/Concrete044D_1K-JPG_Color.jpg" id="1_ug0vt"]
+[ext_resource type="Texture2D" uid="uid://dwbusgaxdfof7" path="res://Material/Assets/Concrete044D_1K-JPG/Concrete044D_1K-JPG_NormalDX.jpg" id="2_wh0xp"]
+[ext_resource type="Texture2D" uid="uid://8w0dvukacai5" path="res://Material/Assets/Concrete044D_1K-JPG/Concrete044D_1K-JPG_Roughness.jpg" id="3_vt3y0"]
+
+[resource]
+albedo_texture = ExtResource("1_ug0vt")
+roughness_texture = ExtResource("3_vt3y0")
+normal_enabled = true
+normal_texture = ExtResource("2_wh0xp")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true

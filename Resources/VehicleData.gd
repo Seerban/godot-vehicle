@@ -70,7 +70,7 @@ var height := 1.0
 		drivetrain = x
 		if attached_body != null: attached_body.update()
 
-@export var turning_deg := 20.0
+@export var turning_deg := 25.0
 
 func _init() -> void:
 	print("initialized vehicledata of model " + model)

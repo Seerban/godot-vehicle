@@ -2,12 +2,16 @@ class_name AIController
 extends VehicleController
 
 var offset: Vector3
+var initial_target_path: RoadPath
 var target: Node3D
 var target_speed := 0.0
 var target_angle := 0.0
 
 func _ready() -> void:
-	target = get_tree().get_first_node_in_group("debug_marker")
+	target = AITarget.new()
+	target.target_path = initial_target_path
+	target.vehicle = vehicle
+	add_child(target)
 
 func accel_handler(_delta : float) -> float:
 	if get_speed() < target_speed: return 1.0

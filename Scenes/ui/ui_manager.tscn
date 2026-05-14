@@ -1268,7 +1268,7 @@ custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "[img=32]res://Textures/ui/respawn.png[/img] F"
+text = "[img=32]res://Textures/ui/respawn.png[/img] T"
 fit_content = true
 
 [node name="Reverse" type="RichTextLabel" parent="LeftMenu" unique_id=2101485087]
