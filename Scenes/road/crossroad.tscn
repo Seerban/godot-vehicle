@@ -73,14 +73,14 @@ shape = SubResource("BoxShape3D_ykaeh")
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 shape = SubResource("BoxShape3D_r8rg5")
 
-[node name="RoadPath" type="Path3D" parent="." unique_id=759217180]
+[node name="InterPath" type="Path3D" parent="." unique_id=759217180]
 visible = false
 curve = SubResource("Curve3D_r8rg5")
 script = ExtResource("3_de4x6")
 type = 2
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath2" type="Path3D" parent="." unique_id=66449512]
+[node name="InterPath2" type="Path3D" parent="." unique_id=66449512]
 visible = false
 curve = SubResource("Curve3D_57sv1")
 script = ExtResource("3_de4x6")

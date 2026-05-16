@@ -42,22 +42,23 @@ func start_ghost() -> void:
 	
 	# if medal ghosts are available, start replay
 	add_child(best_ghost)
-	if gold_data != null or (get_pb() != 0 and get_pb() > gold_data.total_time):
-		if get_pb() > bronze_data.total_time or get_pb() == 0:
-			best_ghost.data = bronze_data
-			best_ghost.start_replay(Color.SANDY_BROWN)
-		elif get_pb() > silver_data.total_time:
-			best_ghost.data = silver_data
-			best_ghost.start_replay(Color.SILVER)
-		elif get_pb() > gold_data.total_time:
-			best_ghost.data = gold_data
-			best_ghost.start_replay(Color.GOLDENROD)
-		else:
-			if get_pb() != 0:
-				best_ghost.data = global.player_data.times[name]
-			best_ghost.start_replay(Color.WHITE)
+	#if gold_data != null and (get_pb() != 0 and get_pb() > gold_data.total_time):
+	if get_pb() != 0 and gold_data == null:
+		best_ghost.data = global.player_data.times[name]
+		best_ghost.start_replay(Color.WHITE)
+	if get_pb() > bronze_data.total_time or get_pb() == 0:
+		best_ghost.data = bronze_data
+		best_ghost.start_replay(Color.SANDY_BROWN)
+	elif get_pb() > silver_data.total_time:
+		best_ghost.data = silver_data
+		best_ghost.start_replay(Color.SILVER)
+	elif get_pb() > gold_data.total_time:
+		best_ghost.data = gold_data
+		best_ghost.start_replay(Color.GOLDENROD)
 	else:
-		print("No ghost replays available")
+		if get_pb() != 0:
+			best_ghost.data = global.player_data.times[name]
+		best_ghost.start_replay(Color.WHITE)
 
 func start_race() -> void:
 	if race_started: return
@@ -96,9 +97,9 @@ func next_checkpoint() -> void:
 	global.ui_manager.sprint_live_ui.update_checkpoint()
 	
 	if cp_idx > 1:
-		if best_ghost != null:
-			global.ui_manager.sprint_live_ui.signal_checkpoint(best_ghost.cp_times[cp_idx-2])
-		ghost.cp_times.append(global.ui_manager.sprint_live_ui.time_passed)
+		if global.player_data.times.get(name):
+			global.ui_manager.sprint_live_ui.signal_checkpoint(global.player_data.times[name].cp_times[cp_idx-2])
+		ghost.data.cp_times.append(global.ui_manager.sprint_live_ui.time_passed)
 	
 	cp_instance = load("res://Scenes/sprint/checkpoint.tscn").instantiate()
 	add_child(cp_instance)

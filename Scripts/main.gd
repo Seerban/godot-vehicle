@@ -4,6 +4,7 @@ extends Node3D
 
 func _ready() -> void:
 	global.spawn_ai( Vector3(-524, 53, 527), $"Map/Objects/GlassCity/Roads/4")
+	global.spawn_ai( Vector3(394, 53, -290), $"Map/Objects/RoadsMain/0")
 
 func flip_car() -> void:
 	if global.player_car != null:

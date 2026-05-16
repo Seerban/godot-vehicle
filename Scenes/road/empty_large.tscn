@@ -27,7 +27,7 @@ surface_material_override/0 = ExtResource("1_d8nur")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1872477993]
 shape = SubResource("BoxShape3D_ek87d")
 
-[node name="RoadPath2" type="Path3D" parent="." unique_id=1727674792]
+[node name="InterPath" type="Path3D" parent="." unique_id=1727674792]
 curve = SubResource("Curve3D_d8nur")
 script = ExtResource("2_663sj")
 type = 2

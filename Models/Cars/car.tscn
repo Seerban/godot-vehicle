@@ -90,7 +90,7 @@ clearcoat_enabled = true
 clearcoat_roughness = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ho8xs"]
-size = Vector3(5.1898437, 1.020935, 1.9970703)
+size = Vector3(5.5, 0.90000004, 1.9970703)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r7o47"]
 size = Vector3(0.1, 0.1, 0.4)
@@ -123,7 +123,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_r7o47")
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=232987619]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.029296637, 0.01046715, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015625, 0.07093407, 0)
 shape = SubResource("BoxShape3D_ho8xs")
 
 [node name="VehicleAxleRear" type="Node3D" parent="." unique_id=2901479]

@@ -25,15 +25,22 @@ func draw_polygon_from_path(p : Path3D, color : Color):
 	
 	draw_polygon(points2d, colors)
 
-func draw_path3d_topdown(p : Path3D, color : Color):
+func draw_path3d_topdown(p: Path3D, color: Color):
 	var points3d: PackedVector3Array = p.curve.get_baked_points()
 	var points2d: PackedVector2Array = []
-	
-	for pt in points3d:
-		var point2d = Vector2(pt.x + p.global_position.x + get_rect().size.x, pt.z + p.global_position.z + get_rect().size.y)
+
+	for local_pt in points3d:
+		var world_pt: Vector3 = p.global_transform * local_pt
+		
+		# Top-down projection (X/Z)
+		var point2d = Vector2(
+			world_pt.x + get_rect().size.x,
+			world_pt.z + get_rect().size.y
+		)
+
 		points2d.append(point2d)
-	
-	draw_polyline(points2d, color, 10)
+
+	draw_polyline(points2d, color, 10.0)
 
 func _draw() -> void:
 	height_gradient = load("res://Curves/terrain.tres")

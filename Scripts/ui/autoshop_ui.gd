@@ -205,6 +205,8 @@ func load_parts_buttons(path: String) -> void:
 		var file = dir.get_next()
 		
 		while file != "":
+			if file.ends_with(".remap"):
+				file = file.replace(".remap", "")
 			
 			var res = load(PARTS_PATH + path + '/' + file)
 			load_button(res)
