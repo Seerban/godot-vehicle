@@ -6,7 +6,7 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_f8x3u"]
 top_radius = 8.0
 bottom_radius = 8.0
-height = 1000.0
+height = 2000.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dl2cu"]
 height = 50.0

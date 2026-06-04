@@ -74,11 +74,14 @@ func _physics_process(delta: float) -> void:
 	
 	time_since_movement += delta
 	
+	var flat_vel = node_to_follow.linear_velocity
+	flat_vel.y = 0
+	
 	# Move target angle and lerp towards it for smoothing
 	var temp_smoothing := smoothing # If automatic camera follow, lower smoothing
 	if time_since_movement > time_until_follow and node_to_follow.linear_velocity.length() > vel_until_follow:
-		target.y = -rad_to_deg( Vector3.FORWARD.signed_angle_to(node_to_follow.linear_velocity, Vector3.DOWN) ) - 90
-		target.z = auto_camera_height_angle + rad_to_deg( Vector3.UP.signed_angle_to(node_to_follow.linear_velocity, Vector3.DOWN) ) - 90
+		target.y = -rad_to_deg( Vector3.FORWARD.signed_angle_to(flat_vel, Vector3.DOWN) ) - 90
+		target.z = auto_camera_height_angle - rad_to_deg(atan2(node_to_follow.linear_velocity.y, node_to_follow.linear_velocity.length())) * 0.7
 		temp_smoothing = auto_move_smoothing
 	rotation_degrees = custom_lerp_angle(rotation_degrees, target, temp_smoothing)
 	

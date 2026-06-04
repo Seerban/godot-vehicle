@@ -53,14 +53,18 @@ Plan on adding: AI opponents/traffic, more visual customization and more gamific
 All components are managed in VehicleData.
 
 
-## Credits
+## Asset Credits
+
 Terrain made using [Terrain3D](https://tokisan.com/terrain3d/)
 
-Placeholder materials sourced from [ambientcg.com](https://ambientcg.com/)
+Terrain materials [ambientcg.com](https://ambientcg.com/)
 
-Couple Paint Shaders and Skybox Materials from [GodotShaders](https://godotshaders.com/)
+[City-asset-pack](https://sketchfab.com/3d-models/free-low-poly-simple-urban-city-3d-asset-pack-310c806355814c3794f5e3022b38db85#download)
+[Car-pack](https://sketchfab.com/3d-models/asset-of-low-poly-cars-part-2-55e75735c7144234b7016d0f7fa50dd4#download)
 
-Many UI Icons from [game-icons.net](https://game-icons.net/)
+Sky shader [krzmig-shader](https://github.com/krzmig/godot-simple-sky-project)
+
+[Water shader](https://godotshaders.com/shader/transparent-water-shader-supporting-ssr/) (Currently unconfigured)
 
 ## How to Run:
 Download latest release and run .exe on Windows or .x86-64 on Linux (Might need to run with Wine or steam's Proton if not available) or clone the repo and run inside Godot 4.6 editor

@@ -147,7 +147,7 @@ func disable() -> void:
 func attempt_respawn() -> void:
 	var pos2d = Vector2(global_position.x, global_position.z)
 	
-	for i in range(10, 201, 10):
+	for i in range(10, 501, 10):
 		var offset = Vector2(i, 0)
 		
 		for j in range(7):
