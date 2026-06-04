@@ -7,6 +7,7 @@ var types = ["Road", "RoadSimple", "Invisible", "RoadEmpty", "RoadDouble", "Road
 @export_enum("Road", "RoadSimple", "Invisible", "RoadEmpty", "RoadDouble", "RoadSimpleDouble") var type : int = 1
 @export var followup_forward: Array[RoadPath]
 @export var followup_backward: Array[RoadPath]
+@export var hidden_debug_label := false
 
 func _ready() -> void:
 	var road: CSGPolygon3D
@@ -28,7 +29,8 @@ func _ready() -> void:
 		global.minimap.paths.append(self)
 		return
 	
-	add_debug_label(curve.sample_baked(0))
+	if !hidden_debug_label:
+		add_debug_label(curve.sample_baked(0))
 
 func add_debug_label(pos: Vector3) -> void:
 	var label := Label3D.new()

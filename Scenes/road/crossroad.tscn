@@ -78,6 +78,7 @@ visible = false
 curve = SubResource("Curve3D_r8rg5")
 script = ExtResource("3_de4x6")
 type = 2
+hidden_debug_label = true
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="InterPath2" type="Path3D" parent="." unique_id=66449512]
@@ -85,6 +86,7 @@ visible = false
 curve = SubResource("Curve3D_57sv1")
 script = ExtResource("3_de4x6")
 type = 2
+hidden_debug_label = true
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="CapSprites" type="Node3D" parent="." unique_id=721103729]

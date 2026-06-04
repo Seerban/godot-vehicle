@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dtl3rqakl6yku"]
+
+[ext_resource type="Material" uid="uid://blbyaclhomcs2" path="res://Material/World/RoadEmpty.tres" id="1_jqyxt"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ey7rt"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 0.5
+
+[node name="RoundCap" type="MeshInstance3D" unique_id=1533003785]
+material_override = ExtResource("1_jqyxt")
+mesh = SubResource("CylinderMesh_ey7rt")

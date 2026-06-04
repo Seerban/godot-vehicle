@@ -213,10 +213,12 @@ shape = SubResource("BoxShape3D_bjuy5")
 curve = SubResource("Curve3D_bjuy5")
 script = ExtResource("2_qyqpc")
 type = 2
+hidden_debug_label = true
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="InterPath2" type="Path3D" parent="." unique_id=1684107672]
 curve = SubResource("Curve3D_3ohqt")
 script = ExtResource("2_qyqpc")
 type = 2
+hidden_debug_label = true
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"

@@ -31,4 +31,5 @@ shape = SubResource("BoxShape3D_ek87d")
 curve = SubResource("Curve3D_scf5g")
 script = ExtResource("2_grlyq")
 type = 2
+hidden_debug_label = true
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"

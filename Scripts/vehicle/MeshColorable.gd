@@ -1,8 +1,8 @@
 extends MeshInstance3D
 class_name MeshColorable
 
-var mat_name : String
-var col : Color
+var mat_name: String
+var col: Color
 
 func update_material(mat : String) -> void:
 	mat_name = mat
@@ -24,6 +24,17 @@ func update_color(col: Color) -> void:
 		if mat_name == "Pearl" or mat_name == "Pearl_Matte":
 			mat.set_shader_parameter("albedo_color", Color(1. - col.r, 1. - col.g, 1. - col.b))
 			mat.set_shader_parameter("shift", col)
+		set_surface_override_material(0, mat)
+	
+	col.a = clamp(col.a, 0.0, 1.0)
+	update_alpha(col.a)
+
+func update_alpha(a : float) -> void:
+	var mat = get_surface_override_material(0)
+	
+	if mat is StandardMaterial3D:
+		mat = mat.duplicate() as StandardMaterial3D
+		mat.albedo_color.a = a
 		set_surface_override_material(0, mat)
 
 func get_color() -> Color: return col
