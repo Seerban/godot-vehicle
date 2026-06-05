@@ -37,7 +37,7 @@ func _ready() -> void:
 	grip_ui = ui_manager.get_node("Grip")
 
 func spawn_ai(pos: Vector3, target_path: RoadPath) -> void:
-	var car_data = player_data.vehicle
+	var car_data = VehicleData.new()
 	var car = car_data.add_as_vehicle( get_tree().get_first_node_in_group("vehicles"), true )
 	var controller = AIController.new()
 	

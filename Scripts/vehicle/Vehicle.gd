@@ -57,10 +57,14 @@ func _physics_process(delta : float) -> void:
 		attempt_respawn()
 	
 	controller.custom_process(delta)
-	lights.update_trails()
-	set_acceleration( controller.accel_handler(delta) )
-	set_braking( controller.brake_handler(delta) )
-	set_steering( controller.steer_handler(delta) )
+	var accel = controller.accel_handler(delta)
+	var braking = controller.brake_handler(delta)
+	var steering = controller.steer_handler(delta)
+	set_acceleration(accel)
+	# bandaid fix for rolling on neutral input due to suspension offsets
+	if accel == 0 and braking == 0 and linear_velocity.length() < 0.5: braking = 0.15
+	set_braking(braking)
+	set_steering(steering)
 	_aero()
 
 

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_6i2n0")
+wheel_size = 0.8
 name = "Default Chassis"
 weight = 50.0
 metadata/_custom_type_script = "uid://d1h86ieukxixo"

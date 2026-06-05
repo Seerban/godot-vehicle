@@ -112,21 +112,6 @@ func add_lights() -> void:
 		light.visible = false
 		reverse_lights.append(light)
 
-func add_trails() -> void:
-	for i in backs:
-		
-		var rear_trail : GPUParticles3D = load("res://Scenes/particles/rear_trails.tscn").instantiate()
-		add_child(rear_trail)
-		rear_trail.car = car
-		trails.append(rear_trail)
-		
-		if not (i.mesh is BoxMesh): return
-		
-		rear_trail.position = i.position
-		rear_trail.draw_pass_1.size.y = i.mesh.size.y
-		rear_trail.draw_pass_1.size.x = i.mesh.size.x
-		rear_trail.draw_pass_1.size.z = i.mesh.size.z
-
 func set_enabled_trails(b : bool) -> void:
 	for i in trails:
 		i.visible = b
@@ -164,10 +149,5 @@ func _ready() -> void:
 		elif i.name.begins_with("Back"): backs.append(i)
 		elif i.name.begins_with("Reverse"): reverses.append(i)
 	add_lights()
-	add_trails()
 	
 	use_next_preset()
-
-func update_trails() -> void:
-	for i in trails:
-		i.update_vars()

@@ -14,7 +14,6 @@ func _ready() -> void:
 	for axle in get_children():
 		if axle is VehicleAxle: axle.use_ldwheel = true
 	
-	lights.update_trails()
 	update()
 
 func _physics_process(delta : float) -> void:

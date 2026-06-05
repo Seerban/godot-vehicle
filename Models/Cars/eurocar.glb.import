@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://r81hqxhpolux"
-path="res://.godot/imported/muscle_car.glb-0da6ba9b4d9995082386cc4506f913ad.scn"
+uid="uid://u5vre10i8sxe"
+path="res://.godot/imported/eurocar.glb-709a4b6769f4f833f16e3d09fab7b161.scn"
 
 [deps]
 
-source_file="res://Models/Cars/muscle_car.glb"
-dest_files=["res://.godot/imported/muscle_car.glb-0da6ba9b4d9995082386cc4506f913ad.scn"]
+source_file="res://Models/Cars/eurocar.glb"
+dest_files=["res://.godot/imported/eurocar.glb-709a4b6769f4f833f16e3d09fab7b161.scn"]
 
 [params]
 

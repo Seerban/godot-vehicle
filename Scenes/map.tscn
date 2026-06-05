@@ -579,31 +579,6 @@ followup_forward = [NodePath("../0")]
 followup_backward = [NodePath("../2")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="Intersection" parent="RoadsMain" unique_id=1842989046 instance=ExtResource("11_j4oe2")]
-transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, 337.92892, 49.6, -214.92892)
-
-[node name="Intersection2" parent="RoadsMain" unique_id=369295797 instance=ExtResource("11_j4oe2")]
-transform = Transform3D(0.37407252, 0, 0.92739934, 0, 1, 0, -0.92739934, 0, 0.37407252, -237.0137, 49.6, 304.6306)
-
-[node name="Intersection3" parent="RoadsMain" unique_id=912947760 instance=ExtResource("11_j4oe2")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 411, 49.6, -369)
-
-[node name="Intersection6" parent="RoadsMain" unique_id=586188186 instance=ExtResource("11_j4oe2")]
-transform = Transform3D(0.0871557, 0, -0.9961948, 0, 1, 0, 0.9961948, 0, 0.0871557, 475.2, 49.6, -376.9)
-
-[node name="Intersection7" parent="RoadsMain" unique_id=1668540517 instance=ExtResource("11_j4oe2")]
-transform = Transform3D(-0.1550898, 0, -0.98790044, 0, 1, 0, 0.98790044, 0, -0.1550898, 326.80002, 49.6, -419.5)
-
-[node name="RoundCap" parent="RoadsMain" unique_id=1533003785 instance=ExtResource("19_riaky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270.6, 199.948, 563.6)
-skeleton = NodePath("../..")
-
-[node name="Intersection4" parent="RoadsMain" unique_id=824707209 instance=ExtResource("11_j4oe2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188, 49.6, -482.1)
-
-[node name="Intersection5" parent="RoadsMain" unique_id=1410660898 instance=ExtResource("11_j4oe2")]
-transform = Transform3D(0.9851723, 0, 0.17156802, 0, 1, 0, -0.17156802, 0, 0.9851723, -477.7225, 49.6, -202.6555)
-
 [node name="9" type="Path3D" parent="RoadsMain" unique_id=764151751]
 curve = SubResource("Curve3D_biwe2")
 script = ExtResource("12_q6lx1")
@@ -625,86 +600,55 @@ curve = SubResource("Curve3D_7t8hk")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoundCap2" parent="RoadsMain" unique_id=1267097086 instance=ExtResource("19_riaky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -206.8, 49.8, -658.9)
-skeleton = NodePath("")
-
-[node name="RoundCap3" parent="RoadsMain" unique_id=920789312 instance=ExtResource("19_riaky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -653.3, 49.84, -296.9)
-skeleton = NodePath("")
-
-[node name="RoadPath" type="Path3D" parent="RoadsMain" unique_id=1474810235]
+[node name="34" type="Path3D" parent="RoadsMain" unique_id=1474810235]
 curve = SubResource("Curve3D_dlwvm")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath2" type="Path3D" parent="RoadsMain" unique_id=1076579265]
+[node name="35" type="Path3D" parent="RoadsMain" unique_id=1076579265]
 curve = SubResource("Curve3D_00ubq")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath3" type="Path3D" parent="RoadsMain" unique_id=1743988515]
+[node name="36" type="Path3D" parent="RoadsMain" unique_id=1743988515]
 curve = SubResource("Curve3D_whj3y")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath4" type="Path3D" parent="RoadsMain" unique_id=1783827682]
+[node name="37" type="Path3D" parent="RoadsMain" unique_id=1783827682]
 curve = SubResource("Curve3D_db2lx")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath7" type="Path3D" parent="RoadsMain" unique_id=320863011]
+[node name="38" type="Path3D" parent="RoadsMain" unique_id=320863011]
 curve = SubResource("Curve3D_qokn7")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath8" type="Path3D" parent="RoadsMain" unique_id=1765377693]
+[node name="39" type="Path3D" parent="RoadsMain" unique_id=1765377693]
 curve = SubResource("Curve3D_g172m")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath9" type="Path3D" parent="RoadsMain" unique_id=1890805858]
+[node name="40" type="Path3D" parent="RoadsMain" unique_id=1890805858]
 curve = SubResource("Curve3D_lq0ec")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath6" type="Path3D" parent="RoadsMain" unique_id=193584024]
+[node name="41" type="Path3D" parent="RoadsMain" unique_id=193584024]
 curve = SubResource("Curve3D_xotsd")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath10" type="Path3D" parent="RoadsMain" unique_id=318038465]
+[node name="42" type="Path3D" parent="RoadsMain" unique_id=318038465]
 curve = SubResource("Curve3D_6nmmx")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="RoadPath5" type="Path3D" parent="RoadsMain" unique_id=294640087]
+[node name="43" type="Path3D" parent="RoadsMain" unique_id=294640087]
 curve = SubResource("Curve3D_t45bj")
 script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="Intersection8" parent="RoadsMain" unique_id=1826335459 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(0.9892902, 0, 0.14596216, 0, 1, 0, -0.14596216, 0, 0.9892902, 451.6, 49.6, -559.8)
-
-[node name="Intersection9" parent="RoadsMain" unique_id=970792919 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(0.9892902, 0, 0.14596216, 0, 1, 0, -0.14596216, 0, 0.9892902, 570.19995, 49.6, -491.3)
-
-[node name="Intersection10" parent="RoadsMain" unique_id=1899768996 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(0.99991524, 0, -0.013019785, 0, 1, 0, 0.013019785, 0, 0.99991524, 641.6, 49.6, -400.3)
-
-[node name="Intersection11" parent="RoadsMain" unique_id=1209953022 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(0.99974495, 0, 0.022582635, 0, 1, 0, -0.022582635, 0, 0.99974495, 434.89996, 49.6, -456.9)
-
-[node name="Intersection12" parent="RoadsMain" unique_id=17902976 instance=ExtResource("9_4c2oa")]
-transform = Transform3D(0.998492, 0, 0.05489791, 0, 1, 0, -0.05489791, 0, 0.998492, 618.7999, 49.6, -496.4)
-
-[node name="RoundCap4" parent="RoadsMain" unique_id=2024411324 instance=ExtResource("20_vtkp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 596.6, 49.84, -558.9)
-skeleton = NodePath("")
-
-[node name="RoundCap5" parent="RoadsMain" unique_id=1830774209 instance=ExtResource("20_vtkp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 626.9, 49.9, -304.9)
-skeleton = NodePath("")
 
 [node name="13" type="Path3D" parent="RoadsMain" unique_id=1561733102 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_k63oc")
@@ -853,44 +797,102 @@ followup_forward = [NodePath("../13"), NodePath("../16")]
 followup_backward = [NodePath("../14")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="Intersection13" parent="RoadsMain" unique_id=1601365148 instance=ExtResource("9_4c2oa")]
+[node name="Inters" type="Node3D" parent="." unique_id=1444701792]
+
+[node name="Intersection" parent="Inters" unique_id=1842989046 instance=ExtResource("11_j4oe2")]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, 337.92892, 49.6, -214.92892)
+
+[node name="Intersection2" parent="Inters" unique_id=369295797 instance=ExtResource("11_j4oe2")]
+transform = Transform3D(0.37407252, 0, 0.92739934, 0, 1, 0, -0.92739934, 0, 0.37407252, -237.0137, 49.6, 304.6306)
+
+[node name="Intersection3" parent="Inters" unique_id=912947760 instance=ExtResource("11_j4oe2")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 411, 49.6, -369)
+
+[node name="Intersection6" parent="Inters" unique_id=586188186 instance=ExtResource("11_j4oe2")]
+transform = Transform3D(0.0871557, 0, -0.9961948, 0, 1, 0, 0.9961948, 0, 0.0871557, 475.2, 49.6, -376.9)
+
+[node name="Intersection7" parent="Inters" unique_id=1668540517 instance=ExtResource("11_j4oe2")]
+transform = Transform3D(-0.1550898, 0, -0.98790044, 0, 1, 0, 0.98790044, 0, -0.1550898, 326.80002, 49.6, -419.5)
+
+[node name="RoundCap" parent="Inters" unique_id=1533003785 instance=ExtResource("19_riaky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270.6, 199.948, 563.6)
+skeleton = NodePath("../..")
+
+[node name="Intersection4" parent="Inters" unique_id=824707209 instance=ExtResource("11_j4oe2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188, 49.6, -482.1)
+
+[node name="Intersection5" parent="Inters" unique_id=1410660898 instance=ExtResource("11_j4oe2")]
+transform = Transform3D(0.9851723, 0, 0.17156802, 0, 1, 0, -0.17156802, 0, 0.9851723, -477.7225, 49.6, -202.6555)
+
+[node name="Intersection13" parent="Inters" unique_id=1601365148 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -544, 49.6, 457)
 
-[node name="Intersection14" parent="RoadsMain" unique_id=1724486193 instance=ExtResource("9_4c2oa")]
+[node name="Intersection14" parent="Inters" unique_id=1724486193 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -494, 49.6, 457)
 
-[node name="Intersection15" parent="RoadsMain" unique_id=1678406670 instance=ExtResource("9_4c2oa")]
+[node name="Intersection15" parent="Inters" unique_id=1678406670 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -544, 49.6, 507)
 
-[node name="Intersection16" parent="RoadsMain" unique_id=343419529 instance=ExtResource("9_4c2oa")]
+[node name="Intersection16" parent="Inters" unique_id=343419529 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -494, 49.6, 507)
 
-[node name="Intersection17" parent="RoadsMain" unique_id=1927754467 instance=ExtResource("9_4c2oa")]
+[node name="Intersection17" parent="Inters" unique_id=1927754467 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(0.9848077, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848077, -453.24243, 49.6, 493.17877)
 
-[node name="Intersection18" parent="RoadsMain" unique_id=598845569 instance=ExtResource("9_4c2oa")]
+[node name="Intersection18" parent="Inters" unique_id=598845569 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(0.9843498, 0, -0.17622578, 0, 1, 0, 0.17622578, 0, 0.9843498, -371.24243, 49.6, 298.87878)
 
-[node name="Intersection19" parent="RoadsMain" unique_id=1196054328 instance=ExtResource("9_4c2oa")]
+[node name="Intersection19" parent="Inters" unique_id=1196054328 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(0.8206508, 0, 0.57142997, 0, 1, 0, -0.57142997, 0, 0.8206508, -279.54242, 49.6, 341.4788)
 
-[node name="Intersection20" parent="RoadsMain" unique_id=229721137 instance=ExtResource("9_4c2oa")]
+[node name="Intersection20" parent="Inters" unique_id=229721137 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(0.8097447, 0, 0.58678234, 0, 1, 0, -0.58678234, 0, 0.8097447, -297.24243, 49.6, 456.27878)
 
-[node name="Intersection21" parent="RoadsMain" unique_id=657259447 instance=ExtResource("9_4c2oa")]
+[node name="Intersection21" parent="Inters" unique_id=657259447 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(0.3267395, 0, 0.9451145, 0, 1, 0, -0.9451145, 0, 0.3267395, -76.44244, 49.6, 449.57877)
 
-[node name="Intersection22" parent="RoadsMain" unique_id=987740255 instance=ExtResource("9_4c2oa")]
+[node name="Intersection22" parent="Inters" unique_id=987740255 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -544, 49.6, 407)
 
-[node name="Intersection23" parent="RoadsMain" unique_id=582392738 instance=ExtResource("9_4c2oa")]
+[node name="Intersection23" parent="Inters" unique_id=582392738 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -494, 49.6, 407)
 
-[node name="Intersection24" parent="RoadsMain" unique_id=1959468503 instance=ExtResource("9_4c2oa")]
+[node name="Intersection24" parent="Inters" unique_id=1959468503 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -479, 49.6, 345)
 
-[node name="Intersection25" parent="RoadsMain" unique_id=1541919238 instance=ExtResource("9_4c2oa")]
+[node name="Intersection25" parent="Inters" unique_id=1541919238 instance=ExtResource("9_4c2oa")]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -358.1, 49.6, 384.4)
+
+[node name="Intersection8" parent="Inters" unique_id=1826335459 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(0.9892902, 0, 0.14596216, 0, 1, 0, -0.14596216, 0, 0.9892902, 451.6, 49.6, -559.8)
+
+[node name="Intersection9" parent="Inters" unique_id=970792919 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(0.9892902, 0, 0.14596216, 0, 1, 0, -0.14596216, 0, 0.9892902, 570.19995, 49.6, -491.3)
+
+[node name="Intersection10" parent="Inters" unique_id=1899768996 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(0.99991524, 0, -0.013019785, 0, 1, 0, 0.013019785, 0, 0.99991524, 641.6, 49.6, -400.3)
+
+[node name="Intersection11" parent="Inters" unique_id=1209953022 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(0.99974495, 0, 0.022582635, 0, 1, 0, -0.022582635, 0, 0.99974495, 434.89996, 49.6, -456.9)
+
+[node name="Intersection12" parent="Inters" unique_id=17902976 instance=ExtResource("9_4c2oa")]
+transform = Transform3D(0.998492, 0, 0.05489791, 0, 1, 0, -0.05489791, 0, 0.998492, 618.7999, 49.6, -496.4)
+
+[node name="RoundCap4" parent="Inters" unique_id=2024411324 instance=ExtResource("20_vtkp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 596.6, 49.84, -558.9)
+skeleton = NodePath("")
+
+[node name="RoundCap5" parent="Inters" unique_id=1830774209 instance=ExtResource("20_vtkp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 626.9, 49.9, -304.9)
+skeleton = NodePath("")
+
+[node name="RoundCap2" parent="Inters" unique_id=1267097086 instance=ExtResource("19_riaky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -206.8, 49.8, -658.9)
+skeleton = NodePath("")
+
+[node name="RoundCap3" parent="Inters" unique_id=920789312 instance=ExtResource("19_riaky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -653.3, 49.84, -296.9)
+skeleton = NodePath("")
 
 [node name="Races" type="Node3D" parent="." unique_id=1818958179]
 
@@ -1049,6 +1051,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 331, 49.5, -159.20001)
 
 [node name="Tree67" parent="Objects/Trees" unique_id=284585314 instance=ExtResource("23_ltf6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106, 49.5, 174.79999)
+
+[node name="Tree161" parent="Objects/Trees" unique_id=76101534 instance=ExtResource("23_ltf6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166, 49.5, 245.79999)
 
 [node name="Tree109" parent="Objects/Trees" unique_id=1637265912 instance=ExtResource("23_ltf6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144, 49.5, 203.79999)
@@ -1485,7 +1490,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 459, 49.5, -482.2)
 [node name="Tree29" parent="Objects/Trees" unique_id=259079793 instance=ExtResource("23_ltf6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 496, 49.5, -473.2)
 
-[node name="Tree" parent="Objects/Trees" unique_id=76101534 instance=ExtResource("22_macow")]
+[node name="Tree" parent="Objects/Trees" unique_id=1811458867 instance=ExtResource("22_macow")]
 transform = Transform3D(-0.34202015, 0, 0.93969274, 0, 1, 0, -0.93969274, 0, -0.34202015, 615.39996, 49.9, -503.2)
 
 [node name="Tree2" parent="Objects/Trees" unique_id=2088743012 instance=ExtResource("22_macow")]

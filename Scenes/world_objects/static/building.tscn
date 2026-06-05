@@ -26,8 +26,6 @@ size = Vector3(40, 2, 40)
 size = Vector3(40, 2, 40)
 
 [node name="Building" type="StaticBody3D" unique_id=1246685143]
-collision_layer = 2
-collision_mask = 2
 
 [node name="HullMesh" type="MeshInstance3D" parent="." unique_id=1771111682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)

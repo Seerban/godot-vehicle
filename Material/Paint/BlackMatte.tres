@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://boj8nqgwd4v36"]
+
+[resource]
+specular_mode = 1
+albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
+metallic = 0.25
+roughness = 0.75
+anisotropy_enabled = true
+anisotropy = -1.0
