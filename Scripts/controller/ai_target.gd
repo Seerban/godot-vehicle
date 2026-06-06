@@ -28,15 +28,16 @@ func _ready() -> void:
 	direction *= -1
 	
 	# add debug mesh
-	var mesh := MeshInstance3D.new()
-	mesh.mesh = SphereMesh.new()
-	mesh.mesh.height = 2.5
-	add_child(mesh)
+	# var mesh := MeshInstance3D.new()
+	# mesh.mesh = SphereMesh.new()
+	# mesh.mesh.height = 2.5
+	# add_child(mesh)
 
 func _physics_process(delta: float) -> void:
-	if vehicle == null:
+	if !is_instance_valid(vehicle):
 		print("Null parameter in AI Target!")
 		set_physics_process(false)
+		queue_free()
 		return
 	if curve == null:
 		print("Null curve in AI Target!")
@@ -60,6 +61,11 @@ func advance_to_next_road() -> void:
 	#print("advancing from %s to %s" % [target_path.name, next_path.name])
 	
 	target_path = next_path
+	
+	if target_path == null:
+		vehicle.queue_free()
+		return
+	
 	curve = target_path.curve
 	path_length = curve.get_baked_length()
 	#print("NEXT PATH CHOSEN: ", target_path.name)

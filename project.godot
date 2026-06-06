@@ -51,6 +51,7 @@ camera=""
 minimap=""
 map=""
 debug_marker=""
+roads=""
 
 [input]
 

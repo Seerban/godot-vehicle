@@ -9,6 +9,8 @@ var target_angle := 0.0
 var rays: Array[RayCast3D]
 var ray_length := 10.0
 
+var max_player_distance := 125.0
+
 func _ready() -> void:
 	target = AITarget.new()
 	target.target_path = initial_target_path
@@ -57,6 +59,13 @@ func get_speed() -> float:
 
 func custom_process(_delta : float) -> void:
 	if !is_instance_valid(target): return
+	
+	if global.player_car == null: return
+	if (vehicle.global_position - global.player_car.global_position).length() > max_player_distance:
+		print("ai vehicle despawning, too far")
+		vehicle.queue_free()
+		target.queue_free()
+		return
 	
 	var max_angle = vehicle.components.turning_deg
 	target_angle = clamp( angle_to_target(), -max_angle, max_angle)

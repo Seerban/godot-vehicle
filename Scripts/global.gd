@@ -6,6 +6,7 @@ const WATER_LEVEL := 30
 
 var player_data: PlayerData
 var spawn_position := Vector3.ZERO # tracker to bring player back after teleporting
+var npc_vehicledata := VehicleData.new()
 
 # REFERENCES
 var player_car: Vehicle
@@ -37,18 +38,30 @@ func _ready() -> void:
 	grip_ui = ui_manager.get_node("Grip")
 
 func spawn_ai(pos: Vector3, target_path: RoadPath) -> void:
-	var car_data = VehicleData.new()
-	var car = car_data.add_as_vehicle( get_tree().get_first_node_in_group("vehicles"), true )
+	var car = npc_vehicledata.add_as_vehicle( get_tree().get_first_node_in_group("vehicles"), true )
 	var controller = AIController.new()
 	
+	# set to ai controller
 	controller.vehicle = car
 	controller.initial_target_path = target_path
 	add_child(controller)
-	
 	car.controller = controller
 	controller.vehicle = car
-	car.global_position = pos
-	car.rotation_degrees.y += -125
+	
+	if target_path != null:
+		# random direction and get angle/pos
+		var dir = randi_range(0, 1) * 2 - 1
+		controller.target.direction = dir
+		var offset = target_path.curve.get_closest_offset(pos)
+		var offset2 = offset + 1.0 * dir
+		var angle = (target_path.curve.sample_baked(offset2) - target_path.curve.sample_baked(offset)).normalized()	
+		
+		car.global_position = pos + Vector3(0, 1.0, 0) - angle.rotated(Vector3.UP, PI/2) * 2.5
+		car.look_at(car.global_position - angle)
+		car.rotation.y -= PI/2
+		car.linear_velocity = angle * 5.0
+	else:
+		car.global_position = pos + Vector3(0, 0.5, 0)
 
 # player management
 func set_player_pos():
@@ -116,6 +129,22 @@ func get_height_at_coords(pos: Vector2, layers := [1]) -> float:
 	if result:
 		return result.position.y
 	return -1
+
+func get_closest_point_from_road(pos: Vector3) -> Array:
+	var roads = get_tree().get_first_node_in_group("roads").get_children() as Array[RoadPath]
+	var closest_dist = 10000
+	var closest_point = null
+	var closest_road = null
+	
+	for road in roads:
+		var point = road.curve.get_closest_point(pos)
+		var dist = (pos - point).length()
+		if dist < closest_dist:
+			closest_dist = dist
+			closest_point = point
+			closest_road = road
+	
+	return[closest_point, closest_road]
 
 func get_car_model_instance(s : String) -> MeshColorable:
 	print("loading car model " + s)

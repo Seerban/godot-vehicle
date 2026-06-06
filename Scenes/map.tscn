@@ -147,41 +147,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve3D" id="Curve3D_vtkp8"]
-_data = {
-"points": PackedVector3Array(-19, 0, -70, 19, 0, 70, 413.5, 49.6, -359.6, 31, 0, -31, -31, 0, 31, 344.9, 49.6, -222.00002),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_riaky"]
-_data = {
-"points": PackedVector3Array(-24.190582, 2.2888184e-05, 6.7282104, 24.190582, -2.2888184e-05, -6.7282104, 420.5, 49.6, -371.4, -19.77945, 7.247925e-05, 1.8392944, 19.77945, -7.247925e-05, -1.8392944, 465.4, 49.6, -376.1),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_ura26"]
-_data = {
-"points": PackedVector3Array(-39, 0, 4, 39, 0, -4, 484.9, 49.6, -377.69998, -9, 0, -18, 9, 0, 18, 551, 49.7, -334, -2, -3, -16, 2, 3, 16, 561.6329, 55.03647, -294.96738, 28, -38.32, -179.8, -28, 0, 179.8, 603.5234, 199.76775, 178.76456, 371.30002, 0, -156.8, -371.30002, 0, 156.8, 270.529, 199.7, 563.63),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
-
-[sub_resource type="Curve3D" id="Curve3D_a0h6a"]
-_data = {
-"points": PackedVector3Array(-95, 0, 242, 95, 0, -242, -233.4, 49.61, 295.4, -53, 0, 53, 53, 0, -53, 331, 49.61, -208.1),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_wcnou"]
-_data = {
-"points": PackedVector3Array(-311, 0, -124, 311, 0, 124, -227.79999, 49.61, 308.4, -93, 0, 126, 93, 0, -126, 349.75226, 49.61, 296.4171, 128, 0, 131, -128, 0, -131, 345, 49.61, -208.1),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
-
 [sub_resource type="Curve3D" id="Curve3D_ak4ow"]
 _data = {
 "points": PackedVector3Array(124, 0, 46, -124, 0, -46, -246, 49.6, 301, 19, 0, 53, -19, 0, -53, -437.072, 49.6, 152, 10.1, 0, 52.2, -10.1, 0, -52.2, -476, 49.6, -193),
@@ -202,6 +167,41 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_a0h6a"]
+_data = {
+"points": PackedVector3Array(-95, 0, 242, 95, 0, -242, -233.4, 49.61, 295.4, -53, 0, 53, 53, 0, -53, 331, 49.61, -208.1),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_wcnou"]
+_data = {
+"points": PackedVector3Array(-311, 0, -124, 311, 0, 124, -227.79999, 49.61, 308.4, -93, 0, 126, 93, 0, -126, 349.75226, 49.61, 296.4171, 128, 0, 131, -128, 0, -131, 345, 49.61, -208.1),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_riaky"]
+_data = {
+"points": PackedVector3Array(-24.190582, 2.2888184e-05, 6.7282104, 24.190582, -2.2888184e-05, -6.7282104, 420.5, 49.6, -371.4, -19.77945, 7.247925e-05, 1.8392944, 19.77945, -7.247925e-05, -1.8392944, 465.4, 49.6, -376.1),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_vtkp8"]
+_data = {
+"points": PackedVector3Array(-19, 0, -70, 19, 0, 70, 413.5, 49.6, -359.6, 31, 0, -31, -31, 0, 31, 344.9, 49.6, -222.00002),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ura26"]
+_data = {
+"points": PackedVector3Array(-39, 0, 4, 39, 0, -4, 484.9, 49.6, -377.69998, -9, 0, -18, 9, 0, 18, 551, 49.7, -334, -2, -3, -16, 2, 3, 16, 561.6329, 55.03647, -294.96738, 28, -38.32, -179.8, -28, 0, 179.8, 603.5234, 199.76775, 178.76456, 371.30002, 0, -156.8, -371.30002, 0, 156.8, 270.529, 199.7, 563.63),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [sub_resource type="Curve3D" id="Curve3D_biwe2"]
 _data = {
@@ -227,76 +227,6 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_7t8hk"]
 _data = {
 "points": PackedVector3Array(-43, 0, -34, 43, 0, 34, -200.20003, 49.6, -652.9, -3, 0, -65, 3, 0, 65, -187.10901, 49.6, -491.99298),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_dlwvm"]
-_data = {
-"points": PackedVector3Array(53, 0, 52, -53, 0, -52, 331.28, 49.6, -222.20001, -67.200005, 0, 18.5, 67.200005, 0, -18.5, 401.382, 49.6, -367.091),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_00ubq"]
-_data = {
-"points": PackedVector3Array(-8, 0, 54, 8, 0, -54, 329.28, 49.6, -429.2, -63, 0, 9, 63, 0, -9, 446.78198, 49.6, -559.091),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_whj3y"]
-_data = {
-"points": PackedVector3Array(-71, 0, 11, 71, 0, -11, 456.38, 49.6, -560.5, -5, 0, -35, 5, 0, 35, 569.482, 49.6, -496.091),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_db2lx"]
-_data = {
-"points": PackedVector3Array(-17, 0, 2, 17, 0, -2, 574.98, 49.6, -492, -19, 0, 1, 19, 0, -1, 614.082, 49.6, -496.091),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_qokn7"]
-_data = {
-"points": PackedVector3Array(2, 0, 69, -2, 0, -69, 434.77997, 49.6, -461.9, -20, 0, 3, 20, 0, -3, 565.482, 49.6, -490.591),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_g172m"]
-_data = {
-"points": PackedVector3Array(4, 0, 40, -4, 0, -40, 473.37997, 49.6, -386.49997, 0, 0, 26, 0, 0, -26, 434.982, 49.6, -452.09103),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_lq0ec"]
-_data = {
-"points": PackedVector3Array(59, 0, 3, -59, 0, -3, 636.98, 49.6, -400.39996, 16, 0, 27, -16, 0, -27, 544.182, 49.6, -446.39105, 28.7, 0, -0.6, -28.7, 0, 0.6, 439.6915, 49.600098, -456.29578),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
-
-[sub_resource type="Curve3D" id="Curve3D_xotsd"]
-_data = {
-"points": PackedVector3Array(-1, 0, 41, 1, 0, -41, 641.68, 49.6, -405.1, 2, 0, 31, -2, 0, -31, 619.082, 49.6, -491.491),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_6nmmx"]
-_data = {
-"points": PackedVector3Array(-25, 0, 45, 25, 0, -45, 626.68, 49.6, -304.5, -1, 0, 20, 1, 0, -20, 641.482, 49.6, -395.491),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_t45bj"]
-_data = {
-"points": PackedVector3Array(-17, 0, -13, 17, 0, 13, 596.48, 49.6, -559, -2, 0, -27, 2, 0, 27, 618.482, 49.6, -501.291),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -343,6 +273,13 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve3D" id="Curve3D_y410r"]
+_data = {
+"points": PackedVector3Array(14, 0, 25, -14, 0, -25, -360.5, 49.6, 380.19998, -9, 0, 53, 9, 0, -53, -372.1, 49.6, 303.69998),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [sub_resource type="Curve3D" id="Curve3D_n3g5y"]
 _data = {
 "points": PackedVector3Array(-50, 0, -8, 50, 0, 8, -366.5, 49.600002, 299.80002, -14, 0, -21, 14, 0, 21, -282.30002, 49.600002, 337.5),
@@ -353,13 +290,6 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_mjs32"]
 _data = {
 "points": PackedVector3Array(-13.900001, 0, 9, 13.900001, 0, -9, -275.80002, 49.600002, 338.9, -6, 0, 17, 6, 0, -17, -241, 49.600002, 313.4),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_y410r"]
-_data = {
-"points": PackedVector3Array(14, 0, 25, -14, 0, -25, -360.5, 49.6, 380.19998, -9, 0, 53, 9, 0, -53, -372.1, 49.6, 303.69998),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -448,10 +378,80 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve3D" id="Curve3D_dlwvm"]
+_data = {
+"points": PackedVector3Array(53, 0, 52, -53, 0, -52, 331.28, 49.6, -222.20001, -67.200005, 0, 18.5, 67.200005, 0, -18.5, 401.382, 49.6, -367.091),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_00ubq"]
+_data = {
+"points": PackedVector3Array(-8, 0, 54, 8, 0, -54, 329.28, 49.6, -429.2, -63, 0, 9, 63, 0, -9, 446.78198, 49.6, -559.091),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_whj3y"]
+_data = {
+"points": PackedVector3Array(-71, 0, 11, 71, 0, -11, 456.38, 49.6, -560.5, -5, 0, -35, 5, 0, 35, 569.482, 49.6, -496.091),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_db2lx"]
+_data = {
+"points": PackedVector3Array(-17, 0, 2, 17, 0, -2, 574.98, 49.6, -492, -19, 0, 1, 19, 0, -1, 614.082, 49.6, -496.091),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_qokn7"]
+_data = {
+"points": PackedVector3Array(2, 0, 69, -2, 0, -69, 434.77997, 49.6, -461.9, -20, 0, 3, 20, 0, -3, 565.482, 49.6, -490.591),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_g172m"]
+_data = {
+"points": PackedVector3Array(4, 0, 40, -4, 0, -40, 473.37997, 49.6, -386.49997, 0, 0, 26, 0, 0, -26, 434.982, 49.6, -452.09103),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_lq0ec"]
+_data = {
+"points": PackedVector3Array(59, 0, 3, -59, 0, -3, 636.98, 49.6, -400.39996, 16, 0, 27, -16, 0, -27, 544.182, 49.6, -446.39105, 28.7, 0, -0.6, -28.7, 0, 0.6, 439.6915, 49.600098, -456.29578),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_xotsd"]
+_data = {
+"points": PackedVector3Array(-1, 0, 41, 1, 0, -41, 641.68, 49.6, -405.1, 2, 0, 31, -2, 0, -31, 619.082, 49.6, -491.491),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_6nmmx"]
+_data = {
+"points": PackedVector3Array(-25, 0, 45, 25, 0, -45, 626.68, 49.6, -304.5, -1, 0, 20, 1, 0, -20, 641.482, 49.6, -395.491),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_t45bj"]
+_data = {
+"points": PackedVector3Array(-17, 0, -13, 17, 0, 13, 596.48, 49.6, -559, -2, 0, -27, 2, 0, 27, 618.482, 49.6, -501.291),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="Map" type="Node3D" unique_id=213433501 groups=["map"]]
 
 [node name="WaterMesh" type="MeshInstance3D" parent="." unique_id=2065732947]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -63, -5, -3)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -63, -6, -4)
 material_override = ExtResource("5_q0mm3")
 mesh = SubResource("BoxMesh_np2xp")
 
@@ -505,162 +505,117 @@ text = "Hello World"
 font_size = 256
 outline_size = 32
 
-[node name="RoadsMain" type="Node3D" parent="." unique_id=1522114307]
+[node name="RoadsMain" type="Node3D" parent="." unique_id=1522114307 groups=["roads"]]
 
 [node name="0" type="Path3D" parent="RoadsMain" unique_id=390755045 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_pptwf")
 script = ExtResource("12_q6lx1")
 type = 4
-followup_forward = [NodePath("../4"), NodePath("../5")]
-followup_backward = [NodePath("../3")]
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="7" type="Path3D" parent="RoadsMain" unique_id=994301970 node_paths=PackedStringArray("followup_forward", "followup_backward")]
-curve = SubResource("Curve3D_vtkp8")
-script = ExtResource("12_q6lx1")
-type = 4
-followup_forward = [NodePath("../4"), NodePath("../5")]
-followup_backward = [NodePath("../3")]
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="6" type="Path3D" parent="RoadsMain" unique_id=1290289019 node_paths=PackedStringArray("followup_forward", "followup_backward")]
-curve = SubResource("Curve3D_riaky")
-script = ExtResource("12_q6lx1")
-type = 4
-followup_forward = [NodePath("../4"), NodePath("../5")]
-followup_backward = [NodePath("../3")]
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="8" type="Path3D" parent="RoadsMain" unique_id=245609580 node_paths=PackedStringArray("followup_forward", "followup_backward")]
-curve = SubResource("Curve3D_ura26")
-script = ExtResource("12_q6lx1")
-type = 4
-followup_forward = [NodePath("../4"), NodePath("../5")]
-followup_backward = [NodePath("../3")]
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="4" type="Path3D" parent="RoadsMain" unique_id=2106561354 node_paths=PackedStringArray("followup_forward", "followup_backward")]
-curve = SubResource("Curve3D_a0h6a")
-script = ExtResource("12_q6lx1")
-type = 4
-followup_forward = [NodePath("../0"), NodePath("../5")]
-followup_backward = [NodePath("../1"), NodePath("../5")]
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="5" type="Path3D" parent="RoadsMain" unique_id=1324913471 node_paths=PackedStringArray("followup_forward", "followup_backward")]
-curve = SubResource("Curve3D_wcnou")
-script = ExtResource("12_q6lx1")
-type = 4
-followup_forward = [NodePath("../0"), NodePath(".")]
-followup_backward = [NodePath("../4"), NodePath("../1")]
+followup_forward = [NodePath("../6"), NodePath("../7"), NodePath("../34")]
+followup_backward = [NodePath("../35"), NodePath("../3")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="1" type="Path3D" parent="RoadsMain" unique_id=354245944 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_ak4ow")
 script = ExtResource("12_q6lx1")
 type = 4
-followup_forward = [NodePath("../2")]
-followup_backward = [NodePath("../5"), NodePath("../4")]
+followup_forward = [NodePath("../10"), NodePath("../2")]
+followup_backward = [NodePath("../4"), NodePath("../5"), NodePath("../21")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="2" type="Path3D" parent="RoadsMain" unique_id=1374516170 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_ajvq6")
 script = ExtResource("12_q6lx1")
 type = 4
-followup_forward = [NodePath("../1")]
-followup_backward = [NodePath("../3")]
+followup_forward = [NodePath("../10"), NodePath("../1")]
+followup_backward = [NodePath("../3"), NodePath("../10")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="3" type="Path3D" parent="RoadsMain" unique_id=731220480 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_cwq17")
 script = ExtResource("12_q6lx1")
 type = 4
-followup_forward = [NodePath("../0")]
-followup_backward = [NodePath("../2")]
+followup_forward = [NodePath("../0"), NodePath("../35")]
+followup_backward = [NodePath("../2"), NodePath("../10")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="9" type="Path3D" parent="RoadsMain" unique_id=764151751]
+[node name="4" type="Path3D" parent="RoadsMain" unique_id=2106561354 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_a0h6a")
+script = ExtResource("12_q6lx1")
+type = 4
+followup_forward = [NodePath("../34"), NodePath("../5"), NodePath("../7")]
+followup_backward = [NodePath("../5"), NodePath("../1"), NodePath("../21")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="5" type="Path3D" parent="RoadsMain" unique_id=1324913471 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_wcnou")
+script = ExtResource("12_q6lx1")
+type = 4
+followup_forward = [NodePath("../34"), NodePath("../7"), NodePath("../4")]
+followup_backward = [NodePath("../4"), NodePath("../1"), NodePath("../21")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="6" type="Path3D" parent="RoadsMain" unique_id=1290289019 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_riaky")
+script = ExtResource("12_q6lx1")
+type = 4
+followup_forward = [NodePath("../8"), NodePath("../39")]
+followup_backward = [NodePath("../7"), NodePath("../34"), NodePath("../0")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="7" type="Path3D" parent="RoadsMain" unique_id=994301970 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_vtkp8")
+script = ExtResource("12_q6lx1")
+type = 4
+followup_forward = [NodePath("../34"), NodePath("../5"), NodePath("../4")]
+followup_backward = [NodePath("../6"), NodePath("../0"), NodePath("../34")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="8" type="Path3D" parent="RoadsMain" unique_id=245609580 node_paths=PackedStringArray("followup_backward")]
+curve = SubResource("Curve3D_ura26")
+script = ExtResource("12_q6lx1")
+type = 4
+followup_backward = [NodePath("../39"), NodePath("../6")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="9" type="Path3D" parent="RoadsMain" unique_id=764151751 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_biwe2")
 script = ExtResource("12_q6lx1")
 type = 5
+followup_forward = [NodePath("../11")]
+followup_backward = [NodePath("../12")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="10" type="Path3D" parent="RoadsMain" unique_id=702191021]
+[node name="10" type="Path3D" parent="RoadsMain" unique_id=702191021 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_macow")
 script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../3"), NodePath("../2")]
+followup_backward = [NodePath("../2"), NodePath("../1")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="11" type="Path3D" parent="RoadsMain" unique_id=1231668723]
+[node name="11" type="Path3D" parent="RoadsMain" unique_id=1231668723 node_paths=PackedStringArray("followup_forward")]
 curve = SubResource("Curve3D_uus22")
 script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../10"), NodePath("../2"), NodePath("../1")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
-[node name="12" type="Path3D" parent="RoadsMain" unique_id=1977132986]
+[node name="12" type="Path3D" parent="RoadsMain" unique_id=1977132986 node_paths=PackedStringArray("followup_forward")]
 curve = SubResource("Curve3D_7t8hk")
 script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="34" type="Path3D" parent="RoadsMain" unique_id=1474810235]
-curve = SubResource("Curve3D_dlwvm")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="35" type="Path3D" parent="RoadsMain" unique_id=1076579265]
-curve = SubResource("Curve3D_00ubq")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="36" type="Path3D" parent="RoadsMain" unique_id=1743988515]
-curve = SubResource("Curve3D_whj3y")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="37" type="Path3D" parent="RoadsMain" unique_id=1783827682]
-curve = SubResource("Curve3D_db2lx")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="38" type="Path3D" parent="RoadsMain" unique_id=320863011]
-curve = SubResource("Curve3D_qokn7")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="39" type="Path3D" parent="RoadsMain" unique_id=1765377693]
-curve = SubResource("Curve3D_g172m")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="40" type="Path3D" parent="RoadsMain" unique_id=1890805858]
-curve = SubResource("Curve3D_lq0ec")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="41" type="Path3D" parent="RoadsMain" unique_id=193584024]
-curve = SubResource("Curve3D_xotsd")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="42" type="Path3D" parent="RoadsMain" unique_id=318038465]
-curve = SubResource("Curve3D_6nmmx")
-script = ExtResource("12_q6lx1")
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="43" type="Path3D" parent="RoadsMain" unique_id=294640087]
-curve = SubResource("Curve3D_t45bj")
-script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../3"), NodePath("../2"), NodePath("../10")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="13" type="Path3D" parent="RoadsMain" unique_id=1561733102 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_k63oc")
 script = ExtResource("12_q6lx1")
 followup_forward = [NodePath("../25"), NodePath("../26")]
-followup_backward = [NodePath("../33"), NodePath("../16")]
+followup_backward = [NodePath("../16"), NodePath("../33")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="14" type="Path3D" parent="RoadsMain" unique_id=648166080 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_unquq")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../26")]
+followup_forward = [NodePath("../26"), NodePath("../27")]
 followup_backward = [NodePath("../33")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
@@ -668,126 +623,126 @@ metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 curve = SubResource("Curve3D_j4oe2")
 script = ExtResource("12_q6lx1")
 followup_forward = [NodePath("../23"), NodePath("../25")]
-followup_backward = [NodePath("../16"), NodePath("../17")]
+followup_backward = [NodePath("../17"), NodePath("../16")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="16" type="Path3D" parent="RoadsMain" unique_id=1839678132 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_ltf6m")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../15"), NodePath("../17")]
+followup_forward = [NodePath("../17"), NodePath("../15")]
 followup_backward = [NodePath("../13"), NodePath("../33")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="17" type="Path3D" parent="RoadsMain" unique_id=1599291469 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_8cxpi")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../23")]
+followup_forward = [NodePath("../18"), NodePath("../23")]
 followup_backward = [NodePath("../15"), NodePath("../16")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="18" type="Path3D" parent="RoadsMain" unique_id=833030799 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_natfk")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../23")]
-followup_backward = [NodePath("../15"), NodePath("../16")]
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="20" type="Path3D" parent="RoadsMain" unique_id=981668547 node_paths=PackedStringArray("followup_forward", "followup_backward")]
-curve = SubResource("Curve3D_n3g5y")
-script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../23")]
-followup_backward = [NodePath("../15"), NodePath("../16")]
-metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
-
-[node name="21" type="Path3D" parent="RoadsMain" unique_id=707947216 node_paths=PackedStringArray("followup_forward", "followup_backward")]
-curve = SubResource("Curve3D_mjs32")
-script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../23")]
-followup_backward = [NodePath("../15"), NodePath("../16")]
+followup_forward = [NodePath("../20"), NodePath("../19")]
+followup_backward = [NodePath("../17"), NodePath("../23")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="19" type="Path3D" parent="RoadsMain" unique_id=109513351 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_y410r")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../23")]
-followup_backward = [NodePath("../15"), NodePath("../16")]
+followup_forward = [NodePath("../20"), NodePath("../18")]
+followup_backward = [NodePath("../32"), NodePath("../22")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="20" type="Path3D" parent="RoadsMain" unique_id=981668547 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_n3g5y")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../21"), NodePath("../31"), NodePath("../32")]
+followup_backward = [NodePath("../19"), NodePath("../18")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="21" type="Path3D" parent="RoadsMain" unique_id=707947216 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_mjs32")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../5"), NodePath("../4"), NodePath("../1")]
+followup_backward = [NodePath("../31"), NodePath("../32"), NodePath("../20")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="22" type="Path3D" parent="RoadsMain" unique_id=1989467117 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_xvpjn")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../23")]
-followup_backward = [NodePath("../15"), NodePath("../16")]
+followup_forward = [NodePath("../19"), NodePath("../32")]
+followup_backward = [NodePath("../29"), NodePath("../28")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="23" type="Path3D" parent="RoadsMain" unique_id=686734 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_078fj")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../17")]
+followup_forward = [NodePath("../18"), NodePath("../17")]
 followup_backward = [NodePath("../25"), NodePath("../15")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="24" type="Path3D" parent="RoadsMain" unique_id=259038938 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_rg57b")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../17")]
-followup_backward = [NodePath("../25"), NodePath("../15")]
+followup_forward = [NodePath("../18"), NodePath("../23"), NodePath("../17")]
+followup_backward = [NodePath("../18"), NodePath("../23"), NodePath("../17")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="25" type="Path3D" parent="RoadsMain" unique_id=1979579411 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_1ye5v")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../15"), NodePath("../23")]
-followup_backward = [NodePath("../13"), NodePath("../26")]
+followup_forward = [NodePath("../23"), NodePath("../15")]
+followup_backward = [NodePath("../26"), NodePath("../13")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="26" type="Path3D" parent="RoadsMain" unique_id=953235456 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_wpvg5")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../13"), NodePath("../25")]
-followup_backward = [NodePath("../14")]
+followup_forward = [NodePath("../25"), NodePath("../13")]
+followup_backward = [NodePath("../27"), NodePath("../14")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="27" type="Path3D" parent="RoadsMain" unique_id=1821300451 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_1xwpj")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../13"), NodePath("../25")]
-followup_backward = [NodePath("../14")]
+followup_forward = [NodePath("../28"), null]
+followup_backward = [NodePath("../26"), NodePath("../14")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="28" type="Path3D" parent="RoadsMain" unique_id=1010151047 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_gg4i5")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../13"), NodePath("../25")]
-followup_backward = [NodePath("../14")]
+followup_forward = [NodePath("../22"), NodePath("../29")]
+followup_backward = [NodePath("../27")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="29" type="Path3D" parent="RoadsMain" unique_id=2145368062 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_pwqop")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../13"), NodePath("../25")]
-followup_backward = [NodePath("../14")]
+followup_forward = [NodePath("../30"), NodePath("../31")]
+followup_backward = [NodePath("../22"), NodePath("../28")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="30" type="Path3D" parent="RoadsMain" unique_id=1322979904 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_ylraf")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../13"), NodePath("../25")]
-followup_backward = [NodePath("../14")]
+followup_forward = [NodePath("../5")]
+followup_backward = [NodePath("../31"), NodePath("../29")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="31" type="Path3D" parent="RoadsMain" unique_id=2062150772 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_6w3s7")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../13"), NodePath("../25")]
-followup_backward = [NodePath("../14")]
+followup_forward = [NodePath("../30"), NodePath("../29")]
+followup_backward = [NodePath("../32"), NodePath("../21"), NodePath("../20")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="32" type="Path3D" parent="RoadsMain" unique_id=802865485 node_paths=PackedStringArray("followup_forward", "followup_backward")]
 curve = SubResource("Curve3D_wk4js")
 script = ExtResource("12_q6lx1")
-followup_forward = [NodePath("../13"), NodePath("../25")]
-followup_backward = [NodePath("../14")]
+followup_forward = [NodePath("../19"), NodePath("../22")]
+followup_backward = [NodePath("../31"), NodePath("../21"), NodePath("../20")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="33" type="Path3D" parent="RoadsMain" unique_id=2089704715 node_paths=PackedStringArray("followup_forward", "followup_backward")]
@@ -795,6 +750,73 @@ curve = SubResource("Curve3D_tuwt4")
 script = ExtResource("12_q6lx1")
 followup_forward = [NodePath("../13"), NodePath("../16")]
 followup_backward = [NodePath("../14")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="34" type="Path3D" parent="RoadsMain" unique_id=1474810235 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_dlwvm")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../7"), NodePath("../6"), NodePath("../0")]
+followup_backward = [NodePath("../7"), NodePath("../5"), NodePath("../4")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="35" type="Path3D" parent="RoadsMain" unique_id=1076579265 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_00ubq")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../36")]
+followup_backward = [NodePath("../3"), NodePath("../0")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="36" type="Path3D" parent="RoadsMain" unique_id=1743988515 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_whj3y")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../37"), NodePath("../38")]
+followup_backward = [NodePath(".")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="37" type="Path3D" parent="RoadsMain" unique_id=1783827682 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_db2lx")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../41")]
+followup_backward = [NodePath("../36"), NodePath("../38")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="38" type="Path3D" parent="RoadsMain" unique_id=320863011 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_qokn7")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../37"), NodePath("../36")]
+followup_backward = [NodePath("../39"), NodePath("../40")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="39" type="Path3D" parent="RoadsMain" unique_id=1765377693 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_g172m")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../38"), NodePath("../40")]
+followup_backward = [NodePath("../8"), NodePath("../6")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="40" type="Path3D" parent="RoadsMain" unique_id=1890805858 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_lq0ec")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../38"), NodePath("../39")]
+followup_backward = [NodePath("../41"), NodePath("../42")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="41" type="Path3D" parent="RoadsMain" unique_id=193584024 node_paths=PackedStringArray("followup_forward", "followup_backward")]
+curve = SubResource("Curve3D_xotsd")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../37")]
+followup_backward = [NodePath("../40"), NodePath("../42")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="42" type="Path3D" parent="RoadsMain" unique_id=318038465 node_paths=PackedStringArray("followup_forward")]
+curve = SubResource("Curve3D_6nmmx")
+script = ExtResource("12_q6lx1")
+followup_forward = [NodePath("../40"), NodePath("../41")]
+metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
+
+[node name="43" type="Path3D" parent="RoadsMain" unique_id=294640087]
+curve = SubResource("Curve3D_t45bj")
+script = ExtResource("12_q6lx1")
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="Inters" type="Node3D" parent="." unique_id=1444701792]
@@ -816,7 +838,6 @@ transform = Transform3D(-0.1550898, 0, -0.98790044, 0, 1, 0, 0.98790044, 0, -0.1
 
 [node name="RoundCap" parent="Inters" unique_id=1533003785 instance=ExtResource("19_riaky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 270.6, 199.948, 563.6)
-skeleton = NodePath("../..")
 
 [node name="Intersection4" parent="Inters" unique_id=824707209 instance=ExtResource("11_j4oe2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188, 49.6, -482.1)
@@ -880,19 +901,15 @@ transform = Transform3D(0.998492, 0, 0.05489791, 0, 1, 0, -0.05489791, 0, 0.9984
 
 [node name="RoundCap4" parent="Inters" unique_id=2024411324 instance=ExtResource("20_vtkp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 596.6, 49.84, -558.9)
-skeleton = NodePath("")
 
 [node name="RoundCap5" parent="Inters" unique_id=1830774209 instance=ExtResource("20_vtkp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 626.9, 49.9, -304.9)
-skeleton = NodePath("")
 
 [node name="RoundCap2" parent="Inters" unique_id=1267097086 instance=ExtResource("19_riaky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -206.8, 49.8, -658.9)
-skeleton = NodePath("")
 
 [node name="RoundCap3" parent="Inters" unique_id=920789312 instance=ExtResource("19_riaky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -653.3, 49.84, -296.9)
-skeleton = NodePath("")
 
 [node name="Races" type="Node3D" parent="." unique_id=1818958179]
 

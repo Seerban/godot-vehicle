@@ -7,6 +7,15 @@ top_radius = 10.0
 bottom_radius = 10.0
 height = 0.5
 
-[node name="RoundCap" type="MeshInstance3D" unique_id=1533003785]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w8j3b"]
+height = 0.5
+radius = 10.0
+
+[node name="RoundCap" type="StaticBody3D" unique_id=1981916533]
+
+[node name="RoundCap" type="MeshInstance3D" parent="." unique_id=1533003785]
 material_override = ExtResource("1_jqyxt")
 mesh = SubResource("CylinderMesh_ey7rt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=806507096]
+shape = SubResource("CylinderShape3D_w8j3b")
