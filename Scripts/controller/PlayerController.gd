@@ -49,10 +49,14 @@ func accel_handler(delta : float) -> float:
 
 # Called in vehicle phys_process since not in tree
 func custom_process(delta: float) -> void:
+	# attempt to spawn AI cars around the player on a cooldown
 	spawn_timer -= delta
 	if spawn_timer < 0:
 		attempt_spawn()
 		spawn_timer = spawn_time_cooldown
+	
+	# update statistics for savedata
+	update_stats(delta)
 	
 	#global.get_closest_road_and_coords(Vector2(0, 0))
 	reset_cooldown -= delta
@@ -62,8 +66,16 @@ func custom_process(delta: float) -> void:
 		global.player_car.attempt_respawn()
 		reset_cooldown = reset_time
 
+# updates driving stats
+func update_stats(delta: float) -> void:
+	global.player_data.distance_traveled += global.player_car.linear_velocity.length()
+	if global.player_car.is_drifting: global.player_data.drift_time += delta
+	if global.player_car.is_speeding: global.player_data.speed_time += delta
+	if !global.player_car.is_grounded: global.player_data.jump_time += delta
+
+# attempt to spawn ai vehicle random position nearby, do nothing if too close
 func attempt_spawn() -> void:
-	var spawn_distance = 100.0
+	var spawn_distance = 200.0
 	
 	var rand_angle = randf_range(0, 360)
 	var offset = Vector3(spawn_distance, 0, 0).rotated(Vector3.UP, rand_angle)

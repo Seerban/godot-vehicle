@@ -12,6 +12,7 @@ var mesh: MeshColorable
 var current_accel := 0.0
 var current_brake := 0.0
 
+# flags for player statistics
 var is_grounded := false
 var is_drifting := false
 var is_speeding := false
@@ -34,6 +35,7 @@ var wheels : Array[Wheel]
 		components.attached_body = self
 		update()
 
+# mark as player car if player controlled
 func _ready() -> void:
 	components.attached_body = self
 	mesh = $CarMesh
@@ -46,34 +48,35 @@ func _ready() -> void:
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta : float) -> void:
+	# update statistics flags
 	is_grounded = get_grounded()
 	is_drifting = get_drift_factor() > 0.02 and get_forward_speed() > 5.0 and is_grounded
 	is_speeding = get_forward_speed() > 50.0
 	is_underwater = global_position.y < 20.0
 	
-	if is_flipped: print("flipped")
+	
 	if !enabled: return
 	if is_underwater:
 		attempt_respawn()
 	
+	# get controlls output from controller object
 	controller.custom_process(delta)
 	var accel = controller.accel_handler(delta)
 	var braking = controller.brake_handler(delta)
 	var steering = controller.steer_handler(delta)
 	set_acceleration(accel)
+	
 	# bandaid fix for rolling on neutral input due to suspension offsets
 	if accel == 0 and braking == 0 and linear_velocity.length() < 0.5: braking = 0.15
 	set_braking(braking)
 	set_steering(steering)
 	_aero()
 
-
+# handles destructible objects from Hittable class 
 func _on_body_entered(body: Node) -> void:
 	if body is Hittable:
 		body.hit()
 
-################################
-# dynamic getters
 func get_forward_speed() -> float:
 	return linear_velocity.dot(global_basis.x)
 
@@ -87,6 +90,7 @@ func get_boost_output() -> float:
 func get_downforce_output() -> float:
 	return global.aero_curve.sample(get_forward_speed()) * components.get_downforce()
 
+# check all raycast wheels if colliding
 func get_grounded() -> bool:
 	if !get_colliding_bodies().is_empty(): return true
 	
@@ -95,6 +99,7 @@ func get_grounded() -> bool:
 	
 	return false
 
+# get percentage of velocity sideways of car rotation
 func get_drift_factor() -> float:
 	var vel = linear_velocity
 	if vel.length() < 1.0: return 0.0
@@ -118,6 +123,7 @@ func update_color() -> void:
 	mesh.update_material(components.material)
 	mesh.update_color(components.color)
 
+# updates rigidbody data from vehicledata
 func update_weight() -> void:
 	mass = components.get_weight()
 	center_of_mass.y = components.chassis.CoM_Y
@@ -148,25 +154,27 @@ func disable() -> void:
 	set_braking(1.0)
 	set_steering(0.0)
 
+# go backwards from velocity to attempt respawn, checks in a 180 degree semi circle and then checks further 
 func attempt_respawn() -> void:
 	var pos2d = Vector2(global_position.x, global_position.z)
+	var vel2d = Vector2(linear_velocity.x, linear_velocity.z)
+	var angles = [0, -PI/4, PI/4, -PI/2, PI/2]
 	
-	for i in range(10, 501, 10):
-		var offset = Vector2(i, 0)
+	for i in range(10, 751, 10):
+		var offset = -vel2d.normalized() * i
 		
-		for j in range(7):
-			offset = offset.rotated(PI / 4)
-			
-			var final_pos = pos2d + offset
+		for angle in angles:
+			var final_pos = pos2d + offset.rotated(angle)
 			
 			var h1 = global.get_height_at_coords(final_pos)
-			var h2 = global.get_height_at_coords(final_pos + Vector2(1, 1))
+			var h2 = global.get_height_at_coords(final_pos + Vector2(0, 1))
+			var h3 = global.get_height_at_coords(final_pos + Vector2(1, 0))
 			
 			# spawn along normal height
-			if h1 <= 49.0 or h1 >= 53.0:
+			if h1 <= 49.0 or h1 >= 75.0:
 				continue
-			# check for flatness
-			if abs(h1 - h2) > 0.2:
+			# check plane for flatness
+			if abs(h1 - h2) > 0.2 or abs(h1 - h3) > 0.2:
 				continue
 			
 			global_position = Vector3(final_pos.x, h1 + 1.0, final_pos.y)
@@ -179,7 +187,7 @@ func attempt_respawn() -> void:
 			if controller is PlayerController: global.camera.reset()
 			return
 
-# body aero object is at 0 0 0
+# push vehicle downward based on data in chassis and aero kit
 func _aero() -> void:
 	var forward = global_basis.x
 	var forward_speed := linear_velocity.dot(forward)

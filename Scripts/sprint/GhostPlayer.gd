@@ -13,6 +13,7 @@ var replaying := false
 var frame_rate := 0.1
 var clock := 0.0
 
+# initialize data for recording
 func start_recording() -> void:
 	set_process(true)
 	
@@ -25,6 +26,7 @@ func start_recording() -> void:
 	data.total_time = 0.0
 	clock = 0.0
 
+# every custom frame duration, take snapshot of transform
 func _record_process(delta: float) -> void:
 	clock += delta
 	data.total_time += delta
@@ -36,6 +38,7 @@ func _record_process(delta: float) -> void:
 			"transform": car_mesh.global_transform
 		})
 
+# initialize ghost and label marker
 func start_replay(label_col := Color.WHITE) -> void:
 	set_process(true)
 	
@@ -54,6 +57,7 @@ func start_replay(label_col := Color.WHITE) -> void:
 	clock = 0.0
 	replaying = true
 
+# smooth move between custom frame transforms
 func _replay_process(delta: float) -> void:
 	if !is_instance_valid(body):
 		print("ERROR: invalid ghost body to replay")

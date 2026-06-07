@@ -2,13 +2,23 @@
 extends Path3D
 class_name RoadPath
 
+# folder to fetch material
 const mat_path = "Material/World/"
+
+# road types, decides texture and width
 var types = ["Road", "RoadSimple", "Invisible", "RoadEmpty", "RoadDouble", "RoadSimpleDouble"]
 @export_enum("Road", "RoadSimple", "Invisible", "RoadEmpty", "RoadDouble", "RoadSimpleDouble") var type : int = 1
+
+# followup roads based on direction, in editor RED point represents finish so followup_forward
+# GREEN dot represents start so followup_backward
 @export var followup_forward: Array[RoadPath]
 @export var followup_backward: Array[RoadPath]
+
+# display label in editor to see data easier
 @export var hidden_debug_label := false
 
+# initialize csg polygon to follow curve created in editor
+# visible in editor because of @tool
 func _ready() -> void:
 	var road: CSGPolygon3D
 	if types[type] != "Invisible":
@@ -32,6 +42,7 @@ func _ready() -> void:
 	if !hidden_debug_label:
 		add_debug_label(curve.sample_baked(0))
 
+# add debug label to see followup roads in editor
 func add_debug_label(pos: Vector3) -> void:
 	var label := Label3D.new()
 	

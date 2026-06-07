@@ -2,27 +2,33 @@
 extends Node3D
 class_name SprintRace
 
-@export var base_reward := 100.0 # multiplied by medal
+# Base reward multiplied by medal multiplier
+@export var base_reward := 100.0
 
 var race_started := false
 var ghost: GhostPlayer # current tracking gohst
 var best_ghost := GhostPlayer.new() # for replays
 
+# checkpoints initialized by node3d children
 var checkpoints : Array[Vector3]
-var cp_instance : Area3D # checkpoint beam reference
-var cp_idx : int # index of checkpoint
+# reference to checkpoint scene instance
+var cp_instance : Area3D
+# tracker for which checkpoint is active
+var cp_idx : int
 var start_cp : Area3D
 
+# inserted in editor
 @export var gold_data: GhostData = null
 @export var silver_data: GhostData = null
 @export var bronze_data: GhostData = null
 
-#### Data
+# If player has no replay, return 0
 func get_pb() -> float:
 	if !global.player_data.times.get(name):
 		return 0.0
 	return global.player_data.times.get(name).total_time
 
+# total distance (Doesn't account for road curvature"
 func get_length() -> float:
 	var total := 0.0
 	
@@ -33,8 +39,9 @@ func get_length() -> float:
 	
 	return total
 
-#### Race management
-# Starts recording and replay if available
+
+# create ghost and start recording
+# start best medal/replay ghost available for replay
 func start_ghost() -> void:
 	ghost = GhostPlayer.new()
 	add_child(ghost)
@@ -60,6 +67,7 @@ func start_ghost() -> void:
 			best_ghost.data = global.player_data.times[name]
 		best_ghost.start_replay(Color.WHITE)
 
+# start race, positions player, starts first checkpoint and UI
 func start_race() -> void:
 	if race_started: return
 	global.player_is_racing = true
@@ -85,6 +93,7 @@ func start_race() -> void:
 	
 	start_ghost()
 
+# free current instance and spawn another at next pos
 func next_checkpoint() -> void:
 	cp_idx += 1
 	
@@ -104,7 +113,11 @@ func next_checkpoint() -> void:
 	cp_instance = load("res://Scenes/sprint/checkpoint.tscn").instantiate()
 	add_child(cp_instance)
 	cp_instance.global_position = checkpoints[cp_idx]
+	
+	# Update race statistics
+	global.player_data.races_completed += 1
 
+# give rewards and save ghost if good time and not force exited
 func finish_race(forced := false) -> void:
 	race_started = false
 	global.player_is_racing = false
@@ -139,6 +152,7 @@ func finish_race(forced := false) -> void:
 	if get_pb() == 0 or global.player_data.times[name].total_time > ghost.data.total_time:
 		global.player_data.times[name] = ghost.data
 
+# transform children to checkpoints array
 func _ready() -> void:
 	for i in get_children():
 		if i is not Node3D: continue

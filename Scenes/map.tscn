@@ -770,7 +770,7 @@ metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 curve = SubResource("Curve3D_whj3y")
 script = ExtResource("12_q6lx1")
 followup_forward = [NodePath("../37"), NodePath("../38")]
-followup_backward = [NodePath(".")]
+followup_backward = [NodePath("../35")]
 metadata/_custom_type_script = "uid://c2ekw47xxqv1l"
 
 [node name="37" type="Path3D" parent="RoadsMain" unique_id=1783827682 node_paths=PackedStringArray("followup_forward", "followup_backward")]
