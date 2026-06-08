@@ -21,12 +21,19 @@ func update_player_data() -> void:
 	$VBox/User.text = global.player_data.user
 
 func _on_continue_pressed() -> void:
+	await global.ui_manager.enable_black()
+	
 	if global.player_car == null:
 		global.spawn_player()
 	global.ui_manager.show_usual()
+	
+	await global.ui_manager.disable_black()
 
 func _on_exit_pressed() -> void:
+	await global.ui_manager.enable_black()
 	get_tree().quit()
 
 func _on_save_pressed() -> void:
+	await global.ui_manager.enable_black()
 	global.save_player_data()
+	await global.ui_manager.disable_black()

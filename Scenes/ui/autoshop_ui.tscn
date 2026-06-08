@@ -647,9 +647,10 @@ vertical_alignment = 1
 [node name="SuspensionSlider" type="HSlider" parent="Tune/Suspension" unique_id=238098708]
 custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
-min_value = -1.0
-max_value = 1.0
+min_value = -0.1
+max_value = 0.1
 step = 0.01
+value = -0.1
 
 [node name="Value" type="Label" parent="Tune/Suspension" unique_id=162644190]
 custom_minimum_size = Vector2(100, 32)

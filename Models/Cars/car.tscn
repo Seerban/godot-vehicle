@@ -169,7 +169,7 @@ steering_multiplier = 0.0
 metadata/_custom_type_script = "uid://dbjj6tvfptdq0"
 
 [node name="VehicleAxleFront" type="Node3D" parent="." unique_id=345222783]
-transform = Transform3D(1, 0, 0, 0, 0.9999992, 0, 0, 0, 0.9999992, 1.8049204, -0.106578335, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999992, 0, 0, 0, 0.9999992, 1.78, -0.107, 0)
 script = ExtResource("4_d25rn")
 half_width = 0.65
 metadata/_custom_type_script = "uid://dbjj6tvfptdq0"
@@ -182,6 +182,18 @@ metadata/_custom_type_script = "uid://b0w4gqiavrivh"
 transform = Transform3D(-1.3, 0, -1.13649605e-07, 0, 1.2999998, 0, 1.136496e-07, 0, -1.2999998, 0, 0.26993382, 0)
 mesh = SubResource("ArrayMesh_oeync")
 skeleton = NodePath("")
+
+[node name="FPos" type="Node3D" parent="LightsManager" unique_id=1272727503]
+transform = Transform3D(1, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999995, 2.42804, 0.17299503, -0.7524692)
+
+[node name="BPos" type="Node3D" parent="LightsManager" unique_id=751498609]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, 0, 0, 0, 0.9999992, -2.2962704, 0.37742573, -0.7142887)
+
+[node name="BPos2" type="Node3D" parent="LightsManager" unique_id=697764267]
+transform = Transform3D(1, 0, 0, 0, 0.9999992, 0, 0, 0, 0.9999992, -2.296, 0.377, 0.714)
+
+[node name="FPos2" type="Node3D" parent="LightsManager" unique_id=1125168656]
+transform = Transform3D(1, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999995, 2.428, 0.173, 0.752)
 
 [node name="Front2" type="MeshInstance3D" parent="LightsManager" unique_id=113980204]
 transform = Transform3D(-1.3, 0, -1.13649605e-07, 0, 1.2999998, 0, 1.136496e-07, 0, -1.2999998, 0, 0.26993382, 0)

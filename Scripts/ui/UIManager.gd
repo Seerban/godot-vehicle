@@ -25,6 +25,7 @@ func _ready() -> void:
 	for i in get_children():
 		if i.has_method("update_player_data"):
 				i.update_player_data()
+	await disable_black()
 
 func _physics_process(delta: float) -> void:
 	if global.player_car != null:
@@ -100,3 +101,22 @@ func update_speedtime(delta: float) -> void:
 	
 	if speed_label.modulate.a < 0.1:
 		speed_label.visible = false
+
+func enable_black() -> void:
+	var tween = create_tween()
+	
+	$BlackScreen.visible = true
+	tween.tween_property($BlackScreen, "color", Color.BLACK, 0.5 )
+	
+	await tween.finished
+
+func disable_black() -> void:
+	var tween = create_tween()
+	
+	$BlackScreen.visible = true
+	$BlackScreen.color = Color.BLACK
+	tween.tween_property($BlackScreen, "color", Color(0, 0, 0, 0), 0.75 )
+	
+	await tween.finished
+	
+	$BlackScreen.visible = false

@@ -162,9 +162,11 @@ func _on_back_pressed() -> void:
 		i.visible = false
 	
 	if back_button.get_node("VBox/Label").text == "Exit":
+		await global.ui_manager.enable_black()
 		visible = false
 		global.player_in_autoshop = false
 		global.spawn_player()
+		await global.ui_manager.disable_black()
 	elif back_button.get_node("VBox/Label").text == "Back":
 		load_parts_buttons('')
 		back_button.get_node("VBox/Label").text = "Exit"

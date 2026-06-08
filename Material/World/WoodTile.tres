@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://63wxancpky0g"]
+
+[ext_resource type="Texture2D" uid="uid://c38e45ie51ccm" path="res://Material/Assets/WoodSiding006_1K-JPG/WoodSiding006_1K-JPG_Color.jpg" id="1_7d3w2"]
+[ext_resource type="Texture2D" uid="uid://d0ppsduki65gr" path="res://Material/Assets/WoodSiding006_1K-JPG/WoodSiding006_1K-JPG_AmbientOcclusion.jpg" id="2_8cuyo"]
+[ext_resource type="Texture2D" uid="uid://dmke8h5gmmh3g" path="res://Material/Assets/WoodSiding006_1K-JPG/WoodSiding006_1K-JPG_NormalDX.jpg" id="3_q7m5n"]
+[ext_resource type="Texture2D" uid="uid://c3nokinuxl04l" path="res://Material/Assets/Snow006_1K-JPG/Snow006_1K-JPG_NormalGL.jpg" id="4_hnhkj"]
+[ext_resource type="Texture2D" uid="uid://d4l4e0iocaaqf" path="res://Material/Assets/WoodSiding006_1K-JPG/WoodSiding006_1K-JPG_Roughness.jpg" id="5_h1lrv"]
+
+[resource]
+albedo_texture = ExtResource("1_7d3w2")
+roughness_texture = ExtResource("5_h1lrv")
+roughness_texture_channel = 4
+normal_texture = ExtResource("4_hnhkj")
+ao_enabled = true
+ao_texture = ExtResource("2_8cuyo")
+ao_texture_channel = 4
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_q7m5n")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true

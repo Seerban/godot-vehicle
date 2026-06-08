@@ -70,6 +70,9 @@ func start_ghost() -> void:
 # start race, positions player, starts first checkpoint and UI
 func start_race() -> void:
 	if race_started: return
+	
+	await global.ui_manager.enable_black()
+	
 	global.player_is_racing = true
 	global.sprint_node = self
 	race_started = true
@@ -82,6 +85,7 @@ func start_race() -> void:
 	
 	global.player_car.global_position = start_cp.global_position + Vector3(0, 0.25, 0)
 	global.player_car.linear_velocity = Vector3.ZERO
+	global.player_car.disable() # disable until fade screen ends
 	
 	# initialize checkpoint
 	next_checkpoint()
@@ -90,6 +94,9 @@ func start_race() -> void:
 	global.player_car.look_at(cp_instance.global_position)
 	global.player_car.rotation.y += PI/2
 	global.camera.reset()
+	
+	await global.ui_manager.disable_black()
+	global.player_car.enable()
 	
 	start_ghost()
 

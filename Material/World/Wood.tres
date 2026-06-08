@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://do074mp3etyq4"]
+
+[ext_resource type="Texture2D" uid="uid://chxy18mv658uq" path="res://Material/Assets/Wood060_1K-JPG/Wood060_1K-JPG_Color.jpg" id="1_1e4qg"]
+[ext_resource type="Texture2D" uid="uid://oksjmn13q0du" path="res://Material/Assets/Wood060_1K-JPG/Wood060_1K-JPG_AmbientOcclusion.jpg" id="2_3vdxk"]
+[ext_resource type="Texture2D" uid="uid://btyqv17pnq2jd" path="res://Material/Assets/Wood060_1K-JPG/Wood060_1K-JPG_NormalDX.jpg" id="3_8wgnw"]
+[ext_resource type="Texture2D" uid="uid://ckjhu8aghuurs" path="res://Material/Assets/Wood060_1K-JPG/Wood060_1K-JPG_Roughness.jpg" id="4_2wiur"]
+
+[resource]
+albedo_texture = ExtResource("1_1e4qg")
+roughness_texture = ExtResource("4_2wiur")
+normal_enabled = true
+normal_texture = ExtResource("3_8wgnw")
+ao_enabled = true
+ao_texture = ExtResource("2_3vdxk")

@@ -1,4 +1,4 @@
-extends Node3D
+extends StaticBody3D
 
 func _on_area_body_entered(body: Node3D) -> void:
 	if body != global.player_car or global.player_is_racing: return

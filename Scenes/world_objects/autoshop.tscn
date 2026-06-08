@@ -1,29 +1,85 @@
 [gd_scene format=3 uid="uid://c40sxfhtkipb8"]
 
 [ext_resource type="Script" uid="uid://b5cqhrt4rw0n" path="res://Scripts/world_objects/garage.gd" id="1_lb3y5"]
-[ext_resource type="Material" uid="uid://bf2kx65ra75gf" path="res://Material/Misc/glow_blue.tres" id="2_ralwo"]
+[ext_resource type="Texture2D" uid="uid://bc8o1gphjjx55" path="res://Textures/world/autoshop.png" id="2_lb3y5"]
+[ext_resource type="Material" uid="uid://l7iilqqyucd0" path="res://Material/World/Brick.tres" id="2_ralwo"]
+[ext_resource type="Material" uid="uid://do074mp3etyq4" path="res://Material/World/Wood.tres" id="3_wlf7q"]
+[ext_resource type="Material" uid="uid://7ytd52tubpg1" path="res://Material/World/RoofTiles.tres" id="4_suyo4"]
+[ext_resource type="Texture2D" uid="uid://dvhtb26i50q5o" path="res://Textures/world/garage_door.png" id="4_yg56j"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_wbvwn"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_42tmd"]
+height = 0.39999998
+radius = 0.2626953
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_5jjqq"]
+[sub_resource type="BoxMesh" id="BoxMesh_ralwo"]
+size = Vector3(5, 5, 5)
 
-[node name="Autoshop" type="Node3D" unique_id=678169622]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lb3y5"]
+size = Vector3(12, 7.7000003, 10)
+
+[node name="Autoshop" type="StaticBody3D" unique_id=1050120522]
 script = ExtResource("1_lb3y5")
 
 [node name="Area" type="Area3D" parent="." unique_id=2142970536]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area" unique_id=491635550]
-mesh = SubResource("SphereMesh_wbvwn")
-surface_material_override/0 = ExtResource("2_ralwo")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area" unique_id=1456837113]
-shape = SubResource("SphereShape3D_5jjqq")
+transform = Transform3D(0.99999857, 0, 0, 0, 0.99999857, 0, 0, 0, 0.99999857, -0.06524332, 0.19999968, 0.2399999)
+shape = SubResource("CylinderShape3D_42tmd")
 
-[node name="Label3D" type="Label3D" parent="Area" unique_id=1088241448]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78707606, 0)
-billboard = 1
-text = "Autoshop"
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=97323491]
+transform = Transform3D(0.2, 0, 0, 0, 0.8, 0, 0, 0, 2, -5, 2, -1.25)
+material_override = ExtResource("2_ralwo")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=639795909]
+transform = Transform3D(0.8, 0, 0, 0, 0.9, 0, 0, 0, 2, 4.5, 2.25, -1.25)
+material_override = ExtResource("2_ralwo")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="." unique_id=1974223494]
+transform = Transform3D(0.35, 0, 0, 0, 0.6, 0, 0, 0, 0.5, 4.93, 1.4000001, 2.635)
+material_override = ExtResource("3_wlf7q")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." unique_id=86543203]
+transform = Transform3D(2.4620194, 0.03472964, 0, -0.43412048, 0.19696155, 0, 0, 0, 2.2, 0.6613941, 5.130236, -1.25)
+material_override = ExtResource("4_suyo4")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1916616301]
+transform = Transform3D(1.6, 0, 0, 0, 0.2, 0, 0, 0, 2, -1.5, 4.5, -1.25)
+material_override = ExtResource("2_ralwo")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." unique_id=1755002155]
+transform = Transform3D(0.4, 0, 0, 0, 0.2, 0, 0, 0, 2, -2.5, 5.5, -1.25)
+material_override = ExtResource("2_ralwo")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="." unique_id=936392382]
+transform = Transform3D(0.4, 0, 0, 0, 0.2, 0, 0, 0, 2, -4.5, 5.5, -1.25)
+material_override = ExtResource("2_ralwo")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=300042531]
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 0.2, -1, 2.5, -5.75)
+material_override = ExtResource("2_ralwo")
+mesh = SubResource("BoxMesh_ralwo")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1778221406]
+transform = Transform3D(-2.0981467e-08, 0, -0.5, -0.041834757, 0.5230022, 1.9048492e-09, 0.47817346, 0.04575676, -2.1772525e-08, -5.5600004, 2.9324768, -1.5142158)
+shaded = true
+texture = ExtResource("2_lb3y5")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=988378296]
+transform = Transform3D(0.47249997, 0, 0, 0, 0.40687495, 0, 0, 0, 1, -1.05, 2, 3.51)
+shaded = true
+texture = ExtResource("4_yg56j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=243200774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.8500004, -1.25)
+shape = SubResource("BoxShape3D_lb3y5")
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_area_body_exited"]

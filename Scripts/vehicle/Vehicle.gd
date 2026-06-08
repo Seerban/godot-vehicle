@@ -50,7 +50,7 @@ func _ready() -> void:
 func _physics_process(delta : float) -> void:
 	# update statistics flags
 	is_grounded = get_grounded()
-	is_drifting = get_drift_factor() > 0.02 and get_forward_speed() > 5.0 and is_grounded
+	is_drifting = get_drift_factor() > 0.015 and get_forward_speed() > 5.0 and is_grounded
 	is_speeding = get_forward_speed() > 50.0
 	is_underwater = global_position.y < 20.0
 	

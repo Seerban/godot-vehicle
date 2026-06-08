@@ -76,8 +76,9 @@ script = ExtResource("1_6bp64")
 [node name="Vehicles" type="Node3D" parent="." unique_id=1702075730 groups=["vehicles"]]
 
 [node name="Vehicle" parent="Vehicles" unique_id=973883457 instance=ExtResource("7_6bp64")]
-transform = Transform3D(-0.86602545, 0, 0.5, 0, 0.99999994, 0, -0.5, 0, -0.8660254, -516, 113, 483)
+transform = Transform3D(-0.86602545, 0, 0.5, 0, 0.99999994, 0, -0.5, 0, -0.8660254, -516, 111.50484, 483)
 mass = 100.0
+gravity_scale = 0.0
 components = SubResource("Resource_ueoa1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1602604216]
@@ -96,4 +97,4 @@ transform = Transform3D(-0.83651614, 0.25881904, -0.482963, 0.22414383, 0.965925
 [node name="UIManager" parent="." unique_id=429781008 instance=ExtResource("5_21xkr")]
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=96823950]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 615.1875, 51, -477.29953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 435.3081, 51, -471.56598)

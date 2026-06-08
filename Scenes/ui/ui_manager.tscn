@@ -2433,6 +2433,14 @@ theme_override_font_sizes/font_size = 24
 text = "$0"
 metadata/_edit_use_anchors_ = true
 
+[node name="BlackScreen" type="ColorRect" parent="." unique_id=2006399449]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
 [connection signal="visibility_changed" from="AutoshopPopup" to="AutoshopPopup" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="Grip" to="Grip" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="SprintLive" to="SprintLive" method="_on_visibility_changed"]
