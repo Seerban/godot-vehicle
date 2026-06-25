@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://wqq2tagyhdo2" path="res://Scripts/ui/component_button.gd" id="2_44t7a"]
 [ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="2_oetqw"]
 [ext_resource type="Texture2D" uid="uid://nywjj2q1ahr2" path="res://Textures/ui/reverse.png" id="2_onaob"]
+[ext_resource type="Texture2D" uid="uid://b2y1pr3eo4owq" path="res://Textures/ui/race-car.png" id="4_22ldk"]
 [ext_resource type="Texture2D" uid="uid://2oic1dq2e15k" path="res://Textures/ui/spray.png" id="4_rqach"]
 [ext_resource type="Texture2D" uid="uid://dknnoc8t865m1" path="res://Textures/ui/engine.png" id="5_jflnf"]
 [ext_resource type="Texture2D" uid="uid://cyqmaf203nm8i" path="res://Textures/ui/gear-stick.png" id="6_yrym1"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b30dumxg4i6sj" path="res://Textures/ui/weight.png" id="11_ik603"]
 [ext_resource type="Texture2D" uid="uid://d3ogoavxo871l" path="res://Textures/ui/brakes.png" id="12_u00oh"]
 [ext_resource type="Texture2D" uid="uid://cfek5y8bjrc5o" path="res://Textures/ui/drivetrain.png" id="13_u7oa1"]
+[ext_resource type="PackedScene" uid="uid://bhx13pu5fxn8" path="res://Scenes/ui/car_select.tscn" id="16_v64ou"]
 
 [node name="Autoshop" type="Control" unique_id=681594695]
 layout_mode = 3
@@ -76,6 +78,36 @@ size_flags_vertical = 6
 theme = ExtResource("2_oetqw")
 theme_override_font_sizes/font_size = 24
 text = "Exit"
+horizontal_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="Cars" type="Button" parent="ScrollTop/HBox" unique_id=1477468993]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+flat = true
+
+[node name="VBox" type="VBoxContainer" parent="ScrollTop/HBox/Cars" unique_id=1839932397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollTop/HBox/Cars/VBox" unique_id=1494676737]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = ExtResource("4_22ldk")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ScrollTop/HBox/Cars/VBox" unique_id=890780469]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("2_oetqw")
+theme_override_font_sizes/font_size = 24
+text = "Cars"
 horizontal_alignment = 1
 autowrap_trim_flags = 128
 
@@ -862,8 +894,13 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="CarSelect" parent="." unique_id=1994243277 instance=ExtResource("16_v64ou")]
+visible = false
+layout_mode = 1
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="ScrollTop/HBox/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ScrollTop/HBox/Cars" to="." method="_on_cars_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/Color" to="." method="_on_color_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/Engine" to="." method="_on_engine_pressed"]
 [connection signal="pressed" from="ScrollTop/HBox/Transmission" to="." method="_on_transmission_pressed"]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3]
+
+[ext_resource type="Script" path="res://Scripts/PlayerData.gd" id="1_0fhjm"]
+[ext_resource type="Script" path="res://Scripts/sprint/GhostData.gd" id="2_03lks"]
+[ext_resource type="Resource" path="res://Resources/AeroKits/0_no_aero.tres" id="3_gbenl"]
+[ext_resource type="Resource" path="res://Resources/Aspirations/NA.tres" id="4_d5kgd"]
+[ext_resource type="Resource" path="res://Resources/Brakes/0_stock_brakes.tres" id="5_3fpde"]
+[ext_resource type="Resource" path="res://Resources/Chassis/Lando_chassis.tres" id="6_nxnnc"]
+[ext_resource type="Resource" path="res://Resources/Drivetrains/1_RWD.tres" id="7_g1oew"]
+[ext_resource type="Resource" path="res://Resources/Engines/1_engine_stock.tres" id="8_b7xhm"]
+[ext_resource type="Script" path="res://Resources/VehicleData.gd" id="9_4yqw6"]
+[ext_resource type="Resource" path="res://Resources/Suspensions/0_default_suspension.tres" id="10_kxgup"]
+[ext_resource type="Resource" path="res://Resources/Tires/0_default_tires.tres" id="11_hmp2c"]
+[ext_resource type="Resource" path="res://Resources/Transmissions/0_stock_transmission.tres" id="12_o63j8"]
+[ext_resource type="Resource" path="res://Resources/WeightKits/0_no_weight_kit.tres" id="13_41mnb"]
+
+[sub_resource type="Resource" id="Resource_0rl3t"]
+script = ExtResource("9_4yqw6")
+model = "Oddi"
+chassis = ExtResource("6_nxnnc")
+
+[resource]
+script = ExtResource("1_0fhjm")
+cash = -7400.0
+vehicle = SubResource("Resource_0rl3t")
+distance_traveled = 42.24916730487404
+jump_time = 0.31666666666666665
+drift_time = 0.19999999999999998

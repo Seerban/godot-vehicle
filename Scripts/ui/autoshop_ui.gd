@@ -5,6 +5,7 @@ const PAINT_PRICE = 100.0
 const MATERIAL_PRICE = 250.0
 
 var vd_copy: VehicleData
+var cash_spent: float
 
 var rgb := Color.WHITE
 
@@ -16,7 +17,7 @@ var top_offset := 0.0
 @onready var scroll_top_hbox := $ScrollTop/HBox
 @onready var back_button := $ScrollTop/HBox/Back
 @onready var component_button := $ScrollTop/HBox/ComponentButton
-@onready var default_buttons := [$ScrollTop/HBox/Back, $ScrollTop/HBox/Color, $ScrollTop/HBox/Engine, $ScrollTop/HBox/Transmission, $ScrollTop/HBox/Aspiration, $ScrollTop/HBox/Suspension, $ScrollTop/HBox/Tires, $ScrollTop/HBox/Aero, $ScrollTop/HBox/Weight, $ScrollTop/HBox/Brakes, $ScrollTop/HBox/Drivetrain, $ScrollTop/HBox/ComponentButton]
+@onready var default_buttons := [$ScrollTop/HBox/Back, $ScrollTop/HBox/Cars, $ScrollTop/HBox/Color, $ScrollTop/HBox/Engine, $ScrollTop/HBox/Transmission, $ScrollTop/HBox/Aspiration, $ScrollTop/HBox/Suspension, $ScrollTop/HBox/Tires, $ScrollTop/HBox/Aero, $ScrollTop/HBox/Weight, $ScrollTop/HBox/Brakes, $ScrollTop/HBox/Drivetrain, $ScrollTop/HBox/ComponentButton]
 @onready var tune_vbox := $Tune
 
 func _ready() -> void:
@@ -127,6 +128,7 @@ func update_stats() -> void:
 	if vd_copy.color != global.player_car.components.color: total_price += PAINT_PRICE
 	if vd_copy.material != global.player_car.components.material: total_price += MATERIAL_PRICE
 	
+	cash_spent = total_price
 	$Cost.text = "Cost: [color=green]$%d[/color]" % total_price
 
 func update_default_stats() -> void:
@@ -162,6 +164,7 @@ func _on_back_pressed() -> void:
 		i.visible = false
 	
 	if back_button.get_node("VBox/Label").text == "Exit":
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		await global.ui_manager.enable_black()
 		visible = false
 		global.player_in_autoshop = false
@@ -345,3 +348,6 @@ func _on_suspension_slider_value_changed(value: float) -> void:
 	global.player_car.components.suspension.length_tune = value
 	global.player_car.update()
 	update_stats()
+
+func _on_cars_pressed() -> void:
+	$CarSelect.visible = true

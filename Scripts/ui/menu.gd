@@ -16,7 +16,11 @@ func _physics_process(delta: float) -> void:
 
 func update_player_data() -> void:
 	$Cash.text = "$%d" % global.player_data.cash
-	$Vehicle.text = "Car: " + global.player_data.vehicle.model
+	# if car is spawned, get directly, otherwise from save data
+	if is_instance_valid(global.player_car):
+		$Vehicle.text = "Car: " + global.player_car.components.model
+	else:
+		$Vehicle.text = "Car: " + global.player_data.vehicle.model
 	$Tier.text = "Tier 1"
 	$VBox/User.text = global.player_data.user
 

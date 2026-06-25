@@ -133,20 +133,35 @@ func set_player_pos():
 	player_car.global_position = spawn_position
 	player_car.rotation.x = 0
 
+
 func spawn_player() -> void:
+	# if player is already spawned, reset vehicle
 	if player_car != null:
+		var pd = player_car.components
+		player_car.name = "FREED"
+		player_car.queue_free()
+		
+		player_car = pd.add_as_vehicle(get_tree().get_first_node_in_group("vehicles"))
+		player_car.controller = PlayerController.new()
+		player_car.name = "PlayerCar"
+		
+		
+		camera.node_to_follow = player_car
+		camera.reset()
+		
 		set_player_pos()
 		call_deferred("set_player_pos")
 		player_car.enable()
 		ui_manager.show_usual()
 		return
 	
+	# if no vehicle spawned, fetch vehicle from playerdata
 	var player = player_data.vehicle
 	player_car = player.add_as_vehicle( get_tree().get_first_node_in_group("vehicles") )
 	player_car.name = "PlayerCar"
 	player_car.controller = PlayerController.new()
 	player_car.global_position = get_tree().current_scene.get_node("PlayerSpawn").global_position
-	player_car.rotation_degrees.y += -125
+	player_car.rotation_degrees.y -= 125
 	
 	camera.node_to_follow = player_car
 	camera.reset()

@@ -132,6 +132,8 @@ func update_target_position() -> void:
 
 # function to randomly switch lanes if possible (2 lanes per direction)
 func update_lane(delta: float) -> void:
+	if is_instance_valid(target_path): return
+	
 	# roaddouble or roadsimpledouble, will break if roadpath.type is changed
 	if target_path.type not in [4, 5]:
 		right_offset = 2.5

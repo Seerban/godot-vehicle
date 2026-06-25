@@ -1,0 +1,304 @@
+[gd_scene format=3 uid="uid://bhx13pu5fxn8"]
+
+[ext_resource type="Theme" uid="uid://bmg0hb20pv0je" path="res://Theme.tres" id="1_68hxa"]
+[ext_resource type="Script" uid="uid://clgy0i6jpaf7b" path="res://Scripts/ui/car_select.gd" id="2_nmdsp"]
+[ext_resource type="Texture2D" uid="uid://bypqvwdt6vn3j" path="res://Textures/ui/bgpattern.png" id="3_sw8w0"]
+[ext_resource type="Texture2D" uid="uid://b8dq3pn4vfdn5" path="res://Textures/pics/oddi.png" id="3_y7hp0"]
+[ext_resource type="Texture2D" uid="uid://dq8ix8yecywtj" path="res://Textures/pics/mousse.png" id="4_sw8w0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vpdnc"]
+load_path = "res://.godot/imported/lando.png-4e7f7cb710d725c67428e1563594e102.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nmdsp"]
+load_path = "res://.godot/imported/cancel.png-92d5b133de76830d8b95dbec3088f473.ctex"
+
+[node name="CarSelect" type="Control" unique_id=1994243277]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_68hxa")
+script = ExtResource("2_nmdsp")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=829835554]
+custom_minimum_size = Vector2(0, 346)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 346.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="TextureRect" parent="ColorRect2" unique_id=1463465992]
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_sw8w0")
+expand_mode = 5
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=1534068755]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Oddi" type="VBoxContainer" parent="HBox" unique_id=711984446]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="HBox/Oddi" unique_id=436955138]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Oddi"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Subtitle" type="Label" parent="HBox/Oddi" unique_id=1696916622]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "The blank"
+horizontal_alignment = 1
+
+[node name="Bonus" type="Label" parent="HBox/Oddi" unique_id=532417255]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "-All arounder"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Downside" type="Label" parent="HBox/Oddi" unique_id=2061601243]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-Slow"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="HBox/Oddi" unique_id=300757042]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "$7500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Oddi" unique_id=1624837953]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_y7hp0")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="OddiBuy" type="Button" parent="HBox/Oddi/TextureRect" unique_id=1739892366]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="ColorRect2" type="ColorRect" parent="HBox" unique_id=2091490832]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Mousse" type="VBoxContainer" parent="HBox" unique_id=57434324]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="HBox/Mousse" unique_id=784240822]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Mousse"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Subtitle" type="Label" parent="HBox/Mousse" unique_id=197727114]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "The blank"
+horizontal_alignment = 1
+
+[node name="Bonus" type="Label" parent="HBox/Mousse" unique_id=890747313]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "-Good Acceleration"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Downside" type="Label" parent="HBox/Mousse" unique_id=297602505]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-Bad handling"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="HBox/Mousse" unique_id=1187412587]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "$8500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Mousse" unique_id=1690755184]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_sw8w0")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="MousseBuy" type="Button" parent="HBox/Mousse/TextureRect" unique_id=1128509229]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="HBox" unique_id=1326702886]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Lando" type="VBoxContainer" parent="HBox" unique_id=1302876687]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="HBox/Lando" unique_id=449541220]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Lando"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Subtitle" type="Label" parent="HBox/Lando" unique_id=726903027]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "The blank"
+horizontal_alignment = 1
+
+[node name="Bonus" type="Label" parent="HBox/Lando" unique_id=1839318123]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "-Good mass distr.
+-Light
+-High Downforce"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Downside" type="Label" parent="HBox/Lando" unique_id=2139918238]
+visible = false
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "-Slow"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="HBox/Lando" unique_id=673009604]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "$25000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBox/Lando" unique_id=921795694]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("CompressedTexture2D_vpdnc")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="LandoBuy" type="Button" parent="HBox/Lando/TextureRect" unique_id=942099617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1487308011]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -80.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Cash" type="Label" parent="ColorRect" unique_id=1938443332]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Cash: 0000$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=406584599]
+self_modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 70.0
+offset_bottom = 70.0
+texture_normal = SubResource("CompressedTexture2D_nmdsp")
+texture_pressed = SubResource("CompressedTexture2D_nmdsp")
+texture_hover = SubResource("CompressedTexture2D_nmdsp")
+texture_disabled = SubResource("CompressedTexture2D_nmdsp")
+texture_focused = SubResource("CompressedTexture2D_nmdsp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="mouse_entered" from="HBox/Oddi/TextureRect/OddiBuy" to="." method="_on_oddi_buy_mouse_entered"]
+[connection signal="mouse_exited" from="HBox/Oddi/TextureRect/OddiBuy" to="." method="_on_oddi_buy_mouse_exited"]
+[connection signal="pressed" from="HBox/Oddi/TextureRect/OddiBuy" to="." method="_on_oddi_buy_pressed"]
+[connection signal="mouse_entered" from="HBox/Mousse/TextureRect/MousseBuy" to="." method="_on_mousse_buy_mouse_entered"]
+[connection signal="mouse_exited" from="HBox/Mousse/TextureRect/MousseBuy" to="." method="_on_mousse_buy_mouse_exited"]
+[connection signal="pressed" from="HBox/Mousse/TextureRect/MousseBuy" to="." method="_on_mousse_buy_pressed"]
+[connection signal="mouse_entered" from="HBox/Lando/TextureRect/LandoBuy" to="." method="_on_lando_buy_mouse_entered"]
+[connection signal="mouse_exited" from="HBox/Lando/TextureRect/LandoBuy" to="." method="_on_lando_buy_mouse_exited"]
+[connection signal="pressed" from="HBox/Lando/TextureRect/LandoBuy" to="." method="_on_lando_buy_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
