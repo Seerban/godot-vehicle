@@ -37,3 +37,8 @@ func _on_save_pressed() -> void:
 	await global.ui_manager.enable_black()
 	global.save_player_data()
 	await global.ui_manager.disable_black()
+
+
+func _on_trophies_pressed() -> void:
+	$"../Trophies".visible = !$"../Trophies".visible
+	$"../Trophies".update()

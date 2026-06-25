@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://u5vre10i8sxe"
-path="res://.godot/imported/eurocar.glb-709a4b6769f4f833f16e3d09fab7b161.scn"
+uid="uid://dfsug7pf2kypd"
+path="res://.godot/imported/Lando.glb-f8b72dbe3edfb5b430763a7877ffeda5.scn"
 
 [deps]
 
-source_file="res://Models/Cars/eurocar.glb"
-dest_files=["res://.godot/imported/eurocar.glb-709a4b6769f4f833f16e3d09fab7b161.scn"]
+source_file="res://Models/Cars/Lando.glb"
+dest_files=["res://.godot/imported/Lando.glb-f8b72dbe3edfb5b430763a7877ffeda5.scn"]
 
 [params]
 

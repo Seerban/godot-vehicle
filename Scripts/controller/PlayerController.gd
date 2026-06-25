@@ -52,7 +52,7 @@ func custom_process(delta: float) -> void:
 	# attempt to spawn AI cars around the player on a cooldown
 	spawn_timer -= delta
 	if spawn_timer < 0:
-		attempt_spawn()
+		global.attempt_ai_spawn()
 		spawn_timer = spawn_time_cooldown
 	
 	# update statistics for savedata
@@ -68,31 +68,7 @@ func custom_process(delta: float) -> void:
 
 # updates driving stats
 func update_stats(delta: float) -> void:
-	global.player_data.distance_traveled += global.player_car.linear_velocity.length()
+	global.player_data.distance_traveled += global.player_car.linear_velocity.length() * delta
 	if global.player_car.is_drifting: global.player_data.drift_time += delta
 	if global.player_car.is_speeding: global.player_data.speed_time += delta
 	if !global.player_car.is_grounded: global.player_data.jump_time += delta
-
-# attempt to spawn ai vehicle random position nearby, do nothing if too close
-func attempt_spawn() -> void:
-	var spawn_distance = 200.0
-	
-	var rand_angle = randf_range(0, 360)
-	var offset = Vector3(spawn_distance, 0, 0).rotated(Vector3.UP, rand_angle)
-	var pos = global.player_car.global_position + offset
-	
-	var result = global.get_closest_point_from_road(pos)
-	var pos_final = result[0]
-	var road = result[1]
-	
-	var valid_spawn = true
-	if (pos_final - global.player_car.global_position).length() < spawn_distance * 0.8:
-		print("too close to player, not spawning")
-		return
-	
-	for car in global.get_tree().get_first_node_in_group("vehicles").get_children():
-		if (pos_final - car.global_position).length() < 5.0:
-			print("attempted to spawn too close")
-			return
-	
-	global.spawn_ai(pos_final, road)

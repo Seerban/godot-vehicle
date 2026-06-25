@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ChassisStats" format=3 uid="uid://cmryredg1mtpn"]
+
+[ext_resource type="Script" uid="uid://d1h86ieukxixo" path="res://Resources/Chassis.gd" id="1_0phbl"]
+
+[resource]
+script = ExtResource("1_0phbl")
+drag = 25.0
+downforce = 10.0
+CoM_Y = -0.15
+wheel_size = 0.87
+engine_multiplier = 1.4
+name = "Default Chassis"
+weight = 40.0
+metadata/_custom_type_script = "uid://d1h86ieukxixo"

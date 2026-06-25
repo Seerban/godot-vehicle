@@ -2,25 +2,10 @@
 
 [ext_resource type="Script" uid="uid://65clsmi11gv5" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="Shader" uid="uid://6hb34jpqci2e" path="res://Material/sky.gdshader" id="3_6iyac"]
-[ext_resource type="Resource" uid="uid://bnyt8txyt18sj" path="res://Resources/AeroKits/0_no_aero.tres" id="3_h1bgf"]
-[ext_resource type="Resource" uid="uid://cqrhl7a63a3vu" path="res://Resources/Aspirations/NA.tres" id="4_b3802"]
 [ext_resource type="PackedScene" uid="uid://d1iwxqcpwrsai" path="res://Scenes/ui/ui_manager.tscn" id="5_21xkr"]
-[ext_resource type="Resource" uid="uid://vagcjbtt4ryy" path="res://Resources/Brakes/0_stock_brakes.tres" id="5_fevyy"]
 [ext_resource type="PackedScene" uid="uid://dywq1p6f1dy25" path="res://Scenes/camera.tscn" id="6_6iyac"]
-[ext_resource type="Resource" uid="uid://duq6luu8xv53m" path="res://Resources/Chassis/car_chassis.tres" id="6_hibaj"]
-[ext_resource type="PackedScene" uid="uid://dw6rlckembj5p" path="res://Scenes/vehicle/vehicle.tscn" id="7_6bp64"]
-[ext_resource type="Resource" uid="uid://b2vmfgv47mmng" path="res://Resources/Drivetrains/1_RWD.tres" id="7_pdsj5"]
-[ext_resource type="Resource" uid="uid://crivdb2lb64gs" path="res://Resources/Engines/1_engine_stock.tres" id="8_ee4r6"]
-[ext_resource type="Script" uid="uid://cp0i37a18pwgp" path="res://Resources/VehicleData.gd" id="9_gt3je"]
-[ext_resource type="Resource" uid="uid://ba8rhfytdggjt" path="res://Resources/Suspensions/0_default_suspension.tres" id="10_3pmx8"]
+[ext_resource type="PackedScene" uid="uid://ct85a3c67xqce" path="res://Models/Cars/Lando.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dn0qui4knucok" path="res://Scenes/map.tscn" id="11_d1ilt"]
-[ext_resource type="Resource" uid="uid://c0hqdk6v7t27" path="res://Resources/Tires/0_default_tires.tres" id="11_u50mg"]
-[ext_resource type="Resource" uid="uid://k5yjiw4uukwn" path="res://Resources/Transmissions/0_stock_transmission.tres" id="12_cbgmd"]
-[ext_resource type="Resource" uid="uid://rv2m6il0vvky" path="res://Resources/WeightKits/0_no_weight_kit.tres" id="13_1w6v2"]
-
-[sub_resource type="Resource" id="Resource_ueoa1"]
-script = ExtResource("9_gt3je")
-metadata/_custom_type_script = "uid://cp0i37a18pwgp"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6iyac"]
 shader = ExtResource("3_6iyac")
@@ -75,12 +60,6 @@ script = ExtResource("1_6bp64")
 
 [node name="Vehicles" type="Node3D" parent="." unique_id=1702075730 groups=["vehicles"]]
 
-[node name="Vehicle" parent="Vehicles" unique_id=973883457 instance=ExtResource("7_6bp64")]
-transform = Transform3D(-0.86602545, 0, 0.5, 0, 0.99999994, 0, -0.5, 0, -0.8660254, -516, 111.50484, 483)
-mass = 100.0
-gravity_scale = 0.0
-components = SubResource("Resource_ueoa1")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1602604216]
 transform = Transform3D(0.49999997, -0.75000024, 0.4330126, 0, 0.4999999, 0.8660255, -0.8660254, -0.4330127, 0.25, 0, 10, 0)
 shadow_enabled = true
@@ -98,3 +77,11 @@ transform = Transform3D(-0.83651614, 0.25881904, -0.482963, 0.22414383, 0.965925
 
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=96823950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 435.3081, 51, -471.56598)
+
+[node name="Vehicle" parent="." unique_id=973883457 instance=ExtResource("6_21xkr")]
+transform = Transform3D(-0.6893288, 0, 0.72444856, 0, 0.9999999, 0, -0.72444856, 0, -0.6893287, -518.12286, 110.999084, 484.11868)
+mass = 90.0
+sleeping = true
+can_sleep = true
+lock_rotation = true
+freeze = true

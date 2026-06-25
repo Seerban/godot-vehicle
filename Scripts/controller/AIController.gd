@@ -72,13 +72,14 @@ func get_speed() -> float:
 	return vehicle.get_forward_speed()
 
 func free_vehicle() -> void:
-	vehicle.queue_free()
+	global.disable_ai_car(vehicle)
 	target.queue_free()
 
 
 func custom_process(_delta : float) -> void:
-	if !is_instance_valid(target): return
-	if global.player_car == null: return
+	if !is_instance_valid(target) or \
+		global.player_car == null or \
+		!vehicle.enabled: return
 	
 	# increase stuck timer if stuck
 	if vehicle.linear_velocity.length() < 0.25:

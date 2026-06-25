@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChassisStats" format=3 uid="uid://fqwo7h1pixsx"]
+
+[ext_resource type="Script" uid="uid://d1h86ieukxixo" path="res://Resources/Chassis.gd" id="1_csvak"]
+
+[resource]
+script = ExtResource("1_csvak")
+drag = 50.0
+wheel_size = 0.8
+wheel_width = 1.2
+engine_multiplier = 1.2
+name = "Default Chassis"
+weight = 75.0
+metadata/_custom_type_script = "uid://d1h86ieukxixo"

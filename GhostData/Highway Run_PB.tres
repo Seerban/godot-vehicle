@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="GhostData" format=3]
+[gd_resource type="Resource" script_class="GhostData" format=3 uid="uid://bcvlhpxyveo5s"]
 
-[ext_resource type="Script" path="res://Scripts/sprint/GhostData.gd" id="1_qjb8a"]
+[ext_resource type="Script" uid="uid://coxsugyx63y4i" path="res://Scripts/sprint/GhostData.gd" id="1_qjb8a"]
 
 [resource]
 script = ExtResource("1_qjb8a")
-model = "car"
+model = "Oddi"
 total_time = 25.180551301585723
 frames = [{
 "time": 0.10560952380952358,

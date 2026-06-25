@@ -3,7 +3,7 @@ class_name VehicleData
 
 var attached_body: Node3D
 
-@export var model := "car" :
+@export var model := "Lando" :
 	set(x):
 		model = x
 		if attached_body != null: attached_body.update()
@@ -41,7 +41,7 @@ var height := 1.0
 	set(x):
 		aspiration = x
 		if attached_body != null: attached_body.update()
-@export var chassis := preload("res://Resources/Chassis/car_chassis.tres") :
+@export var chassis := preload("res://Resources/Chassis/Oddi_chassis.tres") :
 	set(x):
 		chassis = x
 		if attached_body != null: attached_body.update()

@@ -4,9 +4,11 @@ const CAR_MODEL_PATH := "res://Models/Cars/"
 const SAVE_PATH := "res://SAVEDATA.tres"
 const WATER_LEVEL := 30
 
+# vehicles data
 var player_data: PlayerData
 var spawn_position := Vector3.ZERO # tracker to bring player back after teleporting
 var npc_vehicledata := VehicleData.new()
+var npc_pool: Array[Vehicle]
 
 # REFERENCES
 var player_car: Vehicle
@@ -17,6 +19,7 @@ var ui_manager: UIManager
 var map: Node3D
 var autoshop: Node3D
 
+# player flags
 var player_is_racing := false
 var player_in_autoshop := false
 var sprint_node: SprintRace
@@ -36,14 +39,65 @@ func _ready() -> void:
 	ui_manager = get_tree().get_first_node_in_group("ui")
 	minimap = get_tree().get_first_node_in_group("minimap")
 	grip_ui = ui_manager.get_node("Grip")
+	
+	initialize_ai_pool(10)
 
-func spawn_ai(pos: Vector3, target_path: RoadPath) -> void:
-	var car = npc_vehicledata.add_as_vehicle( get_tree().get_first_node_in_group("vehicles"), true )
+func initialize_ai_pool(size := 30) -> void:
+	for i in range(size):
+		var cardata = VehicleData.new()
+		var car = cardata.add_as_vehicle(get_tree().get_first_node_in_group("vehicles"), true)
+		#spawn_ai(Vector3(0, 100, 0), null)
+		npc_pool.append(car)
+		disable_ai_car(car)
+
+# attempt to spawn ai vehicle random position nearby, do nothing if too close
+func attempt_ai_spawn() -> void:
+	var spawn_distance = 200.0
+	
+	var rand_angle = randf_range(0, 360)
+	var offset = Vector3(spawn_distance, 0, 0).rotated(Vector3.UP, rand_angle)
+	var pos = global.player_car.global_position + offset
+	
+	var result = global.get_closest_point_from_road(pos)
+	var pos_final = result[0]
+	var road = result[1]
+	
+	var valid_spawn = true
+	if (pos_final - global.player_car.global_position).length() < spawn_distance * 0.8:
+		print("too close to player, not spawning")
+		return
+	
+	for car in global.get_tree().get_first_node_in_group("vehicles").get_children():
+		if (pos_final - car.global_position).length() < 5.0:
+			print("attempted to spawn too close")
+			return
+	
+	spawn_ai(pos_final, road)
+
+func spawn_ai(pos: Vector3, target_path: RoadPath) -> Vehicle:
+	var car: Vehicle
+	
+	for i in npc_pool:
+		if !is_instance_valid(i):
+			print("ERROR! Invalidated NPC Vehicle inside pool!")
+			return
+		if !i.enabled:
+			car = i
+			car.enable()
+			car.freeze = false
+			print("Chose to spawn from pool idx " + str(npc_pool.find(i)))
+			break
+	
+	if car == null:
+		print("failed to find object in pool, not spawning")
+		return
+	
+	#var car = npc_vehicledata.add_as_vehicle( get_tree().get_first_node_in_group("vehicles"), true )
 	var controller = AIController.new()
 	
 	# set to ai controller
 	controller.vehicle = car
-	controller.initial_target_path = target_path
+	if target_path: controller.initial_target_path = target_path
 	add_child(controller)
 	car.controller = controller
 	controller.vehicle = car
@@ -62,6 +116,17 @@ func spawn_ai(pos: Vector3, target_path: RoadPath) -> void:
 		car.linear_velocity = angle * 5.0
 	else:
 		car.global_position = pos + Vector3(0, 0.5, 0)
+	
+	return car
+
+func disable_ai_car(car: Vehicle) -> void:
+	car.disable()
+	car.global_position = Vector3(10000, npc_pool.find(car)*100, 10000)
+	car.sleeping = true
+	car.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
+	car.freeze = true
+	car.linear_velocity = Vector3.ZERO
+	car.angular_velocity = Vector3.ZERO
 
 # player management
 func set_player_pos():

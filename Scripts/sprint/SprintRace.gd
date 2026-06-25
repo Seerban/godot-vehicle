@@ -22,6 +22,22 @@ var start_cp : Area3D
 @export var silver_data: GhostData = null
 @export var bronze_data: GhostData = null
 
+# transform children to checkpoints array
+func _ready() -> void:
+	for i in get_children():
+		if i is not Node3D: continue
+		checkpoints.append(i.global_position)
+	
+	start_cp = load("res://Scenes/sprint/start_area.tscn").instantiate()
+	add_child(start_cp)
+	start_cp.get_node("Name").text = name
+	start_cp.global_position = checkpoints[0]
+	start_cp.body_entered.connect(_on_area_3d_body_entered)
+	start_cp.body_exited.connect(_on_area_3d_body_exited)
+	
+	if global.player_data.times.get(name):
+		best_ghost.data = global.player_data.times[name]
+
 # If player has no replay, return 0
 func get_pb() -> float:
 	if !global.player_data.times.get(name):
@@ -39,6 +55,14 @@ func get_length() -> float:
 	
 	return total
 
+func get_medal() -> int:
+	var pb = get_pb()
+	if gold_data == null: return 0
+	if pb == 0: return 0
+	if pb < gold_data.total_time: return 3
+	if pb < silver_data.total_time: return 2
+	if pb < bronze_data.total_time: return 1
+	return 0
 
 # create ghost and start recording
 # start best medal/replay ghost available for replay
@@ -120,9 +144,6 @@ func next_checkpoint() -> void:
 	cp_instance = load("res://Scenes/sprint/checkpoint.tscn").instantiate()
 	add_child(cp_instance)
 	cp_instance.global_position = checkpoints[cp_idx]
-	
-	# Update race statistics
-	global.player_data.races_completed += 1
 
 # give rewards and save ghost if good time and not force exited
 func finish_race(forced := false) -> void:
@@ -142,6 +163,8 @@ func finish_race(forced := false) -> void:
 		cp_instance.queue_free()
 		return
 	
+	# Update race statistics
+	global.player_data.races_completed += 1
 	
 	var cash_reward = 0
 	if bronze_data != null:
@@ -158,22 +181,6 @@ func finish_race(forced := false) -> void:
 	print("sprint time: ", ghost.data.total_time)
 	if get_pb() == 0 or global.player_data.times[name].total_time > ghost.data.total_time:
 		global.player_data.times[name] = ghost.data
-
-# transform children to checkpoints array
-func _ready() -> void:
-	for i in get_children():
-		if i is not Node3D: continue
-		checkpoints.append(i.global_position)
-	
-	start_cp = load("res://Scenes/sprint/start_area.tscn").instantiate()
-	add_child(start_cp)
-	start_cp.get_node("Name").text = name
-	start_cp.global_position = checkpoints[0]
-	start_cp.body_entered.connect(_on_area_3d_body_entered)
-	start_cp.body_exited.connect(_on_area_3d_body_exited)
-	
-	if global.player_data.times.get(name):
-		best_ghost.data = global.player_data.times[name]
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body != global.player_car: return

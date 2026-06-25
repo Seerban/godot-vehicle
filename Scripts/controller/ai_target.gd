@@ -70,7 +70,7 @@ func advance_to_next_road() -> void:
 	target_path = next_path
 	
 	if target_path == null:
-		vehicle.queue_free()
+		global.disable_ai_car(vehicle)
 		return
 	
 	curve = target_path.curve

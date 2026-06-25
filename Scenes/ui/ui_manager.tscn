@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://b0qcopxyccu4n" path="res://Scripts/ui/menu.gd" id="20_828mu"]
 [ext_resource type="Texture2D" uid="uid://fdsvj3hjcbl2" path="res://Textures/menu.png" id="21_donbq"]
 [ext_resource type="Texture2D" uid="uid://ck5k7bfctrg54" path="res://Textures/tile.png" id="22_bs632"]
+[ext_resource type="Script" uid="uid://cfdj51ig4i3s3" path="res://Scripts/ui/trophies.gd" id="24_3qqp5"]
+[ext_resource type="Texture2D" uid="uid://bltp517o0t3de" path="res://Textures/ui/trophy.png" id="24_fh02c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmyfn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
@@ -2229,7 +2231,7 @@ text = "Save"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Achievements" type="Button" parent="Menu/VBox" unique_id=1743373689]
+[node name="Trophies" type="Button" parent="Menu/VBox" unique_id=1743373689]
 clip_children = 2
 custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
@@ -2240,9 +2242,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xvsgm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cl1wc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_khpyi")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_2o30e")
-disabled = true
 
-[node name="Pattern" type="TextureRect" parent="Menu/VBox/Achievements" unique_id=193946387]
+[node name="Pattern" type="TextureRect" parent="Menu/VBox/Trophies" unique_id=193946387]
 modulate = Color(0, 0, 0, 0.078431375)
 layout_mode = 1
 anchors_preset = 15
@@ -2253,7 +2254,7 @@ grow_vertical = 2
 texture = ExtResource("22_bs632")
 stretch_mode = 1
 
-[node name="Label" type="Label" parent="Menu/VBox/Achievements" unique_id=2017768230]
+[node name="Label" type="Label" parent="Menu/VBox/Trophies" unique_id=2017768230]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2433,7 +2434,372 @@ theme_override_font_sizes/font_size = 24
 text = "$0"
 metadata/_edit_use_anchors_ = true
 
+[node name="Trophies" type="Control" parent="." unique_id=1174515470]
+visible = false
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.15
+anchor_right = 0.8
+anchor_bottom = 0.85
+offset_left = 74.0
+offset_right = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+script = ExtResource("24_3qqp5")
+
+[node name="ColorRect2" type="ColorRect" parent="Trophies" unique_id=785809117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.29411766, 0.29411766, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Trophies" unique_id=1096051240]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+
+[node name="Scroll" type="ScrollContainer" parent="Trophies" unique_id=1198682024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Trophies/Scroll" unique_id=1757088881]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Trophies/Scroll/VBox" unique_id=1253976284]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("7_y8xa2")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Trophies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Trophies/Scroll/VBox" unique_id=1619164887]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="Distance" type="HBoxContainer" parent="Trophies/Scroll/VBox" unique_id=420835219]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Distance" unique_id=2063043380]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("7_y8xa2")
+text = "Distance
+Traveled"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DistanceProgress" type="ProgressBar" parent="Trophies/Scroll/VBox/Distance" unique_id=496608419]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100000.0
+step = 1.0
+value = 50000.0
+rounded = true
+show_percentage = false
+
+[node name="Ticker" type="ColorRect" parent="Trophies/Scroll/VBox/Distance/DistanceProgress" unique_id=2042253024]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.1
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 24.0
+pivot_offset = Vector2(4, 16)
+color = Color(0.2520276, 0.25202766, 0.25202763, 1)
+
+[node name="Trophy" type="TextureRect" parent="Trophies/Scroll/VBox/Distance/DistanceProgress/Ticker" unique_id=243378116]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 28.0
+pivot_offset = Vector2(24, 24)
+texture = ExtResource("24_fh02c")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Distance/DistanceProgress/Ticker" unique_id=627479360]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.500002
+offset_top = 16.0
+offset_right = 23.499998
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+text = "12345"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Distance/DistanceProgress" unique_id=86132595]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+theme_override_font_sizes/font_size = 12
+text = "PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Trophies/Scroll/VBox/Distance" unique_id=1205792784]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="Trophies/Scroll/VBox" unique_id=197441470]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="Medals" type="HBoxContainer" parent="Trophies/Scroll/VBox" unique_id=1279159299]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Medals" unique_id=1784711631]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("7_y8xa2")
+text = "Medals"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MedalsProgress" type="ProgressBar" parent="Trophies/Scroll/VBox/Medals" unique_id=399571482]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100000.0
+step = 1.0
+value = 50000.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Medals/MedalsProgress" unique_id=619993506]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+theme_override_font_sizes/font_size = 12
+text = "PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Trophies/Scroll/VBox/Medals" unique_id=1873500010]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="Trophies/Scroll/VBox" unique_id=1334335234]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="Races" type="HBoxContainer" parent="Trophies/Scroll/VBox" unique_id=876584445]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Races" unique_id=380235784]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("7_y8xa2")
+text = "Races
+Finished"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RacesProgress" type="ProgressBar" parent="Trophies/Scroll/VBox/Races" unique_id=2027568835]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100000.0
+step = 1.0
+value = 50000.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Races/RacesProgress" unique_id=308721883]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+theme_override_font_sizes/font_size = 12
+text = "PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Trophies/Scroll/VBox/Races" unique_id=1133600298]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Spacer4" type="Control" parent="Trophies/Scroll/VBox" unique_id=1581535272]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="Drift" type="HBoxContainer" parent="Trophies/Scroll/VBox" unique_id=2051648675]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Drift" unique_id=367052522]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("7_y8xa2")
+text = "Time
+Drifted"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DriftProgress" type="ProgressBar" parent="Trophies/Scroll/VBox/Drift" unique_id=662230877]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100000.0
+step = 1.0
+value = 50000.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Drift/DriftProgress" unique_id=1054783432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+theme_override_font_sizes/font_size = 12
+text = "PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Trophies/Scroll/VBox/Drift" unique_id=2079721005]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Spacer5" type="Control" parent="Trophies/Scroll/VBox" unique_id=303243464]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="Speed" type="HBoxContainer" parent="Trophies/Scroll/VBox" unique_id=1712727720]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Speed" unique_id=1926343433]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("7_y8xa2")
+text = "Time
+Speeding"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedProgress" type="ProgressBar" parent="Trophies/Scroll/VBox/Speed" unique_id=534689622]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100000.0
+step = 1.0
+value = 50000.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Speed/SpeedProgress" unique_id=1601971372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+theme_override_font_sizes/font_size = 12
+text = "PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Trophies/Scroll/VBox/Speed" unique_id=1904970132]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Spacer6" type="Control" parent="Trophies/Scroll/VBox" unique_id=449225523]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
+[node name="Air" type="HBoxContainer" parent="Trophies/Scroll/VBox" unique_id=568205102]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Air" unique_id=144898147]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("7_y8xa2")
+text = "Time
+in air"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AirProgress" type="ProgressBar" parent="Trophies/Scroll/VBox/Air" unique_id=245126518]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100000.0
+step = 1.0
+value = 50000.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Trophies/Scroll/VBox/Air/AirProgress" unique_id=1802615168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_y8xa2")
+theme_override_font_sizes/font_size = 12
+text = "PROGRESS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Trophies/Scroll/VBox/Air" unique_id=280599817]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Spacer7" type="Control" parent="Trophies/Scroll/VBox" unique_id=46058435]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+
 [node name="BlackScreen" type="ColorRect" parent="." unique_id=2006399449]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2448,4 +2814,5 @@ color = Color(1, 0, 1, 1)
 [connection signal="visibility_changed" from="SprintFinish" to="SprintFinish" method="_on_visibility_changed"]
 [connection signal="pressed" from="Menu/VBox/Continue" to="Menu" method="_on_continue_pressed"]
 [connection signal="pressed" from="Menu/VBox/Save" to="Menu" method="_on_save_pressed"]
+[connection signal="pressed" from="Menu/VBox/Trophies" to="Menu" method="_on_trophies_pressed"]
 [connection signal="pressed" from="Menu/VBox/Exit" to="Menu" method="_on_exit_pressed"]

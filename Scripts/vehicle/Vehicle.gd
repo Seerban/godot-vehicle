@@ -149,7 +149,7 @@ func enable() -> void:
 
 func disable() -> void:
 	enabled = false
-	lights.use_off_preset()
+	if lights: lights.use_off_preset()
 	set_acceleration(0.0)
 	set_braking(1.0)
 	set_steering(0.0)
